@@ -1,0 +1,129 @@
+.container {
+  *zoom: 1;
+  width: 940px;
+  margin: 0 auto;
+}
+
+.container:before,
+.container:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.container:after {
+  clear: both;
+}
+
+
+.row {
+  width: 100%;
+  *zoom: 1;
+}
+
+.row:before,
+.row:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.row:after {
+  clear: both;
+}
+
+
+.row [class*="col-"] {
+  display: block;
+  float: left;
+  width: 100%;
+  min-height: 30px;
+  margin-left: 2.127659574468085%;
+  *margin-left: 2.074468085106383%;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+[class*="col-"]:first-child {
+  margin-left: 0;
+}
+
+[class*="col-"] + [class*="col-"] {
+  margin-left: 2.127659574468085%;
+}
+
+.row .col-12 {
+  width: 100%;
+  *width: 99.94680851063829%;
+}
+
+.row .col-11 {
+  width: 91.48936170212765%;
+  *width: 91.43617021276594%;
+}
+
+.row .col-10 {
+  width: 82.97872340425532%;
+  *width: 82.92553191489361%;
+}
+
+.row .col-9 {
+  width: 74.46808510638297%;
+  *width: 74.41489361702126%;
+}
+
+.row .col-8 {
+  width: 65.95744680851064%;
+  *width: 65.90425531914893%;
+}
+
+.row .col-7 {
+  width: 57.44680851063829%;
+  *width: 57.39361702127659%;
+}
+
+.row .col-6 {
+  width: 48.93617021276595%;
+  *width: 48.88297872340425%;
+}
+
+.row .col-5 {
+  width: 40.42553191489362%;
+  *width: 40.37234042553192%;
+}
+
+.row .col-4 {
+  width: 31.914893617021278%;
+  *width: 31.861702127659576%;
+}
+
+.row .col-3 {
+  width: 23.404255319148934%;
+  *width: 23.351063829787233%;
+}
+
+.row .col-2 {
+  width: 14.893617021276595%;
+  *width: 14.840425531914894%;
+}
+
+.row .col-1 {
+  width: 6.382978723404255%;
+  *width: 6.329787234042553%;
+}
+
+
+/*-- form-bk --*/
+.form-style {display:block; }
+.ground-form {font-size: 18px;color: #1a1a1a; margin-bottom: 10px; position:relative;}
+.ground-form .f-box{width:328px; height: 26px; line-height: 26px;background: #fff; padding-left: 10px;padding-right: 10px;    border: 0; font-size: 14px;border: 1px solid #a3a3a3;}
+.ground-form i {color: red;position: absolute;font-style: normal;font-size: 20px;right: -18px;top: 5px;}
+
+/*-- list-dec --*/
+.list-dec {}
+.list-dec li{font-size:20px; color:#000; position:relative; padding-left:48px; margin-bottom:5px;}
+.list-dec .list-dec-count {position:absolute; background:#000; width:25px; height:25px; margin-bottom:15px; line-height:25px; color:#fff; text-align:center;left: 0; top:1px;}
+
+
+

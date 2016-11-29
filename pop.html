@@ -16,63 +16,59 @@
   <![endif]-->
   <title>website name</title>
   <style type="text/css">
-    .pop {background:red;position:absolute;top:50%;left:50%; display:none;}
+    .pop-wrap {position:fixed;right:0;bottom:0;left:0;top:0;background:rgba(0, 0, 0, 0.19); display:none;-webkit-transition:.3s ease-in-out; transition:.3s ease-in-out; opacity:0;}
+    .pop {background:red;position:absolute;top:50%;left:50%;   -webkit-transition:.3s ease-in-out; transition:.3s ease-in-out;    transform: scale(0); -webkit-transform:scale(0); }
+    .pop-wrap.in{opacity:1;}
+    .pop-wrap.in .pop{transform: scale(1);-webkit-transform:scale(1) ;}
+    .pop {background-color: #fff;-webkit-background-clip: padding-box;background-clip: padding-box;border: 1px solid #999;border: 1px solid rgba(0,0,0,.2);border-radius: 6px;outline: 0;-webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);box-shadow: 0 3px 9px rgba(0,0,0,.5);    box-shadow: 0 5px 15px rgba(0,0,0,.5);}
+    .pop .close { float: right;font-size: 18px;font-weight: 700;color: #666;text-shadow: 0 1px 0 #fff;position: absolute;right: 0;top: 0;width: 30px;height: 30px;cursor: pointer;text-align: center;line-height: 30px;}
   </style>
 </head>
 <body class="yh">
   <noscript>
     <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
   </noscript>
-  <div class="container" ms-controller="body">
-    <div class="demo-show" ms-controller="demo">
-      <fieldset>
-          <legend></legend>
-          <button ms-click="show('aa')">打开对话框</button>
-          
-      </fieldset>
+  <div class="container" ms-controller="body">    
+    <div class="ta-c p20">
+      <button ms-class="btn btn-default" ms-click="show('pp1')">我是弹出框1</button>    
+      <button ms-class="btn btn-default" ms-click="show('pp2')">我是弹出框2</button>    
     </div>
-    
-    <button ms-class="btn btn-default" ms-click="show('pp1')">弹出框内容</button>
-    
-    <div ms-widget="pop, pp1,$opt" >fdafafadsf</div>
-      
-    
-    
+    <div ms-widget="pop, pp1,$opt" >
+      <h2 class="ta-c pt10 pb10">标题1</h2>
+      <div class="pop-msg row pl10 pr10 pb10">
+        文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+      </div>
+    </div><!-- /第一个弹出框 -->
 
+
+    <div ms-widget="pop, pp2,$opt2" >
+      <h2 class="ta-c pt10 pb10">标题2</h2>
+      <div class="pop-msg row pl10 pr10 pb10">
+        文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+      </div>
+    </div><!-- /第一个弹出框 -->
   </div>
   <script type="text/javascript" src="js/avalon.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
   <script type="text/javascript">
   <!--
     require(['domReady!','../lib/pop/avalon.pop'], function(a,b) {
-
-
-
-      var vmfile =  avalon.define({
-          $id: "demo",
-          show: function  (id) {
-            alert('demo');           
-          }
-          
-        })
-
       var vmbody =  avalon.define({
           $id: "body",
-          show:function  () {
-            avalon.vmodels['pp1'].toggle = !avalon.vmodels['pp1'].toggle
-          },
-         
+          show:function  (id) {
+            avalon.vmodels[id].toggle = true;
+          },         
           $opt:{
-            width:200,
-            height:300,
+            width:600,
+            height:400,
             className:'pop'
+          },
+          $opt2:{
+            width:400,
+            height:500,
+            className:'pop'            
           }
-          
         })
-
-        
-
-      
         avalon.scan();
     })
   //-->

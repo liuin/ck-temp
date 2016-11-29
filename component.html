@@ -1,12 +1,37 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="js/avalon.js"></script>
-    </head>
-    <body>
-        <script>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+ <script type="text/javascript" src="js/avalon.1.5.2.js"></script>
+
+  <title>website name</title>
+</head>
+<body class="yh">
+  <noscript>
+    <div class="noscript"><strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。</div>
+  </noscript>
+  <div class="container">
+    <div ms-controller="test">
+      <ms:button ms-repeat="array" ms-attr-config="x{{$index}}" />
+    </div>
+  </div>
+ 
+ <script type="text/javascript">
+  <!--
+    require(['domReady!','../lib/component/component'], function(a) {
+            
             var vm = avalon.define({
                 $id: "test",
                 array: [1, 2,3],
@@ -32,30 +57,10 @@
                 }
             })
  
-            avalon.component("ms:button", {
-                a: 1,
-                $replace: 1,
-                $childReady: function (vm, elem, e) {
- 
-                },
-                $ready: function (vm, elem) {
-                    console.log("BUTTON构建完成")
-                },
-                $template: "<button type='button'><span>|<ms:text></ms:text>|</span>{{a}}<ms:text/></button>"
-            })
-            avalon.component("ms:text", {
-                b: "默认值",
-                $replace: 1,
-                $ready: function () {
-                    console.log("TEXT构建完成")
-                },
-                $template: "<strong>{{b}}</strong>"
-            })
-        </script>
-        <div ms-controller="test">
- 
-            <ms:button ms-repeat="array" ms-attr-configs="x{{$index}}" />
-        </div>
- 
-    </body>
+        avalon.scan();
+    })
+  //-->
+  </script>
+
+</body>
 </html>
