@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+  <meta name="renderer" content="webkit" />
+  <meta name="description" content="" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <title>website name</title>
+
+  <style type="text/css">
+    .box {width: 50px;height: 80px;background:#f60; margin-bottom: 20px;}
+  </style>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+
+  <div class="container">
+    <div style="height: 600px;">
+      <div class="box" id="box1"></div>
+      <div class="box" id="box2"></div>
+    </div>
+
+    <button id="btn">老司机</button> 
+  </div>
+  
+  <script type="text/javascript" src="../../js/jquery.js"></script>
+  <script type="text/javascript" src="../../js/TweenMax1.js"></script>
+
+  <script type="text/javascript">
+    var box = document.getElementById("box");
+    
+//    var tl = new TimelineLite();
+//    var tween = TweenLite.to('.box', 1, {x:100}); //create a 1-second tween
+//    tl.add(tween, 0.5); //insert the tween at 0.5 seconds into the timeline
+//    tween.timeScale(2); //double the speed of the tween, thus it'll finish in half the normal time
+
+   // return false;
+
+    var tm = TweenMax.to('.box', 1, {
+//      width:"300px", 
+//      height:"150px",
+//      top:"100px",
+//      rotationX:160,
+//      rotationZ:260,
+//      scale:1.2,
+      skewX:-14,
+      skewY:-14,
+      backgroundColor:'green', 
+      //ease:Power1.easeIn,
+      //ease:Expo.easeOut,
+      ease:SteppedEase.config(12),
+      delay:0, //延迟
+      repeat:0,
+      repeatDelay:0,
+
+      autoCSS:true, //不用{}
+      yoyo:true, //repeat时候的方向
+      paused:false, //开关
+      onComplete:function  () {
+        //完成回调
+        console.log(arguments);
+      },
+      onCompleteScope:this,
+      onUpdate:function  (obj) {
+        //console.log(obj.progress());进度条0-1
+        //console.log(obj.time(),obj.progress());        
+        //console.log(obj.ratio); //当前的进度变量
+        //console.log(obj.ratio*(300-50)+50); //当前的进度变量
+      },
+      onUpdateScope:{width:"200px"},
+      onUpdateParams:["{self}"]
+    });
+
+    //tm.reversed(true); 控制是否立即实行反方向
+    
+    //throttle back the frames-per-second to 30
+    //TweenMax.ticker.fps(30);   //设置某帧 
+
+    //TweenMax.ticker.useRAF(false); //是否使用req
+
+    //tm.pause(1.6); //在2秒的地方暂停
+    //tm.paused(); //直接暂停
+    //tm.play(); //直接播放
+
+    //TweenMax.globalTimeScale(0.5); //plays at half-speed
+    //TweenMax.globalTimeScale(2); //plays twice the normal speed
+    //var currentTimeScale = TweenMax.globalTimeScale(); //returns the current global timeScale
+
+
+
+    //if(!tween.isActive()){ 判断tm是否触发状态
+        //only reverse the direction if the tween is not active
+    //    tween.reversed(!tween.reversed())
+    //}
+
+    //TweenMax.globalTimeScale(1);
+
+    //tm.vars.paused = true;
+
+    //console.log(tm);
+
+      //TweenMax.set();
+    //TweenMax.to( document.getElementById("d2"), 1, {css:{left:100}});
+
+    //TweenMax.to( document.getElementById("image"), 1, {css:{left:100}});
+
+    //TweenMax.to( document.getElementById("d3"), 1, {css:{left:100}});
+
+    //only kills the first 2 tweens because those targets are child elements of the "d1" DOM element.
+
+    //TweenMax.killChildTweensOf( document.getElementById("d1") ); 
+
+    $('#btn').on('click',function  () {
+      tm.paused(!tm.paused());
+    })
+   
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="js/avalon.1.5.2.js"></script>
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <title>website name</title>
+  <style type="text/css">
+    .box {-webkit-transition:.6s; transition:.6s;width: 300px; height: 300px;background:red;}
+    .in{ opacity: 0; -webkit-transform: rotate(145deg); transform: rotate(145deg);}
+    .out{ opacity: 0; -webkit-transform: rotate(145deg); transform: rotate(145deg);}
+  </style>
+</head>
+<body class="yh">
+  <noscript>
+    <div class="noscript"><strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。</div>
+  </noscript>
+  <div ms-controller="test">
+        <div ms-effect="toggle" id="box" ms-if="bool" class="box"></div>
+        <p><button ms-click="click" type="button">button</button></p> 
+    </div>
+
+  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript">
+  <!--
+    require(['domReady!'], function(a) {
+   
+
+
+    avalon.effect("toggle", {
+        enterClass: "in",
+        leaveClass: "out",
+        enter:function  (el) {
+          
+          el.style.display = 'blocl';
+        },
+        leave:function  (el) {
+          el.style.display = 'none';
+        }
+
+    })
+
+    var vmfile =  avalon.define({
+        $id: "test",
+        bool:true,
+        click:function  () {
+          vmfile.bool = !vmfile.bool;
+         
+
+          
+
+        }
+    })
+
+      avalon.scan();
+    })
+  //-->
+  </script>
+</body>
+</html>

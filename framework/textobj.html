@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>    
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>website name</title>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="container">
+     
+  </div>
+  <script type="text/javascript">
+//    function objText (str) {
+//      this.str = str;
+//      this.fn = function  () {
+//        alert(this.str);        
+//      }
+//
+//      return this;
+//    }
+//
+//    objText.prototype.fn = function  () {
+//      
+//      alert(this.str);
+//    }
+//
+//    var obj1 = new objText('111');
+//
+//    obj1.fn();
+
+  function Elder(state){
+    this.state=state;
+  }
+
+  Elder.prototype.state = 'I 12121 am angry!';
+
+
+  var Frog = new Elder('Excit11ed!');
+  console.log(Frog.state); // Excited!
+
+  delete Frog.state;
+  console.log(Frog.state); // I am angry!
+
+  Elder.state = '12121fdsfa';
+
+  var opb = new Elder('121212Excit11ed!');
+
+  console.log(opb.state);
+
+  delete opb.state;
+
+  console.log(opb.state);
+
+
+  function Employee () { 
+  this.dept = "general"; 
+  this.name = 'name1111';
+  } 
+  Employee.prototype.name = "1212"; 
+
+  function WorkerBee () { 
+  this.projects = []; 
+  //this.name = '1212';
+  } 
+  WorkerBee.prototype = new Employee; 
+
+  var amy = new WorkerBee; 
+
+  Employee.name = "Unknown"; 
+  console.log(amy.name);
+  amy.name// return "Unkonwn"
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script type="text/javascript">
+    function browserRedirect() {
+      var sUserAgent = navigator.userAgent.toLowerCase();
+      var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+      var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+      var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+      var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+      var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+      var bIsAndroid = sUserAgent.match(/android/i) == "android";
+      var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+      var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+
+      if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+        window.location.href = './wap/';
+      } else {
+        //window.location = 'index.html';
+      }
+    }
+
+    browserRedirect();
+  </script>
+  <script type="text/javascript">
+  (function(){
+    'use strict';
+    var Fixmobile = function  () {
+      this.viwep();
+    }
+
+    Fixmobile.width = 640;
+
+    Fixmobile.prototype.viwep = function  (e) {
+      var phoneWidth = parseInt(window.screen.width),
+      phoneScale = phoneWidth/Fixmobile.width,
+      ua = navigator.userAgent,
+      headmate;
+      if (/Android (\d+\.\d+)/.test(ua)){
+        var version = parseFloat(RegExp.$1);
+        // andriod 2.3
+        if(version > 2.3){
+          document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', minimum-scale = ' + phoneScale + ', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+        // andriod 2.3以上
+        }else{
+          document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', target-densitydpi=device-dpi">');
+        }
+        // 其他系统
+      } else {
+        document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', user-scalable=no, target-densitydpi=device-dpi">');
+      }
+    }
+    var newviewport = new Fixmobile();
+  })();
+  </script>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <title>website name</title>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="animate-layer">
+     <canvas id="js_theme_christmas_2014_canvas_snow"></canvas>
+  </div>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.12.1/jquery.js"></script>
+<script type="text/javascript">
+/** 
+* extend 雪花效果
+* 
+* @package jquery
+* @author cuki13
+  */
+
+(function () {
+    var addEvent = function (t, c, tf) {
+        if (document.addEventListener) {
+            document.addEventListener(t, c, tf);
+        } else if (document.attachEvent) {
+            document.attachEvent('on' + t, c);
+        }
+    }
+    var app = {};
+    var js_canvas_box_id = 'js_theme_christmas_2014_canvas_snow', j;
+    var christmas_2014 = function () {
+        function r(a) {
+            return a * Math.random()
+        }
+
+        function s() {
+            return document.createElement("canvas")
+        }
+
+        function t() {
+            var a;
+            for (var d = 0; d < m; d++)a = d < m * .6 ? 0 : d < m * .8 ? 1 : d < m * .9 ? 2 : d < m * .98 ? 3 : 4, o[d] = [r(b), r(c), a]
+        }
+
+        function u() {
+            var a, d, e, f;
+            p += .01, d = Math.sin(p);
+            for (a = 0; a < m; a++) {
+                f = o[a], e = Math.sin(4 * p + a), f[1] += f[2] / 2 + (2 + e), f[0] += 6 * (d + e / 2) / (10 / f[2]), f[1] > c && (f[1] = -n, f[0] = r(b));
+                if (f[0] > b || f[0] < -n)d > 0 ? f[0] = -n : f[0] = b;
+                o[a] = f
+            }
+        }
+
+        function v() {
+            var a;
+            k.fillStyle = l, k.clearRect(0, 0, b, c), k.beginPath();
+            for (a = 0; a < m; a++) {
+                k.drawImage(i[o[a][2]], o[a][0], o[a][1]);
+            }
+
+            k.fill();
+            u();
+        }
+
+        function w(a) {
+            b = window.innerWidth,
+            c = window.innerHeight,
+            j !== undefined && (j.width = b, j.height = c, m = b * c / 6e3,
+            l = k.createLinearGradient(0, 0, 0, c), t())
+        }
+
+        function x() {
+            $(window).on('resize', function () {
+                christmas_2014.resizeHandler();
+            });
+            j = document.createElement("canvas");
+
+            j.style.position = "fixed";
+            j.style.top = "0px";
+            j.style.left = "0px";
+            j.style.pointerEvents = "none";
+            j.id = js_canvas_box_id;
+            document.querySelector(".animate-layer").appendChild(j);
+
+            k = j.getContext("2d");
+            k.strokeStyle = "none";
+            d = s(), e = s(), f = s(), g = s(), h = s(), i = [d, e, f, g, h];
+
+            y({
+                canvas: d,
+                width: n * .4,
+                height: n * .4,
+                color: "#FFF",
+                soft: .05
+            });
+
+            y({canvas: e, width: n * .5, height: n * .5, color: "#FFF", soft: .05});
+            y({
+                canvas: f,
+                width: n * .6,
+                height: n * .6,
+                color: "#FFF",
+                soft: .3
+            });
+            y({canvas: g, width: n * .8, height: n * .8, color: "#FFF", soft: .2}), y({
+                canvas: h,
+                width: n,
+                height: n,
+                color: "#FFF",
+                soft: .05
+            });
+
+            w(null);
+
+            app.snowTimer = setInterval(function () {
+                q(christmas_2014.draw)
+            }, 50);
+        }
+
+        function y(a) {
+            var b, c, d, e, f, g, h, i, j;
+            d = a.width || 30,
+                e = a.height || 30,
+                f = d / 2, g = e / 2,
+                i = a.color || "#FFF",
+                h = a.soft || 0, b = a.canvas, b.width = d, b.height = d, c = b.getContext("2d"), c.clearRect(0, 0, d, e), j = c.createRadialGradient(f, g, 0, f, g, f), j.addColorStop(0, i), j.addColorStop(.1, i), j.addColorStop(.85, z(i, h)), j.addColorStop(1, z(i, 0)), c.fillStyle = j, c.fillRect(0, 0, d, e)
+        }
+
+        function z(a, b) {
+            var c, d, e;
+            return a = a.replace(/s*#|s*$/g, ""), a.length === 3 && (a = a.replace(/([0-9a-fA-F])/g, "$1$1")), d = parseInt(a.substr(2, 2), 16), e = parseInt(a.substr(4, 2), 16), c = parseInt(a.substr(0, 2), 16), "rgba(" + c + ", " + d + ", " + e + ", " + b + ")"
+        }
+
+        var b, c, d, e, f, g, h, i = [], j, k, l, m, n = 20, o = [], p = 0,
+            q = function () {
+                return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (a) {
+                    window.setTimeout(a, 62.5)
+                }
+            }();
+        return {
+            init: x,
+            draw: v,
+            stop: function () {
+                if (app.snowTimer) window.clearInterval(app.snowTimer);
+                if(j){
+                    j.parentNode.removeChild(j);
+                    j = false;
+                }
+            },
+            resizeHandler: w}
+    }();
+
+    if (!window['THEME_SCRIPT']) {
+        window['THEME_SCRIPT'] = {};
+    }
+    window['THEME_SCRIPT'].christmas_2014 = {
+        start: function () {
+            if($.browser.mozilla || $.browser.webkit || ($.browser.msie && $.browser.version > 9) || window.navigator.userAgent.indexOf('rv:11') != -1){
+                christmas_2014.init();
+            }
+        },
+        stop: function () {
+            if($.browser.mozilla || $.browser.webkit || ($.browser.msie && $.browser.version > 9) || window.navigator.userAgent.indexOf('rv:11') != -1){
+                christmas_2014.stop();
+            }
+        }
+    }
+    christmas_2014.init();
+})();
+</script>
+
+</body>
+</html>

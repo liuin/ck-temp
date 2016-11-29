@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>   
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- <link rel="stylesheet" href="css/animate.css"> -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <title>website name</title>
+  <style type="text/css">
+    * {border:0;margin: 0;padding: 0;list-style-type:none;}  
+
+    body {overflow:hidden;min-width:1000px;}
+
+    /*-- list --*/
+    .box {position:relative;overflow:hidden; width: 1000px; margin: 0 auto; height: 500px; background:#333; color: #fff;}
+
+    .list {position:absolute;width: 100%;top: 0; line-height: 1.8;display:inline-block;}
+
+    .list li{position:relative; left:100%;top: 0; }
+
+    .list li.item-0 { color: red;}
+
+    .list li.item-1 {color: green;}
+
+    .list li.item-2 {color: blue;}
+
+    .list li.item-3 {color: antiquewhite;}
+
+    .list li.item-4 {color: yellow;}
+
+
+
+    button {border: 1px solid #ccc; padding: 10px; outline:0;cursor:pointer;}
+    .btnground {text-align:center;padding-top: 20px;}
+
+    .zanins {background:url("images/zanpic.png") 0 0 no-repeat; width: 314px;height: 230px; display:none;}
+
+    .zanins.in {display:block;}
+
+    .videobox { position: relative;height: 500px;width: 1000px;margin: 0 auto;}
+
+    .zanbk{ position: absolute;left: 50%;top: 50%;margin-left: -153px;margin-top: -119px;}
+
+    .zanbk.in .zanins{display:block;}
+
+    .zanins {}
+   
+
+    .zanbk.in .zanins{    
+      animation:zoomIn 1.5s,swing 1.5s 1.5s;
+      -webkit-animation:zoomIn 1.5s,swing 1.5s 1.5s;
+      -moz-animation:zoomIn 1.5s,swing 1.5s 1.5s;
+      -ms-animation:zoomIn 1.5s,swing 1.5s 1.5s;
+
+      -webkit-transform-origin: 70% center;
+              transform-origin: 70% center;
+    }
+
+
+    @-webkit-keyframes zoomIn {
+      0% {
+        -webkit-transform-origin: center;
+                transform-origin: center;
+        -webkit-transform: rotate(0) scale(0);
+                transform: rotate(0) scale(0);
+        opacity: 0;
+        
+      }
+
+      100% {
+        -webkit-transform-origin: center;
+                transform-origin: center;
+        -webkit-transform:rotate(0deg) scale(1);
+                transform:rotate(0deg) scale(1);
+        opacity: 1;
+        
+      }
+    }
+
+    @keyframes zoomIn {
+          0% {
+            -webkit-transform-origin: center;
+                    transform-origin: center;
+            -webkit-transform: rotate(0) scale(0);
+                    transform: rotate(0) scale(0);
+            opacity: 0;
+            
+          }
+
+          100% {
+            -webkit-transform-origin: center;
+                    transform-origin: center;
+            -webkit-transform:rotate(0deg) scale(1);
+                    transform:rotate(0deg) scale(1);
+            opacity: 1;
+            
+          }
+        }
+
+
+
+    @-webkit-keyframes swing {
+      20% {
+
+        -webkit-transform: rotate3d(0, 0, 1, 10deg);
+                transform: rotate3d(0, 0, 1, 10deg);
+      }
+
+      40% {
+        -webkit-transform: rotate3d(0, 0, 1, -5deg);
+                transform: rotate3d(0, 0, 1, -5deg);
+      }
+
+      60% {
+        -webkit-transform: rotate3d(0, 0, 1, 3deg);
+                transform: rotate3d(0, 0, 1, 3deg);
+      }
+
+      80% {
+        -webkit-transform: rotate3d(0, 0, 1, -3deg);
+                transform: rotate3d(0, 0, 1, -3deg);
+      }
+
+      100% {
+        -webkit-transform: rotate3d(0, 0, 1, 0deg);
+                transform: rotate3d(0, 0, 1, 0deg);
+      }
+    }
+
+    @keyframes swing {
+     20% {
+
+      -webkit-transform: rotate3d(0, 0, 1, 10deg);
+              transform: rotate3d(0, 0, 1, 10deg);
+    }
+
+    40% {
+      -webkit-transform: rotate3d(0, 0, 1, -5deg);
+              transform: rotate3d(0, 0, 1, -5deg);
+    }
+
+    60% {
+      -webkit-transform: rotate3d(0, 0, 1, 3deg);
+              transform: rotate3d(0, 0, 1, 3deg);
+    }
+
+    80% {
+      -webkit-transform: rotate3d(0, 0, 1, -3deg);
+              transform: rotate3d(0, 0, 1, -3deg);
+    }
+
+    100% {
+      -webkit-transform: rotate3d(0, 0, 1, 0deg);
+              transform: rotate3d(0, 0, 1, 0deg);
+    }
+    }
+
+    /*-- lightzan --*/
+    .lightzan {position:absolute; left:0;top: 0;display:none;}
+    .lightzan .sp {
+      animation:zoomInStar 2s infinite;
+      -webkit-animation:zoomInStar 2s infinite;
+      -moz-animation:zoomInStar 2s infinite;
+      -ms-animation:zoomInStar 2s infinite;
+      position:absolute;         
+      opacity:0;
+    }
+    .lightzan.in{display:block;}
+    .lightzan .sp1{ background: url("images/startin.png") 0 0 no-repeat;display: inline-block;width: 50px;height: 58px; left: 0;top: -65px;
+    -webkit-animation-delay: .2s;animation-delay: .2s;
+    }
+    .lightzan .sp2{ background: url("images/startin.png") 0 -94px no-repeat;display: inline-block;width: 50px;height: 58px; left: 143px;top: -6px;
+        -webkit-animation-delay: .3s;animation-delay: .3s;
+
+    }
+    .lightzan .sp3{ background: url("images/startin.png") 0 0 no-repeat;display: inline-block;width: 50px;height: 58px; left: -57px;top: 64px;
+        -webkit-animation-delay: .4s;animation-delay: .4s;
+
+    }
+    .lightzan .sp4{ background: url("images/startin.png") 0 -94px no-repeat;display: inline-block;width: 50px;height: 58px; left: 312px;top: 96px;
+    
+        -webkit-animation-delay: .5s;animation-delay: .5s;
+
+    }
+
+    
+
+
+    @-webkit-keyframes zoomInStar {
+         0%,100% {
+           -webkit-transform-origin: center;
+                   transform-origin: center;
+           -webkit-transform: rotate(0) scale(0.5);
+                   transform: rotate(0) scale(0.5);
+           opacity: 0.5;
+           
+         }
+
+         50% {
+           -webkit-transform-origin: center;
+                   transform-origin: center;
+           -webkit-transform:rotate(0deg) scale(1);
+                   transform:rotate(0deg) scale(1);
+           opacity: 1;
+           
+         }
+       }
+
+       @keyframes zoomInStar {
+             0%,100% {
+               -webkit-transform-origin: center;
+                       transform-origin: center;
+               -webkit-transform: rotate(0) scale(0.5);
+                       transform: rotate(0) scale(0.5);
+               opacity: 0.5;
+               
+             }
+
+             50% {
+               -webkit-transform-origin: center;
+                       transform-origin: center;
+               -webkit-transform:rotate(0deg) scale(1);
+                       transform:rotate(0deg) scale(1);
+               opacity: 1;
+               
+             }
+           }
+
+
+    /*-- giftgrow --*/
+    .giftgrow { position: absolute;left: 0;top: 0;width: 1000px;height: 500px; left:50%;margin-left:-500px; display:block; }
+    
+    .giftgrow .sp1 {display:none;}
+
+    .giftgrow.in .sp{background:url("images/giftpop.png") 0 0 no-repeat; width: 100px; height: 100px; position:absolute; 
+    
+    animation:fireworks 6s cubic-bezier(0, 1, 0.5, 1) infinite, disappear 6s cubic-bezier(0.5, 0, 1, 1) infinite;
+    -webkit-animation:fireworks 6s cubic-bezier(0, 1, 0.5, 1) infinite, disappear 6s cubic-bezier(0.5, 0, 1, 1) infinite;-moz-animation:fireworks 6s cubic-bezier(0, 1, 0.5, 1) infinite, disappear 6s cubic-bezier(0.5, 0, 1, 1) infinite;-ms-animation:fireworks 6s cubic-bezier(0, 1, 0.5, 1) infinite, disappear 6s cubic-bezier(0.5, 0, 1, 1) infinite; display:block;opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);}
+
+
+    
+
+    .giftgrow.in .sp1{background-position: -152px 0;width: 100px;height: 100px;left: 168px;top: 57px; -webkit-animation-delay:0s;-moz-animation-delay:0s;-ms-animation-delay:0s; }
+
+    .giftgrow.in .sp2{ background-position: -159px -183px;width: 100px;height: 100px;left: 833px;top: 305px;-webkit-animation-delay:.4s;-moz-animation-delay:.4s;-ms-animation-delay:.4s;}
+
+    .giftgrow.in .sp3{background-position: -159px -349px;width: 130px;height: 127px;left: 341px;top: 131px;-webkit-animation-delay:.6s;-moz-animation-delay:.6s;-ms-animation-delay:.6s;}
+
+    .giftgrow.in .sp4{ background-position: -111px -560px;width: 245px;height: 218px;top: 200px;left: 85px;-webkit-animation-delay:.8s;-moz-animation-delay:.8s;-ms-animation-delay:.8s;}
+
+    .giftgrow.in .sp5{ background-position: -42px -896px;width: 368px;height: 316px;top: 98px;left: 470px;-webkit-animation-delay: 1s;-moz-animation-delay: 1s;-ms-animation-delay: 1s;}
+
+    
+
+    @-webkit-keyframes fireworks {
+        0% {
+            -webkit-transform:scale(0.1)
+        }
+        60%, 100% {
+            -webkit-transform:scale(1.3)
+        }
+    }
+    @-webkit-keyframes disappear {
+        0% {
+            opacity:0.8
+        }
+        55%, 100% {
+            opacity:0
+        }
+    }
+    @-moz-keyframes fireworks {
+        0% {
+            -moz-transform:scale(0.1)
+        }
+        60%, 100% {
+            -moz-transform:scale(1.3)
+        }
+    }
+    @-moz-keyframes disappear {
+        0% {
+            opacity:0.8
+        }
+        55%, 100% {
+            opacity:0
+        }
+    }
+    @-ms-keyframes fireworks {
+        0% {
+            -ms-transform:scale(0.1)
+        }
+        60%, 100% {
+            -ms-transform:scale(1.3)
+        }
+    }
+    @-ms-keyframes disappear {
+        0% {
+            opacity:0.8
+        }
+        55%, 100% {
+            opacity:0
+        }
+    }
+
+    /*-- playcar --*/
+    .playcar { width: 600px;height: 155px;background: #f60;position: absolute; margin-left: -300px;top: 128px; background:url("images/car/carrun.png") 0 0 no-repeat; left:165%;}
+    
+  </style>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="videobox">
+    <div class="box" id="box">
+     <!-- <ul class="list"><li>我的一段文字我的一段文字</li><li>我的一段文字我的一段文字我的一段文字</li><li>我的一段文字我的一段文字我的一段文字</li><li>我的一段文字我的一段文字我的一段文字</li><li>我的一段文字我的一段文字我的一段文字</li></ul> -->
+    </div>
+    <div class="zanbk">
+      <div class="lightzan">
+        <span class="sp sp1"></span>
+        <span class="sp sp2"></span>
+        <span class="sp sp3"></span>
+        <span class="sp sp4"></span>
+      </div>
+      <div class="zanins">
+        
+      </div>
+    </div><!-- /点赞 -->
+
+    <div class="giftgrow">
+      <div class="sp sp1"></div>
+      <div class="sp sp2"></div>
+      <div class="sp sp3"></div>
+      <div class="sp sp4"></div>
+      <div class="sp sp5"></div>
+    </div>
+
+
+    <div class="playcar"></div>
+
+  </div>
+
+
+
+
+  <div class="btnground">
+    <button id="dzan">点赞</button>
+    <button id="lihua">礼花</button>
+    <button id="pcar">跑车</button>
+  </div>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+
+  <script type="text/javascript">
+    
+  </script>
+
+  
+  <script type="text/javascript">
+
+
+  /* ========================================================================
+   * Bootstrap: transition.js v3.2.0
+   * http://getbootstrap.com/javascript/#transitions
+   * ========================================================================
+   * Copyright 2011-2014 Twitter, Inc.
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * ======================================================================== 
+   $.support.transition && $parent.hasClass('fade') ?
+        $parent
+          .one('bsTransitionEnd', removeElement)
+          .emulateTransitionEnd(150) :
+  removeElement()
+   
+   */
+  
+  
+  +function ($) {
+    'use strict';
+  
+    // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+    // ============================================================
+  
+    function transitionEnd() {
+      var el = document.createElement('bootstrap')
+  
+      var transEndEventNames = {
+        WebkitTransition : 'webkitTransitionEnd',
+        MozTransition    : 'transitionend',
+        OTransition      : 'oTransitionEnd otransitionend',
+        transition       : 'transitionend'
+      }
+  
+      for (var name in transEndEventNames) {
+        if (el.style[name] !== undefined) {
+          return { end: transEndEventNames[name] }
+        }
+      }
+  
+      return false // explicit for ie8 (  ._.)
+    }
+  
+    // http://blog.alexmaccaw.com/css-transitions
+    $.fn.emulateTransitionEnd = function (duration) {
+      var called = false
+      var $el = this
+      $(this).one('bsTransitionEnd', function () { called = true })
+      var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
+      setTimeout(callback, duration)
+      return this
+    }
+  
+    $(function () {
+      $.support.transition = transitionEnd()
+  
+      if (!$.support.transition) return
+  
+      $.event.special.bsTransitionEnd = {
+        bindType: $.support.transition.end,
+        delegateType: $.support.transition.end,
+        handle: function (e) {
+          if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
+        }
+      }
+    })
+  
+  }(jQuery);
+
+
+  //Tween效果
+  var TweenType = { //线性以及二次方的缓动
+    linear: function(t, b, c, d) {
+        return c * t / d + b
+    },
+    easeIn: function(t, b, c, d) {
+        return c * (t /= d) * t + b
+    },
+    easeOut: function(t, b, c, d) {
+        return -c * (t /= d) * (t - 2) + b
+    },
+    easeInOut: function(t, b, c, d) {
+        if ((t /= d / 2) < 1) return c / 2 * t * t + b
+        return -c / 2 * ((--t) * (t - 2) - 1) + b
+    }
+  }
+
+  //动画效果
+  function Tween() {
+  }
+
+  Tween.prototype.requestAnimationFrame = function  (callback) {
+    if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
+    else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
+    else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
+    else {
+       return window.setTimeout(callback, 1000 / 60);
+    }
+  }
+
+  Tween.prototype.animate = function  (pro,callback,timelong,type) {
+    var $this = this;
+
+    if (typeof callback != 'function') {
+      timelong = callback;      
+    }
+
+    if (typeof type != undefined) {
+      $this.type = TweenType[type];      
+    }else {
+      $this.type = TweenType['linear'];
+    }
+    
+    var startTime = null;
+    
+    function render (time) {
+      
+      //console.log(time);
+
+      if (time === undefined) {
+        time = new Date().getTime();
+      }
+
+      
+      
+      if (startTime == null) {
+        
+        startTime = time;
+      }
+
+      //console.log(currentTime,startTime);
+    
+      var progress = TweenType[type]((time - startTime)/timelong, 0, 1, 1);     
+
+      if (typeof pro == 'function') {
+        //progress = (progress > 1)? 1 : progress;
+        pro(progress);
+      }
+
+      
+
+      if ((time - startTime) >= timelong) {        
+
+
+        if (typeof pro == 'function') {
+          progress = 1;
+          pro(progress);
+        }
+
+
+        startTime = null;
+        if (typeof callback == 'function') {
+          callback()
+        }
+        return
+      }
+      $this.requestAnimationFrame(render);
+    }
+    $this.requestAnimationFrame(render);
+  }
+
+
+  var Tween1 = new Tween();
+
+
+ 
+  function videoPop (obj) {
+    this.obj = obj;
+    this.loadspeed = 3500;
+    this.normovetime = 10000;
+    this.isopen = true; //弹幕开关
+    this.listDate = '<ul class="list"><li>我的一段文字我的一段文字</li><li>我的一段文字我的一段文字我的一段文字</li><li>我的一段文字我的一段文字我的一段文字</li><li>我的一段文字我的一段文字我的一段文字</li><li>我的一段文字我的一段文字我的一段文字</li></ul>';
+    this.sortAryy = [0,1,2,3,4];
+
+    this.init();
+  }
+
+  videoPop.prototype.limove = function  (objli) {
+    var $this = this;
+    
+    var movetime = $this.normovetime + Math.sin(Math.PI*2*Math.random())*1000;
+
+    var timein = 
+      Tween1.animate(function  (pro) {
+        objli.css('left', 100 - (pro*200) + '%');       
+      },function  () {
+        //结束后回调
+
+        objli.remove();
+      }, movetime ,'linear');
+
+  }
+
+  videoPop.prototype.appendBox = function  () {
+    var $this = this;
+
+    $this.obj.find('ul').each(function () {
+        if ($(this).is(':empty')) {
+          $(this).remove();
+        }
+    });
+
+    var $listDate = $($this.listDate);
+
+    var gettop = Math.random()*50;
+    $listDate.css('top', gettop + 'px');
+
+    
+ 
+    $this.sortAryy = $this.radomArr($this.sortAryy);
+    
+
+    $this.obj.append($listDate);
+
+    $listDate.find('li').each(function (n) {
+      $(this).addClass('item-' + $this.sortAryy[n]);
+      $this.limove($(this));
+    })
+
+  }
+
+  videoPop.prototype.radomArr = function  (arr) {
+    var len = arr.length;
+    for(var i = 0; i < len - 1; i++){
+      var idx = Math.floor(Math.random() * (len - i));
+      var temp = arr[idx];
+      arr[idx] = arr[len - i - 1];
+      arr[len - i -1] = temp;
+    }
+    return arr;
+  }
+
+
+  videoPop.prototype.loadDate = function  () {
+    var $this = this;
+
+    if ($this.isopen == false) {
+      return
+    }
+    
+    $.ajax({
+      type: "GET",
+      url: "ajax/json.txt",
+      dataType: 'json',
+      success: function(data){ //取到的数据            
+        $this.listDate = '<ul class="list"><li>我的一段文字我的一段文字</li><li>我的一段文字我的一段文字我的一段文字</li><li>我的一段文字我的一段文字我的一段文字</li><li>我的一段文字我的一段文字我的一段文字</li><li>我的一段文字我的一段文字我的一段文字</li></ul>';
+        $this.appendBox();
+
+
+
+        Tween1.animate(function  (pro) {  //每隔几秒就加载               
+        },function  () {
+          $this.loadDate();
+        }, $this.loadspeed ,'linear');
+
+        
+      },
+      error:function  () {
+        setTimeout(
+          function(){
+            $this.loadDate();
+          }, $this.loadspeed)
+      },
+      beforeSend:function  () {
+         
+      }
+    });
+  }
+
+  videoPop.prototype.init = function  () {
+    
+    var $this = this;               
+
+    $this.loadDate();
+  }
+
+  var videoPop1 = new videoPop($('#box'));
+
+
+
+  //点赞
+  var dzanPro = false;
+  $('#dzan').on('click',function  () {
+    if (dzanPro == true) {
+      return;
+    }
+    dzanPro = true;
+    $.ajax({
+        type: "GET",
+        url: "ajax/json.txt",
+        dataType: 'json',
+        success: function(data){
+          $('.zanbk').show().addClass('in'); 
+          if ($.support.transition) {            
+            setTimeout(
+              function(){
+                $('.lightzan').fadeIn(function  () {
+                  setTimeout(
+                    function(){
+                      $('.zanbk').fadeOut(function  () {
+                        $('.lightzan').hide().removeClass('in');
+                        dzanPro = false;
+                      });
+                    }, 3000);
+                });
+
+              }, 2000)
+          }else {
+            $('.zanins').hide().fadeIn(function  () {
+              $('.lightzan').hide().fadeIn(function  () {
+                setTimeout(
+                  function(){
+                    $('.zanbk').fadeOut(function  () {
+                      $('.lightzan').hide().removeClass('in');
+                      dzanPro = false;
+                  });                    
+                  }, 2000)
+
+              });
+            })
+          }
+
+
+
+        },
+        error:function  () {
+        },
+        beforeSend:function  () {
+        }
+    });
+  })
+
+
+
+
+
+ //烟花
+ var smollPro = false;
+
+ $('#lihua').on('click',function  () {
+//  if (smollPro == true) {
+//    return
+//  }
+//  smollPro = true;
+//   $.ajax({
+//       type: "POST",
+//       url: "test.html",
+//       data: getdata,
+//       dataType: 'json',
+//       success: function(data){
+//         smollPro = false;
+//       },
+//       error:function  () {
+//
+//        smollPro = false;
+//       },
+//       beforeSend:function  () {
+//           alert('1212');
+//       }
+//   });
+
+   if (smollPro == true) {
+    return
+   }
+   smollPro = true;
+
+    $('.giftgrow').addClass('in');
+
+   if ($.support.transition) {    
+     
+    
+     setTimeout(
+       function(){
+         $('.giftgrow').removeClass('in');       
+         smollPro = false;
+       }, 5000);
+
+   }else {
+     //$('.giftgrow').find('')
+      function palyYhua (objyh) {
+        
+        objyh.css('opacity','1').hide().fadeIn(600,function  () {
+          if ($(this).next().length > 0) {
+            palyYhua($(this).next());
+            setTimeout(
+             function(){
+               objyh.fadeOut();
+             }, 1300)
+          }else {
+            setTimeout(
+             function(){
+               objyh.fadeOut();
+                smollPro = false;
+             }, 1300)
+          }
+         
+        })
+      }
+
+      palyYhua($('.giftgrow .sp1'));      
+   }
+
+
+
+    
+ })
+
+
+
+
+
+ function sprites (obj) {
+   this.move = 0;  
+   this.obj = obj;
+   this.playend = true;
+   this.playstep = 9; //每秒10帧
+ }
+
+ sprites.prototype.playzhen = function  () {
+    var $this = this;
+   
+    var step = 1/$this.playstep;
+
+    var nowin = 0;
+
+
+
+    function movezhen () {
+
+      if ($this.playend == true) {
+        return
+      }
+      
+      Tween1.animate(function  (pro) {
+         
+         var currentfps = Math.floor(pro/step);
+          
+
+
+         if (nowin != currentfps) {
+           nowin = currentfps;
+         
+           if ((nowin) == $this.playstep) {
+              nowin = ($this.playstep-1);
+            }
+
+           var style = {
+             'background-position':'0 '+(-160)*(nowin)+'px'
+           }
+            
+           $this.obj.css(style);
+            
+
+         }        
+
+         
+          
+
+         
+        
+       },function  () {
+         //结束后回调
+          movezhen();
+        
+       }, 700 ,'linear');
+
+
+    }
+
+    movezhen();
+
+ }
+
+
+ sprites.prototype.movein = function  () {    
+   var $this = this;
+
+   Tween1.animate(function  (pro) {
+      $('.playcar').css({
+        'left':  (220 - (297*(pro))) + '%'
+      });
+
+     
+    },function  () {
+      $this.playend = true;
+       //结束后回调            
+    }, 6700 ,'linear');
+
+ }
+
+ sprites.prototype.go = function  () {   
+   this.playend = false;
+   this.playzhen();
+   this.movein();  
+
+ }
+ 
+ var spritesCar = new sprites($('.playcar'));
+ 
+  
+  $('#pcar').on('click',function  () {
+    if (spritesCar.playend == true) {
+      spritesCar.go();      
+    }
+  })
+
+
+
+
+   
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <style type="text/css">
+      body {height: 2000px;}  
+      .foo {height: 500px; background:#f60;}
+      .bar{height: 500px; background:#ff0;}
+    </style>
+
+    <!-- All the things... -->
+
+    <script src="dist/scrollreveal.min.js"></script>
+
+
+
+
+
+
+    <!-- HTML -->
+    <div class="foo"> Foo </div>
+    <div class="bar"> Bar </div>    
+
+
+
+
+
+    <script>
+          // JavaScript
+      window.sr = ScrollReveal({
+        reset:true,
+        distance:0,
+        viewFactor:0.05
+      });
+
+      var fooReveal = {
+        delay    : 200,
+        distance : '0px',
+        easing   : 'ease-in',
+        rotate   : { y:50 },
+        scale    : 0
+      };
+
+      sr.reveal('.foo');
+      sr.reveal('.bar',fooReveal);
+    </script>
+
+
+  </body>
+</html>

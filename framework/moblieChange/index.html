@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="js/template.js"></script>
+  <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="js/temp7.cusetom.js"></script>
+  <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script>
+  <script type="text/javascript" src="js/ck-scroll.js"></script>
+  <script type="text/javascript" src="js/ck-lazyLoad.js"></script>
+  <script type="text/javascript" src="js/load-append.js"></script>
+  <title>今日头条</title>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="panel-overlay"></div>
+  <div class="panel panel-left">
+    <div class="panel-login">
+      <div class="content-block-title">登陆方式</div>
+      <div class="content-block">
+        <a href="#" class="btn1 moblie"><i class="fa fa-mobile-phone"></i></a>
+        <a href="#" class="btn1 wx"><i class="fa fa-weixin"></i></a>
+      </div>
+    </div>
+      <div class="panel-list-block" id="panel-list-block">
+      <ul>
+        <li><a href="forms.html" class="item-link close-panel">
+            <div class="item-content">
+              <div class="item-media"><i class="icon "></i></div>
+              <div class="item-inner"> 
+                <div class="item-title">目录1</div>
+              </div>
+            </div></a></li>
+        <li><a href="list-view.html" class="item-link close-panel"> 
+            <div class="item-content">
+              <div class="item-media"><i class="icon "></i></div>
+              <div class="item-inner"> 
+                <div class="item-title">目录2</div>
+              </div>
+            </div></a></li>
+        <li><a href="media-lists.html" class="item-link close-panel"> 
+            <div class="item-content">
+              <div class="item-media"><i class="icon "></i></div>
+              <div class="item-inner"> 
+                <div class="item-title">目录3</div>
+              </div>
+            </div></a></li>
+ <li><a href="forms.html" class="item-link close-panel"> 
+            <div class="item-content">
+              <div class="item-media"><i class="icon "></i></div>
+              <div class="item-inner"> 
+                <div class="item-title">目录1</div>
+              </div>
+            </div></a></li>
+        <li><a href="list-view.html" class="item-link close-panel"> 
+            <div class="item-content">
+              <div class="item-media"><i class="icon "></i></div>
+              <div class="item-inner"> 
+                <div class="item-title">目录2</div>
+              </div>
+            </div></a></li>
+        <li><a href="media-lists.html" class="item-link close-panel"> 
+            <div class="item-content">
+              <div class="item-media"><i class="icon "></i></div>
+              <div class="item-inner"> 
+                <div class="item-title">目录3</div>
+              </div>
+            </div></a></li>
+             <li><a href="forms.html" class="item-link close-panel"> 
+            <div class="item-content">
+              <div class="item-media"><i class="icon "></i></div>
+              <div class="item-inner"> 
+                <div class="item-title">目录1</div>
+              </div>
+            </div></a></li>
+        <li><a href="list-view.html" class="item-link close-panel"> 
+            <div class="item-content">
+              <div class="item-media"><i class="icon "></i></div>
+              <div class="item-inner"> 
+                <div class="item-title">目录2</div>
+              </div>
+            </div></a></li>
+        <li><a href="media-lists.html" class="item-link close-panel"> 
+            <div class="item-content">
+              <div class="item-media"><i class="icon "></i></div>
+              <div class="item-inner"> 
+                <div class="item-title">目录3</div>
+              </div>
+            </div></a></li>
+
+      </ul>
+    </div>
+
+    <div class="panel-bottom content-block">
+      <a href="#"><i class="fa fa-download"></i>操作</a>
+      <a href="#"><i class="fa fa-cogs"></i> 设置</a>
+    </div>
+  </div><!-- /左边目录 -->
+
+    <div class="container container-view">
+      <div class="view view-main">
+        <div class="navbar">
+          <div class="navbar-inner d-box">
+            <div class="left"><a href="#" class="link icon-only open-panel"> <i class="fa fa-user"></i></a></div>
+            <div class="center b-flex">今日头条<i class="fa fa fa-refresh"></i></div>
+            <div class="right"><a href="#"><i class="fa fa-search"></i></a></div>
+          </div>
+        </div>
+        <div class="pages">
+          <div data-page="index" class="page page-on-center">
+            <div class="page-content">
+                <div class="tag-head" id="tag-head">
+                  <div class="tag-head-inner">
+                    <a data-totlepage="2" data-cktarget=".tag-section-info1" data-parentClass='.tag-section' data-refresh="ajax/home-tag-ajax.html" data-ckurl="ajax/home-tag-ajax.html" href="#">类别1</a>
+                    <a data-totlepage="2" data-cktarget=".tag-section-info2" data-parentClass='.tag-section' data-refresh="ajax/home-tag-ajax.html" data-ckurl="ajax/home-tag-ajax.html" href="#">类别2</a>
+                    <a data-totlepage="3" data-cktarget=".tag-section-info3" data-parentClass='.tag-section' data-refresh="ajax/home-tag-ajax.html" data-ckurl="ajax/home-tag-ajax.html" href="#">类别3</a>
+                    <a href="#">类别4</a>
+                    <a href="#">类别5</a>                    
+                  </div>
+                  <a href="#" class="plus"><i class="fa fa-plus"></i></a>                 
+                  </div>
+                <div class="tag-wrap" ckscroll id="tag-wrap">
+                  <div class="tag-wrap-inner">
+                    <div class="tag-section"  data-isload="true" data-ajaxurl="ajax/home-tag-ajax.html">
+                        <div class="tag-section-inner">
+                          <div class="refresh-tag none">下拉刷新</div>
+                          <div class="tag-section-info1 tag-section-info">
+                            
+                          </div>                          
+                          <div class="bottom-load none" ckLoadAppend  data-topage="3" data-curpoage="1"><i class="fa fa-spinner fa-spin fa-3x fa-fw margin-bottom"></i></div>
+                        </div>                         
+                        <div class="load-tag fa fa-refresh fa-spin fa-3x fa-fw margin-bottom"></div>
+                      </div>
+                    <div class="tag-section" data-isload="true" data-ajaxurl="ajax/home-tag-ajax.html">
+                      <div class="tag-section-inner">
+                        <div class="refresh-tag">下拉刷新</div>
+                        <div class="tag-section-info2 tag-section-info"></div>
+                        <div class="bottom-load none" ckLoadAppend  data-topage="3" data-curpoage="1"><i class="fa fa-spinner fa-spin fa-3x fa-fw margin-bottom"></i></div>
+                      </div>
+                      <i class="load-tag fa fa-refresh fa-spin fa-3x fa-fw margin-bottom"></i>
+                    </div>
+                    <div class="tag-section" data-isload="true" data-ajaxurl="ajax/home-tag-ajax.html">
+                      <div class="tag-section-inner">
+                        <div class="refresh-tag">下拉刷新</div>
+                        <div class="tag-section-info3 tag-section-info"></div>
+                        <div class="bottom-load none" ckLoadAppend  data-topage="3" data-curpoage="1"><i class="fa fa-spinner fa-spin fa-3x fa-fw margin-bottom"></i></div>
+                      </div>
+                      <div class="load-tag fa fa-refresh fa-spin fa-3x fa-fw margin-bottom"></div>
+                    </div>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /内容部分 -->
+  <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

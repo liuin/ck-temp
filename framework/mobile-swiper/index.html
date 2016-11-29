@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Swiper demo</title>
+  <script type="text/javascript">
+    <!--
+    +(function(){
+      'use strict';
+      var Fixmobile = function  () {
+        this.viwep();
+      }
+      Fixmobile.width = 640;
+
+      Fixmobile.prototype.viwep = function  (e) {
+        var phoneWidth = parseInt(window.screen.width),
+          phoneScale = phoneWidth/Fixmobile.width,
+          ua = navigator.userAgent,
+          headmate;
+        if (/Android (\d+\.\d+)/.test(ua)){
+          var version = parseFloat(RegExp.$1);
+          // andriod 2.3
+          if(version > 2.3){
+            document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', minimum-scale = ' + phoneScale + ', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+            // andriod 2.3以上
+          }else{
+            document.write('<meta name="viewport" content="width=' + Fixmobile.width + ',maximum-scale=1, target-densitydpi=device-dpi">');
+          }
+          // 其他系统
+        } else {
+          document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', maximum-scale=1 , user-scalable=no, target-densitydpi=device-dpi">');
+        }
+      }
+      var newviewport = new Fixmobile();
+    })();
+    //-->
+  </script>
+
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/css.css" />
+
+
+</head>
+<body>
+<div class="loading" id="loading">
+  <span class="load-icon">
+    <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw margin-bottom"></i>
+  </span>
+</div>
+
+<div class="swiper-container w640">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide swiper-move-first" style="background:#333;">
+      <div class="pos-center">
+
+      </div>
+
+    <div class="a-fireworks afw-1"></div>
+    <div class="a-fireworks afw-2"></div>
+    <div class="a-fireworks afw-3"></div>
+    <div class="a-fireworks afw-4"></div>
+
+    </div>
+    <div class="swiper-slide" style="background:#666;">
+      <div class="item-ground">
+        <p class="itembk tran move-up opa">上滑</p>
+        <p class="itembk tran move-down opa">下滑</p>
+        <p class="itembk tran move-left opa">左进</p>
+        <p class="itembk tran move-right opa">右次</p>
+        <p class="itembk tran circle-zoom opa"><span class="circle-zoom-ins"></span></p>
+      </div>
+    </div>
+    <div class="swiper-slide swiper-move-page" style="background:#999;">
+      <div class="pos-center" style="background:#999;">
+        <div class="flip-container" id="flipper">
+          <div class="flipper" >
+            <div class="front">
+              <div class="" ></div>
+            </div>
+            <div class="back">
+              <div class="" ></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-container" id="flipper-yl">
+          <div class="flipper" >
+            <div class="front">
+              <div class="" ></div>
+            </div>
+            <div class="back">
+              <div class="" ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide" style="background:#e33;">
+      <div class="pos-center">
+        <div class="block">
+          <p>居中布局</p>
+          <label class="ck-checkbox"><input class="form-checkbox" type="checkbox" name="" id="" />11111</label>
+          <label class="ck-checkbox"><input class="form-checkbox" type="checkbox" name="" id="" />22222</label>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide" style="background:#fc0;"></div>
+    <div class="swiper-slide" style="background:#6c0;"></div>
+    <div class="swiper-slide" style="background:#4b0;"></div>
+  </div>
+
+  <div class="swiper-pagination"></div>
+</div>
+<div class="arrow-down" id="arrow-down"></div>
+
+<!-- <script type="text/javascript" src="../../asset/jquery/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="../../asset/swiper/swiper.jquery.js"></script>
+<script type="text/javascript" src="../../asset/ogui/moblieTouch.js"></script>
+<script type="text/javascript" src="../../asset/ogui/formCheckbox.js"></script> -->
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+
+</body>
+</html>

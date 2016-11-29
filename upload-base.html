@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <title>website name</title>
+  <style type="text/css">
+    .imgbk img{background:#000;}
+  </style>
+</head>
+<body class="yh">
+  <noscript>
+    <div class="noscript"><strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。</div>
+  </noscript>
+  <div class="container">
+    <form action="#">
+      <div class="imgbk" id="imgbk">
+        
+      </div>
+      <input type="file" name="" id="file" ckUpload placeholder="提交文件" id="">
+      <button type="button">上传</button>
+    </form>
+  </div>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript">
+  <!--
+    /*-- 
+      anchor:cuki13
+      use: upload
+     --*/
+    
+    +(function($) {
+      'use strict';
+      var selectString = '[ckUpload]';
+    
+      function UpLoad(obj) {
+        this.obj = obj;
+        this.fileData = '';
+        this.apImg = $('#imgbk');
+        this.baseUrl = '';
+        this.toSizeWidth = 100;
+        this.toSizeHeight = 100;
+        
+        var $this = this;
+        obj.change(function  (e) {
+          if (e.target.files == undefined && document.selection) {
+            $this.ieImg();
+            return 
+          }
+            
+          var getfile = e.target.files[0];
+          if (getfile) {
+            $this.fileData = getfile;
+            $this.changeToBase();            
+          }
+        })
+      }
+
+      UpLoad.prototype.ieImg = function  () {
+        this.obj[0].select();
+        window.parent.document.body.focus();
+        var path = document.selection.createRange().text;
+        this.baseUrl = path;
+        var imgIe = $('<div style="width:200px;height:200px;"></div>');
+        this.apImg.append(imgIe);
+        imgIe[0].style.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)';
+        imgIe[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = path;
+      }
+
+      UpLoad.prototype.changeToBase = function  () {                    
+        var $this = this;
+        var fileReader = new FileReader();
+        fileReader.onload = function  () {
+          $this.baseUrl = this.result;
+
+          $this.size($this.toSizeWidth,$this.toSizeHeight,this.result);
+        }     
+        setTimeout(
+          function(){
+            fileReader.readAsDataURL($this.fileData);
+          }, 100)
+      }
+
+      //设置图片尺寸
+      UpLoad.prototype.size = function  (previewWidth,previewHeight,baseUrl) {
+        var $this = this;
+        var img = new Image();
+        img.src = baseUrl;
+        img.onload = function  () {
+          var canvasEl = document.createElement("canvas"),
+          ctx = canvasEl.getContext('2d'),
+          imgWidth = img.width,
+          imgHeight = img.height,
+          imageAspectRatio = imgWidth / imgHeight,    // 输入图片的宽高比
+          canvasAspectRatio = previewWidth / previewHeight, // 预览的宽高比
+          drawX = 0,
+          drawY = 0,
+          drawHeight = previewHeight,    // 绘制入Canvas中的预览图高度
+          drawWidth = previewWidth;      // 绘制入Canvas中的预览图宽度
+
+          canvasEl.width = previewWidth;
+          canvasEl.height = previewHeight;
+
+          // 等比压缩图片至Canvas。此处计算宽高比，并得出压缩图像在Canvas上的位置。
+          // drawY对于过宽的图像调整为纵向居中，drawX对于过长的图像调整为横向居中。
+          if (imageAspectRatio > canvasAspectRatio) {
+              drawHeight = imgHeight * previewWidth / imgWidth;
+              drawY = (previewHeight - drawHeight) / 2;
+          } else if (imageAspectRatio < canvasAspectRatio) {
+              drawWidth = imgWidth * previewHeight / imgHeight;
+              drawX = (previewWidth - drawWidth) / 2;
+          }
+
+          ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+          
+          var url = canvasEl.toDataURL("image/png"); 
+          console.log(url);
+          var img1 = '<img src="' + url + '" alt="" />';
+          img1 = $(img1);
+          //$this.apImg.attr('src',url);
+          $this.apImg.append(img1);
+          //释放内存。
+          ctx.clearRect(0, 0, previewWidth, previewHeight);
+          img.onload = img.onerror = null;
+          img = null; 
+          
+        }               
+      }
+     
+      $(selectString).each(function () {
+         var upLoad1 = new UpLoad($(this));
+      })
+    
+    
+    })(jQuery);
+  //-->
+  </script>
+
+</body>
+</html>
+

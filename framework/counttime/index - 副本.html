@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>    
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <script type="text/javascript" src="../../js/modernizr-custom.js"></script>
+
+  <link rel="stylesheet" href="../../css/reset.css">
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!--[if IE]>
+    <script type="text/javascript">
+       var console = { log: function() {} };
+    </script>
+  <![endif]-->
+  <style type="text/css">
+      /*-- counttime --*/
+      .counttime { font-size: 30px;color: #fff;width: 369px;overflow: hidden;margin: 0 auto;margin-top: 21px;}
+      .counttime .item {background:red;  color: #fff; font-size: 17px;float:left;    font-weight: bold;
+
+
+    
+
+      }
+
+
+
+      .counttime .item span{font-size: 53px;color: #fff;display: block;text-align: center;height: 88px;width: 85px;line-height: 88px; font-weight:normal;}
+      .counttime .sp {color: #4968ff; font-size: 17px;float:left;height: 88px; line-height: 88px;display:none;} 
+      
+
+      .counttime .item3d{
+      
+          transform: perspective(800px);
+/*    perspective-origin: 50% 50%;*/
+/*    -webkit-perspective-origin: 50% 50%;*/
+/*    -webkit-perspective-origin: 50% 50%;*/
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    position: relative;
+    height: 88px;
+    width: 85px;
+    font-size: 53px;
+    font-weight: normal;
+    line-height:88px;
+      
+      }
+
+      .counttime  .item3d .changebk1{
+      transform: rotateX(-108deg);
+      -webkit-transform: rotateX(-130deg);
+    background: transparent;
+    transform-origin: center bottom;
+    -webkit-transform-origin: center bottom;
+    position: absolute;
+    width: 85px;
+    height: 44px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    z-index: 20;      
+    }
+
+    .counttime .item3d .changebk1 .sp1{
+    height: 44px;
+    width: 85px;
+    position: absolute;
+    top: 0;
+    background-color: #0D5431;
+    z-index: 10;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+        text-align:center;
+      overflow:hidden;
+}
+    .counttime .item3d .changebk1 .sp2{
+    
+        height: 44px;
+    width: 85px;
+    text-align:center;
+    position: absolute;
+    top: 0;
+    background: #000;
+    transform: rotateX(180deg);
+    z-index: 5;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow:hidden;
+    }
+
+    .counttime .item3d .changebk1 .sp2 .ins { position:relative;top:-44px;}
+
+    .prevtime { position: absolute;width: 85px;height: 44px;font-size: 53px;color: #fff;line-height: 88px;text-align: center;font-weight: normal;top: 44px;overflow: hidden;
+    
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    
+    }
+    .prevtime .ins {position:relative;top:-44px;}
+
+    .nexttime { position: absolute;width: 85px;height: 44px;font-size: 53px;color: #fff;line-height: 88px;text-align: center;font-weight: normal;z-index: 30;overflow: hidden;
+    
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    }
+
+
+  </style>
+
+  <title>website name</title>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="container">
+<!--        <div class="counttime" countTime="2015/05/18 14:40:53,2015/05/08 11:00:00"> -->
+<!--          <span class="item"><span  countDay ></span></span> -->
+<!--          <span class="item"><span countHour ></span></span> -->
+<!--          <span class="item"><span countMin ></span></span> -->
+<!--          <span class="item min"><span countSec ></span></span> -->
+<!--        </div>     -->
+
+<div class="counttime" countTime>
+      <div class="item" countday></div>
+      <div class="item" counthour></div>
+      <div class="item" countmin></div>
+      <div class="item" countSec></div>
+      
+<!-- 
+         <span class="item"><span countday="">0</span></span>
+         <span class="item"><span counthour="">0</span></span>
+         <span class="item"><span countmin="">0</span></span>
+         <span class="item min"><div class="changebk1">
+           <span class="sp1">0</span><span class="sp2"><div class="ins">1</div></span>
+         </div>
+         
+         <div class="prevtime"><span class="ins">0</span></div>
+         <div class="nexttime">1</div>
+         
+         </span>
+        -->
+</div>
+
+  </div>
+  <script type="text/javascript" src="../../js/jquery.js"></script>
+  <script type="text/javascript" src="../../js/TweenMax.js"></script>
+
+  <script type="text/javascript">
+  +(function() {
+        'use strict';
+
+
+        function countBox (number,appendObj,callNextNumber) {
+              this.number = number;
+              this.prev = 0;
+              this.appendObj = appendObj;
+              this.obj = '';
+              this.build();
+              this.callNextNumber = callNextNumber;
+
+              this.tweenMax = '';
+
+             // this.tweenMax.ticker.useRAF(false);
+             // this.tweenMax.ticker.fps(5);
+              
+            }
+
+            countBox.prototype.build = function  () { //构建
+              var $this = this;
+              if (Modernizr.preserve3d) {  //如果支持3D
+                var buildHtml = '<div class="changebk1"><div class="sp1">'+ ($this.number) +'</div><div class="sp2"><div class="ins">'+  ($this.number - 1) +'</div></div></div><div class="prevtime"><span class="ins">'+ ($this.number) +'</span></div><div class="nexttime">' +  ($this.number) + '</div>';
+
+                $this.obj = buildHtml = $(buildHtml);
+                
+                
+                $this.appendObj.addClass('item item3d').append(buildHtml);
+
+                TweenMax.set($this.appendObj[0], {
+                  transformStyle:'preserve-3d',
+                  perspective:300
+                  }
+                );    
+
+                TweenMax.set($this.appendObj.find('.changebk1')[0], {
+                    transformStyle:'preserve-3d',
+                    rotationX:2,
+                    transformOrigin:"center bottom"
+                  }
+                );
+
+
+                
+
+              }else {
+                $this.appendObj.append($this.number);
+              }
+
+              
+            }
+
+            countBox.prototype.countNext = function  (callback) { //跳转下一页 
+
+              var $this = this;
+              $this.number--;
+              
+              $this.obj.parent().find('.nexttime').html($this.number);
+
+              if (Modernizr.preserve3d) {
+                // supported
+                
+                //TweenMax.ticker.useRAF(false);
+                TweenMax.to($this.obj.parent().find('.changebk1'), 1,{
+                  //useFrames: true,
+                  ease: Power0.easeNone,
+                  //ease:SlowMo.ease.config(0.7, 0.7, false),
+                  rotationX:-180,
+                  immediateRender:true,
+                  onUpdate:function  (obj) {
+                    
+                    console.log(obj.time());
+                  },
+                  onUpdateParams:["{self}"],
+                  onComplete:function  () {
+                    //debugger;
+                    $this.obj.parent().find('.changebk1 .sp1').html($this.number);
+                    $this.obj.parent().find('.changebk1 .sp2 .ins').html( (($this.number - 1 ) < 0)? "59" : ($this.number - 1 ));
+                    $this.obj.parent().find('.prevtime .ins').html( $this.number );
+
+                    
+                    //if (type == 'sec') {
+                      TweenMax.set($this.appendObj.find('.changebk1')[0], {
+                          transformStyle:'preserve-3d',
+                          rotationX:-1,
+                          transformOrigin:"center bottom"
+                        }
+                      );      
+
+
+                      if ($this.number == 0 && $this.callNextNumber) {
+                        $this.number = $this.callNextNumber;
+                        $this.callNextObj();
+                      }
+
+                    
+                    if (callback) {                      
+                      callback($this);
+                    }
+
+                  }}
+                );
+                
+              }
+            }
+
+            countBox.prototype.callNextObj = function  () {
+              
+            }
+
+      
+        var selectString = '[countTime]';
+      
+        function CountTime (startTime,endTime,obj) {
+          this.startTime = startTime;
+          this.endTime = endTime;
+//          this.sbTime = Math.floor((this.endTime - this.startTime) / 1e3);
+
+          this.sbTime = 970;
+
+          this.secondObj = obj.find('[countSec]');
+          this.miniteObj = obj.find('[countMin]');
+          this.hourObj = obj.find('[countHour]');
+          this.dayObj = obj.find('[countDay]');
+          this.el = obj;
+
+          this.second = 0;
+          this.min = 0;
+          this.hour = 0;
+          this.day = 0;
+
+        }
+      
+          CountTime.prototype.build = function  () {
+            var $this = this;
+            
+            var getSbTime = this.sbTime;
+                  
+
+            this.second = (Math.floor(getSbTime % 60).toString().length < 2)? '0'+ Math.floor(getSbTime % 60).toString() :Math.floor(getSbTime % 60);
+
+            var countBoxSecond = new countBox($this.second, $this.secondObj,60);
+
+            this.min = (Math.floor(getSbTime / 60 % 60).toString().length < 2)? '0'+ Math.floor(getSbTime / 60 % 60).toString() : Math.floor(getSbTime / 60 % 60);
+
+            var countBoxMin = new countBox($this.min, $this.miniteObj,60);
+
+            
+
+
+            this.hour = (Math.floor(getSbTime / 3600 % 24).toString().length < 2)? '0' + Math.floor(getSbTime / 3600 % 24).toString() :Math.floor(getSbTime / 3600 % 24);
+
+            var countBoxHour = new countBox($this.hour, $this.hourObj,24);
+            
+
+
+            this.day = (Math.floor(getSbTime / 3600 / 24).toString().length < 2)? '0' + Math.floor(getSbTime / 3600 / 24).toString() : Math.floor(getSbTime / 3600 / 24);
+
+            var countBoxDay = new countBox($this.day, $this.dayObj);
+
+            //秒回调
+            countBoxSecond.callNextObj = function  () {
+              countBoxMin.countNext(function  (obj) {
+                TweenMax.set(obj.appendObj.find('.changebk1')[0], {
+                    transformStyle:'preserve-3d',
+                    rotationX:2,
+                    transformOrigin:"center bottom"
+                  }
+                ); 
+              });
+            }
+
+
+
+//             TweenMax.ticker.addEventListener("tick", myFunction, this, false, 1);
+//             TweenMax.ticker.useRAF(false);
+//             TweenMax.ticker.fps(100);
+//             function myFunction (obj) {
+//              console.log(arguments);
+//             }
+            
+            //秒计算
+//            countBoxSecond.callNextObj = function  () {
+//              countBoxMin.countNext(function  (obj) {
+//                TweenMax.set(countBoxMin.appendObj.find('.changebk1')[0], {
+//                    transformStyle:'preserve-3d',
+//                    rotationX:2,
+//                    transformOrigin:"center bottom"
+//                  }
+//                );
+//              });
+//            }
+
+            function  countInto() {
+              countBoxSecond.countNext(function  (obj) {
+//                if (obj.number == 0) {
+//                  obj.number = 60;
+//                  countBoxSecond.callNextObj();
+//                }
+
+
+                countInto();
+              })
+            }
+
+
+            countInto();
+
+            
+
+
+
+      
+      
+      
+            if (this.sbTime <= 0) {
+              this.el.trigger('countEnd');
+      
+              return;
+            }
+  
+              //this.el.trigger('countEnd');
+      
+              this.sbTime--;
+      
+      
+              setTimeout(
+                function(){
+                 // $this.countPro();
+              }, 1e3)
+      
+      
+          }
+      
+          CountTime.prototype.end = function  () {
+            this.el.trigger('countEnd');
+            this.second.html(0);
+            this.minite.html(0);
+            this.hour.html(0);
+            this.day.html(0);
+          }
+      
+          CountTime.prototype.init = function  () {
+            if (this.sbTime <= 0) {
+              this.end();
+            }else {
+              var $this = this;
+              //$this.countPro();     
+            }
+          }
+      
+        $(selectString).each(function () {
+          var attrpro = $(this).attr('countTime').split(',');
+          for (var i = 0;  i<attrpro.length ; i++) {
+            if (attrpro[i] == 'now') {
+              attrpro[i] = new Date().getTime();
+            }else {
+              attrpro[i] = new Date(attrpro[i]).getTime();
+            }
+          }
+          var timmer = new CountTime(attrpro[0],attrpro[1],$(this));
+          timmer.build();
+        })
+
+
+
+    
+
+      })(jQuery);
+      
+
+
+
+
+      
+
+  </script>
+
+</body>
+</html>

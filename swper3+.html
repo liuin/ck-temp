@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <title>website name</title>
+    <style>
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    </style>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide swiper-move-first" style="background:#333;"></div>
+        <div class="swiper-slide swiper-move-first" style="background:#f00;"></div>
+        <div class="swiper-slide swiper-move-first" style="background:#f60;"></div>
+        <div class="swiper-slide swiper-move-first" style="background:#680;"></div>
+      </div>
+      <div class="pagination1"></div>
+    </div>
+  <script type="text/javascript" src="js/avalon.js"></script>
+  <script type="text/javascript" src="js/script.js"></scriPt>
+  <script type="text/javascript">
+
+  <!--
+    require(['domReady!','css!../lib/idangerousSwiper/swiper-3.1.css','../lib/idangerousSwiper/swiper-3.1'], function(a,b) {
+            var mySwiper = new Swiper('.swiper-container',{
+          pagination: '.pagination1',
+          paginationClickable: true,
+          //direction:'vertical',//3.1++
+          //slidesPerView: 'auto',
+          //moveStartThreshold: 100
+          //followFinger : false,
+          onSlideChangeEnd: function  () {
+          },
+          onFirstInit:function  () {
+          }
+         })
+    })
+  //-->
+  </script>
+</body>
+</html>

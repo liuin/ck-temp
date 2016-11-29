@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <title>website name</title>
+  <style>
+/* Demo Syles */
+
+.swiper-container {
+  height: 300px;
+  width: 640px;
+}
+.swiper-wrapper {
+  height: 300px;
+  width: 640px;
+}
+
+.content-slide {
+  padding: 20px;
+  color: #fff;
+}
+.title {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.pagination {
+  position: absolute;
+  left: 0;
+  text-align: center;
+  bottom:5px;
+  width: 100%;
+}
+.swiper-pagination-switch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: #999;
+  box-shadow: 0px 1px 2px #555 inset;
+  margin: 0 3px;
+  cursor: pointer;
+}
+.swiper-active-switch {
+  background: #fff;
+}
+  </style>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide swiper-move-first" style="background:#333;"></div>
+        <div class="swiper-slide swiper-move-first" style="background:#f00;"></div>
+        <div class="swiper-slide swiper-move-first" style="background:#f60;"></div>
+        <div class="swiper-slide swiper-move-first" style="background:#680;"></div>
+      </div>
+      <div class="pagination1"></div>
+    </div>
+  <script type="text/javascript" src="js/avalon.js"></script>
+  <script type="text/javascript" src="js/script.js"></scriPt>
+  <script type="text/javascript">
+
+  <!--
+    require(['domReady!','css!../lib/idangerousSwiper/swiper-2.7.css','../lib/idangerousSwiper/swiper-2.7'], function(a,b) {
+            var mySwiper = new Swiper('.swiper-container',{
+          pagination: '.pagination1',
+          paginationClickable: true,
+          //mode: 'vertical',
+          //direction:'vertical',//3.1++
+          //slidesPerView: 'auto',
+          //moveStartThreshold: 100
+          //followFinger : false,
+          onSlideChangeEnd: function  () {
+          },
+          onFirstInit:function  () {
+          }
+         })
+    })
+  //-->
+  </script>
+</body>
+</html>

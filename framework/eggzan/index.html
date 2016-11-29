@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- <link rel="stylesheet" href="css/reset.css"> -->
+  <link rel="stylesheet" href="css/style.css">
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <title>website name</title>
+  <style type="text/css">
+    * {margin: 0;padding: 0;}  
+    body {background:#666;}
+
+    /*-- eggrow --*/
+    .eggrow {width: 1000px; margin: 0 auto;}
+
+    .zzegg { position: relative;padding-top: 0;padding-left: 0;width: 241px;height: 485px; float:left; margin-left: 12px;}
+    .zzegg-frist {margin-left: 0;}
+    .thord { width: 200px;position: absolute;-webkit-transform: rotate(0);transform: rotate(0deg);background-color: #f60;height: 135px;left: -61px;transform-origin: left bottom; -webkit-transform-origin: left bottom; top: 68px;background: url("images/chuizi.png") 0 0 no-repeat; display:none;}
+
+    .thord.in{-webkit-transform: rotate(-3deg);transform: rotate(-3deg);}
+
+    .egggorund { position: relative;top: 185px;   }
+    .egg {width: 150px; position:absolute;left:0;top: 0;background:green; background:url("images/egg.png") 0 0 no-repeat; width: 215px;height: 288px; }
+    .egg1 { width: 150px;height: 0px; position: absolute;left: 29px;top: 1px;width: 215px;overflow: hidden;}
+    .egg1 .eggin { background:url("images/egg-1.png") 0 0 no-repeat; height:240px; }
+
+    .egggorund .egg:hover  {cursor:pointer;}
+
+
+    .egg1.in {height: 200px; opacity:1;}
+
+    .eggopen { background: url("images/egg-open.png") 0 0 no-repeat;width: 417px;height: 547px;position: absolute;left: -114px;top: 20px;display:none;}
+
+    .eggopen.empty {background-position: -3px -575px;}
+
+
+    .eggopenin { position: absolute;top: 267px;left: -7px; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0); -webkit-transition:.3s .6s; transition:.3s .6s;  }
+    .eggopenin.in {top: 106px; opacity:1; filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100); }
+
+    .zdan { position: absolute;top: 497px;background: #f60;border: 1px solid #fff;width: 100px;line-height: 30px;color: #fff;left: 50px;}
+
+  /*-- loading --*/
+  #loading {background: transparent; position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100%;display:none;}
+  #loading span {position:absolute;top:50%; left:50%; display:inline-block;width:40px; height:40px; line-height:30px; text-align:center;border:1px solid #000; border-radius:5px; background:#000; margin-left:20px; margin-top:-20px; box-shadow: 0px 0px 3px #000;}
+  #loading span img {position:relative; top:9px;}
+
+ .egg.skew {animation: skew .4s infinite; -webkit-animation: skew .4s infinite;}
+
+
+/*-- eggrow --*/
+.eggrow {width: 1000px; margin: 0 auto;}
+
+.zzegg { position: relative;padding-top: 0;padding-left: 0;width: 241px;height: 485px; float:left; margin-left: 12px;}
+.zzegg-frist {margin-left: 0;}
+.thord { width: 200px;position: absolute;-webkit-transform: rotate(0);transform: rotate(0deg);background-color: #f60;height: 135px;left: -61px;transform-origin: left bottom; -webkit-transform-origin: left bottom; top: 68px;background: url("images/chuizi.png") 0 0 no-repeat; display:none;}
+
+.thord.in{-webkit-transform: rotate(-3deg);transform: rotate(-3deg);}
+
+.egggorund { position: relative;top: 185px;   }
+.egg {width: 150px; position:absolute;left:0;top: 0;background:green; background:url("images/egg.png") 0 0 no-repeat; width: 215px;height: 288px; }
+.egg1 { width: 150px;height: 0px; position: absolute;left: 29px;top: 1px;width: 215px;overflow: hidden;}
+.egg1 .eggin { background:url("images/egg-1.png") 0 0 no-repeat; height:240px; }
+
+.egggorund .egg:hover  {cursor:pointer;}
+
+
+.egg1.in {height: 200px; opacity:1;}
+
+.eggopen { background: url("images/egg-open.png") 0 0 no-repeat;width: 417px;height: 547px;position: absolute;left: -114px;top: 20px;display:none;}
+
+.eggopen.empty {background-position: -3px -575px;}
+
+
+.eggopenin { position: absolute;top: 267px;left: -7px; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0); -webkit-transition:.3s .6s; transition:.3s .6s;  }
+.eggopenin.in {top: 106px; opacity:1; filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100); }
+
+.zdan { position: absolute;top: 497px;background: #f60;border: 1px solid #fff;width: 100px;line-height: 30px;color: #fff;left: 50px;}
+
+
+ @-webkit-keyframes wobble {
+   0% {
+     -webkit-transform: none;
+             transform: none;
+   }
+
+   15% {
+     -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -5deg);
+             transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -5deg);
+   }
+
+   30% {
+     -webkit-transform: translate3d(4%, 0, 0) rotate3d(0, 0, 1, 3deg);
+             transform: translate3d(4%, 0, 0) rotate3d(0, 0, 1, 3deg);
+   }
+
+   45% {
+     -webkit-transform: translate3d(-3%, 0, 0) rotate3d(0, 0, 1, -3deg);
+             transform: translate3d(-3%, 0, 0) rotate3d(0, 0, 1, -3deg);
+   }
+
+   60% {
+     -webkit-transform: translate3d(2%, 0, 0) rotate3d(0, 0, 1, 2deg);
+             transform: translate3d(2%, 0, 0) rotate3d(0, 0, 1, 2deg);
+   }
+
+   75% {
+     -webkit-transform: translate3d(-1%, 0, 0) rotate3d(0, 0, 1, -1deg);
+             transform: translate3d(-1%, 0, 0) rotate3d(0, 0, 1, -1deg);
+   }
+
+   100% {
+     -webkit-transform: none;
+             transform: none;
+   }
+ }
+
+ @keyframes wobble {
+   0% {
+     -webkit-transform: none;
+             transform: none;
+   }
+
+   15% {
+     -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -5deg);
+             transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -5deg);
+   }
+
+   30% {
+     -webkit-transform: translate3d(4%, 0, 0) rotate3d(0, 0, 1, 3deg);
+             transform: translate3d(4%, 0, 0) rotate3d(0, 0, 1, 3deg);
+   }
+
+   45% {
+     -webkit-transform: translate3d(-3%, 0, 0) rotate3d(0, 0, 1, -3deg);
+             transform: translate3d(-3%, 0, 0) rotate3d(0, 0, 1, -3deg);
+   }
+
+   60% {
+     -webkit-transform: translate3d(2%, 0, 0) rotate3d(0, 0, 1, 2deg);
+             transform: translate3d(2%, 0, 0) rotate3d(0, 0, 1, 2deg);
+   }
+
+   75% {
+     -webkit-transform: translate3d(-1%, 0, 0) rotate3d(0, 0, 1, -1deg);
+             transform: translate3d(-1%, 0, 0) rotate3d(0, 0, 1, -1deg);
+   }
+
+   100% {
+     -webkit-transform: none;
+             transform: none;
+   }
+ }
+
+ .wobble {
+   -webkit-animation-name: wobble;
+           animation-name: wobble;
+ }
+
+ .animated {
+   -webkit-animation-duration: .3s;
+           animation-duration: .3s;
+   -webkit-animation-fill-mode: both;
+           animation-fill-mode: both;
+ }
+
+ .light { background: url("images/light-in.png") 0 0 no-repeat;width: 282px;height: 282px;position: absolute;top: 58px;left: 82px;animation: opabk 1.5s infinite;-webkit-animation: opabk 1.5s infinite;}
+
+ @-webkit-keyframes opabk{
+     0%,100%{
+        opacity:1;
+     }
+     50%{
+        opacity:.7;
+     }
+ }
+ 
+ keyframes opabk{
+   0%,100%{
+      opacity:1;
+   }
+   50%{
+      opacity:.7;
+   }
+ }
+
+.clear {clear:both;}
+
+
+  </style>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+
+  <audio id="audio" src="images/egg.mp3"  preload="preload" ></audio>
+  
+  <div class="eggrow">
+    <div class="zzegg zzegg-frist">
+          <div class="eggopenin">
+    <img src="images/zping.png" alt="" />
+          </div>
+    
+        <div class="thord"></div> 
+        <div class="egggorund">
+          <div class="egg  animated"></div> 
+          <div class="egg1">
+    <div class="eggin"></div>
+          </div>       
+        </div>
+    
+        <div class="eggopen empty">
+          <div class="light"></div>
+        </div>     
+      </div>
+    
+      <div class="zzegg">
+    <div class="eggopenin">
+      <img src="images/zping.png" alt="" />
+    </div>
+    
+          <div class="thord"></div> 
+          <div class="egggorund">
+    <div class="egg  animated"></div> 
+    <div class="egg1">
+      <div class="eggin"></div>
+    </div>       
+          </div>
+    
+          <div class="eggopen empty">
+    <div class="light"></div>
+          </div>     
+        </div>
+    
+        <div class="zzegg">
+      <div class="eggopenin">
+        <img src="images/zping.png" alt="" />
+      </div>
+    
+    <div class="thord"></div> 
+    <div class="egggorund">
+      <div class="egg  animated"></div> 
+      <div class="egg1">
+        <div class="eggin"></div>
+      </div>       
+    </div>
+    
+    <div class="eggopen empty">
+      <div class="light"></div>
+    </div>     
+          </div>
+    
+          <div class="zzegg">
+        <div class="eggopenin">
+          <img src="images/zping.png" alt="" />
+        </div>
+    
+      <div class="thord"></div> 
+      <div class="egggorund">
+        <div class="egg  animated"></div> 
+        <div class="egg1">
+          <div class="eggin"></div>
+        </div>       
+      </div>
+    
+      <div class="eggopen empty">
+        <div class="light"></div>
+      </div>     
+    </div>
+    <div class="clear"></div>
+  </div>
+
+
+
+<div class="" id="loading">
+  <span><img src="data:image/gif;base64,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" alt="加载中..."></span>
+</div><!-- /loading -->
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript">
+
+
+    //砸蛋效果
+    $.requestAnimationFrame = function (callback) {
+      if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
+      else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
+      else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
+      else {
+          return window.setTimeout(callback, 1000 / 60);
+      }
+     };
+
+
+    function eggDown (obj) {
+      this.startTime = null;
+      this.part = 5; //显示多少块
+      this.eggheight = 240;
+      this.prostart = null;
+      this.ajaxdone = null;
+      this.anmatedone = null;   
+      this.obj = obj;
+    }
+
+    eggDown.prototype.anmatepro = function  (pro, callback,timelong) {
+      var $this = this;
+  
+      if (typeof callback == 'string') {
+        timelong = callback;
+      }
+
+      function render(time) {        
+          if (time === undefined) {
+              time = new Date().getTime();
+          }
+
+          if ($this.startTime === null) {
+              $this.startTime = time;
+          }
+
+          var progress = Math.max(Math.min((time - $this.startTime) / timelong, 1), 0);
+
+          //var easeProgress = (Math.sin( progress * Math.PI/2 ));
+          //console.log(progress.toFixed(1) - 1/part);
+
+          if (typeof pro == 'function') {
+            pro(progress);
+          }
+
+          //$('.egg1').height(eggheight*Math.max(parseInt(progress.toFixed(2)/(1/part))*(1/part),0));
+          //$('.egg1').height(eggheight*(progress.toFixed(1)));
+
+           
+
+          if (progress >= 1) {
+            $this.startTime = null;
+            if (typeof callback == 'function') {              
+              callback()
+            }
+            return
+          }
+          $.requestAnimationFrame(render);
+      }      
+      $.requestAnimationFrame(render);      
+    }
+    
+    eggDown.prototype.openEgg = function  () {
+      var $this = this;
+      this.obj.find('.egggorund .egg').addClass('wobble');
+      
+      setTimeout(
+        function(){
+          $this.anmatepro(function  (progress) {
+
+            $this.obj.find('.egggorund .egg1').height($this.eggheight*Math.max(parseInt(progress.toFixed(2)/(1/$this.part))*(1/$this.part),0));
+          },function  () {
+            //打蛋完成
+            $this.anmatedone = true;
+            $this.componfish(function  () {
+              alert('open');
+            });
+           
+          },'2500')            
+        }, 300)      
+
+
+    }
+
+    eggDown.prototype.openGift = function  () {
+      var $this = this;
+      $this.obj.find('.egggorund').fadeOut();
+      $this.obj.find('.eggopen').fadeIn();
+      $this.obj.find('.eggopenin').addClass('in');
+    }
+   
+
+    eggDown.prototype.componfish = function  (callback) {
+      var $this = this;
+      var $callback = callback;
+
+      if ($this.ajaxdone == 'error') {
+       $('#loading').hide();
+       $this.openGift();
+       //alert('很抱歉,无法提取数据,请刷新页面');
+
+
+
+       $this.prostart = true;
+       return
+      }
+      
+      
+
+      if ($this.ajaxdone && $this.anmatedone) {        
+       setTimeout(
+         function(){
+           $('#loading').hide();
+           $this.prostart = true;
+           if ($callback) {
+             $callback();
+           }
+         }, 200)
+         
+         return
+      }
+
+      if ($this.anmatedone) {
+       $('#loading').show();
+      }
+    }
+
+    eggDown.prototype.chuiStar = function  () {
+      var $this = this;      
+      $this.obj.find('.thord').fadeIn(100);
+      $this.anmatepro(function  (progress) {
+        var easeProgress = (Math.sin( progress * Math.PI/2 ));
+       
+        if ('addEventListener' in document)  {
+          var style = {
+            '-webkit-transform': 'rotate('+ (-40*easeProgress) +'deg)',
+            'transform': 'rotate(' + ((-40*easeProgress)) + 'deg)'
+          }          
+        }else {
+          var style = {
+            'top': 68 - (60*easeProgress)
+          }
+        }       
+        $this.obj.find('.thord').css(style);
+      },function  () {        
+       $this.chuiIn();
+      },'600')
+    }
+
+    eggDown.prototype.chuiIn = function  () {
+      var $this = this;
+      $this.anmatepro(function  (progress) {
+        
+        var easeProgress = (1-Math.cos( progress * Math.PI/2 ));
+        
+        if ('addEventListener' in document) {
+          var style = {
+            '-webkit-transform': 'rotate('+ (-40 - (-46*easeProgress)) +'deg)',
+            'transform': 'rotate(' + (-40 - (-46*easeProgress)) + 'deg)'
+          }          
+        }else {
+          var style = {
+            'top': 8 + (76*easeProgress)
+          }
+        }       
+        $this.obj.find('.thord').css(style);
+      },function  () {
+        $this.obj.find('.thord').fadeOut();
+
+        $this.openEgg();
+
+        if ('addEventListener' in document) {
+          $('#audio')[0].play();
+        }
+        
+ 
+      },'300')      
+    }
+
+
+    var eggDown1 = new eggDown($('.zzegg'));
+  
+   
+    if ('addEventListener' in document) {
+      document.addEventListener("WeixinJSBridgeReady", function () {
+        eggDown1.prostart = false;
+        WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+          // network = e.err_msg.split(":")[1];                   
+          $('#audio')[0].muted = true;
+          $('#audio')[0].play();
+          $('#audio').one('ended',function  () {            
+            eggDown1.prostart = true;
+            $('#audio')[0].muted = false;
+          })
+        });
+      }, false);      
+    }
+
+    
+    $('.egggorund .egg').not('.hasdown').hover(function  () {      
+      
+      if (eggDown1.prostart == null || eggDown1.prostart == true) {
+
+          if ($(this).parents('.zzegg').hasClass('hasdown')) {
+              $(this).parents('.zzegg').find('.thord').hide();
+              return
+            }
+
+        $(this).parents('.zzegg').find('.thord').toggle();
+      }
+    })
+   
+    $('.egggorund .egg').click(function  () {
+       
+       if (eggDown1.prostart == false) {
+        return
+       }
+
+      
+       
+       eggDown1.obj = $(this).parents('.zzegg');
+       eggDown1.obj.addClass('hasdown');
+
+       eggDown1.prostart = false;
+      
+       eggDown1.chuiStar();
+
+       $.ajax({
+           type: "GET",
+           url: "ajax/json.txt",
+           dataType: 'json',
+           success: function(data){
+            eggDown1.ajaxdone = true;
+            eggDown1.componfish(function  () {
+             
+            });
+           },
+           error:function  () {
+           
+            eggDown1.ajaxdone = 'error';
+           },
+           beforeSend:function  () {
+           }
+       });
+    })
+    
+    //openEgg(function  () {});
+
+   
+
+
+  </script>
+</body>
+</html>

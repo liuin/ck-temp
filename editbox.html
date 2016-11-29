@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>website name</title>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="container">
+    <iframe allowTransparency="true" scrolling="no" id="editor" border="0" frameborder="no" width="900" height="224"> </iframe>     
+  </div>
+
+  <script type="text/javascript">
+    var ifr = document.getElementById('editor');
+
+    var doc = ifr.contentDocument || ifr.contentWindow.document; // W3C || IE
+
+    doc.designMode="on";
+
+    doc.contentEditable=true;
+  </script>
+</body>
+</html>

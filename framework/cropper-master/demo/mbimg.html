@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>   
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" href="../dist/cropper.css">
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <style type="text/css">
+    .img-container {width: 640px; height: 600px;}
+  </style>
+  <title>website name</title>
+
+<script type="text/javascript">
+  (function(){
+    'use strict';
+    var Fixmobile = function  () {
+      this.viwep();
+    }
+
+    Fixmobile.width = 640;
+
+    Fixmobile.prototype.viwep = function  (e) {
+      var phoneWidth = parseInt(window.screen.width),
+      phoneScale = phoneWidth/Fixmobile.width,
+      ua = navigator.userAgent,
+      headmate;
+      if (/Android (\d+\.\d+)/.test(ua)){
+        var version = parseFloat(RegExp.$1);
+        // andriod 2.3
+        if(version > 2.3){
+          document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', minimum-scale = ' + phoneScale + ', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+        // andriod 2.3以上
+        }else{
+          document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', target-densitydpi=device-dpi">');
+        }
+        // 其他系统
+      } else {
+        document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', user-scalable=no, target-densitydpi=device-dpi">');
+      }
+    }
+    var newviewport = new Fixmobile();
+  })();
+  </script>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="container">
+    <div class="img-container">
+      <img id="image" width="100%" src="../assets/img/picture.jpg" alt="Picture">
+    </div>   
+    <div>
+     <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
+     <button id="cut">剪切</button>
+     <button id="cal">取消</button>
+    </div>
+  </div>
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../dist/cropper.js"></script>
+  
+
+  
+
+  <script type="text/javascript">
+  <!--
+    $(document).ready(function() {
+      var $image = $('#image');
+
+      $image.cropper({
+        aspectRatio: 640 / 960,
+        crop: function(e) {
+          // Output the result data for cropping image.
+          //console.log(e.x);
+          //console.log(e.y);
+          //console.log(e.width);
+          //console.log(e.height);
+          //console.log(e.rotate);
+          //console.log(e.scaleX);
+          //console.log(e.scaleY);
+          //console.log($(this));
+        },
+        autoCropArea:0.8
+      })
+
+
+
+      //  切换图片
+      var $inputImage = $('#inputImage');
+      var URL = window.URL || window.webkitURL;
+      var blobURL;
+
+      if (URL) {
+        $inputImage.change(function () {
+          var files = this.files;
+          var file;
+
+          if (!$image.data('cropper')) {
+            return;
+          }
+
+          if (files && files.length) {
+            file = files[0];
+
+            if (/^image\/\w+$/.test(file.type)) {
+              blobURL = URL.createObjectURL(file);
+              $image.one('built.cropper', function () {
+
+                // Revoke when load complete
+                URL.revokeObjectURL(blobURL);
+              }).cropper('reset').cropper('replace', blobURL);
+              $inputImage.val('');
+            } else {
+              window.alert('Please choose an image file.');
+            }
+          }
+        });
+      } else {
+        $inputImage.prop('disabled', true).parent().addClass('disabled');
+      }
+      
+
+       $('#cut').click( function  () {
+        var toCanvas = $image.cropper("getCroppedCanvas",{
+          width:320
+        })
+        var $toCanvas = $(toCanvas);
+        
+        var toBase64 = toCanvas.toDataURL();
+        //var $img = $('<img src="' + toBase64 + '" alt="">');
+          $toCanvas.appendTo($('body'));
+        })
+     
+    })
+  //-->
+  </script>
+</body>
+</html>

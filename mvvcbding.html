@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!--[if IE]>
+    <script type="text/javascript">
+       var console = { log: function() {} };
+    </script>
+  <![endif]-->
+
+  <title>website name</title>
+</head>
+<body class="yh">
+  <div class="container">
+    <div>
+      <input type="text" name="" id="input" />
+      <span id="textBox"></span>
+    </div>
+
+  </div>
+  
+
+<script type="text/javascript">
+
+  var a = {};
+
+  var input1 = document.getElementById('input');
+  var txt = document.getElementById('textBox');
+
+  Object.defineProperty(a,"b",{
+   // writable:false, //如果为false，属性的值就不能被重写,只能为只读了
+   // enumerable:false, //是否能在for...in循环中遍历出来或在Object.keys中列举出来
+   // configurable:false  //总开关，一旦为false，就不能再设置他的(value，writable，configurable)
+   // value:123,
+    set:function(newValue){
+      console.log("你要赋值给我,我的新值是" + newValue);
+      input1.value = newValue;
+      txt.innerHTML = newValue;
+    },
+    get:function(){      
+      return this.b //注意这里，我硬编码返回2
+     }
+
+  })
+
+ 
+
+  input1.addEventListener('keyup',function  () {
+    a.b = this.value;
+  })
+
+
+  a.b = 500111;
+
+  
+
+</script>
+  
+
+</body>
+</html>

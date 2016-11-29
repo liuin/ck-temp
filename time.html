@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <title>website name</title>
+</head>
+<body class="yh">
+  <noscript>
+    <div class="noscript"><strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。</div>
+  </noscript>
+  <div class="container">
+    
+  </div>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <div class="counttime" countTime="2015/11/07 14:40:53,2015/11/10 11:00:00">
+    <span countDay ></span>天
+    <span countHour ></span>小时
+    <span countMin ></span>分
+    <span countSec ></span>秒
+  </div>
+
+<script type="text/javascript">
+<!--
+  
+/*-- 
+  anchor:cuki13
+  countTime = "startTime endTime"
+  bydtime:
+  var startTime = new Date("<?php date_default_timezone_set('Asia/Shanghai'); echo date('Y/m/d H:i:s'); ?>").getTime();
+  var endTime = new Date("<?=str_replace('-', '/', $btime)?>").getTime();
+
+  exmaple:
+  <div class="counttime" countTime="2015/05/14 14:40:53,2015/05/08 11:00:00">
+    <span countDay ></span>
+    <span countHour ></span>
+    <span countMin ></span>
+    <span countSec ></span>
+  </div>
+
+  use:
+ --*/
+
++(function() {
+  'use strict';
+
+  var selectString = '[countTime]';
+
+  function CountTime (startTime,endTime,obj) {
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.sbTime = Math.floor((this.endTime - this.startTime) / 1e3);
+    this.second = obj.find('[countSec]');
+    this.minite = obj.find('[countMin]');
+    this.hour = obj.find('[countHour]');
+    this.day = obj.find('[countDay]');
+    this.el = obj;
+  }
+
+  CountTime.prototype.countPro = function  () {
+
+    this.el.trigger('countPro');
+    var getSbTime = this.sbTime;
+    this.second.html(Math.floor(getSbTime % 60));
+    this.minite.html(Math.floor(getSbTime / 60 % 60));
+    this.hour.html(Math.floor(getSbTime / 3600 % 24));
+    this.day.html(Math.floor(getSbTime / 3600 / 24));
+    if (this.sbTime == 0) {
+      this.el.trigger('countEnd');
+    }
+    this.sbTime--;
+
+  }
+
+  CountTime.prototype.end = function  () {
+    this.el.trigger('countEnd');
+    this.second.html(0);
+    this.minite.html(0);
+    this.hour.html(0);
+    this.day.html(0);
+  }
+
+  CountTime.prototype.init = function  () {
+    if (this.sbTime <= 0) {
+      this.end();
+    }else {
+      var $this = this;
+      setInterval(
+        function(){
+          $this.countPro();        
+        },1e3
+      )
+    }
+  }
+
+  $(selectString).each(function () {
+    var attrpro = $(this).attr('countTime').split(',');
+    for (var i = 0;  i<attrpro.length ; i++) {
+      if (attrpro[i] == 'now') {
+        attrpro[i] = new Date().getTime();
+      }else {
+        attrpro[i] = new Date(attrpro[i]).getTime();
+      }
+    }
+    var timmer = new CountTime(attrpro[0],attrpro[1],$(this));
+    timmer.init();
+  })
+})(jQuery);
+
+//-->
+</script>
+</body>
+</html>
+

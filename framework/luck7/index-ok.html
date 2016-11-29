@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>    
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!--[if IE]>
+    <script type="text/javascript">
+       var console = { log: function() {} };
+    </script>
+  <![endif]-->
+  <style type="text/css">
+    .container {text-align:center; padding-top: 30px; overflow:hidden;}
+    .scollpic {background:url("images/carrun.png") 0 0 no-repeat; width: 570px; height: 160px; margin: 0 auto; margin-bottom: 30px; width: 450px;float:left;}   
+    /*
+    .scollpic-view {-webkit-mask-box-image: -webkit-linear-gradient(bottom, transparent, transparent 5%, #fff 20%, #fff 80%, transparent 95%, transparent); 
+    -webkit-mask-box-image: linear-gradient(top, transparent, transparent 5%, #fff 20%, #fff 80%, transparent 95%, transparent);
+    */
+
+    .scollpic.in {
+        -webkit-filter:blur(10px);
+        -moz-filter:blur(10px);
+        -ms-filter:blur(10px);
+    }
+
+  </style>
+  <title>website name</title>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="container">
+    
+      <div class="scollpic scollpic-1"></div>
+      <!-- <div class="scollpic scollpic-2"></div> -->
+      <!-- <div class="scollpic scollpic-3"></div> -->
+    
+    <button id="xzbtn">老司机</button>
+  </div>
+  <script type="text/javascript" src="../../js/jquery.js"></script>
+  <script type="text/javascript">
+
+  /* ========================================================================
+    * Bootstrap: transition.js v3.2.0
+    * http://getbootstrap.com/javascript/#transitions
+    * ========================================================================
+    * Copyright 2011-2014 Twitter, Inc.
+    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+    * ======================================================================== 
+    $.support.transition && $parent.hasClass('fade') ?
+         $parent
+           .one('bsTransitionEnd', removeElement)
+           .emulateTransitionEnd(150) :
+   removeElement()
+    
+    */
+   
+   
+   +function ($) {
+     'use strict';
+   
+     // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+     // ============================================================
+   
+     function transitionEnd() {
+       var el = document.createElement('bootstrap')
+   
+       var transEndEventNames = {
+         WebkitTransition : 'webkitTransitionEnd',
+         MozTransition    : 'transitionend',
+         OTransition      : 'oTransitionEnd otransitionend',
+         transition       : 'transitionend'
+       }
+   
+       for (var name in transEndEventNames) {
+         if (el.style[name] !== undefined) {
+           return { end: transEndEventNames[name] }
+         }
+       }
+   
+       return false // explicit for ie8 (  ._.)
+     }
+   
+     // http://blog.alexmaccaw.com/css-transitions
+     $.fn.emulateTransitionEnd = function (duration) {
+       var called = false
+       var $el = this
+       $(this).one('bsTransitionEnd', function () { called = true })
+       var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
+       setTimeout(callback, duration)
+       return this
+     }
+   
+     $(function () {
+       $.support.transition = transitionEnd()
+   
+       if (!$.support.transition) return
+   
+       $.event.special.bsTransitionEnd = {
+         bindType: $.support.transition.end,
+         delegateType: $.support.transition.end,
+         handle: function (e) {
+           if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
+         }
+       }
+     })
+   
+   }(jQuery);
+
+
+   //Tween效果
+   var TweenType = { //线性以及二次方的缓动
+     linear: function(t, b, c, d) {
+         return c * t / d + b
+     },
+     easeIn: function(t, b, c, d) {
+         return c * (t /= d) * t + b
+     },
+     easeOut: function(t, b, c, d) {
+       // console.log(t,b,c,d);
+         //return c * Math.sin(t / d * (Math.PI / 2)) + b;
+       return -c * (t /= d) * (t - 2) + b
+     },
+     easeInOut: function(t, b, c, d) {
+         if ((t /= d / 2) < 1) return c / 2 * t * t + b
+         return -c / 2 * ((--t) * (t - 2) - 1) + b
+     },
+     rotor:function  (t, b, c, d) {
+         return -c * ((t=t/d-1)*t*t*t - 1) + b;
+     }
+   }
+
+   //动画效果
+   var Tween = function() {}
+
+   Tween.requestAnimationFrame = function  (callback) {
+     if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
+     else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
+     else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
+     else {
+        return window.setTimeout(callback, 1000 / 60);
+     }
+   }
+
+   Tween.animate = function  (pro,callback,timelong,type,startPos,movePos) {
+     var $this = this;
+
+     if (typeof callback != 'function') {
+       timelong = callback;      
+     }
+
+     if (typeof type != 'undefined') {
+       $this.type = TweenType[type];      
+     }else {
+       $this.type = TweenType['linear'];
+     }
+
+     if (typeof startPos == 'undefined') {
+      startPos = 0;
+     }
+
+     if (typeof movePos == 'undefined') {
+      movePos = 1;
+     }
+
+     
+     
+     
+     var startTime = null;
+     
+     function render (time) {
+       
+       //console.log(time);
+       
+       if (time === undefined) {
+         time = new Date().getTime();
+       }
+
+       
+       
+       if (startTime == null) {         
+         startTime = time;
+       }
+
+     
+       var progress = TweenType[type]((time-startTime), startPos, movePos, timelong);     
+       
+       
+
+       if (typeof pro == 'function') {
+         //progress = (progress > 1)? 1 : progress;
+         pro(progress);
+       }
+
+     
+
+           
+
+       if ((time - startTime) >= (timelong)) {        
+      
+
+         if (typeof pro == 'function') {
+           progress = (movePos + startPos);
+           pro(progress);
+         }
+         
+         
+         startTime = null;
+         if (typeof callback == 'function') {
+           callback()
+         }
+         return
+       }
+       $this.requestAnimationFrame(render);
+     }
+     $this.requestAnimationFrame(render);
+   }
+
+
+   
+
+
+   function targetChoose (obj) {
+     this.obj = obj;     
+     this.totle = 9; //一共多少个图片
+     this.liHeight = 160;
+     this.currentPos = 2; //当前位置
+     this.anplay = false;
+     this.dir = 'down';
+
+     this.init();
+   }
+
+   targetChoose.prototype.init = function  () {
+    var $this = this;
+    $this.obj.css('background-position', '0 ' + -($this.currentPos-1)*$this.liHeight +'px');
+   }
+
+   targetChoose.prototype.movego = function  (gocount,callback) { 
+     var $this = this;
+
+     if ($this.anplay == true) {
+      return
+     }
+
+     $this.anplay = true;
+
+     if (gocount <= 0) {
+      gocount = 1;
+     }
+
+
+
+
+
+    var randomscoll = 5;    
+    var long = 0;
+    var movePos = 0;
+
+    if ($this.dir == 'down') {
+      startPos = -($this.currentPos-1)*$this.liHeight - randomscoll*($this.totle-1) * $this.liHeight;
+      movePos = ($this.currentPos - gocount) * $this.liHeight + randomscoll*($this.totle-1) * $this.liHeight;
+    }
+    
+    if ($this.dir == 'up') {
+      startPos = -($this.currentPos-1)*$this.liHeight;
+      movePos = -(gocount - $this.currentPos) * $this.liHeight - randomscoll*($this.totle-1) * $this.liHeight;      
+    }
+
+     //var long = randomscoll * ($this.totle-1) * $this.liHeight + ($this.currentPos - gocount)*$this.liHeight;
+     
+     
+    
+     //var long = randomscoll * ($this.totle-1) * $this.liHeight ;
+     if (long == 0) {
+      //long = ($this.totle-1) * $this.liHeight;
+     }
+     
+     var longpro = 0;     
+
+     var effecstyle = {
+       '-webkit-filter':'blur('+ 5 +'px)',
+       '-moz-filter':'blur('+ 5 +'px)',
+       '-ms-filter':'blur('+ 5 +'px)'
+     }
+     $this.obj.css(effecstyle);
+     
+     Tween.animate(function  (pro) {
+        var filter = Math.abs(pro)/(($this.totle-1) * $this.liHeight).toFixed(0) - 2;
+        if (filter < 0) {
+          filter = 0;
+        }
+        //console.log(filter.toFixed(0),pro);
+        longpro = pro%(($this.totle-1) * $this.liHeight);
+
+        var style = {
+          'background-position': '0 ' + longpro +'px',
+          '-webkit-filter':'blur('+ filter +'px)',
+          '-moz-filter':'blur('+ filter +'px)',
+          '-ms-filter':'blur('+ filter +'px)'
+        }
+
+     
+        $this.obj.css(style);
+
+      },function  () {
+        //结束后回调       
+        $this.currentPos = gocount;
+        $this.anplay = false;
+
+      }, 10000 ,'rotor', startPos, movePos);
+   }
+
+  var targetChoose1 = new targetChoose($('.scollpic-1'));
+  //var targetChoose2 = new targetChoose($('.scollpic-2'));
+  //var targetChoose3 = new targetChoose($('.scollpic-3'));
+  
+
+  $(document).ready(function() {
+    $('#xzbtn').on('click',function  () {
+      targetChoose1.movego(1);                
+      //targetChoose2.movego(3);
+      //targetChoose3.movego(5);
+    })
+
+  })
+
+
+  //数字转编码
+  function trunNumber (str) {
+    str = str.replace(/\s/g, ""); //去掉全部空格
+    str = encodeURIComponent(str);
+    var totoleNumber = 0;
+    for (var i = 0;  i<str.length ; i++) {
+      totoleNumber += str.charCodeAt(i);
+    }
+
+    return totoleNumber;
+  }
+
+  var str ="黄dsfkja冠"; var k =  trunNumber(str);
+
+
+  </script>
+</body>
+</html>

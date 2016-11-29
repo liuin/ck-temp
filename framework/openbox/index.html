@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+
+  <title>website name</title>
+
+  <style type="text/css">
+    * {margin: 0; padding: 0;}
+    body {background:#1c3474;}
+    .container {width: 1000px;position:relative;}
+    .openbox { width: 177px;height: 162px;margin: 0 auto; margin-top: 0px; position:absolute;}
+    .openbox .box{position:relative; width: 200px;height: 200px;}
+    .openbox .box .boxclose{background:url("images/box1.png") 0 0 no-repeat; width: 200px;height: 200px; position:absolute; left: 0;top: 0; }
+    .openbox .box .boxopen{background:url("images/box2.png") 0 0 no-repeat; width: 200px;height: 200px; position:absolute; left: 0;top: 0;display:none;}
+
+   
+
+    .boxclose.in {animation:shake 1.2s linear; -webkit-animation:shake 1.2s linear; -webkit-animation-fill-mode:forwards;}
+
+    .openbox .box .gift {-webkit-transition:.6s; transition:.6s; height: 110px;   display:none;}
+    .openbox .box .gift.in {animation: zoom .5s; -webkit-animation: zoom .5s; display:block;}
+
+    .openbox .box .gift img{ overflow: hidden;border-radius: 10px;}
+    .openbox .box .gift-1 {top: -4px;position: relative;left: -47px;}
+    .openbox .box .gift-2 { top: 32px;position: relative;left: -41px;}
+    .openbox .box .gift-3 { top: -7px;position: relative;left: -32px;}
+    .openbox .box .gift-4 { top: 17px;position: relative;left: -23px;}
+    .openbox .box .gift-5 { top: 33px;position: relative;left: -42px;}
+
+    .openbox-1 {position: absolute; top: 75px;left: 58px;}
+    .openbox-2 { position: absolute; top: 160px;left: 314px;}
+    .openbox-3 { position: absolute;top: 95px;left: 566px;}
+    .openbox-4 { position: absolute;top: 277px;left: 108px;}
+    .openbox-5 { position: absolute;top: 298px;left: 514px;}
+    .openbox-6 {position: absolute; top: 372px;left: 322px;}
+
+    .light {position:absolute;width: 170px;height: 200px; z-index: 10;}
+    .light .sp1 {background:url("images/light.png") 0 0 no-repeat; width: 34px;height: 60px; animation: light 1s  infinite; display:inline-block;   -webkit-animation: light 1s  infinite; position:absolute;    }
+    .light .sp1-1 {-webkit-animation-delay: 0.2s;animation-delay: 0.2s; left: -9px; top: 0;}
+    .light .sp1-2 {-webkit-animation-delay: 0.4s;animation-delay: 0.4s; left: 93px;top: -11px;}
+    .light .sp1-3 {-webkit-animation-delay: 0.6s;animation-delay: 0.6s; left: 2px;top: 96px;}
+    .light .sp1-4 {-webkit-animation-delay: 0.8s;animation-delay: 0.8s; left: 134px;top: 103px;}
+
+    /*-- loading --*/
+    #loading {background: transparent; position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100%;display:none;}
+    #loading span {position:absolute;top:50%; left:50%; display:inline-block;width:40px; height:40px; line-height:30px; text-align:center;border:1px solid #000; border-radius:5px; background:#000; margin-left:20px; margin-top:-20px; box-shadow: 0px 0px 3px #000;}
+    #loading span img {position:relative; top:9px;}
+
+    @-webkit-keyframes zoom{
+        0%{
+          -webkit-transform: scale(0);
+        }
+        100%{
+          -webkit-transform: scale(1);
+        }
+    }
+    
+    @keyframes zoom{
+     0%{
+         transform: scale(0);
+       }
+       100%{
+         transform: scale(1);
+       }
+    }
+
+
+    @-webkit-keyframes light{
+        0%,100%{
+          opacity:1;
+        }
+        50%{
+          opacity:0.5;
+        }
+    }
+    
+    @keyframes light{
+      0%,100%{
+        opacity:1;
+      }
+      50%{
+        opacity:0;
+      }
+    }
+
+
+    @-webkit-keyframes shake {
+      0% {
+        transform: scale(1);
+        -webkit-transform: scale3d(1, 1, 1);
+        
+      }
+
+      6%{
+        -webkit-transform: scale(.9) rotate(-8deg);
+        -webkit-transform: scale3d(1, 1, 1) rotate(0, 0, 1, -8deg);
+      }
+
+      18%, 30%,42%{
+        -webkit-transform: scale(1.1) rotate(8deg);
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 8deg);
+        
+      }
+
+      12%,24%, 36%,48%{
+        -webkit-transform: scale(1.1) rotate(-8deg);
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -8deg);
+        
+      }
+      54%{
+        -webkit-transform: scale(1);
+        -webkit-transform: scale3d(1, 1, 1);
+      }
+      
+      100%{
+        -webkit-transform: scale(1);
+        -webkit-transform: scale3d(1, 1, 1);
+      }
+    }
+
+    @keyframes shake {
+      0% {
+        transform: scale(1);
+        transform: scale3d(1, 1, 1);
+        
+      }
+
+      6%{
+        transform: scale(.9) rotate(-8deg);
+        transform: scale3d(1, 1, 1) rotate(0, 0, 1, -8deg);
+      }
+
+      18%, 30%,42%{
+        transform: scale(1.1) rotate(8deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 8deg);
+        
+      }
+
+      12%,24%, 36%,48%{
+        transform: scale(1.1) rotate(-8deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -8deg);
+        
+      }
+      54%{
+        transform: scale(1);
+        transform: scale3d(1, 1, 1);
+      }
+      
+      100%{
+        transform: scale(1);
+        transform: scale3d(1, 1, 1);
+      }
+    }
+
+
+
+   
+
+
+  </style>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="container"  >
+    <div class="openbox-1 openbox">
+      <div class="light">
+        <span class="sp1-1 sp1"></span>
+        <span class="sp1-2 sp1"></span>
+        <span class="sp1-3 sp1"></span>
+        <span class="sp1-4 sp1"></span>
+      </div>
+
+      <div class="box">
+        <div class="boxclose animated ">
+          
+        </div>
+        <div class="boxopen">
+          <div class="gift ">
+            <img src="images/gift-1.png" alt="" />           
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="openbox-2 openbox">
+      <div class="light">
+        <span class="sp1-1 sp1"></span>
+        <span class="sp1-2 sp1"></span>
+        <span class="sp1-3 sp1"></span>
+        <span class="sp1-4 sp1"></span>
+      </div>
+
+      <div class="box">
+        <div class="boxclose animated ">
+          
+        </div>
+        <div class="boxopen">
+          <div class="gift ">
+            <img src="images/gift-2.png" alt="" />           
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="openbox-3 openbox">
+      <div class="light">
+        <span class="sp1-1 sp1"></span>
+        <span class="sp1-2 sp1"></span>
+        <span class="sp1-3 sp1"></span>
+        <span class="sp1-4 sp1"></span>
+      </div>
+
+      <div class="box">
+        <div class="boxclose animated ">
+          
+        </div>
+        <div class="boxopen">
+          <div class="gift ">
+            <img src="images/gift-3.png" alt="" />           
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="openbox-4 openbox">
+      <div class="light">
+        <span class="sp1-1 sp1"></span>
+        <span class="sp1-2 sp1"></span>
+        <span class="sp1-3 sp1"></span>
+        <span class="sp1-4 sp1"></span>
+      </div>
+
+      <div class="box">
+        <div class="boxclose animated ">
+          
+        </div>
+        <div class="boxopen">
+          <div class="gift">
+            <img src="images/gift-4.png" alt="" />           
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="openbox-5 openbox">
+      <div class="light">
+        <span class="sp1-1 sp1"></span>
+        <span class="sp1-2 sp1"></span>
+        <span class="sp1-3 sp1"></span>
+        <span class="sp1-4 sp1"></span>
+      </div>
+
+      <div class="box">
+        <div class="boxclose animated ">
+          
+        </div>
+        <div class="boxopen">
+          <div class="gift gift-1">
+            <img src="images/gift-5.png" alt="" />           
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="openbox-6 openbox">
+      <div class="light">
+        <span class="sp1-1 sp1"></span>
+        <span class="sp1-2 sp1"></span>
+        <span class="sp1-3 sp1"></span>
+        <span class="sp1-4 sp1"></span>
+      </div>
+
+      <div class="box">
+        <div class="boxclose animated ">
+          
+        </div>
+        <div class="boxopen">
+          <div class="gift gift-1">
+            <img src="images/gift-1.png" alt="" />           
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="" id="loading">
+      <span><img src="data:image/gif;base64,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" alt="加载中..."></span>
+    </div><!-- /loading -->
+
+    <div style="position:absolute;top:500px;">
+      <img src="images/gift-1.png" alt="" />
+      <img src="images/gift-2.png" alt="" />
+      <img src="images/gift-3.png" alt="" />
+      <img src="images/gift-4.png" alt="" />
+      <img src="images/gift-5.png" alt="" />
+    </div>
+  </div>
+
+  <style type="text/css">
+   .popbk-wrap {position: fixed; top: 0; left: 0; bottom: 0; right: 0; overflow: auto; z-index:100; background:rgba(0, 0, 0, 0.5);}
+   .popbk {position: absolute; top:0; left:50%; -webkit-transition:0.5s; transition:0.5s;  -webkit-transform: scale(0); transform: scale(0);}
+   .popbk .close {position:absolute; right: -10px;top: -13px; width: 36px;height: 36px;background:#383838; cursor:pointer;  background:url("images/close.png") center center no-repeat #ff6600;text-indent:-999em;}
+
+   .popbk-0 .close{background:url("images/close.png") center center no-repeat #383838;}
+
+   .fade.in { opacity: 1; }
+   .fade.in .popbk {-webkit-transform: scale(1); transform: scale(1);}
+   .fade{opacity: 0;-webkit-transition: opacity .15s linear;-o-transition: opacity .15s linear;transition: opacity .15s linear;}
+
+   .popbox {width: 435px;height: 421px;background:url("images/bgbox.png") 0 0 no-repeat;}  
+
+   .popbox h2 { text-align: center;height: 60px;line-height: 60px;color: #ffffff;font-size: 38px;}
+
+   .popbox .img { text-align: center;padding-top: 71px;}
+
+   .popbox p { text-align: center;color: #383838;font-size: 26px;font-weight: bold;}
+
+
+   .popbox-1 {width: 435px;height: 421px;background:url("images/bgbox-1.png") 0 0 no-repeat;}  
+
+   .popbox-1 h2 { text-align: center;height: 60px;line-height: 60px;color: #ffffff;font-size: 38px;}
+
+   .popbox-1 .img { text-align: center;padding-top: 71px;    height: 209px;}
+
+   .popbox-1 p { text-align: center;color: #f15a24;font-size: 26px;font-weight: bold;}
+
+   .popbk-1 .close{background:url("images/close.png") center center no-repeat #ff6600;}
+
+
+   .pop-box1 .img { padding-top: 38px;margin-bottom: 29px;}
+   .pop-box3 .img { padding-top: 30px;margin-bottom: 48px;}
+   .pop-box5 .img { padding-top: 82px;height: 205px;}
+
+
+  </style>
+
+  
+
+  <div class="pop-nozj popbox" data-box="popbk">
+    <h2>很遗憾</h2>
+    <div class="img">
+      <img src="images/pop-no.png" alt="">
+    </div>
+    <p>您的开宝箱资格用完了</p>
+  </div><!-- /没中奖 -->
+
+  <div class="pop-cj popbox-1" data-box="popbk">
+    <h2>恭喜你</h2>
+    <div class="img">
+      <img src="images/pop-6.png" alt="">
+    </div>
+    <p>请先参与活动，再来开宝箱哦!</p>
+  </div><!-- /先参与活动 -->
+
+  <div class="pop-box1 popbox-1" data-box="popbk">
+    <h2>恭喜你</h2>
+    <div class="img">
+      <img src="images/pop-1.png" alt="">
+    </div>
+    <p>获得了《盖世英雄》明星照片一张</p>
+  </div><!-- /一等奖 -->
+
+  <div class="pop-box2 popbox-1" data-box="popbk">
+    <h2>恭喜你</h2>
+    <div class="img">
+      <img src="images/pop-2.png" alt="">
+    </div>
+    <p>获得了CRC版秦车模一个</p>
+  </div><!-- /二等奖 -->
+
+  <div class="pop-box3 popbox-1" data-box="popbk">
+    <h2>恭喜你</h2>
+    <div class="img">
+      <img src="images/pop-3.png" alt="">
+    </div>
+    <p>获得了比亚迪潮T一件</p>
+  </div><!-- /三等奖 -->
+
+  <div class="pop-box4 popbox-1" data-box="popbk">
+    <h2>恭喜你</h2>
+    <div class="img">
+      <img src="images/pop-4.png" alt="">
+    </div>
+    <p>获得了乐视会员卡一张</p>
+  </div><!-- /四等奖 -->
+
+  <div class="pop-box5 popbox-1" data-box="popbk">
+    <h2>恭喜你</h2>
+    <div class="img">
+      <img src="images/pop-5.png" alt="">
+    </div>
+    <p>获得了秦U盘一个</p>
+  </div><!-- /二等奖 -->
+
+  <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.12.1/jquery.js"></script>
+  <script type="text/javascript">
+
+/** 
+* extend 弹出框
+* @author cuki13
+
+  $(obj).popbk();
+  $("#popbk2").data('ck.pokbk').open();
+  $("#popbk2").data('ck.pokbk').close();
+*/
+
+/** 
+* extend 弹出框
+* @author cuki13
+ 
+  $(obj).popbk();
+  $("#popbk2").data('ck.pokbk').open();
+  $("#popbk2").data('ck.pokbk').close();
+*/
+
++(function($){
+  var dataString = '[data-box="popbk"]';
+  
+  var Popbk = function  (el, number ,options) {
+    this.el = $(el)
+    this.id = number
+    this.options = $.extend({}, this.defualts, options); 
+  }
+  
+  Popbk.defualts = {};
+
+  Popbk.prototype.build = function  (el) {
+    var $this = $(el);
+    $this.show();
+    $this.wrap('<div class="popbk-wrap-'+ this.id +' popbk-wrap fade" ></div>');
+    $this.wrap('<div class="popbk-'+ this.id +' popbk" ></div>');
+
+    var sClose = "<a class='close'><span class='ar'>X</span></a>";
+    sClose = $(sClose);
+    sClose.insertAfter($this);
+    var ml = $this.width()/2;     
+    var mlstyle={
+      "margin-left" : -ml,
+      "width":$this.width(),
+      "height":$this.height()
+
+    }
+    $this.parent(".popbk").css(mlstyle);
+    var wh = $this.height();
+    if ($(window).height() < wh) {
+      $this.parent(".popbk").css("top","30px");
+    }else {
+      $this.parent(".popbk").css({
+        "margin-top":-wh/2,
+        "top":'50%'
+      });
+    } 
+    $this.parent(".popbk").find(".close").on('click',function  () {
+      $this.data('ck.pokbk').close();
+    })    
+    $this.parents(".popbk-wrap").hide().on('click',function  (e) {
+      if ($(e.target).hasClass('popbk-wrap')) {
+      //  $this.data('ck.pokbk').close();      
+      }
+    });
+  }
+
+
+  Popbk.prototype.rebuild = function  () {
+      var $this = this;
+      var $thisObj = $this.el;
+
+
+      $this.el.height('auto');
+    
+      var ml = $this.el.width()/2;     
+  
+      var mlstyle={
+        "margin-left" : -ml,
+        "width":$this.el.width(),
+        "height":$this.el.height()
+
+      }
+      $this.el.parent(".popbk").css(mlstyle);
+      
+      setTimeout(
+        function(){
+          $(this)[0].offsetWidth;
+          var wh = $this.el.height();    
+
+          if ($(window).height() < wh) {
+            $this.el.parent(".popbk").css("top","30px");
+          }else {
+            $this.el.parent(".popbk").css({
+              "margin-top":-wh/2,
+              "top":'50%'
+            });
+          }
+        }, 10)
+      
+      
+ 
+
+    }
+
+  Popbk.prototype.open = function  () {
+    this.close;
+    var $this = this.el;
+    if ($this.length) {
+      $this.parents(".popbk-wrap").show();
+      $this.parents(".popbk-wrap")[0].offsetWidth;
+      setTimeout(
+        function(){
+          $this.parents(".popbk-wrap").addClass("in");
+          $('body').css('overflow','hidden');          
+        }, 300)
+
+
+    }
+  }
+
+  Popbk.prototype.close = function  () {
+    $('body').css('overflow','auto');
+    var $this = this.el;
+    var $parent = $this.parents(".popbk-wrap");
+    if ($.support.transition && $parent.hasClass('fade')) {
+      $parent.removeClass("in");
+      $parent.one('bsTransitionEnd', function  () {
+          $parent.hide();
+        }).emulateTransitionEnd(150);
+    }else {
+      $parent.hide();
+    }
+    $this.trigger('callbackClose');
+    $('body').css('overflow','auto');
+  }
+
+  function Plugin(option) {
+    return this.each(function (n) {
+      if ($(this).html() == undefined) {
+        return 
+      }
+      var $this   = $(this)
+      var data    = $this.data('ck.pokbk')
+      var number = $this.attr('id') || n 
+      var options = typeof option == 'object' && option
+      if (!data) $this.data('ck.pokbk', (data = new Popbk(this,number)))
+      if (option == 'build') data.build($(this))
+      else if (option) data.setState(option)
+    })
+  }
+  $(document).on('ready.popbk poprb', function  () {
+    var $this = $(dataString);
+    
+    if ($this.data('ck.pokbk') == undefined) {
+      Plugin.call($this,'build');
+    }
+  })
+
+  $.fn.popbk = function  () {
+    var $this = $(this);      
+    
+    if ($this.data('ck.pokbk') == undefined) {
+      Plugin.call($this,'build');
+    }    
+  }
+
+})(jQuery);
+
+
+  +function ($) {
+    'use strict';
+
+    // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+    // ============================================================
+
+    function transitionEnd() {
+      var el = document.createElement('bootstrap')
+
+      var transEndEventNames = {
+        WebkitTransition : 'webkitTransitionEnd',
+        MozTransition    : 'transitionend',
+        OTransition      : 'oTransitionEnd otransitionend',
+        transition       : 'transitionend'
+      }
+
+      for (var name in transEndEventNames) {
+        if (el.style[name] !== undefined) {
+          return { end: transEndEventNames[name] }
+        }
+      }
+
+      return false // explicit for ie8 (  ._.)
+    }
+
+    // http://blog.alexmaccaw.com/css-transitions
+    $.fn.emulateTransitionEnd = function (duration) {
+      var called = false
+      var $el = this
+      $(this).one('bsTransitionEnd', function () { called = true })
+      var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
+      setTimeout(callback, duration)
+      return this
+    }
+
+    $(function () {
+      $.support.transition = transitionEnd()
+
+      if (!$.support.transition) return
+
+      $.event.special.bsTransitionEnd = {
+        bindType: $.support.transition.end,
+        delegateType: $.support.transition.end,
+        handle: function (e) {
+          if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
+        }
+      }
+    })
+
+  }(jQuery);
+
+    $(document).ready(function() {
+
+      //打开宝箱
+      function openBox(obj) {
+        this.obj = obj;
+        this.state = 1; //0不中奖,1一等奖,2,二等奖,3三等奖
+        this.ajaxdone = false;
+        this.animatePro = false;
+      }
+
+      openBox.prototype.open = function  () {        
+        var $this = this;
+       
+        if ($this.animatePro == true && $this.ajaxdone == true) {
+          return
+        }
+
+        $this.animatePro = true;
+
+        if ($.support.transition) {
+          $this.obj.find('.boxclose').addClass('in');
+          
+          setTimeout(
+            function(){
+              if ($this.ajaxdone == false || $this.ajaxdone == 'error') {
+                $this.animatePro = false;
+                if ($this.ajaxdone == 'error') {
+                  $('#loading').hide();
+                }else {
+                  $('#loading').show();                
+                }
+          
+
+                return
+              }
+
+              $('#loading').hide();
+
+              $this.obj.find('.boxclose').fadeOut();
+              $this.obj.find('.boxopen').fadeIn(function  () {
+                $this.openPop();
+              });              
+            }, 800)
+        }else {
+          
+          if ($this.ajaxdone == false) {
+            $('#loading').show();
+            $this.animatePro = false;
+            return
+          }
+
+          $('#loading').hide();
+          
+
+          $this.obj.find('.boxclose').fadeOut();
+          $this.obj.find('.boxopen').fadeIn(function  () {
+            $this.openPop();
+          });          
+        }        
+      }
+
+      openBox.prototype.openPop = function  () {
+        var $this = this;
+        $this.obj.find('.gift').addClass('gift-' + $this.state);
+
+        if ($this.state > 0) {
+          $this.obj.find('.gift img').attr('src','images/gift-'+ $this.state +'.png').hide().show();          
+        }else {
+          $this.obj.find('.gift img').hide();
+        }
+
+
+        switch ($this.state) {
+          case -1:
+             $(".pop-nozj").data('ck.pokbk').open(); //没中奖
+             $this.resetOpt();
+          break
+          case 0:
+             $(".pop-cj").data('ck.pokbk').open(); //没中奖
+             $this.resetOpt();
+          break
+          case 1:
+            setTimeout(
+              function(){
+                $this.obj.find('.gift').addClass('in');
+                setTimeout(
+                  function(){
+                    $this.resetOpt();
+                    $(".pop-box1").data('ck.pokbk').open(); //一等奖
+                                     
+
+                  }, 500)
+              }, 300)
+          break
+          case 2:
+            setTimeout(
+              function(){
+                $this.obj.find('.gift').addClass('in');
+                setTimeout(
+                  function(){
+                    $this.resetOpt();
+                    $(".pop-box2").data('ck.pokbk').open(); //二等奖        
+                  }, 500)
+              }, 300)
+          break
+          case 3:
+            setTimeout(
+              function(){
+                $this.obj.find('.gift').addClass('in');
+                setTimeout(
+                  function(){
+                    $this.resetOpt();
+                    $(".pop-box3").data('ck.pokbk').open(); //三等奖                
+                  }, 500)
+              }, 300)
+          break
+
+          case 4:
+            setTimeout(
+              function(){
+                $this.obj.find('.gift').addClass('in');
+                setTimeout(
+                  function(){
+                    $this.resetOpt();
+                    $(".pop-box4").data('ck.pokbk').open(); //四等奖               
+                  }, 500)
+              }, 300)
+          break
+
+          case 5:
+            setTimeout(
+              function(){
+                $this.obj.find('.gift').addClass('in');
+                setTimeout(
+                  function(){
+                    $this.resetOpt();
+                    $(".pop-box5").data('ck.pokbk').open(); //五等奖                  
+                  }, 500)
+              }, 300)
+          break
+          default:
+        }
+      }
+
+      openBox.prototype.resetOpt = function  () {
+   
+        this.ajaxdone = false;
+        this.animatePro = false;        
+      }
+
+      var openBox1 = new openBox();
+
+      $('.openbox').on('click',function  () {
+        
+        if ($(this).find('.boxclose').is(':visible') && openBox1.animatePro == false) {
+          
+          //console.log(openBox1.ajaxdone, openBox1.animatePro);
+
+          openBox1.obj = $(this);
+          openBox1.open();    
+          
+
+          $.ajax({
+              type: "GET",
+              url: "json/json.txt",
+              dataType: 'json',
+              success: function(data){               
+                openBox1.ajaxdone = true;
+                openBox1.state = 2;
+                openBox1.open();                
+              },
+              error:function  () {
+                openBox1.ajaxdone = 'error';
+                alert('加载错误');
+              },
+              beforeSend:function  () {
+                
+              }
+          });
+          
+        }
+      })
+
+    })
+  </script>
+
+</body>
+</html>
+
+
+
+

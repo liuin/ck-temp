@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="../../css/reset.css">
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!--[if IE]>
+    <script type="text/javascript">
+       var console = { log: function() {} };
+    </script>
+  <![endif]-->
+
+  <title>website name</title>
+  <style type="text/css">
+    #green {background:green; width: 150px;height: 150px; position:relative;}  
+    #blue {background:blue; width: 150px;height: 150px; position:relative;}   
+    #orange {background:orange; width: 150px;height: 150px; position:relative;}  
+  </style>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="container">
+    <div id="green"></div>
+    <div id="blue"></div>
+    <div id="orange"></div>
+  </div>
+  <script type="text/javascript" src="../../js/TweenMax.js"></script>
+
+  <script type="text/javascript">
+    var tl = new TimelineLite();
+//      tl.to("#green", 1, {left:750})
+        //add blueGreenSpin label 1 second after end of timeline
+//        .addLabel("blueGreenSpin", "+=1")
+        //add tween at blueGreenSpin label
+//        .to("#blue", 2, {left:750, rotation:720}, "blueGreenSpin")
+        //insert tween 0.5 seconds after blueGreenSpin label
+//        .to("#orange", 2, {left:750, rotation:720}, "blueGreenSpin+=1.5");
+
+
+      TweenMax.set('.container', {perspective:600});
+      TweenMax.set('#green', {x:100,z:-(100),rotationY:30,rotationX:0});
+
+      //TweenMax.to('#green', 2, {rotationY:380*3});
+
+  </script>
+</body>
+</html>

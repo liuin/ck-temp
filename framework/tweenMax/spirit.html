@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+  <meta name="renderer" content="webkit" />
+  <meta name="description" content="" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <title>website name</title>
+
+  <style type="text/css">
+    .box {background:url("images/carrun.png") 0 0 no-repeat;  width: 570px; height: 160px;}
+  </style>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+
+  <div class="container">
+    <div class="box">
+      
+    </div>
+
+    <button id="btn">点击播放</button>
+  </div>
+  
+  <script type="text/javascript" src="../../js/jquery.js"></script>
+  <script type="text/javascript" src="../../js/TweenMax1.js"></script>
+
+  <script type="text/javascript">
+    //var box = document.getElementById("box");
+    
+//    var tl = new TimelineLite();
+//    var tween = TweenLite.to('.box', 1, {x:100}); //create a 1-second tween
+//    tl.add(tween, 0.5); //insert the tween at 0.5 seconds into the timeline
+//    tween.timeScale(2); //double the speed of the tween, thus it'll finish in half the normal time
+
+   // return false;
+
+   var box = $('.box');
+   var doc = document.createElement('div');
+   var heightlong = 160;
+   
+   var frame = 8;
+
+    var spirit1 = TweenMax.to(doc, 1, {
+
+      ease:SteppedEase.config(frame),
+      delay:0, //延迟
+      repeat:-1,
+      repeatDelay:0,
+
+      autoCSS:true, //不用{}
+      yoyo:false, //repeat时候的方向
+      paused:false, //开关
+      onComplete:function  () {
+        //完成回调
+        //console.log(arguments);
+      },
+      onCompleteScope:this,
+      onUpdate:function  (obj) {
+        //console.log(obj.progress()); //进度条0-1
+        //console.log(obj.time(),obj.progress());        
+        console.log(obj.ratio); //当前的进度变量
+        //var step = Math.floor(obj.ratio/(1/frame));
+        
+        //box.css('background-position','0 '+ (- step * heightlong) +'px');
+        
+
+      },
+      onUpdateParams:["{self}"]
+    });
+
+
+    var spirit2 = TweenMax.to(doc, 1, {
+
+      ease:SteppedEase.config(frame),
+      delay:0, //延迟
+      repeat:-1,
+      repeatDelay:0,
+
+      autoCSS:true, //不用{}
+      yoyo:false, //repeat时候的方向
+      paused:false, //开关
+      onComplete:function  () {
+        //完成回调
+        //console.log(arguments);
+      },
+      onCompleteScope:this,
+      onUpdate:function  (obj) {
+        //console.log(obj.progress()); //进度条0-1
+        //console.log(obj.time(),obj.progress());        
+        console.log(obj.ratio + 'two'); //当前的进度变量
+        //var step = Math.floor(obj.ratio/(1/frame));
+        
+        //box.css('background-position','0 '+ (- step * heightlong) +'px');
+        
+
+      },
+      onUpdateParams:["{self}"]
+    });
+
+
+    $('#btn').on('click',function  () {
+      spirit1.paused(!tm.paused());
+    })
+   
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!--[if IE]>
+    <script type="text/javascript">
+       var console = { log: function() {} };
+    </script>
+  <![endif]-->
+
+  <title>website name</title>
+
+  <style type="text/css">
+    .container {height: 2500px;}
+    #opin {
+      transform: matrix(0.722178, -0.958363, 1.0857, 0.553193, 18.0788, -4.0517);
+      -webkit-transform: matrix(0.722178, -0.958363, 1.0857, 0.553193, 18.0788, -4.0517);
+      background:#eee;
+    }
+  </style>
+
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="container">
+    <div id="opin">123456</div>
+  </div>
+
+  <script type="text/javascript">
+  /*===========================
+  Dom7 Library
+  ===========================*/
+  var Dom7 = (function () {
+      var Dom7 = function (arr) {
+          var _this = this, i = 0;
+          // Create array-like object
+          for (i = 0; i < arr.length; i++) {
+              _this[i] = arr[i];
+          }
+          _this.length = arr.length;
+          // Return collection with methods
+          return this;
+      };
+      var $ = function (selector, context) {
+          var arr = [], i = 0;
+          if (selector && !context) {
+              if (selector instanceof Dom7) {
+                  return selector;
+              }
+          }
+          if (selector) {   
+              // String
+              if (typeof selector === 'string') {
+                  var els, tempParent, html;
+                  selector = html = selector.trim();
+                  if (html.indexOf('<') >= 0 && html.indexOf('>') >= 0) {
+                      var toCreate = 'div';
+                      if (html.indexOf('<li') === 0) toCreate = 'ul';
+                      if (html.indexOf('<tr') === 0) toCreate = 'tbody';
+                      if (html.indexOf('<td') === 0 || html.indexOf('<th') === 0) toCreate = 'tr';
+                      if (html.indexOf('<tbody') === 0) toCreate = 'table';
+                      if (html.indexOf('<option') === 0) toCreate = 'select';
+                      tempParent = document.createElement(toCreate);
+                      tempParent.innerHTML = html;  
+                      for (i = 0; i < tempParent.childNodes.length; i++) {
+                          arr.push(tempParent.childNodes[i]);
+                      }
+                  }
+                  else {
+                      if (!context && selector[0] === '#' && !selector.match(/[ .<>:~]/)) {
+                          // Pure ID selector
+                          els = [document.getElementById(selector.split('#')[1])];
+                      }
+                      else {
+                          // Other selectors
+                          els = (context || document).querySelectorAll(selector);
+                      }
+                      for (i = 0; i < els.length; i++) {
+                          if (els[i]) arr.push(els[i]);
+                      }
+                  }
+              }
+              // Node/element 
+              else if (selector.nodeType || selector === window || selector === document) {
+                  arr.push(selector);
+              }
+              //Array of elements or instance of Dom
+              else if (selector.length > 0 && selector[0].nodeType) {
+                  for (i = 0; i < selector.length; i++) {
+                      arr.push(selector[i]);
+                  }
+              }
+          }
+          return new Dom7(arr);
+      };
+
+      return $;
+  })();
+
+  // Export Dom7 to Framework7
+  //Framework7.$ = Dom7;
+
+  // Export to local scope
+  var $ = Dom7;
+
+  // Export to Window
+  //window.Dom7 = Dom7;
+
+  console.log($('#opin'));
+
+    
+
+
+  </script>
+
+</body>
+</html>

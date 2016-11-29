@@ -1,0 +1,372 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+  <?php $_helper = $this->helper('catalog/output'); ?>
+  <?php $_product = $this->getProduct(); ?>
+  <script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+  </script>
+  <div id="messages_product_view" style="padding-right:26px;">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+  </div>
+  <div class="product-view">
+    <div class="sub-title top-sale" style="float: none; width: 720px; margin-bottom:0;">
+      <h3 class=""><span class=""><?php echo $this->__('产品概述') ?></span></h3>
+    </div>
+    <div class="product-essential">
+      <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form" <?php if($_product->getOptions()): ?> enctype="multipart/form-data"
+        <?php endif; ?>>
+        <div class="no-display">
+          <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+          <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+
+        <div class="product-shop">
+          <div class="c1" style="background:#ededed; padding:25px 35px; padding-right:0; ">
+            <div class="product-name">
+              <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+            </div>
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+            <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+            <?php endif;?>
+
+            <?php if ($this->canEmailToFriend()): ?>
+            <!-- <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p> -->
+            <?php endif; ?>
+            <?php echo $this->getChildHtml('product_type_data') ?>
+
+            <?php if (!$this->hasOptions()):?>
+            <!-- <div class="add-to-box"> -->
+            <?php if($_product->isSaleable()): ?>
+            <?php echo $this->getChildHtml('addtocart') ?>
+            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+            <!-- <span class="or"><?php echo $this->__('OR') ?></span> -->
+            <?php endif; ?>
+            <?php endif; ?>
+            <?php echo $this->getChildHtml('addto1') ?>
+            <!-- </div> -->
+            <?php echo $this->getChildHtml('extra_buttons') ?>
+            <?php elseif (!$_product->isSaleable()): ?>
+            <div class="add-to-box">
+              <?php echo $this->getChildHtml('addto') ?>
+            </div>
+            <?php endif; ?>
+            <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+            <?php echo $this->getChildHtml('alert_urls') ?>
+
+            <?php echo $this->getTierPriceHtml() ?>
+            <?php echo $this->getChildHtml('extrahint') ?>
+
+            <div class="share">
+              <?php echo $this->__('分享:'); ?>
+              <span class="share-link">
+					 <a href="#" class="link_sina" target="_blank"><span class="v-h">转发到新浪微博</span></a>
+              <a href="#" class="link_qq" target="_blank"><span class="v-h">转发到腾讯微博</span></a>
+              <a href="#" class="link_kaixin" target="_blank"><span class="v-h">转发到开心网</span></a>
+              <a href="#" class="link_renren" target="_blank"><span class="v-h">转发到人人网</span></a>
+              <a href="#" class="link_doupan" target="_blank"><span class="v-h">转发到豆瓣网</span></a>
+              </span>
+            </div>
+
+
+
+          </div>
+          <?php if ($_product->getShortDescription()):?>
+          <div class="c2" style="padding:25px 35px;  background:#e0e0e0;">
+            <div class="short-description">
+              <!-- <h2><?php echo $this->__('Quick Overview') ?></h2> -->
+              <div class="std">
+                <?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?>
+              </div>
+            </div>
+          </div>
+          <?php endif;?>
+
+          <?php echo $this->getChildHtml('other');?>
+
+          <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+          <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+          <?php endif;?>
+
+        </div>
+
+        <div class="product-img-box">
+          <?php echo $this->getChildHtml('media') ?>
+        </div>
+
+        <div class="clearer"></div>
+
+      </form>
+      <script type="text/javascript">
+        //<![CDATA[
+
+
+
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+        productAddToCartForm.submit = function(button, url) {
+
+          if (this.validator.validate()) {
+            var form = this.form;
+            var oldUrl = form.action;
+
+            if (url) {
+              form.action = url;
+            }
+            var e = null;
+            if (!url) {
+              url = jQuery('#product_addtocart_form').attr('action');
+            }
+
+
+            if (jQuery('#checknow').data('isclick') == true) {
+              try {
+
+
+                this.form.submit();
+              } catch (e) {}
+            }
+
+
+            url = url.replace("checkout/cart", "ajax/index");
+
+
+
+            var data = jQuery('#product_addtocart_form').serialize();
+            data += '&isAjax=1';
+
+            if (jQuery('#checknow').data('isclick') == true) {
+              jQuery('#ajax_loader').hide();
+            } else {
+              jQuery('#ajax_loader').show();
+            }
+
+            try {
+              jQuery.ajax({
+                url: url,
+                dataType: 'json',
+                type: 'post',
+                data: data,
+                success: function(data) {
+                  jQuery('#ajax_loader').hide();
+                  if (data.message === 'undefined') {
+                    data.message = '购物车已满,若需结算请点击购物车进行结算';
+                  }
+                  alert(data.message);
+                  if (jQuery('.block-cart')) {
+                    jQuery('.block-cart').replaceWith(data.sidebar);
+                  }
+                  if (jQuery('.header .links')) {
+                    jQuery('.header .links').replaceWith(data.toplink);
+                  }
+                }
+              });
+            } catch (e) {}
+            this.form.action = oldUrl;
+            if (e) {
+              throw e;
+            }
+
+            if (button && button != 'undefined') {
+              button.disabled = true;
+            }
+          } else {
+            return false;
+          }
+        }.bind(productAddToCartForm);
+
+        productAddToCartForm.submitLight = function(button, url) {
+          if (this.validator) {
+            var nv = Validation.methods;
+            delete Validation.methods['required-entry'];
+            delete Validation.methods['validate-one-required'];
+            delete Validation.methods['validate-one-required-by-name'];
+            // Remove custom datetime validators
+            for (var methodName in Validation.methods) {
+              if (methodName.match(/^validate-datetime-.*/i)) {
+                delete Validation.methods[methodName];
+              }
+            }
+
+            if (this.validator.validate()) {
+              if (url) {
+                this.form.action = url;
+              }
+              this.form.submit();
+            }
+            Object.extend(Validation.methods, nv);
+          }
+        }.bind(productAddToCartForm);
+
+
+        //添加购物车效果
+
+
+        //        $.requestAnimationFrame = function (callback) {
+        //            if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
+        //            else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
+        //            else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
+        //            else {
+        //                return window.setTimeout(callback, 1000 / 60);
+        //            }
+        //        };
+        //
+        //
+        //
+        //        jQuery(document).ready(function() {
+        //
+        //
+        //        var $addopen = jQuery('<span style=" width: 30px;height: 30px;position: absolute;border-radius: 50%;color: rgb(255, 255, 255);top: 340px;left: 673.5px;background: #b21a15;font-size: 38px;font-weight: bold;line-height: 30px;">+</span>');
+        //        $addopen.appendTo('body');
+        //
+        //        var pos1 = jQuery('.add-bt').offset();
+        //
+        //        var style1 = {
+        //          top: pos1.top - 8,
+        //          left:pos1.left + 90
+        //        }
+        //
+        //
+        //        $addopen.css(style1);
+        //
+        //        var pos2 = jQuery('.block-cart a').offset();
+        //        var pos2longtop = Math.abs(pos1.top - 8 - pos2.top - 15);
+        //        var pos2longleft = Math.abs(pos1.left - 8 - pos2.left + 85);
+        //
+        //
+        ////        $addopen.animate({
+        ////          top:pos2.top,
+        ////          left:pos2.left,
+        ////          'opacity':0.4
+        ////        },1500)
+        //
+        //
+        //        var startTime = null;
+        //        function render(time) {
+        //            if (time === undefined) {
+        //                time = new Date().getTime();
+        //            }
+        //
+        //            if (startTime === null) {
+        //                startTime = time;
+        //            }
+        //
+        //            var progress = Math.max(Math.min((time - startTime) / 1500, 1), 0);
+        //            var easeProgress = (Math.sin( progress * Math.PI/2 ));
+        //
+        //            var top2 = pos2longtop * easeProgress;
+        //            var left2 = pos2longleft * progress;
+        //            var opa = 1;
+        //
+        //            if (progress> 0.9) {
+        //              opa = (1 - progress)/0.1;
+        //            }
+        //
+        //            var style2 = {
+        //              top: (pos1.top - 8) - top2,
+        //              left:pos1.left + 90 + left2,
+        //              opacity: opa
+        //            }
+        //
+        //
+        //            if (progress >= 1) {
+        //              return
+        //            }
+        //
+        //            $addopen.css(style2);
+        //
+        //
+        //            $.requestAnimationFrame(render);
+        //        }
+        //        $.requestAnimationFrame(render);
+        //
+        //
+        //        })
+
+
+
+
+
+        //]]>
+      </script>
+    </div>
+    <?php //$hotitems = $this->getHotReviewsCollection()->getItems();?>
+    <div class="product-collateral">
+      <div class="product-collateral-tag clearfix">
+        <a rel="box-description" class="current product-collateral-tag-c1 fl" href="#"><span>产品详情</span></a>
+        <a id="i-reviews" rel="box-reviews" class="fl product-collateral-tag-c2" href="#"><span>顾客评论</span></a>
+        <!-- <a rel="box-hotreviews" class="fl product-collateral-tag-c2" href="#"><span>评论精选</span></a> -->
+      </div>
+
+
+      <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+
+      <div class="box-collateral box-<?=$alias?>">
+        <?php echo $html; ?>
+      </div>
+
+      <?php endforeach;?>
+
+      <?php echo $this->getChildHtml('upsell_products') ?>
+      <?php echo $this->getChildHtml('product_additional_data') ?>
+      <?php echo $this->getChildHtml('product_additional_data2') ?>
+      <?php echo $this->getChildHtml('reviews'); ?>
+      <?php //echo $this->getChildHtml('hotreviews'); ?>
+    </div>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $(".product-collateral-tag a").click(function(e) {
+          e.preventDefault();
+          if ($(this).hasClass("current")) {
+            return false;
+          } else {
+            $(this).addClass("current").siblings().removeClass("current");
+            var relObj = $(this).attr("rel");
+            $("." + relObj).show();
+            $("." + relObj).siblings(".box-collateral").hide();
+          }
+        });
+
+        var urlleft = location.href;
+
+        if ((urlleft.indexOf("p=") > -1) || (urlleft.indexOf("#review-form") > -1)) {
+          var top = $(".product-collateral").offset().top;
+          $(window).scrollTop(top);
+          $(".product-collateral-tag a:eq(1)").trigger('click');
+        }
+
+
+      })
+    </script>
+
+  </div>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script type="text/javascript">
+    function browserRedirect() {
+      var sUserAgent = navigator.userAgent.toLowerCase();
+      var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+      var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+      var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+      var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+      var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+      var bIsAndroid = sUserAgent.match(/android/i) == "android";
+      var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+      var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+
+      if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+        window.location.href = './wap/';
+      } else {
+        //window.location = 'index.html';
+      }
+    }
+
+    browserRedirect();
+  </script>
+  <script type="text/javascript">
+  (function(){
+    'use strict';
+    var Fixmobile = function  () {
+      this.viwep();
+    }
+
+    Fixmobile.width = 640;
+
+    Fixmobile.prototype.viwep = function  (e) {
+      var phoneWidth = parseInt(window.screen.width),
+      phoneScale = phoneWidth/Fixmobile.width,
+      ua = navigator.userAgent,
+      headmate;
+      if (/Android (\d+\.\d+)/.test(ua)){
+        var version = parseFloat(RegExp.$1);
+        // andriod 2.3
+        if(version > 2.3){
+          document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', minimum-scale = ' + phoneScale + ', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+        // andriod 2.3以上
+        }else{
+          document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', target-densitydpi=device-dpi">');
+        }
+        // 其他系统
+      } else {
+        document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', user-scalable=no, target-densitydpi=device-dpi">');
+      }
+    }
+    var newviewport = new Fixmobile();
+  })();
+  </script>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!--[if IE]>
+    <script type="text/javascript">
+       var console = { log: function() {} };
+    </script>
+  <![endif]-->
+
+  <title>website name</title>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="container">
+     
+  </div>
+  <script type="text/javascript">
+   //Tween效果
+   var TweenType = { //四次方缓动
+     easeOut:function  (t,b,c,d) {
+       return -c *(t/=d)*(t-2) + b;
+     }
+   }
+
+   //动画效果
+   var Tween = function() {}
+
+   Tween.requestAnimationFrame = function  (callback) {
+     if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
+     else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
+     else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
+     else {
+        return window.setTimeout(callback, 1000 / 60);
+     }
+   }
+
+   Tween.animate = function  (pro,callback,timelong,type,startPos,endPos) {
+     var $this = this;
+
+     if (typeof callback != 'function') {
+       timelong = callback;      
+     }
+
+     if (typeof type != 'undefined') {
+       $this.type = TweenType[type];      
+     }else {
+       $this.type = TweenType['linear'];
+     }
+
+     if (typeof startPos == 'undefined') {
+      startPos = 0;
+     }
+
+     if (typeof endPos == 'undefined') {
+      endPos = 1;
+     }
+
+
+    var movePos = endPos - startPos;
+     
+     
+     
+     var startTime = null;
+     var totelTime = 0;
+
+     
+     function render (time) {
+       
+       //console.log(time);
+       
+       if (time === undefined) {
+         time = new Date().getTime();
+       }
+
+       
+       
+       if (startTime == null) {         
+         startTime = time;
+       }
+
+       totelTime += ((time - startTime) < 20) ? (time - startTime) : 20;
+     
+       var progress = TweenType[type](totelTime, startPos, movePos, timelong);
+              
+       if (typeof pro == 'function') {
+         //progress = (progress > 1)? 1 : progress;
+         pro(progress);
+       }
+     
+
+       if ((totelTime) >= (timelong)) {
+         if (typeof pro == 'function') {
+           progress = (movePos + startPos);
+           pro(progress);
+         }
+         
+         
+         startTime = null;
+         if (typeof callback == 'function') {
+           callback()
+         }
+         return
+       }
+       $this.requestAnimationFrame(render);
+     }
+     $this.requestAnimationFrame(render);
+   }
+
+
+
+   
+
+   var repeat = 7;
+   var totoleNumber = 9;
+   var luckNumber = 3;   
+   var perwaiter = 50;
+   var distance = repeat*perwaiter*totoleNumber + luckNumber*perwaiter;
+
+
+   Tween.animate(function  (pro) {
+     console.log(Math.floor(pro%(totoleNumber*perwaiter) / perwaiter));
+   },function  () {
+     //结束后回调
+
+   }, 7000 ,'easeOut',0,distance);
+
+
+  
+
+
+  </script>
+</body>
+</html>

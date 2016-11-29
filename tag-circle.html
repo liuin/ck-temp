@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" href="css/reset.css">
+  <style type="text/css">
+    .block-2 .w1000 {position:relative;width: 1000px; height: 420px;  margin: 0 auto;}
+    .block-2 .cicrol-box {height: 420px;}
+
+    .cicrol-box a{display:block;-webkit-transition: .5s ; transition:.5s ; -ms-transition:.5s ; text-decoration:none; text-align: center; position: absolute; /* animation: zoomIn 3s infinite; -webkit-animation: zoomIn 3s infinite; */  /* -webkit-transform: scale(0.9);transform: scale(0.9); behavior: url(iecss3.htc);*/ }   
+
+
+    .cicrol-box a.active {-webkit-transform: scale(1.1); transform: scale(1.1); }
+    .cicrol-box a.active2 {-webkit-transform: scale(0.9); transform: scale(0.9);}
+
+    .cicrol-box a:hover{/* animation: zoomTo 3s ; -webkit-animation: zoomTo 3s ; -webkit-animation-fill-mode: both;animation-fill-mode: both;  z-index: 10;*/  -webkit-transform: scale(1.2);transform: scale(1.2); z-index: 11;}
+
+    .cicrol-box a .txt {display:block; }
+    .cicrol-box a .ins {display:block;width: 100%; height: 100%;-webkit-transition:.7s; transition:.7s;}
+
+    a.cicrol-130 {width: 130px;height: 130px;background:#000;color: #fff; line-height: 1; font-size: 32px; border-radius:75px; line-height: 33px; z-index: 3;}
+    a.cicrol-130 .txt {padding-top:33px; }
+    a.cicrol-130 .sp1 {font-size: 20px; }
+
+    a.cicrol-130:hover {background:#ff4141; box-shadow:0 0 10px #ff4141;  }
+    a.cicrol-80:hover,a.cicrol-80.active {-webkit-transform: scale(1.2); transform: scale(1.2); box-shadow:0 0 10px #666; z-index:3;}
+    a.cicrol-72:hover,a.cicrol-72.active {-webkit-transform: scale(1.3); transform: scale(1.3); box-shadow:0 0 10px #666; z-index:3;}
+    a.cicrol-64:hover,a.cicrol-64.active {-webkit-transform: scale(1.4); transform: scale(1.4); box-shadow:0 0 10px #666; z-index:3;}
+    a.cicrol-56:hover,a.cicrol-56.active { -webkit-transform: scale(1.5); transform: scale(1.5); box-shadow:0 0 10px #666; z-index:3;}
+
+    a.cicrol-100 {width: 100px;height: 100px; background:#5f5f5f; border-radius:50px;color: #fff; font-size: 24px; line-height: 25px;  -webkit-animation-delay: 1s;animation-delay: 1s;}
+    a.cicrol-100 .txt {padding-top:28px;-webkit-animation-delay: 1s;animation-delay: 1s;}
+    a.cicrol-100 .sp1 {font-size: 14px;-webkit-animation-delay: 1s;animation-delay: 1s;}
+
+
+
+    a.cicrol-80 {width: 80px;height: 80px; background:#d2d2d2; border-radius:40px;color: #333; font-size: 24px; line-height: 21px; }
+    a.cicrol-80 .txt {padding-top:22px;}
+    a.cicrol-80 .sp1 {font-size: 14px;}
+    a.cicrol-yz {background:#939393; color: #fff; font-size: 20px;}
+
+    a.cicrol-72 {width: 72px;height: 72px; background:#939393; border-radius:36px;color: #fff; font-size: 21px; line-height: 20px; }
+    a.cicrol-72 .txt {padding-top:19px;}
+    a.cicrol-72 .sp1 {font-size: 13px;}
+
+    a.cicrol-64 {width: 64px;height: 64px; background:#d2d2d2; border-radius:36px;color: #333; font-size: 17px; line-height: 15px;}
+    a.cicrol-64 .txt {padding-top:19px;}
+    a.cicrol-64 .sp1 {font-size: 12px;}
+
+    a.cicrol-hz {background:#a6a6a6;}
+
+    a.cicrol-56 { width: 56px; height: 56px;background:#d2d2d2; border-radius:36px; font-size: 13px; color: #333;  line-height: 15px;}
+    a.cicrol-56 .txt {padding-top:15px;}
+    a.cicrol-56 .sp1 {font-size: 12px;}
+
+    a.cicrol-40 { width: 40px; height: 40px;background:#ededed; border-radius:36px; font-size: 13px; color: #333;  line-height: 15px;}
+    a.cicrol-32 {width: 32px; height: 32px; background:#a6a6a6; border-radius:16px; }    
+
+
+
+    a.cicrol-hf {left: 268px;top: 167px; }
+    a.cicrol-sh {left: 496px;top: 121px;}
+    a.cicrol-wz {left: 366px;top: 262px;}
+    a.cicrol-sz {left: 562px;top: 261px;}
+    a.cicrol-aq {left: 686px;top: 212px;}
+    a.cicrol-nt {left: 207px;top: 274px;}
+    a.cicrol-nj {left: 400px;top: 160px;width: 93px;height: 93px;line-height: 21px;}
+    a.cicrol-tz {left: 227px;top: 96px;}
+    a.cicrol-ks {left: 631px;top: 161px;}
+    a.cicrol-yz {left: 343px;top: 94px;}
+    a.cicrol-la {left: 491px;top: 249px;}
+    a.cicrol-zc {top: 333px;left: 298px;}
+    a.cicrol-nb {left: 701px;top: 319px;}
+    a.cicrol-jh {left: 463px;top: 83px;}
+    a.cicrol-xy {left: 201px;top: 186px;}
+    a.cicrol-hz {top: 119px;left: 698px;}
+    a.cicrol-mas {top: 350px;left: 165px;}
+    a.cicrol-c1 {left: 490px;top: 346px;}
+    a.cicrol-c2 {left: 764px;top: 152px;}
+    a.cicrol-c3 {left: 450px;top: 397px;}
+
+  </style>
+  <title>website name</title>
+
+  <script type="text/javascript">
+    var ieLt9 = false;
+  </script>
+  <!--[if lt IE 10]>
+  <script type="text/javascript">
+  //<![CDATA[
+      ieLt9 = true;
+  //]]>
+  </script>
+  <![endif]-->
+  
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  
+  <div class="block-2" >
+    <div class="w1000">
+
+      <div class="cicrol-box">
+        <a href="#" data-sort="" class="cicrol-130 cicrol-hf"><span class="txt">合肥市<span class="sp1">22500人</span></span></a>
+        <a href="#" class="cicrol-130 cicrol-sh"><span class="txt">上海市<span class="sp1">182000人</span></span></a>
+        <a href="#" class="cicrol-130 cicrol-wz"><span class="txt">温州市<span class="sp1">28422人</span></span></a>
+        <a href="#" class="cicrol-130 cicrol-sz"><span class="txt">苏州市<span class="sp1">52100人</span></span></a>
+
+        <a href="#" class="cicrol-100 cicrol-aq"><span class="txt">安庆市<span class="sp1">52100人</span></span></a>
+        <a href="#" class="cicrol-100 cicrol-nt"><span class="txt">南通市<span class="sp1">52100人</span></span></a>
+        <a href="#" class="cicrol-100 cicrol-nj"><span class="txt">南京市<span class="sp1">52100人</span></span></a>
+
+        <a href="#" class="cicrol-80 cicrol-tz"><span class="txt">台州市<span class="sp1">52100人</span></span></a>
+        <a href="#" class="cicrol-80 cicrol-ks"><span class="txt">昆山市<span class="sp1">52100人</span></span></a>
+        <a href="#" class="cicrol-80 cicrol-yz"><span class="txt">徐州市<span class="sp1">52100人</span></span></a>
+
+        <a href="#" class="cicrol-72 cicrol-la"><span class="txt">六安市<span class="sp1">52100人</span></span></a>
+        <a href="#" class="cicrol-72 cicrol-zc"><span class="txt">常州市<span class="sp1">52100人</span></span></a>
+
+        <a href="#" class="cicrol-64 cicrol-nb"><span class="txt">宁波市<span class="sp1">52100人</span></span></a>        
+        <a href="#" class="cicrol-64 cicrol-jh"><span class="txt">金华市<span class="sp1">52100人</span></span></a>        
+        <a href="#" class="cicrol-64 cicrol-xy"><span class="txt">阜阳市<span class="sp1">52100人</span></span></a>        
+        <a href="#" class="cicrol-64 cicrol-hz"><span class="txt">杭州市<span class="sp1">52100人</span></span></a>        
+
+        <a href="#" data-sort="0" class="cicrol-56 cicrol-mas"><span class="txt">马鞍山市<span class="sp1">52100人</span></span></a>        
+
+        <a href="#" class="cicrol-56 cicrol-c1"><span class="txt"><span class="sp1"></span></span></a>        
+        <a href="#" class="cicrol-40 cicrol-c2"><span class="txt"><span class="sp1"></span></span></a>        
+        <a href="#" class="cicrol-32 cicrol-c3"><span class="txt"><span class="sp1"></span></span></a>        
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript">
+  <!--
+
+    $(document).ready(function() {   
+      if (ieLt9 == true) {
+        return false;
+      }
+
+      //标签云
+      var stopAnimate = false;
+      var counttime = 0;
+      var speed = 18;
+      var dirspeed = 0;
+      var proNumber = 0;
+
+      var groundPop = $('.cicrol-box a');
+      var getCount = $('.cicrol-box a').length;
+      var getArr = [];
+      var loop = '';
+
+      for (var i = 0;  i < getCount; i++) {
+        getArr[i] = i;
+      }
+
+      //圆球类
+      function Circle (obj) {
+        this.obj = obj;
+        this.startCirleTime = 0;
+        this.endCirleTime = 30;        
+      }
+
+      $('.cicrol-box').hover(function  () {
+        stopAnimate = true;
+      },function  () {
+        stopAnimate = false;
+        requestAnimationFrame(goAnimate); 
+      })
+
+      Circle.prototype.inClass = function  () {
+        var $this  = this;
+        this.obj.addClass('active');        
+      }
+
+      Circle.prototype.outClass = function  () {
+        var $this  = this;
+        this.obj.removeClass('active');        
+      }
+
+      Circle.prototype.effect = function  () {
+        var $this = this;
+        function circleEffct() {
+          $this.inClass();
+          if ($this.startCirleTime > $this.endCirleTime) {
+            $this.outClass();
+          }else {
+            $this.startCirleTime++;            
+            requestAnimationFrame(circleEffct);            
+          }          
+        }
+        circleEffct();        
+      }
+
+      function requestAnimationFrame(callback) { //requestAnimationFrame 兼容
+        if(window.requestAnimationFrame){
+              return window.requestAnimationFrame(callback);
+        } else{
+            return window.setTimeout(callback, 10)
+        }
+      }
+
+      function goAnimate() {
+        if (stopAnimate) {
+          return false;
+        }
+        if ((counttime%speed == 0) || (counttime == 0)) {          
+          if (proNumber < getArr.length) {
+            var cl1 = new Circle($('.cicrol-box a').eq(getArr[proNumber]));
+            cl1.effect();
+            proNumber++;
+            counttime++;
+            
+          }else {
+            dirspeed++;
+            if (dirspeed == 30) {
+              counttime = 0;
+              proNumber = 0;
+              dirspeed = 0;
+            }
+          }
+        }else {
+          counttime++;
+        }
+
+        requestAnimationFrame(goAnimate); 
+        
+        //$('.cicrol-box a').eq(getArr[counttime]).addClass('active');
+        //var nb = getArr[counttime];
+      }
+      
+      goAnimate();                 
+           
+    })
+  //-->
+  </script>
+</body>
+</html>

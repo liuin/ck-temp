@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <title>website name</title>
+  <style type="text/css">
+    .block-talk {position:absolute; right:0; bottom:0; z-index: 10; background:#fff;}
+    .block-talk .list-wrap {display:none;}
+    .showbiz { top: 0;background-color: #e9404b; width:180px;}
+    .showbiz .list-wrap{display:block;  background:#e9404b;  }
+    .list-content-showct {display:block; background:#fff;}
+    .popblock {position:absolute;left:0;top:0; z-index: 20;}
+    .cover {position:fixed;top:0;right:0; left:0;; bottom:0;background:#999; display:none;}
+
+    .hd-link {background: #d61f2b;width:140px;     height: 45px;
+    line-height: 45px; padding-left: 30px;padding-right: 10px;  font-size:14px;display:block;text-decoration:none;color:#fff; position:relative;}
+    .hd-link1 i {display:inline-block;background:url("images/tk-3.png") 0 0 no-repeat; width:19px; height:19px; position:absolute;right:10px;top:14px;}
+
+    .hd-link2 i{position:absolute;background:url("images/close.png") 0 0 no-repeat;display:inline-block;width:19px; height:19px; position:absolute;right:10px;top:14px; cursor:pointer;}
+
+    .list-person {}
+    .list-person li {height:45px; line-height:45px;padding-left: 30px; padding-right: 10px;color:#fff;font-size:14px; position:relative; cursor:pointer;}
+    .list-person li.active {background: #f95862;}
+    .list-person li i { display: inline-block;width: 10px;height: 10px;background: #ffcc00;position: absolute;right: 15px;top: 18px;border-radius: 50%;}
+    .list-content-showct {width:673px;}
+    .showtitle {width:180px;}
+    .title-hd {text-align:center;position:relative;height: 62px;border-bottom: 1px solid #ff8890; line-height: 62px;}
+    .title-hd i {background:url("images/tk-2.png") 0 0 no-repeat; right:0;top:0; width:10px; height: 7px; display:inline-block;margin-left: 10px; }
+    .title-hd .txt {cursor:pointer;}
+    .biz-img {padding-top: 16px; border-bottom: 1px solid #ededed; }
+    .biz-img .ground-per {float:left; display:inline;margin-left: 13px; padding-bottom: 13px;}
+    .biz-img .ground-per img {border: 1px solid #ddd;display:block;margin-bottom: 5px;}
+    .ground-per p{text-align:center;font-size:14px;}
+    
+    .popblock {width:180px;}
+    .popblock h2{height:50px; line-height:50px;padding: 0 15px;color:#fff; font-size:14px;background: #e9404b;}
+    .popblock p {height:35px; line-height:35px;padding: 0 15px; color:#000000; font-size:14px;}
+    .popblock .popblock-box {border: 1px solid #dcdcdc; background: #fff;}
+
+    .item-tk {padding-top: 10px;margin-bottom: 20px;overflow:hidden;}
+    .item-tk img{border: 1px solid #ddd; }
+    .item-tk .ct {margin-left:65px; font-size:14px;}
+    .item-tk .ct h3{color:#000; font-size:14px; font-weight:normal; margin-bottom: 5px;padding-top: 3px;}
+    .item-tk .ct p{color:#000;}
+    .item-right .img{float: right;}
+    .item-right .ct {text-align:right;margin-right: 70px;}
+    .item-right .ct h3 {padding-top: 3px;}
+    .lt-content-sub {border-top: 1px solid #ff8890;padding: 10px 20px;    height: 145px}
+    .lt-content-sub .icon-bk img{margin-left: 5px;}
+    .lt-content-sub .icon-bk {padding-bottom: 8px;}
+    .lt-content-sub textarea {border: 0px solid #000;width:100%; height: 60px;display:block;margin-bottom: 10px;}
+    .lt-content-sub .sub-bk {text-align:right;}
+    .sub-bk button {width:105px;height: 30px;line-height: 30px;text-align:center;color:#fff;border: 0;background: #e9404b; }
+
+    .lt-talk-list {padding: 15px;overflow:auto; height: 60px;}
+
+    .opentk {width:853px;}
+  </style>
+</head>
+<body class="yh">
+  <noscript>
+    <div class="noscript"><strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。</div>
+  </noscript>
+  <div class="container">
+    <div class="block-talk" ms-controller="ltian" ms-class="showbiz:showlist"  ms-class-1="opentk:showct">
+      <a href="#" class="hd-link1 hd-link" ms-click="showPer()" ms-visible="!showlist">商家聊天 <i></i></a>
+      <div class="list-wrap clearfix">        
+        <div class="list-content none fl" ms-class="list-content-showct:showct">
+          <div class="title-hd" ms-click="sfweb()" ><span class="txt">讨论组1(15)<i></i></span></div> 
+          <div id="biz-img" class="biz-img clearfix" ms-visible="showbizGourd" ms-on-mousemove="popBiz($event)" ms-visible="showbizGourd" ms-on-mouseleave="popOut($event)" >
+            <div class="ground-per">
+              <img src="images/tk-1.png" data-title="hbbiz1"  data-type="HUB" data-upObj="HUB" data-prov="prov" data-city="city" data-eare="eare" data-bizper="bizper" alt="" class="item" width="58" height="58">
+              <p>公司名1</p>
+            </div>
+            <div class="ground-per">
+              <img src="images/tk-1.png" data-title="hbbiz2"  data-type="HUB" data-upObj="HUB" data-prov="prov" data-city="city" data-eare="eare" data-bizper="bizper" alt="" class="item" width="58" height="58">
+              <p>公司名2</p>
+            </div>
+            <div class="ground-per">
+              <img src="images/tk-1.png" data-title="hbbiz2"  data-type="HUB" data-upObj="HUB" data-prov="prov" data-city="city" data-eare="eare" data-bizper="bizper" alt="" class="item" width="58" height="58">
+              <p>公司名2</p>
+            </div>
+            <div class="ground-per">
+              <img src="images/tk-1.png" data-title="hbbiz2"  data-type="HUB" data-upObj="HUB" data-prov="prov" data-city="city" data-eare="eare" data-bizper="bizper" alt="" class="item" width="58" height="58">
+              <p>公司名2</p>
+            </div>
+            <div class="ground-per">
+              <img src="images/tk-1.png" data-title="hbbiz2"  data-type="HUB" data-upObj="HUB" data-prov="prov" data-city="city" data-eare="eare" data-bizper="bizper" alt="" class="item" width="58" height="58">
+              <p>公司名2</p>
+            </div>
+            <div class="ground-per">
+              <img src="images/tk-1.png" data-title="hbbiz2"  data-type="HUB" data-upObj="HUB" data-prov="prov" data-city="city" data-eare="eare" data-bizper="bizper" alt="" class="item" width="58" height="58">
+              <p>公司名2</p>
+            </div>
+            <div class="ground-per">
+              <img src="images/tk-1.png" data-title="hbbiz2"  data-type="HUB" data-upObj="HUB" data-prov="prov" data-city="city" data-eare="eare" data-bizper="bizper" alt="" class="item" width="58" height="58">
+              <p>公司名2</p>
+            </div>
+
+            <div class="ground-per">
+              <img src="images/tk-1.png" data-title="hbbiz2"  data-type="HUB" data-upObj="HUB" data-prov="prov" data-city="city" data-eare="eare" data-bizper="bizper" alt="" class="item" width="58" height="58">
+              <p>公司名2</p>
+            </div>
+            <div class="ground-per">
+              <img src="images/tk-1.png" data-title="hbbiz2"  data-type="HUB" data-upObj="HUB" data-prov="prov" data-city="city" data-eare="eare" data-bizper="bizper" alt="" class="item" width="58" height="58">
+              <p>公司名2</p>
+            </div>
+
+            <div class="ground-per">
+              <img src="images/tk-1.png" data-title="hbbiz2"  data-type="HUB" data-upObj="HUB" data-prov="prov" data-city="city" data-eare="eare" data-bizper="bizper" alt="" class="item" width="58" height="58">
+              <p>公司名2</p>
+            </div>
+            <div class="ground-per">
+              <img src="images/tk-1.png" data-title="hbbiz2"  data-type="HUB" data-upObj="HUB" data-prov="prov" data-city="city" data-eare="eare" data-bizper="bizper" alt="" class="item" width="58" height="58">
+              <p>公司名2</p>
+            </div>
+
+            <div class="ground-per">
+              <img src="images/tk-1.png" data-title="hbbiz2"  data-type="HUB" data-upObj="HUB" data-prov="prov" data-city="city" data-eare="eare" data-bizper="bizper" alt="" class="item" width="58" height="58">
+              <p>公司名2</p>
+            </div>
+          </div>
+          <div class="lt-content" >
+            <div class="lt-talk-list" id="lt-talk-list" ms-css-height="{{tklistHeight}}">
+              <div class="item-tk clerafix">
+                <div class="img fl">
+                  <img src="images/tk-1.png" width="58" height="58"   alt="">
+                </div>
+                <div class="ct">
+                  <h3>公司名1</h3>  
+                  <p>水电费水电费是的发送到发送到</p>
+                </div>
+              </div>
+              <div class="item-tk clerafix item-right">
+                <div class="img fl">
+                  <img src="images/tk-1.png" width="58" height="58"   alt="">
+                </div>
+                <div class="ct">
+                  <h3>公司名1</h3>  
+                  <p>水电费水电费是的发送到发送到</p>
+                </div>
+              </div>
+
+              <div class="item-tk clerafix">
+                <div class="img fl">
+                  <img src="images/tk-1.png" width="58" height="58"   alt="">
+                </div>
+                <div class="ct">
+                  <h3>公司名1</h3>  
+                  <p>水电费水电费是的发送到发送到</p>
+                </div>
+              </div>
+              <div class="item-tk clerafix item-right">
+                <div class="img fl">
+                  <img src="images/tk-1.png" width="58" height="58"   alt="">
+                </div>
+                <div class="ct">
+                  <h3>公司名1</h3>  
+                  <p>水电费水电费是的发送到发送到</p>
+                </div>
+              </div>
+            
+            </div>
+            <div class="lt-content-sub">
+              <div class="icon-bk">
+                <img src="images/haho.png" alt="">
+                <img src="images/haho.png" alt="">
+                <img src="images/haho.png" alt="">
+                <img src="images/haho.png" alt="">
+              </div>
+              <textarea id="" rows="" placeholder="说点什么吧" cols=""></textarea>
+              <div class="sub-bk">
+                <button type="submit" class="yh">发　送</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="showtitle fr">
+          <a class="hd-link2 hd-link" ms-click="closepk()" ms-visible="showlist">商家聊天s <i></i> </a>
+          <ul class="list-person" id="list-person" ms-click="bizTalk($event)">
+            <li data-num="1">商家组1 <i></i></li>
+            <li data-num="2">商家组2 <i></i></li>
+            <li data-num="3">商家组2 </li>
+            <li data-num="4">商家组2 <i></i></li>
+            <li data-num="5">商家组2 <i></i></li>
+            <li data-num="6">商家组2 <i></i></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cover" id="cover"></div>
+
+  
+  <div class="popblock" id="popblock" ms-controller="popblock" ms-css-top="top" ms-css-left="left">
+    <h2>{{title}}</h2>
+    <div class="popblock-box">
+      <p>公司类型:{{type}}</p>
+      <p>上级对象:{{upObj}}</p>
+      <p>省份:{{prov}}</p>
+      <p>城市:{{city}}</p>
+      <p>区:{{eare}}</p>
+      <p>联系人:{{bizper}}</p>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/avalon.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript">
+  <!--
+    require(['domReady!'], function(a) {
+      var getPop = document.getElementById('popblock');
+      var cover = document.getElementById('cover');
+      var vmfile =  avalon.define({
+        $id: "ltian",
+        showlist:false, //打开用列表
+        showct:false, //打开聊天内容
+        showbizGourd : false, //打开列表
+        tklistHeight:150,
+        sfweb:function  () {
+          vmfile.showbizGourd = !vmfile.showbizGourd;
+        },
+        closepk:function  () {
+          vmfile.showlist = false;
+          vmfile.showct = false;
+        },
+        bizTalk:function  (e) {
+          var getId = avalon(e.target).data('num');
+          vmfile.showct = true;
+          for (var i = 0;  i<avalon(this).element.children.length ; i++) {
+            avalon(avalon(this).element.children[i]).removeClass('active');
+          }
+          avalon(e.target).addClass('active');
+        },
+        popBiz:function  (e) {
+          if (e.target.tagName == 'IMG') {
+            var getObj = avalon(e.target);          
+            
+            popblock.top = e.clientY+5;
+            popblock.left = e.clientX+5;
+
+            //加入信息
+            popblock.title = getObj.data('title');
+            popblock.type = getObj.data('type');
+            popblock.upObj = getObj.data('upObj');
+            popblock.prov = getObj.data('prov');
+            popblock.city = getObj.data('city');
+            popblock.eare = getObj.data('eare');
+            popblock.bizper = getObj.data('bizper');
+          
+          }else {
+            avalon(getPop).css('left','-9999em');
+            avalon(getPop).css('top','-9999em');            
+          }
+
+        },
+        popOut:function  (e) {
+          avalon(getPop).css('left','-9999em');
+          avalon(getPop).css('top','-9999em');       
+        },
+        showPer: function  () {
+          vmfile.showlist = true;          
+        }
+      })
+
+      var popblock =  avalon.define({
+          $id: "popblock",
+          top:'-9999em',
+          left:'-9999em',
+          title:'公司名称',
+          type:'公司类型',
+          upObj:'上级对象',
+          prov:'省份',
+          city:'城市',
+          eare:'区',
+          bizper:'联系人'
+        })
+      avalon(cover).bind('click',function  () {
+        vmfile.showct = false;
+        avalon(cover).css('display','none');
+      })
+
+        vmfile.$watch("showct", function(){
+          if (vmfile.showct == true) {
+            avalon(cover).css('display','block');
+            fixtalk();
+          }else {
+            avalon(cover).css('display','none');
+            var getlist = document.getElementById('list-person');
+            for (var i = 0;  i<avalon(getlist).element.children.length ; i++) {
+              avalon(avalon(getlist).element.children[i]).removeClass('active');
+            }
+          }
+        })
+        vmfile.$watch("showbizGourd", function(){         
+          fixtalk ();
+        })
+
+      function fixtalk () {
+        var getH = avalon(window).height();
+        avalon(window).offsetWidth;
+         var objh = avalon(document.getElementById('lt-talk-list')).offset().top;
+        getH = getH - objh - 196;
+        getH = (getH > 150) ? getH : 150;
+        vmfile.tklistHeight = getH;        
+      }
+      document.body.onload = function  () {
+        fixtalk();
+      }
+      avalon(window).bind("resize",function  () {
+        fixtalk();
+      })
+      
+      avalon.scan();
+    })
+  //-->
+  </script>
+</body>
+</html>

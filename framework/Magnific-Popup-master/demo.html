@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>    
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="dist/magnific-popup.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <title>website name</title>
+  <style type="text/css">
+    .mfp-preloader {
+  width: 30px;
+  height: 30px;
+  background-color: #FFF;
+  opacity: 0.65;
+  margin: 0 auto;
+  -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+  animation: rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes rotateplane {
+  0% { transform: perspective(120px) rotateX(0deg) rotateY(0deg) }
+  50% { transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) }
+  100% { transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg) }
+}  
+  </style>
+</head>
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="container">
+     <div class="zoom-gallery">
+       <a href="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Christmas_flood_1717.jpg/1280px-Christmas_flood_1717.jpg" data-source="" title="Into The Blue" style="width:193px;height:125px;">
+         <img src="http://mall.bydauto.com.cn/media/wysiwyg/20160314/237x255.jpg" width="193" height="125" />
+       </a>
+      <!--  <a href="http://farm3.staticflickr.com/2856/9207329420_7f2a668b06_o.jpg" data-source="" title="Light Sabre" style="width:82px;height:125px;">
+         <img src="http://farm3.staticflickr.com/2856/9207329420_7f2a668b06_o.jpg" width="82px" height="125" />
+       </a>        -->
+     </div>
+  </div>
+  <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.12.1/jquery.js"></script>
+  <script type="text/javascript" src="dist/jquery.magnific-popup.min.js"></script>
+
+  <script type="text/javascript">
+  <!--
+  
+      $('.zoom-gallery').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        preloader: true,
+        closeOnContentClick: false,
+        closeBtnInside: false,
+        mainClass: 'mfp-with-zoom mfp-img-mobile',
+        tLoading: '',
+        image: {
+          verticalFit: true,
+          titleSrc: function(item) {
+            return false;
+            //return item.el.attr('title') + ' &middot; <a class="image-source-link" href="'+item.el.attr('data-source')+'" target="_blank">image source</a>';
+          }
+        },
+        gallery: {
+          enabled: true
+        },
+        zoom: {
+          enabled: true,
+          duration: 300, // don't foget to change the duration also in CSS
+          opener: function(element) {
+            return element.find('img');
+          }
+        },
+        callbacks: {
+          lazyLoad: function(item) {
+           
+            console.log(item); // Magnific Popup data object that should be loaded
+          },
+          beforeChange: function() {
+            this.items[0].src = this.items[0].src + '?=' + Math.random(); 
+          }
+        }
+      });
+
+      
+
+      //$('.zoom-gallery').magnificPopup('open',0); 打开第1个
+    
+   
+  //-->
+  </script>
+</body>
+</html>

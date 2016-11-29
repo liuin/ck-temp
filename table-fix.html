@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript">
+  <!--
+    var ie7 = false;
+  //-->
+  </script>
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <!--[if lt IE 8]>
+  <script type="text/javascript">
+    ie7 = true;
+  </script>
+  <![endif]-->
+
+  <title>website name</title>
+  <style type="text/css">
+    .table td,.table th{padding: 10px 5px;}
+    .table th {padding: 0; }
+    .fix-tr {}
+    .fix-top {position:relative;background: #000;height: 100%; color: #fff; padding: 10px 5px;}
+  </style>
+</head>
+<body class="yh">
+  <noscript>
+    <div class="noscript"><strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。</div>
+  </noscript>
+  <div class="container">
+    <div style="height:500px;"></div>
+    <table class="table">
+  <col width="120px" />
+  <col width="120px" />
+  <col width="120px" />
+  <col  />
+  <tr tablefixheade >
+    <th><div class="fix-top">col1</div></th>
+    <th><div class="fix-top">col1</div></th>
+    <th><div class="fix-top">col1</div></th>
+    <th><div class="fix-top">col1</div></th>
+  </tr>
+  <tr>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+  </tr>
+  <tr>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+  </tr>
+  <tr>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+  </tr>
+  <tr>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+  </tr>
+  <tr>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+  </tr>
+  <tr>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+  </tr>
+  <tr>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+  </tr>
+  <tr>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+  </tr>
+  <tr>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+    <td>opva</td>
+  </tr>
+</table>
+    <div style="height:500px;"></div>
+  </div>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript">
+  <!--
+
+/*-- 
+  anchor:cuki13
+  use:
+  tablefixheade
+  scrtuct:
+  <tr tablefixheade >
+    <th><div class="fix-top">col1</div></th>
+    <th><div class="fix-top">col1</div></th>
+    <th><div class="fix-top">col1</div></th>
+    <th><div class="fix-top">col1</div></th>
+  </tr>
+ --*/
+
+
+ +(function() {
+ 'use strict';
+   var selectString = '[tablefixheade]';
+
+   function tableFixHeade (obj) {
+     this.obj = obj;
+     this.offestTop = this.obj.offset().top;      
+     this.fixedHd();      
+     this.posoffset = 45;
+   }
+
+   tableFixHeade.prototype.fixedHd = function  () {
+     var $this = this;
+     
+     var prHeight = $this.obj.find('.fix-top').parent().height()-15;
+     $this.obj.find('.fix-top').each(function () {        
+       var prWidth = $(this).parent().outerWidth();
+       $(this).height(prHeight);
+       $(this).width(prWidth-4);
+     })
+     
+     
+     $(window).scroll(function(){
+       $this.offestTop = $this.obj.offset().top;
+       var mved = $this.offestTop - $(this).scrollTop() - $this.posoffset;
+       if (mved < 0 ) {
+         
+         $this.obj.find('.fix-top').css('top', -mved);
+       }else {
+         $this.obj.find('.fix-top').css('top', 0);          
+       }
+      
+     })
+
+     if (ie7) {
+       setTimeout(
+         function(){
+           $(window).trigger('scroll');
+         }, 100)   
+     }
+   }
+
+   $(window).load(function() {
+     $(selectString).each(function () {
+       new tableFixHeade($(this)); 
+     })      
+   })
+
+
+
+ })(jQuery);
+
+
+
+
+
+   
+  //-->
+  </script>
+</body>
+</html>
