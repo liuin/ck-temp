@@ -1,0 +1,41 @@
+body {min-width:1100px;margin: 0 auto;}
+li {list-style:none; margin: 0; padding: 0;}
+p {margin: 0;}
+a {outline:0; text-decoration:none;}
+button {outline:0;}
+input {font-family:'微软雅黑';}
+
+.container {width:auto; min-width:1100px; max-width:1920px;margin:0 auto;background:url("../images/loading.gif") center 0 no-repeat #fff;}
+.imglazy .row{width:1100px; margin:0 auto; position:relative; visibility:hidden;}
+.imglazy-ready .row {visibility:visible;}
+
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus{outline:0;}
+.btn{width: 350px;height: 50px;line-height: 50px;text-align:center;display:inline-block;border: 0;text-align:center;color: #fff;font-weight:bold;font-size: 26px;}
+
+
+/*-- container-header --*/
+.container-header,.container-header .row {height: 300px;}
+.container-2,.container-2 .row {background-position: center 0;height: 814px;}
+.container-3,.container-3 .row {background-position:center 0;height: 1842px;}
+.container-4,.container-4 .row {background-position:center 0;height: 882px;text-align: center;}
+.container-5,.container-5 .row {background-position:center 0;height: 699px;}
+.container-6,.container-6 .row {background-position:center 0;height: 1266px;}
+.container-7,.container-7 .row {background-position:center 0;height: 590px;}
+
+
+/*-- loading --*/
+#loading {background: transparent; position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100%;display:none; z-index:20;}
+#loading span {position:absolute;top:50%; left:50%; display:inline-block;width:40px; height:40px; line-height:30px; text-align:center;border:1px solid #000; border-radius:5px; background:#000; margin-left:20px; margin-top:-20px; box-shadow: 0px 0px 3px #000;}
+#loading span img {position:relative; top:9px;}
+
+/*-- form-style --*/
+.form-style {display:block; }
+.groundform { margin-bottom: 10px; position:relative; overflow:hidden;}
+.groundform .f-box{width:328px; height: 26px; line-height: 26px;background: #fff; padding-left: 10px;padding-right: 10px; border: 0; border: 1px solid #a3a3a3;}
+.groundform label{float:left; line-height: 30px; width: 70px;}
+.groundform i {position: absolute;font-size: 20px;right: -18px;top: 5px; }
+
+/*-- selectstyle --*/
+.selectstyle {position:relative; border:1px solid #ccc; height:30px;display:inline-block;line-height:30px; width:100px; overflow:hidden;}
+.selectstyle select {position:absolute;left:0; top:0px; height:30px; margin:0; padding:0; width:100%; height:38px; }
+.selectstyle .val {display:block; padding-left: 5px; color: #333;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;padding-right: 24px;}
