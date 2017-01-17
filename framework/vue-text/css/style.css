@@ -1,0 +1,10 @@
+body {
+  border: 1px solid #f00;
+  background: #f60;
+  height: 200px;
+}
+body .container {
+  border: 1px solid #000;
+  text-align: center;
+  background: #999;
+}

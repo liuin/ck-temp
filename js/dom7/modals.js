@@ -48,6 +48,7 @@ app.modal = function (params) {
     app.openModal(modal);
     return modal[0];
 };
+
 app.alert = function (text, title, callbackOk) {
     if (typeof title === 'function') {
         callbackOk = arguments[1];

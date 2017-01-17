@@ -85,7 +85,6 @@
                 return update();
             });
         }
-
         this.each(function() {
             var self = this;
             var $self = $(self);

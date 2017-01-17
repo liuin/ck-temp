@@ -28,7 +28,7 @@
     }
 
 // Pass this if window is not defined yet
-}(typeof window !== "undefined" ? window : this, function(window, noGlobal){
+} (typeof window !== "undefined" ? window : this, function(window, noGlobal){
 
 /*********************************************************************
  *                    全局变量及方法                                  *
@@ -48,6 +48,7 @@ function log() {
         Function.apply.call(console.log, console, arguments)
     }
 }
+
 
 
 var subscribers = "$" + expose
