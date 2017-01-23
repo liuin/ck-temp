@@ -10,7 +10,7 @@
     <script type="text/babel">
 var LikeButton = React.createClass({
   getInitialState: function() {
-    return {liked: false};
+    return {liked: true};
   },
   handleClick: function(event) {
     this.setState({liked: !this.state.liked});
@@ -32,4 +32,3 @@ ReactDOM.render(
     </script>
   </body>
 </html>
-

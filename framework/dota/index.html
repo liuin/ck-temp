@@ -45,9 +45,18 @@
       <canvas id="canvas" width="10" height="10"></canvas>
     </div>
     <span id="fps"></span>
+
+
+    <button type="button" id="btn1" name="button">生成图</button>
   </div>
   <script type="text/javascript" src="../../js/jquery.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
+
+  <script type="text/javascript">
+    $('#btn1').on('click',function(){
+      Map.buildImg();
+    })
+  </script>
 </body>
 
 </html>

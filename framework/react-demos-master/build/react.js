@@ -40,6 +40,7 @@ module.exports = AutoFocusUtils;
 
 'use strict';
 
+
 var EventConstants = _dereq_(15);
 var EventPropagators = _dereq_(19);
 var ExecutionEnvironment = _dereq_(142);
@@ -19183,7 +19184,7 @@ module.exports = performanceNow;
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @typechecks
- * 
+ *
  */
 
 /*eslint-disable no-self-compare */

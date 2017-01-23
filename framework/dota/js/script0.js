@@ -14,19 +14,6 @@ Map.build = function() {
   ctx.fillStyle = "#eee";
 }
 
-Map.buildImg = function() {
-  var data = Map.obj.toDataURL("image/jpeg");
-
-  var img = new Image();
-  img.src = data;
-
-  img.onload = function (){
-    img = $(img);
-    img.appendTo('body');
-  }
-
-}
-
 Map.objResetSelect = function() {
   for (var i = 0; i < Map.viewObjs.length; i++) {
     Map.viewObjs[i].selected = false;
@@ -131,7 +118,7 @@ Map.checkClick = function(pos) {
 Map.build();
 
 //构建精灵
-function Sprite(url) {
+function Sprite(url){
   this.imgUrl = url;
   this.playspeed = 12;
   this.height = null;
@@ -140,53 +127,24 @@ function Sprite(url) {
   this.currentfsp = 0;
   this.imgReady = false;
   this.changeHeight = null;
-  this.playspeedPro = 0;
 
   this.img = new Image();
   this.img.src = url;
 
   var $this = this;
 
-  this.img.onload = function() {
+  this.img.onload = function(){
     $this.imgReady = true;
   }
 }
 
-Sprite.prototype.draw = function(ca) {
+Sprite.prototype.draw = function(number,ca){
   var $this = this;
-
-  if (this.height == null) {
-    return
-  }
-
-  $this.playspeedPro += (1 / Engine.fps);
-
-
-  $this.currentfsp = ($this.playspeedPro%$this.playspeed)/($this.playspeed)*$this.totleZhen.length;
-
-  // $this.currentfsp = Math.floor($this.currentfsp * 100) / 100;
-
-  // $this.currentfsp = $this.currentfsp % $this.totleZhen.length;
-
-  var number = Math.floor($this.currentfsp);
+  var number = Math.floor(number);
 
   var getZhen = this.totleZhen[number].split(',');
-
-
-
-  // ca.clearRect(-$this.width / 2, -$this.height, $this.width, $this.height);
-
-  ca.drawImage($this.img, parseInt(getZhen[0]), parseInt(getZhen[1]), parseInt(getZhen[2]), parseInt(getZhen[3]), -$this.width / 2, -$this.height, $this.width, $this.height);
+  ca.drawImage($this.img, parseInt(getZhen[0]), parseInt(getZhen[1]),parseInt(getZhen[2]),parseInt(getZhen[3]),-$this.width/2,-$this.height,$this.width,$this.height);
   // ca.drawImage($this.img, parseInt(getZhen[0])*number, parseInt(getZhen[1])*number,parseInt(getZhen[2]),parseInt(getZhen[3]),-$this.width/2,-$this.height,$this.width,$this.height);
-
-
-
-}
-
-Sprite.prototype.resetFsp = function() {
-  var $this = this;
-  $this.currentfsp = 0;
-  $this.playspeedPro = 0;
 }
 
 
@@ -212,7 +170,7 @@ function Hero() {
       height: 130
     },
 
-    this.moveSpeed = 150;
+  this.moveSpeed = 150;
   this.bgColor = "f60";
   this.moveSpeedX = this.moveSpeed || 1.5;
   this.moveSpeedY = this.moveSpeed || 1.5;
@@ -222,7 +180,7 @@ function Hero() {
   this.moveYDir = 1;
   this.zIndex = 1;
   this.attackSpeed = 1.5;
-  this.attackInTime = null;
+  this.attackInTime = 0.7;
   this.attackDistance = 50;
   this.direction = "left";
   this.normalPhysicsAttack = 20;
@@ -243,6 +201,7 @@ function Hero() {
 
 Hero.prototype.checkAction = function() {
   var $this = this;
+
 
   if ($this.status == 'move') {
     return
@@ -265,6 +224,8 @@ Hero.prototype.checkAction = function() {
       var thisObjXWidth = obj.size.width;
       var thisObjY = (obj.position.y - obj.size.height);
       var thisObjYHeight = obj.size.height;
+
+
 
       //判断矩形碰撞
       var ifImpoac = $this.checkRectImpoac($this.thisCkeckPosX, $this.thisCkeckPosY, $this.thisCkeckPosXWidth, $this.thisCkeckPosYHeight, thisObjX, thisObjY, thisObjXWidth, thisObjYHeight);
@@ -356,28 +317,21 @@ Hero.prototype.planMove = function() {
   }
 
 
-  if (this.SpriteMove != undefined) {
-    this.SpriteMove.draw(ca);
-  }
-
-
-
   if (this.selected == true) {
     ca.strokeStyle = "blue";
-
-    ca.beginPath();
-    ca.arc(0, 0, 10, 0, Math.PI * 2, true);
-    ca.closePath();
-    ca.fillStyle = "#000";
-    ca.fill();
-
+    ca.strokeRect(-($this.size.width / 2), (-$this.size.height), ($this.size.width), ($this.size.height));
   }
 
-  // ca.fillRect((-$this.size.width / 2), (-$this.size.height), ($this.size.width), ($this.size.height));
+  ca.fillRect((-$this.size.width / 2), (-$this.size.height), ($this.size.width), ($this.size.height));
 
-  // ca.fillStyle = "#fff";
-  // ca.fillRect(($this.size.width / 4), (-$this.size.height / 1.1), ($this.size.width / 5), ($this.size.height / 5));
+  ca.fillStyle = "#fff";
+  ca.fillRect(($this.size.width / 4), (-$this.size.height / 1.1), ($this.size.width / 5), ($this.size.height / 5));
 
+  ca.beginPath();
+  ca.arc(0, 0, 10, 0, Math.PI * 2, true);
+  ca.closePath();
+  ca.fillStyle = "#000";
+  ca.fill();
 
   ca.restore();
 
@@ -396,23 +350,35 @@ Hero.prototype.planWaiter = function() { //目前和planMove一样
     ca.scale(-1, 1);
   }
 
-  if (this.SpriteWatier != undefined) {
-    this.SpriteWatier.draw(ca);
-  }
-
-
-
 
   if (this.selected == true) {
     ca.strokeStyle = "blue";
-    // ca.strokeRect(-($this.size.width / 2), (-$this.size.height), ($this.size.width), ($this.size.height));
-
-    ca.beginPath();
-    ca.arc(0, 0, 10, 0, Math.PI * 2, true);
-    ca.closePath();
-    ca.fillStyle = "#000";
-    ca.fill();
+    ca.strokeRect(-($this.size.width / 2), (-$this.size.height), ($this.size.width), ($this.size.height));
   }
+
+  if (this.SpriteWatier == undefined) {
+    this.SpriteWatier = new Sprite('img/zhen-text.png');
+  }
+
+  this.SpriteWatier.playspeed = 7;
+  this.SpriteWatier.totleZhen = [
+    '0,0,104,110',
+    '104,0,89,110',
+    '193,0,84,110',
+    '277,0,95,110',
+    '372,0,95,110'
+  ];
+  this.SpriteWatier.width = this.size.width;
+  this.SpriteWatier.height = this.size.height;
+
+
+  this.SpriteWatier.currentfsp += (this.SpriteWatier.playspeed/Engine.fps);
+
+  this.SpriteWatier.currentfsp = Math.floor(this.SpriteWatier.currentfsp*100)/100;
+
+  this.SpriteWatier.currentfsp = this.SpriteWatier.currentfsp%this.SpriteWatier.totleZhen.length;
+
+  this.SpriteWatier.draw(this.SpriteWatier.currentfsp,ca);
 
   // ca.fillRect((-$this.size.width / 2), (-$this.size.height), ($this.size.width), ($this.size.height));
 
@@ -499,38 +465,7 @@ Hero.prototype.moveToPro = function(fps) {
 
 Hero.prototype.update = function() {
   var $this = this;
-  $this.checkAction(); //检测是否碰撞
-
-  if ($this.prevCurrentState != $this.status) {
-
-    switch ($this.status) {
-      case 'move':
-        if ($this.SpriteMove) {
-          $this.SpriteMove.currentfsp = 0;
-        }
-        break;
-      case 'waiter':
-        if ($this.SpriteWatier) {
-          $this.SpriteWatier.currentfsp = 0;
-        }
-        break;
-      case 'attack':
-        if ($this.SpriteAttack) {
-          $this.SpriteAttack.currentfsp = 0;
-        }
-        break;
-    }
-
-    $this.prevCurrentState = $this.status;
-  }
-
-  // $this.prevCurrentState = $this.status;
-
-
-  if ((typeof $this.checkStaues) == 'function') {
-    $this.checkStaues();
-  }
-
+  $this.checkAction();
   switch ($this.status) {
     case 'move':
       $this.moveToPro(Engine.fps);
@@ -580,46 +515,32 @@ Hero.prototype.attack = function(enemy) {
 
 Hero.prototype.attackPro = function(fps) {
   var $this = this;
-  var speed = 1 / fps;
+  var speed = $this.attackSpeed / fps;
 
   //前摆
-  // this.planMove();
+  this.planMove();
 
   var ca = Map.ctx;
 
-  if ($this.attackInTime == null) {
-    $this.attackInTime = $this.attackSpeed/1.5
-  }
-
   ($this.attackProTime === undefined) ? $this.attackProTime = speed: $this.attackProTime += speed;
-  // console.log($this.attackProTime);
+
   //画攻击
   ca.save();
   ca.translate($this.position.x, $this.position.y);
   //ca.beginPath();
 
 
-  // ca.fillStyle = 'rgba(255, 0, 0, ' + $this.attackProTime / $this.attackSpeed + ')';
+  ca.fillStyle = 'rgba(255, 0, 0, ' + $this.attackProTime / $this.attackSpeed + ')';
 
-
-  if (this.moveXDir == -1) {
-    ca.scale(-1, 1);
+  if ($this.direction == "left") {
+    //ca.arc(-$this.size.width/1.15,-$this.size.height/1.15,10,0,Math.PI*2,true);
+    ca.fillRect(-$this.size.width / 1.15 - 5, -$this.size.height / 1.15, 30, $this.size.height / 1.15);
   }
 
-  if (this.SpriteAttack != undefined) {
-    this.SpriteAttack.draw(ca);
+  if ($this.direction == "right") {
+    //ca.arc($this.size.width/1.15,-$this.size.height/1.15,10,0,Math.PI*2,true);
+    ca.fillRect($this.size.width / 1.15 - 25, -$this.size.height / 1.15, 30, $this.size.height / 1.15);
   }
-
-
-  // if ($this.direction == "left") {
-  //   //ca.arc(-$this.size.width/1.15,-$this.size.height/1.15,10,0,Math.PI*2,true);
-  //   ca.fillRect(-$this.size.width / 1.15 - 5, -$this.size.height / 1.15, 30, $this.size.height / 1.15);
-  // }
-  //
-  // if ($this.direction == "right") {
-  //   //ca.arc($this.size.width/1.15,-$this.size.height/1.15,10,0,Math.PI*2,true);
-  //   ca.fillRect($this.size.width / 1.15 - 25, -$this.size.height / 1.15, 30, $this.size.height / 1.15);
-  // }
 
   ca.restore();
 
@@ -640,6 +561,7 @@ Hero.prototype.attackPro = function(fps) {
   if ($this.attackProTime > $this.attackSpeed) {
     $this.attackProTime = undefined;
     $this.status = "waiter";
+
   }
 
 
@@ -666,115 +588,25 @@ function Attack() {
 }
 
 
-function changeToZhen(totleheight, cutHeight, width, height) {
-  var arr = [];
-  for (var i = 0; i < Math.floor(totleheight / cutHeight); i++) {
-    var a = '0,' + i * cutHeight + ',' + width + ',' + height + '';
-    arr.push(a);
-  }
-  return arr;
-}
+
 
 var hero1 = new Hero();
 var hero2 = new Hero();
 
-
-
-hero1.SpriteMove = new Sprite('img/hero1-move.png');
-hero1.SpriteMove.totleZhen = changeToZhen(1230, 123, 58, 123);
-hero1.SpriteMove.playspeed = 8 / hero1.SpriteMove.totleZhen.length;
-
-
-
-hero1.SpriteWatier = new Sprite('img/hero1-waiter.png');
-hero1.SpriteWatier.totleZhen = changeToZhen(5290, 115, 79, 115);
-
-hero1.SpriteWatier.playspeed = 200 / hero1.SpriteWatier.totleZhen.length;
-
-hero1.SpriteAttack = new Sprite('img/hero1-attack.png');
-hero1.SpriteAttack.totleZhen = changeToZhen(4650, 155, 126, 155);
-hero1.SpriteAttack.totleZhen.length = 4;
-
-hero1.attackSpeed = 0.7;
-hero2.attackSpeed = 1;
-
-hero1.SpriteAttack.playspeed = hero1.attackSpeed;
-
-
-
-hero1.size.x = 60;
-hero1.size.y = 123;
-
-hero1.attackDistance = -25;
-hero2.attackDistance = -25;
-
-
-hero1.checkStaues = function() {
-  if (hero1.status == 'waiter') {
-    hero1.SpriteWatier.width = 79;
-    hero1.SpriteWatier.height = 115;
-  }
-
-  if (hero1.status == 'move') {
-    hero1.SpriteMove.width = 58;
-    hero1.SpriteMove.height = 123;
-  }
-
-  if (hero1.status == 'attack') {
-    hero1.SpriteAttack.width = 126;
-    hero1.SpriteAttack.height = 155;
-  }
-}
-
 hero1.position.x = 150;
 hero1.position.y = 200;
+hero1.bgColor = "#f64";
+
 hero1.moveTo(200, 200);
-
-
-
 
 hero2.position.x = Map.obj.width - 100;
 hero2.position.y = 200;
+hero2.bgColor = "green";
 
-hero2.moveSpeed = 170;
+hero2.moveSpeed = 300;
 
 hero2.moveTo(Map.obj.width - 200, 200);
 
-
-hero2.SpriteMove = new Sprite('img/hero2-move.png');
-hero2.SpriteMove.totleZhen = changeToZhen(960, 120, 72, 120);
-hero2.SpriteMove.playspeed = 7 / hero2.SpriteMove.totleZhen.length;
-
-
-
-hero2.SpriteWatier = new Sprite('img/hero2-waiter.png');
-hero2.SpriteWatier.totleZhen = changeToZhen(2160, 135, 65, 135);
-hero2.SpriteWatier.playspeed = 15 / hero2.SpriteWatier.totleZhen.length;
-
-hero2.SpriteAttack = new Sprite('img/hero2-attack.png');
-hero2.SpriteAttack.totleZhen = changeToZhen(4774, 154, 137, 154);
-hero2.SpriteAttack.totleZhen.length = 5 ;
-hero2.SpriteAttack.playspeed = hero2.attackSpeed;
-
-hero2.size.x = 70;
-hero2.size.y = 123;
-
-hero2.checkStaues = function() {
-  if (hero2.status == 'waiter') {
-    hero2.SpriteWatier.width = 65;
-    hero2.SpriteWatier.height = 135;
-  }
-
-  if (hero2.status == 'move') {
-    hero2.SpriteMove.width = 72;
-    hero2.SpriteMove.height = 120;
-  }
-
-  if (hero2.status == 'attack') {
-    hero2.SpriteAttack.width = 137;
-    hero2.SpriteAttack.height = 154;
-  }
-}
 
 
 
@@ -826,7 +658,6 @@ Engine.animate = function(time) {
   $this.getFps();
   Map.reset();
   //hero1.update();
-  // console.log(hero1.lift, hero2.lift);
   Map.planObjs();
 
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -22,19 +23,64 @@
 
   <title>website name</title>
   <style type="text/css">
-    * {margin: 0; padding: 0; border:0;}
-    .linebk {width: 400px; height: 500px; background:#f60;}
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .linebk {
+    width: 400px;
+    height: 500px;
+    background: #f60;
+  }
+
+  .threeline {
+    position: relative;
+    margin-top: -0.8rem;
+    left: 0;
+    top: 50%;
+    min-width: 1.6rem;
+    text-align: center;
+    font-size: 1.6rem;
+
+  }
+
+  .threeline:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -0.6rem;
+    width: 1.6rem;
+    height: 1.2rem;
+    background: -webkit-linear-gradient(#fff 0, #fff 0.2rem, transparent 0.2rem, transparent 0.5rem, #fff 0.5rem, #fff 0.7rem, transparent 0.7rem, transparent 1rem, #fff 1rem, #fff 100%);
+    background: linear-gradient(#fff 0, #fff 0.2rem, transparent 0.2rem, transparent 0.5rem, #fff 0.5rem, #fff 0.7rem, transparent 0.7rem, transparent 1rem, #fff 1rem, #fff 100%);
+    -webkit-transform: translate3d(2rem, 0, 0) rotate(90deg);
+    transform: translate3d(2rem, 0, 0) rotate(90deg);
+    -webkit-transition: opacity 0.7s, -webkit-transform 0.7s;
+    transition: opacity 0.7s, -webkit-transform 0.7s;
+    transition: transform 0.7s, opacity 0.7s;
+    transition: transform 0.7s, opacity 0.7s, -webkit-transform 0.7s;
+    -webkit-transition-delay: inherit;
+    transition-delay: inherit;
+    -webkit-transform: translate3d(1.6rem, 0, 0) rotate(0deg);
+    transform: translate3d(1.6rem, 0, 0) rotate(0deg);
+    opacity: 1;
+  }
   </style>
 
 </head>
+
 <body class="yh">
   <noscript>
     <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
   </noscript>
   <div class="container">
-    <div class="linebk bounce animated">
+    <div class="linebk bounce animated threeline">
 
     </div>
   </div>
 </body>
+
 </html>
