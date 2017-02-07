@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <!--[if lt IE 9]>
+ <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+   <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+ <![endif]-->
+
+  <!--[if IE]>
+   <script type="text/javascript">
+      var console = { log: function() {} };
+   </script>
+ <![endif]-->
+
+  <title>website name</title>
+</head>
+
+<body class="yh">
+  <noscript>
+   <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+ </noscript>
+  <div class="container">
+    <canvas id="canvan1" width="632"  height="920"  ></canvas>
+    <!-- <button id="btn-1">生成gif</button> -->
+  </div>
+  <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.12.1/jquery.js"></script>
+  <script src="dist/gif.js" ></script>
+  <script src="dist/gif.worker.js"></script>
+
+  <script type="text/javascript">
+
+
+function changeToZhen(totleheight, cutHeight, width, height) {
+  var arr = [];
+  for (var i = 0; i < Math.floor(totleheight / cutHeight); i++) {
+    var a = '0,' + i * cutHeight + ',' + width + ',' + height + '';
+    arr.push(a);
+  }
+  return arr;
+};
+
+
+var getzhen = changeToZhen(5290, 115, 79, 115);
+
+
+var spriimg = new Image();
+spriimg.src = 'img/hero1-waiter.png';
+spriimg.ready = false;
+spriimg.onload = function  () {
+  spriimg.ready = true;
+}
+
+var cavan = document.getElementById('canvan1');
+var ctx = cavan.getContext('2d');
+
+
+var timmer = 0;
+var currentf = 0;
+
+
+  var gifcavan = new GIF({
+    workers: 2,
+    quality: 10,
+    width:632,
+    height:920,
+    workerScript:'dist/gif.worker.js'
+  });
+
+  gifcavan.arr = 4;
+
+
+  var isloop = false;
+  var isloopNumber = null;
+
+
+
+function blobTobase (bobl,callback) {
+  var reader = new window.FileReader();
+ reader.readAsDataURL(bobl); 
+ reader.onloadend = function() {
+  base64data = reader.result;                
+  if (callback) {
+    callback(base64data)
+  }
+}
+}
+
+
+
+function  draw(ctx) {
+  timmer += (1 / Engine.fps) + 0.6;
+
+  
+
+  // $this.currentfsp = Math.floor($this.currentfsp * 100) / 100;
+
+  // $this.currentfsp = $this.currentfsp % $this.totleZhen.length;
+
+
+  if (timmer > 4) {
+    timmer = 0;
+    if (isloop == true) {
+      return
+    }
+
+    isloop = true;
+
+    gifcavan.on('finished', function(blob) { 
+     
+      if (blob == '') {
+        return
+      }
+      
+
+      blobTobase(blob,function  (data) {
+        var img  = '<img src="'+ data +'" alt="" />';
+        $('body').append($(img));
+      })
+
+      
+      //window.open(URL.createObjectURL(blob));
+    });
+    gifcavan.render();
+  }
+
+  var number = Math.floor(timmer);
+  
+  
+
+  var getZhen1= getzhen[number].split(',');
+  ctx.clearRect(0, 0, 632, 920);
+
+
+ var g1 = ctx.createLinearGradient(0,0,400,300);
+
+        g1.addColorStop(0,'blue');
+        g1.addColorStop(0.5,'red');
+        g1.addColorStop(1,'green');
+        ctx.fillStyle=g1;
+  //ctx.fillStyle = "#eee";
+  ctx.fillRect(0, 0, 632, 920);
+  
+  ctx.font = "italic 30px sans-serif";
+  ctx.fillStyle = "red";
+  ctx.textBaseline = 'top'
+
+  ctx.fillText("粉底撒泼覅打破啊", 0, 0);
+
+  
+
+  // ca.clearRect(-$this.width / 2, -$this.height, $this.width, $this.height);
+  ctx.drawImage(spriimg, parseInt(getZhen1[0]), parseInt(getZhen1[1]), parseInt(getZhen1[2]), parseInt(getZhen1[3]), 0, 0, 79*8, 115*8);
+
+  if (((isloop == false) && isloopNumber != number ) || (isloopNumber == null)) {
+    gifcavan.addFrame(ctx,{copy:true,delay:120});    
+  }
+
+  isloopNumber = number;
+  
+
+  //ctx.drawImage(spriimg, 0, 0, 126, 155, 0, 0, 126, 155);
+  // ca.drawImage($this.img, parseInt(getZhen[0])*number, parseInt(getZhen[1])*number,parseInt(getZhen[2]),parseInt(getZhen[3]),-$this.width/2,-$this.height,$this.width,$this.height);
+
+}
+
+
+function playHero () {
+  if (spriimg.ready) {
+    draw(ctx);
+  }
+  
+}
+
+
+
+
+
+
+//Engine
+var Engine = new Object();
+
+Engine.now = new Date().getTime() || null;
+Engine.lastTime = null;
+Engine.stop = false;
+Engine.fps = 60;
+
+
+Engine.getFps = function() {
+  if ((this.now - this.lastTime) > 1000) {
+    this.fps = ((this.now - this.lastTime) / 1000).toFixed(2) * 100;
+    if (this.fps < 30) {
+      this.fps = 30;
+    }
+    $('#fps').html(this.fps);
+    this.lastTime = this.now;
+  }
+}
+
+
+Engine.requestAnimationFrame = function(callback) {
+  if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
+  else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
+  else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
+  else {
+    return window.setTimeout(callback, 1000 / 60);
+  }
+}
+
+Engine.view = function() {
+
+}
+
+Engine.animate = function(time) {
+  var $this = Engine;
+
+  if ($this.stop == true) {
+    return Engine.requestAnimationFrame(Engine.animate);
+  }
+
+  $this.now = time || new Date().getTime();
+  if ($this.lastTime == null) {
+    $this.lastTime = $this.now;
+  }
+  $this.getFps();
+  //hero1.update();
+  // console.log(hero1.lift, hero2.lift);
+  playHero();
+
+  Engine.requestAnimationFrame(Engine.animate);
+}
+
+
+
+
+//Engine.animate.call(Engine)
+
+Engine.requestAnimationFrame(Engine.animate);
+
+
+
+
+    //gif.addFrame(img);
+
+
+
+ 
+
+  // or a canvas element
+  // gif.addFrame(canvasElement, {
+  //   delay: 200
+  // });
+
+  // or copy the pixels from a canvas context
+  // gif.addFrame(ctx, {
+  //   copy: true
+  // });
+
+  </script>
+
+</body>
+
+</html>
