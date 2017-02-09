@@ -20,7 +20,7 @@ Map.buildImg = function() {
   var img = new Image();
   img.src = data;
 
-  img.onload = function (){
+  img.onload = function() {
     img = $(img);
     img.appendTo('body');
   }
@@ -162,7 +162,7 @@ Sprite.prototype.draw = function(ca) {
   $this.playspeedPro += (1 / Engine.fps);
 
 
-  $this.currentfsp = ($this.playspeedPro%$this.playspeed)/($this.playspeed)*$this.totleZhen.length;
+  $this.currentfsp = ($this.playspeedPro % $this.playspeed) / ($this.playspeed) * $this.totleZhen.length;
 
   // $this.currentfsp = Math.floor($this.currentfsp * 100) / 100;
 
@@ -588,7 +588,7 @@ Hero.prototype.attackPro = function(fps) {
   var ca = Map.ctx;
 
   if ($this.attackInTime == null) {
-    $this.attackInTime = $this.attackSpeed/1.5
+    $this.attackInTime = $this.attackSpeed / 1.5
   }
 
   ($this.attackProTime === undefined) ? $this.attackProTime = speed: $this.attackProTime += speed;
@@ -753,7 +753,7 @@ hero2.SpriteWatier.playspeed = 15 / hero2.SpriteWatier.totleZhen.length;
 
 hero2.SpriteAttack = new Sprite('img/hero2-attack.png');
 hero2.SpriteAttack.totleZhen = changeToZhen(4774, 154, 137, 154);
-hero2.SpriteAttack.totleZhen.length = 5 ;
+hero2.SpriteAttack.totleZhen.length = 5;
 hero2.SpriteAttack.playspeed = hero2.attackSpeed;
 
 hero2.size.x = 70;
