@@ -7,7 +7,6 @@ function ckbrower () {
   }else {
     return true
   }
-
 }
 
 ckbrower ();
