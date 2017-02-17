@@ -125,11 +125,12 @@ function activate(context) {
     files.forEach(function (filename) {
 
       let file1 = fs.readFile(path + filename, function (data) {
-        if (filename.lastIndexOf('.') > -1) {
-          filenameSub = filename.substr(0, filename.lastIndexOf('.'));          
-        }else{
-          filenameSub = filename;
-        }
+        // if (filename.lastIndexOf('.') > -1) {
+          // filenameSub = filename.substr(0, filename.lastIndexOf('.'));          
+        // }else{
+        //   filenameSub = filename;
+        // }
+        let filenameSub = filename;
 
         let item = new vscode.CompletionItem(filenameSub, 0);
 
@@ -244,10 +245,6 @@ function activate(context) {
       return;
     }
     var selectedText = editor.document.getText(selection);
-
-
-
-
 
     let snippetObject = {};
     vscode.languages.getLanguages()

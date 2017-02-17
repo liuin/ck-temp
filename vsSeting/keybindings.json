@@ -58,11 +58,24 @@
 		"command": "workbench.action.closeOtherEditors",
 		"when": "editorFocus"
 	}
-
-	// {
-	// 	"key": "ctrl+a",
-	// 	"command": "workbench.action.files.newFile",
-	// 	"when": "editorFocus"
-	// }
+,
+	{
+		"key": "ctrl+a",
+		"command": "workbench.action.files.newFile",
+		"when": "!editorFocus"
+	}
+,	{
+		"key": "shift+a",
+		"command": "workbench.action.files.newFolder",
+		"when": "!editorFocus"
+	},
+	{
+		"key": "ctrl+shift+o",
+		"command": "workbench.action.gotoSymbol"
+	},
+	{
+		"key": "ctrl+shift+r",
+		"command": "workbench.action.reloadWindow"
+	}
 
 ]
