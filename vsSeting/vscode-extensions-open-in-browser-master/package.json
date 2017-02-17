@@ -1,0 +1,56 @@
+{
+    "name": "open-in-browser",
+    "displayName": "open in browser",
+    "description": "This allows you to open the current file in your default browser or application.",
+    "icon": "images/icon.png",
+    "version": "0.0.2",
+    "publisher": "techer",
+    "repository": "https://github.com/SudoKillMe/vscode-extensions-open-in-browser",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "open", "html", "browser"
+    ],
+    "activationEvents": [
+        "onCommand:extension.openInBrowser",
+        "onCommand:extension.openInBrowserFromMenu"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [{
+            "command": "extension.openInBrowser",
+            "title": "Open In Browser"
+        },
+        {
+            "command": "extension.openInBrowserFromMenu",
+            "title": "Open File In Browser"
+        }],
+        "keybindings": [{
+            "command": "extension.openInBrowser",
+            "key": "ctrl+b"
+        }],
+        "menus": {
+            "explorer/context": [{
+                "when": "resourceLangId == html",
+                "command": "extension.openInBrowserFromMenu",
+                "group": "open-in-browser"
+            }]
+        }
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "eslint": "^3.6.0",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
+}
