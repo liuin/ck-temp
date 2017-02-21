@@ -1,0 +1,8 @@
+out
+node_modules
+test
+_test
+.vscode-test
+/typings/modules/*
+/typings/index.d.ts
+/*.vsix

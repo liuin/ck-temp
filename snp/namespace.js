@@ -6,4 +6,4 @@ var _namespace = function (ns) {
   }
   return p;
 }
-gs = _namespace("com.greensock.opdk.dfdf")
+gs = _namespace("com.greensock.opdk.dfdf");

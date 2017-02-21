@@ -75,6 +75,7 @@ function stripJSONComments(str, opts) {
   return ret + (insideComment ? strip(str.substr(offset)) : str.substr(offset));
 };
 
+console.log('fdff');
 
 function activate(context) {
 
@@ -113,7 +114,7 @@ function activate(context) {
 
 
   //读取文件列表
-  fs.readdir(path, function (err, files) {
+  fs.readdir(path, function(err, files) {
     if (err) {
       console.log(err);
       return;
@@ -122,11 +123,11 @@ function activate(context) {
     var results = {};
     var arr = [];
     var count = 0;
-    files.forEach(function (filename) {
+    files.forEach(function(filename) {
 
-      let file1 = fs.readFile(path + filename, function (data) {
+      let file1 = fs.readFile(path + filename, function(data) {
         // if (filename.lastIndexOf('.') > -1) {
-          // filenameSub = filename.substr(0, filename.lastIndexOf('.'));          
+        // filenameSub = filename.substr(0, filename.lastIndexOf('.'));          
         // }else{
         //   filenameSub = filename;
         // }
@@ -134,7 +135,7 @@ function activate(context) {
 
         let item = new vscode.CompletionItem(filenameSub, 0);
 
-        vscode.workspace.openTextDocument(path + filename).then(function (data) {
+        vscode.workspace.openTextDocument(path + filename).then(function(data) {
           var text1 = data.getText();
           text1 = text1.replace(/(\\)/g, '$1$1');
           item.insertText = text1;
@@ -176,7 +177,7 @@ function activate(context) {
   //addfile
   // vscode.window.showQuickPick(['1', '2', '3'], { placeHolder: "选择你的号码" })
 
-  var disposableFile = vscode.commands.registerCommand('extension.createSnippetFile', function () {
+  var disposableFile = vscode.commands.registerCommand('extension.createSnippetFile', function() {
     var editor = vscode.window.activeTextEditor;
     var selection = editor.selection;
     var selectedText = editor.document.getText(selection);
@@ -191,7 +192,7 @@ function activate(context) {
     vscode.window.showInputBox({
       prompt: "输入你的文件名"
     }).then((name) => {
-      fs.writeFile(path + name, selectedText, function (data) {
+      fs.writeFile(path + name, selectedText, function(data) {
         return vscode.window.showInformationMessage('写入成功');
       })
     })
@@ -199,29 +200,28 @@ function activate(context) {
 
 
   //删除文件
-  var FileDele = vscode.commands.registerCommand('extension.SnippetFileDelet', function () {
-    fs.readdir(path, function (err, files) {
+  var FileDele = vscode.commands.registerCommand('extension.SnippetFileDelet', function() {
+    fs.readdir(path, function(err, files) {
       if (err) {
         console.log(err);
         return;
       }
-            
+
       vscode.window.showQuickPick(
-        files,
-        {
+        files, {
           placeHolder: "选择要删除的文件"
         }
       ).then((filename) => {
         console.log(arguments);
-        vscode.window.showInformationMessage('确定要删除吗?','确定').then(function (data) {
+        vscode.window.showInformationMessage('确定要删除吗?', '确定').then(function(data) {
           if (data == "确定") {
-            fs.unlink(path + filename, function (err) {
+            fs.unlink(path + filename, function(err) {
               if (err) {
                 vscode.window.showErrorMessage('删除失败');
               } else {
                 vscode.window.showInformationMessage('删除成功');
               }
-            });         
+            });
           }
         });
 
@@ -231,7 +231,7 @@ function activate(context) {
 
 
 
-  var disposable = vscode.commands.registerCommand('extension.createSnippet', function () {
+  var disposable = vscode.commands.registerCommand('extension.createSnippet', function() {
 
     var editor = vscode.window.activeTextEditor;
     if (!editor) {

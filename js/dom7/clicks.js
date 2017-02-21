@@ -152,7 +152,6 @@ app.initClickEvents = function () {
                 app.closeModal('.actions-modal.modal-in');
 
             if ($('.popover.modal-in').length > 0) app.closeModal('.popover.modal-in');
-        }
         if (clicked.hasClass('popup-overlay')) {
             if ($('.popup.modal-in').length > 0 && app.params.popupCloseByOutside)
                 app.closeModal('.popup.modal-in');

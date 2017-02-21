@@ -31,12 +31,6 @@
   <div class="container">
     fsfsf
   </div>
-  
-  <script type="text/javascript">
-    console.log($);
-    alert('fdfs');
-    
-  </script>
 </body>
 
 
