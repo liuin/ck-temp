@@ -5,6 +5,19 @@
   "editor.wordWrap": false,
   "editor.snippetSuggestions": "top",
   "[php]": {
-    
+
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/*.js": { "when": "$(basename).ts" },
+    "**/*.css": { "when": "$(basename).less" }
+  },
+  "files.associations": {
+    "*.php": "php",
+    "*.ts": "javascript",
+    "*.less": "less"
   }
 }

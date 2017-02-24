@@ -1,0 +1,91 @@
+{
+	"Print to console": {
+		"prefix": "cl",
+		"body": [
+			"console.log('$1');"
+		],
+		"description": "Log output to console"
+	},
+	"function": {
+		"prefix": "func",
+		"body": [
+			"function ($1) {",
+			"  $2",
+			"}"
+		]
+	},
+	"code": {
+		"prefix": "strCode",
+		"body": [
+			"strCode = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';"
+		]
+	},
+	"demo1": {
+		"prefix": "de1m",
+		"body": [
+			"a = fdsaf $\\\\\\\\1"
+		],
+		"description": "demo"
+	},
+	"demo12": {
+		"prefix": "demo12",
+		"body": [
+			"a = fdsaf $/1"
+		],
+		"description": "demo12"
+	},
+	"demo13": {
+		"prefix": "demo13",
+		"body": [
+			"a = fdsaf $\\\\\\\\1"
+		],
+		"description": "demo13"
+	},
+	"undefined": {
+		"body": [
+			"a = fdsaf $1"
+		]
+	},
+	"demo31": {
+		"prefix": "demo31",
+		"body": [
+			"a = fdsaf $1"
+		],
+		"description": "demo31"
+	},
+	"dem12": {
+		"prefix": "dem12",
+		"body": [
+			"a = fdsaf $//1"
+		],
+		"description": "dem12"
+	},
+	"opdfd": {
+		"prefix": "demo1112",
+		"body": [
+			"a = fdsaf $1"
+		],
+		"description": "fopsdfo"
+	},
+	"kdfo": {
+		"prefix": "kofd",
+		"body": [
+			"a = fdsaf \\\\\\\\$\\\\n1"
+		],
+		"description": "kfdo"
+	},
+	"opvkdd": {
+		"prefix": "opdfk",
+		"body": [
+			"a = fdsaf \\\\\\\\$/n1"
+		],
+		"description": "opdfpo"
+	},
+	"interface": {
+		"prefix": "interface",
+		"body": [
+			"interface"
+		],
+		"description": "接口"
+	}
+}

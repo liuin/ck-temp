@@ -1,81 +1,93 @@
 [{
-		"key": "ctrl-j",
-		"command": "editor.action.copyLinesDownAction"
-	},
-	{
-		"key": "ctrl+r",
-		"command": "expandLineSelection",
-		"when": "editorTextFocus"
-	},
-	{
-		"key": "ctrl+d",
-		"command": "editor.action.addSelectionToNextFindMatch",
-		"when": "editorFocus"
-	},
-	{
-		"key": "alt+shift+b",
-		"command": "HookyQR.beautify",
-		"when": "editorFocus"
-	},
-	{
-		"key": "ctrl+shift+[",
-		"command": "editor.emmet.action.balanceInward",
-		"when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
-	},
-	{
-		"key": "ctrl+shift+]",
-		"command": "editor.emmet.action.balanceOutward",
-		"when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
-	},
-	
-	{
-		"key": "ctrl+alt+right",
-		"command": "editor.emmet.action.nextEditPoint",
-		"when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
-	}
-,	{
-		"key": "ctrl+alt+left",
-		"command": "editor.emmet.action.previousEditPoint",
-		"when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
-	}
-,	{
-		"key": "ctrl+alt+b",
-		"command": "editor.emmet.action.reflectCSSValue",
-		"when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
-	}
-,	{
-		"key": "ctrl+shift+a",
-		"command": "editor.emmet.action.wrapWithAbbreviation",
-		"when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && editorHasSelection && !editorReadonly && !editorTabMovesFocus"
-	}
-,	{
-		"key": "ctrl+shift+s",
-		"command": "editor.emmet.action.updateImageSize",
-		"when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
-	}
-,	{
-		"key": "ctrl+shift+f4",
-		"command": "workbench.action.closeOtherEditors",
-		"when": "editorFocus"
-	}
-,
-	{
-		"key": "ctrl+a",
-		"command": "workbench.action.files.newFile",
-		"when": "!editorFocus"
-	}
-,	{
-		"key": "shift+a",
-		"command": "workbench.action.files.newFolder",
-		"when": "!editorFocus"
-	},
-	{
-		"key": "ctrl+shift+o",
-		"command": "workbench.action.gotoSymbol"
-	},
-	{
-		"key": "ctrl+shift+r",
-		"command": "workbench.action.reloadWindow"
-	}
+    "key": "ctrl-j",
+    "command": "editor.action.copyLinesDownAction"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "expandLineSelection",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+shift+b",
+    "command": "HookyQR.beautify",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+shift+[",
+    "command": "editor.emmet.action.balanceInward",
+    "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
+  },
+  {
+    "key": "ctrl+shift+]",
+    "command": "editor.emmet.action.balanceOutward",
+    "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
+  },
+
+  {
+    "key": "ctrl+alt+right",
+    "command": "editor.emmet.action.nextEditPoint",
+    "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
+  }, {
+    "key": "ctrl+alt+left",
+    "command": "editor.emmet.action.previousEditPoint",
+    "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
+  }, {
+    "key": "ctrl+alt+b",
+    "command": "editor.emmet.action.reflectCSSValue",
+    "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
+  }, {
+    "key": "ctrl+shift+a",
+    "command": "editor.emmet.action.wrapWithAbbreviation",
+    "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && editorHasSelection && !editorReadonly && !editorTabMovesFocus"
+  }, {
+    "key": "ctrl+shift+s",
+    "command": "editor.emmet.action.updateImageSize",
+    "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorHasMultipleSelections && !editorHasSelection && !editorReadonly && !editorTabMovesFocus"
+  }, {
+    "key": "ctrl+shift+f4",
+    "command": "workbench.action.closeOtherEditors",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "workbench.action.files.newFile",
+    "when": "!editorFocus"
+  }, {
+    "key": "shift+a",
+    "command": "workbench.action.files.newFolder",
+    "when": "!editorFocus"
+  },
+  {
+    "key": "ctrl+shift+o",
+    "command": "workbench.action.gotoSymbol"
+  },
+  {
+    "key": "ctrl+shift+r",
+    "command": "workbench.action.reloadWindow"
+  },
+  {
+    "key": "shift+alt+b",
+    "command": "Lonefy.formatting"
+  },
+  {
+    "key": "ctrl+shift+\\",
+    "command": "workbench.action.focusSideBar"
+  },
+
+  {
+    "key": "ctrl+alt+[",
+    "command": "editor.fold",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+alt+]",
+    "command": "editor.unfold",
+    "when": "editorTextFocus"
+  }
 
 ]

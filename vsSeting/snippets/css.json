@@ -1,0 +1,17 @@
+{
+	"Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	},
+	"bg+": {
+		"prefix": "bg+",
+		"body": [
+			"background:url('$1') 0 0 ${2:no-repeat} ${3:#fff};"
+		],
+		"description": "背景"
+	}
+}
