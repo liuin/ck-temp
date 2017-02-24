@@ -1,0 +1,15 @@
+var islteIE = function(ver){
+    var b = document.createElement('b')
+    b.innerHTML = '<!--[if lte IE ' + ver + ']><i></i><![endif]-->';
+
+    if (window.ActiveXObject) {
+            var reg = /10\\\\.0/;
+            var str = navigator.userAgent;
+            //reg.test(str);
+            if (reg.test(str)) {
+                return true;
+            };
+      };
+
+    return b.getElementsByTagName('i').length === 1
+}

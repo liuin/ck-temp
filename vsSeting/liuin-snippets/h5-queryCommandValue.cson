@@ -1,0 +1,18 @@
+<!DOCTYPE html>   
+<head>   
+<meta charset="UTF-8">  
+<title>queryCommandValue方法的使用示例</title>
+<script type="text/javascript">
+function getColor () {
+    alert (document.queryCommandValue('foreColor'));
+}
+</script>
+</head>
+<body>
+<div contenteditable="true">
+    <span style="color:red;">示例文字</span>
+    <br/>
+    <span style="color:blue;">示例文字</span>
+</div>
+<button onclick="getColor();">获取选取文字的颜色</button>
+</body>

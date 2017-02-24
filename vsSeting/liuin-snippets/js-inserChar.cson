@@ -1,0 +1,36 @@
+/*-- 
+  anchor:cuki13
+  use://字符串插入"," 112345 => 12,345
+ --*/
+
+;(function() {
+  'use strict';
+  var selectString = '[inserChar]';
+
+  function  inserChar(obj) {
+    var gval = parseInt(obj.html());
+    var gvalString = gval.toString();
+
+    var long = gvalString.length;
+    var mo = long%3 - 1;
+    console.log(gval,gvalString);
+    var string = '';
+    for (var i = 0;  i<long ; i++) {
+      string += gvalString.charAt(i);
+
+      if (i == (mo)) {
+        string += ',';
+      }
+
+      if (((i - mo)>0) && ((i - mo)%3) == 0 && (i<(long-1))) {
+        string += ',';
+      }                        
+    }
+    obj.html(string);
+  }
+
+  $(selectString).each(function () {
+     inserChar($(this));
+  })
+
+})(jQuery);

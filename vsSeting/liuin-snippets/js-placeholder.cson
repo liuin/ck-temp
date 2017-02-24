@@ -1,0 +1,48 @@
+;(function() {
+'use strict';
+        
+if (!('placeholder' in document.createElement('input'))) {
+//  if (true) {
+  var selectString = '[placeholder]';
+
+  $(selectString).each(function () {
+     var $this = $(this);
+    var dfVal = $(this).attr("placeholder");
+      var newel = '<span class="sval">' + dfVal + '</span>';
+        
+       var style={
+          'position' : 'absolute',
+          'top' : 0,
+          'left' : '10px',
+          'height':'43px',
+          'line-height':'43px',
+          'text-indent': '0px'
+        }
+    newel = $(newel);
+    newel.css(style).insertAfter($(this));
+
+    newel.on('click',function  () {
+      $(this).prev().focus();
+    })
+        
+    $(this).on('keyup',function  () {
+      checkVal($(this));
+    })
+    $(this).change(function  () {
+      checkVal($this);
+    })
+
+    function  checkVal(obj) {
+      
+      if (obj.val().length > 0) {
+          newel.hide();
+        }else {
+          newel.show();          
+        }        
+    }
+   checkVal($this);
+    
+
+  })
+}
+})(jQuery);

@@ -1,0 +1,21 @@
+function drawArcLine () {
+      ca.fillStyle="#eef";
+      ca.fillRect(0,0,400,300);
+      ca.beginPath();
+      ca.fillStyle="#f60";
+      ca.strokeStyle = "#333";
+      var x = Math.sin(0); 
+      var y = Math.cos(0);
+      ca.moveTo(150 + 100 * x,150 + 100 * y);     
+      //var dig = 15* Math.PI/11;
+      var dig = 360/4* Math.PI/180;
+      for (var i = 0;  i<4 ; i++) {
+        var x = Math.sin(dig * i); 
+        var y = Math.cos(dig * i);
+        //ca.lineTo(150 + 100 * x,150 + 100 * y);
+        ca.bezierCurveTo(150 + 100 * x,150 + 100 * y - 100,150 + 100 * x,150 + 100 * y + 100, 150, 150);
+      }
+      ca.closePath();
+      ca.fill();
+      ca.stroke();
+    }

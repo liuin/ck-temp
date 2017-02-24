@@ -1,0 +1,9 @@
+//坐标转换
+cavanGame.prototype.windowToCanvas = function (x, y) {
+  var ca = this.obj;
+  var bbox = ca.getBoundingClientRect(); 
+  return {
+    x : (x - bbox.left) * (ca.width/bbox.width),
+    y : (y - bbox.top) * (ca.height/bbox.height)
+  };
+}

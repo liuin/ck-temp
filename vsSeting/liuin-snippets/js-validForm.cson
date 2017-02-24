@@ -1,0 +1,31 @@
+var ckForm = $('.form-ck').Validform({
+  showAllError:true,
+  tiptype:function(msg,o,cssctl){ //提示类型
+    if (o.type == 3) {          
+    
+      var errorObj = o.obj.parents('.box1-login').find('.error');
+
+      if (errorObj.is(':visible')) {
+        o.obj.parents('.box1-login').find('> .p16').hide();
+        return
+      }
+
+      if (!errorObj.is(':visible')) {
+        o.obj.parents('.box1-login').find('> .p16').hide();
+        errorObj.stop(true).hide().fadeIn();  
+      }
+    }
+
+    if (o.type == 2) {
+      if (ckForm.check()) {
+        var errorObj = o.obj.parents('.box1-login').find('.error');
+        errorObj.hide();
+        o.obj.parents('.box1-login').find('> .p16').stop(true).hide().fadeIn();              
+      }else {
+      //  var errorObj = o.obj.parents('.box1-login').find('.error');
+      //  errorObj.stop(true).hide().fadeIn();  
+      //  o.obj.parents('.box1-login').find('> .p16').hide();                  
+      }
+    }
+  }
+})

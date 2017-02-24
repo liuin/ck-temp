@@ -1,0 +1,157 @@
+/* ========================================================================
+滚动控制效果
+ */
++function ($) {
+  "use strict";
+  var scrollEffe = function  (groudEl) {
+    this.groudEl = groudEl;
+    this.$el = [];
+    this.$parentEl = [];
+    this.startPro = [];
+    for (var i = 0;  i<groudEl.length ; i++) {
+      this.$el[i] = groudEl[i][0];
+      this.$parentEl[i] = groudEl[i][1];
+      this.startPro[i] = groudEl[i][5];
+      this.initPosFun(this.$el[i],groudEl[i][2],groudEl[i][3],groudEl[i][4]);
+    }
+    this.initScroll();
+
+  }
+
+  scrollEffe.prototype.initPosFun =function  ($dom,tempX,tempY,type) {
+    if (!type) {
+      type = "moveblock";
+    }
+    tempX = tempX || 0;
+    tempY = tempY || 0;
+    $dom.data("endX",parseFloat($dom.css("left")));
+    $dom.data("startX",parseFloat($dom.css("left"))+tempX);
+    $dom.data("tempX",tempX);
+
+    $dom.data("endY",parseFloat($dom.css("top")));
+    $dom.data("startY",parseFloat($dom.css("top"))+tempY);
+    $dom.data("tempY",tempY);
+
+    $dom.css({"left":$dom.data("startX"),"top":$dom.data("startY")});
+    
+    $dom.hide();
+
+
+  }
+
+  scrollEffe.prototype.posMoveFun = function($dom,$domParent,plong)
+  {
+      var permb = 0;
+      if (plong) {
+        permb = plong;
+      }else {
+        permb = 0;
+      }
+      //父级到窗口上边缘的距离
+      //var tempC = eleTop < winTop + winHeight && eleTop + eleHeight > winTop;      
+
+      //var tempY = $(document).scrollTop()-$domParent.position().top + permb;
+      var tempY = $(window).scrollTop() + $(window).height() - $domParent.position().top - $domParent.height() + permb;
+
+      var per = Math.max(-tempY/1800,0);
+      var targetX = $dom.data("endX")+$dom.data("tempX")*per;
+      var targetY = $dom.data("endY")+$dom.data("tempY")*per;
+      //$dom.css({"left":targetX,"top":targetY});
+      
+      var tempY1 = $(window).scrollTop() + $(window).height() - $domParent.position().top - $domParent.height() + permb + 100;
+     
+      var opacity1 = Math.min(tempY1*0.008,1);
+      var style = {
+        'left':targetX,
+        'top':targetY,
+        'opacity':opacity1
+      }
+      
+      $dom.css(style);
+  }
+
+
+  scrollEffe.prototype.opacity = function($dom,$domParent,ease)
+  {
+    //父级到窗口上边缘的距离
+    var tempY = $(window).scrollTop()-$domParent.position().top;
+    var opacity = Math.min(tempY*0.002,1);
+
+    $dom.css("opacity",opacity);
+  };
+
+  scrollEffe.prototype.scale = function($dom,$domParent,ease,permb)
+  {
+    //父级到窗口上边缘的距离
+    var tempY = $(window).scrollTop()-$domParent.position().top + $(window).height()/2 + 300;
+
+    var scale = Math.min(tempY*0.003,1);
+    if (scale < 0) {
+      scale = 0
+    }
+    $dom.css({
+      "transform":"scale(" + scale + ")",
+      'opacity':scale
+    });
+  };
+
+
+  scrollEffe.prototype.initScroll = function  () {
+    var $this = this;
+    $(window).bind("scroll",function(){      
+      for (var i = 0;  i<$this.groudEl.length ; i++) {
+        switch ($this.groudEl[i][4]) {
+          case 'moveblock':          
+            $this.posMoveFun($this.$el[i],$this.$parentEl[i],$this.startPro[i]);
+          break
+          case 'opacity':
+       
+           $this.opacity($this.$el[i],$this.$parentEl[i]);
+          case 'scale':
+           $this.scale($this.$el[i],$this.$parentEl[i]);
+          break
+          default:
+        } 
+      }   
+    })
+
+    for (var i = 0;  i<$this.groudEl.length ; i++) {
+      $this.$el[i].show();
+      $this.$el[i].css('transition','1s');
+      switch ($this.groudEl[i][4]) {
+        case 'moveblock':          
+          $this.posMoveFun($this.$el[i],$this.$parentEl[i],$this.startPro[i]);
+        break
+        case 'opacity':
+     
+         $this.opacity($this.$el[i],$this.$parentEl[i]);
+        case 'scale':
+         $this.scale($this.$el[i],$this.$parentEl[i]);
+        break
+        default:
+      }
+    }
+
+
+    
+    
+  }
+
+  $(document).ready(function() {
+      //控制模块
+      var blockSilder = [
+        [$(".s6"),$(".container-2 .row-w1000"),-1200,-600-300,'moveblock',500],
+        [$(".surui"),$(".container-2 .row-w1000"),1200,-600,'scale'],
+        [$(".s7"),$(".container-2 .row-w1000"),1200,-600-300,'moveblock',500],
+        [$(".f3"),$(".container-2 .row-w1000"),-700,900-300,'moveblock',500],
+        [$(".g5"),$(".container-2 .row-w1000"),700,900-300,'moveblock',500]
+      ]
+      if ($.support.transition){
+        var $serverBlock1 = new scrollEffe(blockSilder);        
+      }else {
+        $(".surui").css('transform','scale(1)');
+      }
+      
+  })
+
+}(jQuery);

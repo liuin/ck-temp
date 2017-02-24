@@ -9,7 +9,6 @@ import jsbeautify = require('js-beautify');
 import mkdirp = require('mkdirp');
 
 
-
 export function format(document: vscode.TextDocument, range: vscode.Range) {
     if (range === null) {
         var start = new vscode.Position(0, 0);

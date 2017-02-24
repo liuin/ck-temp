@@ -1,0 +1,165 @@
+/** 
+* extend 表单控件自定义
+* @author cuki13  
+
+*/
+;(function() {
+  var formSting = '[data-form="select"]';
+  var Select = function  (number) {
+    this.id = number;
+  }
+
+  Select.prototype.build = function  (el) {
+    var $this = $(el);
+    $this.hide();
+    $this.wrap("<div class='form-el form-select-ui'></div>");
+    var gettxt = '<div class="val textb" ><span class="val-ins">'+ $this.find("option:selected").html()+'</span><i class="none"></i></div>';
+    gettxt = $(gettxt);
+    gettxt.insertBefore($this);
+    gettxt.on('click',function  (e) {
+      $('ul.option').hide();
+      $(this).next().show();
+      e.stopPropagation();
+    })
+
+     //高度固定
+     function getoffset (obj) {
+      if (obj.find('li.active').length < 0) {
+        return false;
+      }
+      var objh = obj.height();
+      var toth = obj.find('li').length*obj.find('li').height();
+      var activeh = obj.find('li.active').prevAll().length * obj.find('li').height();
+      obj.scrollTop(activeh - objh/2);
+    }
+
+    var option = $('<ul class="option none"></ul>');
+    var optionItemGround = '';
+    $this.find('option').each(function () {
+      if ($(this).html() == $this.find("option:selected").html()) {
+        optionItemGround += '<li class="active">'+ $(this).html() +'</li>';
+      }else {
+         optionItemGround += '<li>'+ $(this).html() +'</li>';
+      }     
+    })
+
+    option.append(optionItemGround).width($this.outerWidth());
+    
+
+    option.on('click','li',function  () {
+      var ind = $(this).index();
+      $(this).addClass('active').siblings().removeClass('active');
+      $this.find('option').eq(ind).prop('selected','selected');
+      $this.prev().prev('.val').find('.val-ins').html($(this).html());
+      $this.trigger('changeVal');
+      $this.trigger('change');
+        // wk
+      if ($this.attr('id') == "Month") {
+          //alert($('#zYear').val() + "--" + parseInt($("#zMonth").val()));
+          var yearValue = parseInt($("#Year").val());
+          var monthValue = parseInt($("#Month").val());
+          if (monthValue == 1 || monthValue == 3 || monthValue == 5 || monthValue == 7 || monthValue == 8 || monthValue == 10 || monthValue == 12) {
+              dayvalue = 31;
+          } else if (monthValue == 4 || monthValue == 6 || monthValue == 11 || monthValue == 9) {
+              dayvalue = 30;
+          } else if (monthValue == 2) {
+              if (yearValue % 4 == 0 && (yearValue % 4 != 0 || yearValue % 400 == 0)) { //闰年
+                  dayvalue = 29;
+              } else {
+                  dayvalue = 28;
+              }
+          }
+          $this.parent().next().next().find('ul').each(function () {
+              $(this).html("");
+              for (var i = 1; i <= dayvalue; i++) {
+                  if (i < 10) {
+                      if (i == 0)
+                          $(this).append('<li>日</li>');
+                      else
+                          $(this).append('<li>0' + i.toString() + '</li>');
+                  }
+                  else
+                      $(this).append('<li>' + i.toString() + '</li>');
+              }
+
+              $(this).find('li').on('click', function () {
+                  var ind = $(this).index();
+                  $(this).addClass('active').siblings().removeClass('active');
+                  $(this).parent().next().find('option').eq(ind).prop('selected', 'selected');
+                  $(this).parent().prev().find('.val-ins').html($(this).html());
+              })
+          });
+      }
+        // end
+    })
+
+    option.insertBefore($this);
+
+    $this.parents(".form-select-ui").addClass("select-"+ this.id).width($this.outerWidth());
+    $(window).resize(function  () {
+      $this.parents(".form-select-ui").width($this.outerWidth());
+      option.width($this.outerWidth());
+
+    })
+
+
+    $this.on("change.resize",function  () {
+      var $parents = $this.parents('.form-select-ui');
+      var vl = $(this).find("option:selected").html();
+      $parents.find('.val-ins').html(vl);     
+      option.find('li').each(function () {
+          if ($(this).html() == vl) {
+            $(this).addClass('active').siblings().removeClass('active');
+          }
+      })
+    })
+
+    $this.on('rbluid',function  () {
+    
+      var optionItemGround = '';
+      $this.find('option').each(function () {
+        if ($(this).html() == $this.find("option:selected").html()) {
+          optionItemGround += '<li class="active">'+ $(this).html() +'</li>';
+        }else {
+           optionItemGround += '<li>'+ $(this).html() +'</li>';
+        }     
+      })
+      option.empty().append(optionItemGround).width($this.outerWidth());
+      $this.trigger('change');
+    })
+
+    $this.trigger('change.resize');
+  }
+
+  function Plugin(option) {
+    return this.each(function (n) {
+      var $this   = $(this)
+      var number = $this.attr('id') || n 
+      var data    = $this.data('ck.select')
+      var options = typeof option == 'object' && option
+      if (!data) $this.data('ck.select', (data = new Select(number)))
+      if (option == 'build') data.build($(this))
+      else if (option) data.setState(option)
+    })
+  }
+
+  Select.init = function  () {
+    var $this = $(formSting);
+    Plugin.call($this,'build');
+  }
+  
+  $(document).ready(function() {
+    var $this = $(formSting);
+    Plugin.call($this,'build');
+  })
+
+  $(document).on('click',function  () {
+    $('.form-select-ui .option').hide();
+  })
+
+  $.fn.formSelect = function  (options) {
+    var $this = $(this);
+    Plugin.call($this,'build');
+  }
+
+})()

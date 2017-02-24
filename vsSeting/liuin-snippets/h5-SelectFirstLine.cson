@@ -1,0 +1,20 @@
+<!DOCTYPE html>   
+<head>   
+<meta charset="UTF-8">  
+<title>Selection对象的addRange方法的使用示例</title>  
+<script type="text/javascript">
+function SelectFirstLine () {
+    var elemToSelect = document.getElementById ("firstLine");
+    var selection = window.getSelection ();
+    var rangeToSelect = document.createRange ();
+    rangeToSelect.selectNodeContents (elemToSelect);
+    selection.removeAllRanges ();
+    selection.addRange (rangeToSelect);
+}
+</script>
+</head>
+<body>
+<button onclick="SelectFirstLine ();">选取第一行文字</button>
+<div id="firstLine">第一行文字</div>
+<div>第二行文字</div>
+</body>

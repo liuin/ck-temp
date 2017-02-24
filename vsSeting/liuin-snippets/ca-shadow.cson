@@ -1,0 +1,4 @@
+shadowOffsetX = 10;  
+shadowOffsetY = 10;  
+shadowColor = 'rgba(100,100,100,0.5)';  
+shadowBlur = 7.5;  //模糊范围

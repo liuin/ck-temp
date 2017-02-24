@@ -1,0 +1,1 @@
+drawImage(img,x,y|img,x,y,w,h|img,sx,sy,sw,sh,dx,dy,dw,dh);

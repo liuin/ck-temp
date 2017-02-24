@@ -1,0 +1,66 @@
+/*-- 
+  anchor:cuki13
+  use:lazyload
+  var loadImg = [
+        'images/p13.jpg',
+        'images/p13-1.png',
+        'images/p13-2.png',
+        'images/p13-3.png',
+        'images/p13-4.png'
+      ]
+      var loadPro = $.loadPic(loadImg);
+ --*/
+
+
++(function($) {
+  'use strict';
+  function reloadPic(arr) {
+    this.picGround = arr;
+    this.count = arr.length;
+    this.start = 0;
+    this.state = 'load';    
+    this.init();
+  }
+
+  //加载图片
+  reloadPic.prototype.loadPic = function  (url) {
+    var $this = this;
+    var img = $('<img />');
+    img.attr('src',url);
+
+    if (img[0].complete) {
+      $this.count--;
+      if ($this.count == 0) {
+        $this.state = 'complete';
+        $(document).trigger('imgRead');
+        $this.complete();
+      }
+      return 
+    }
+    
+    img.load(function  () {
+      $this.count--;
+      if ($this.count == 0) {
+        $this.state = 'complete';
+        $(document).trigger('imgRead');
+        $this.complete();
+      }
+    });
+  }
+  reloadPic.prototype.complete = function  () {    
+   $("#loading-page").fadeOut();
+  }
+
+  reloadPic.prototype.init = function  () {
+    $('.tip-hand').hide();
+    for (var i = 0;  i<this.picGround.length ; i++) {
+      this.loadPic(this.picGround[i]);
+    }
+  }
+
+
+  $.loadPic = function  (arr) {
+    return new reloadPic(arr);
+  }
+  //document.trigger('openclick');
+})(jQuery);

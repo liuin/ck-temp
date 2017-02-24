@@ -1,0 +1,9 @@
+function drawRect () {
+  ca.fillStyle = "#eeeeef";
+  ca.fillRect(0,0,400,300);
+  ca.fillStyle = "red";
+  ca.strokeStyle = "blue";
+  ca.lineWidth=1;
+  ca.fillRect(50,50,100,100);
+  ca.strokeRect(50,50,100,100);
+}

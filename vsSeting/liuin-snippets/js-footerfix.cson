@@ -1,0 +1,27 @@
+$(window).load(function () {
+  //底部固定
+  function resetbt() {
+    var getwd = $(window).height();
+    var hd = $('.footer').offset().top + $('.footer').height() - getwd;
+    if (hd < 0) {
+      var style = {
+        'padding-top': -hd,
+        'width': '100%',
+        'bottom': '0'
+      }
+    } else {
+      var style = {
+        'position': 'static',
+        'width': '100%',
+        'bottom': '0'
+      }
+      
+    }
+    $('.footer').css(style);
+  }
+  resetbt();
+  $(document).on('footerReset', function () {
+    resetbt();
+  })
+  
+})

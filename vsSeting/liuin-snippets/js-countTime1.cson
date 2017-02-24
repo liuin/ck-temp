@@ -1,0 +1,105 @@
+/*-- 
+  anchor:cuki13
+  countTime = "startTime endTime"
+  bydtime:
+  var startTime = new Date("<?php date_default_timezone_set('Asia/Shanghai'); echo date('Y/m/d H:i:s'); ?>").getTime();
+  var endTime = new Date("<?=str_replace('-', '/', $btime)?>").getTime();
+
+  exmaple:
+  <div class="counttime" countTime="2015/05/14 14:40:53,2015/05/08 11:00:00">
+    <span countDay ></span>
+    <span countHour ></span>
+    <span countMin ></span>
+    <span countSec ></span>
+  </div>
+
+  use:
+ --*/
+
+;(function() {
+  'use strict';
+
+  var selectString = '[countTime]';
+
+  function CountTime (startTime,endTime,obj) {
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.sbTime = Math.floor((this.endTime - this.startTime) / 1e3);
+    this.second = obj.find('[countSec]');
+    this.minite = obj.find('[countMin]');
+    this.hour = obj.find('[countHour]');
+    this.day = obj.find('[countDay]');
+    this.el = obj;
+  }
+
+    CountTime.prototype.countPro = function  () {
+      var $this = this;
+      this.el.trigger('countPro');
+      var getSbTime = this.sbTime;
+
+      this.second.html((Math.floor(getSbTime % 60).toString().length < 2)? '0'+ Math.floor(getSbTime % 60).toString() :Math.floor(getSbTime % 60));
+      this.minite.html((Math.floor(getSbTime / 60 % 60).toString().length < 2)? '0'+ Math.floor(getSbTime / 60 % 60).toString() : Math.floor(getSbTime / 60 % 60));
+      this.hour.html((Math.floor(getSbTime / 3600 % 24).toString().length < 2)? '0' + Math.floor(getSbTime / 3600 % 24).toString() :Math.floor(getSbTime / 3600 % 24));
+      this.day.html((Math.floor(getSbTime / 3600 / 24).toString().length < 2)? '0' + Math.floor(getSbTime / 3600 / 24).toString() : Math.floor(getSbTime / 3600 / 24));
+
+
+
+      if (this.sbTime <= 0) {
+        this.el.trigger('countEnd');
+        window.location.reload();
+        return;
+      }
+
+        //this.el.trigger('countEnd');
+
+        this.sbTime--;
+
+        
+
+
+
+        setTimeout(
+          function(){
+            $this.countPro();
+        }, 1e3)
+
+
+    }
+
+    CountTime.prototype.end = function  () {
+      this.el.trigger('countEnd');
+      this.second.html('00');
+      this.minite.html('00');
+      this.hour.html('00');
+      this.day.html('00');
+
+     
+      window.location.reload();
+    }
+
+    CountTime.prototype.init = function  () {
+      if (this.sbTime < 0) {
+       this.second.html('00');
+          this.minite.html('00');
+          this.hour.html('00');
+          this.day.html('00');        
+      }else {
+        var $this = this;
+        $this.countPro();
+
+      }
+    }
+
+  $(selectString).each(function () {
+    var attrpro = $(this).attr('countTime').split(',');
+    for (var i = 0;  i<attrpro.length ; i++) {
+      if (attrpro[i] == 'now') {
+        attrpro[i] = new Date().getTime();
+      }else {
+        attrpro[i] = new Date(attrpro[i]).getTime();
+      }
+    }
+    var timmer = new CountTime(attrpro[0],attrpro[1],$(this));
+    timmer.init();
+  })
+})(jQuery);

@@ -1,0 +1,16 @@
+<style type="text/css">
+  /*-- list1 --*/
+  .list1 {line-height: 25px;}
+  .list1 li{position:relative; padding-left:48px; margin-bottom:5px;}
+  .list1 .list1-count {position:absolute; background:#000; width:25px; height:25px; margin-bottom:15px; text-align:center;left: 0; top:1px; color: #fff;}
+</style>
+
+<ul class="list1">
+  <li><span class="list1-count">1</span>需要到选定的合作商家交定金及提车才能享受活动的各种福利；</li>
+  <li><span class="list1-count">2</span>团购价格以团购当天协定的价格为准；</li>
+  <li><span class="list1-count">3</span>提车时间以客户选择提车商家的提车安排时间为准；</li>
+  <li><span class="list1-count">4</span>需要通过线上参团，才可以享受合作商家线下的其他购车福利；</li>
+  <li><span class="list1-count">5</span>报名后1-2个工作日没接到商家安排团购电话，请告知在线客服；</li>
+  <li><span class="list1-count">6</span>商家确认购车后，礼品会在活动结束后10个工作日内邮递；</li>
+  <li><span class="list1-count">7</span>其他不了解的情况，请咨询在线客服，我们将竭诚为您服务。</li>
+</ul><!-- /list1 -->

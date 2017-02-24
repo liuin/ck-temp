@@ -123,15 +123,17 @@ function activate(context) {
     var results = {};
     var arr = [];
     var count = 0;
+
     files.forEach(function(filename) {
 
       let file1 = fs.readFile(path + filename, function(data) {
-        // if (filename.lastIndexOf('.') > -1) {
-        // filenameSub = filename.substr(0, filename.lastIndexOf('.'));          
-        // }else{
-        //   filenameSub = filename;
-        // }
-        let filenameSub = filename;
+        let filenameSub = '';
+        if (filename.lastIndexOf('.') > -1) {
+          filenameSub = filename.substr(0, filename.lastIndexOf('.'));
+        } else {
+          filenameSub = filename;
+        }
+
 
         let item = new vscode.CompletionItem(filenameSub, 0);
 
@@ -187,8 +189,6 @@ function activate(context) {
       return;
     }
 
-
-
     vscode.window.showInputBox({
       prompt: "输入你的文件名"
     }).then((name) => {
@@ -198,6 +198,35 @@ function activate(context) {
     })
   })
 
+
+  //生成json
+  // var pathsnp = 'E:/xampp/htdocs/liuin-clip/snippets/';
+  // fs.readdir(pathsnp, function(err, files) {
+  //   if (err) {
+  //     console.log(err);
+  //     return;
+  //   }
+
+  //   var results = {};
+  //   var arr = [];
+  //   var count = 0;
+  //   files.forEach(function(filename) {
+  //     vscode.workspace.openTextDocument(pathsnp + filename).then(function(data) {
+  //       var data = data.getText();
+  //       var getConten = data.match(/[^\'body\'\:  \"\"\"\n](.|\n)*[^\"\"\"]/);
+  //       var getConten = data.match(/body(.|\n|\r)*[^\"\"\"]/);
+  //       getConten = getConten[0].replace(/^body': """/, '');
+
+  //       getConten = getConten.replace(/(^\s*)|(^\'*)|(\s*$)|(\'*$)|(\n*$)|(\r*$)/g, "");
+  //       getConten = getConten.replace(/(\"\"\"*$)/g, "");
+  //       getConten = getConten.replace(/(\s+$)/g, "");
+
+  //       fs.writeFile(pathsnp + '/pop/' + filename, getConten, function(data) {
+  //         return vscode.window.showInformationMessage(filename);
+  //       })
+  //     })
+  //   })
+  // })
 
   //删除文件
   var FileDele = vscode.commands.registerCommand('extension.SnippetFileDelet', function() {

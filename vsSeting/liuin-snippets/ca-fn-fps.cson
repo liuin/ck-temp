@@ -1,0 +1,5 @@
+function calculateFps(now) {
+   var fps = 1000 / (now - lastTime);
+   lastTime = now;
+   return fps; 
+}

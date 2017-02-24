@@ -1,0 +1,43 @@
+//新闻翻页滚动
+if ($('#newslist').length > 0) {
+  var islood = false;
+  var isEnd = false;
+  function scollIn(obj, getlong) {
+    var getheight = $('body').height() - $(window).scrollTop() - $(window).height();
+   // console.log(getheight);
+
+    if (getheight < 200 && islood == false && isEnd == false) { 
+      islood = true ;
+      $('#loadicon').removeClass('none');
+      $.ajax({
+          type: "GET",
+          url: "ajax/newlist.php",
+          //data: getdata,
+          dataType: 'html',
+          success: function(data){
+            $('#loadicon').addClass('none');
+            var getData = $(data);
+            getData.hide().appendTo(obj);
+            getData.fadeIn();
+            if ($(data).find('#endpage').length > 0) {
+              isEnd = true;
+            }
+            islood = false;
+          },
+          error:function  () {
+            alert('很抱歉,加载错误');
+            $('#loadicon').addClass('none');
+          },
+          beforeSend:function  () {
+              //alert('1212');
+          }
+      });
+    }
+  }
+
+  $(window).scroll(function(){
+    //var getlong = $('#newslist li').last().offset().top;
+    scollIn($('#newslist'));
+  })
+  scollIn($('#newslist'));
+}
