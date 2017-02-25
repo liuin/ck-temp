@@ -5,6 +5,7 @@ import * as vscode from 'vscode';
 
 import path = require('path');
 import fs = require('fs');
+// import process = require('process');
 import jsbeautify = require('js-beautify');
 import mkdirp = require('mkdirp');
 
@@ -21,7 +22,7 @@ export function format(document: vscode.TextDocument, range: vscode.Range) {
     var content = document.getText(range);
 
     var formatted = beatify(content, document.languageId);
-  
+
 
 
     if (formatted) {
@@ -36,7 +37,9 @@ function getRootPath() {
 
 function beatify(documentContent: String, languageId) {
 
-    var global = path.join(__dirname, 'formatter.json');
+    // var global = path.join(__dirname, 'formatter.json');
+    var global = process.env.APPDATA + "\\Code\\User\\formatter.json";
+
     var local = path.join(getRootPath(), '.vscode', 'formatter.json');
 
     var beatiFunc = null;
@@ -113,7 +116,7 @@ export function activate(context: vscode.ExtensionContext) {
     }));
 
 
-    context.subscriptions.push(vscode.commands.registerCommand('Lonefy.formatterCreateLocalConfig', () => {        
+    context.subscriptions.push(vscode.commands.registerCommand('Lonefy.formatterCreateLocalConfig', () => {
         formatter.generateLocalConfig();
     }));
 
@@ -121,7 +124,7 @@ export function activate(context: vscode.ExtensionContext) {
     //     console.log('fdsfsf');
     //     formatter.onSave(e.document)
     // }));
-    context.subscriptions.push(vscode.workspace.onDidSaveTextDocument(e =>{        
+    context.subscriptions.push(vscode.workspace.onDidSaveTextDocument(e => {
         formatter.onSave(e);
     }))
 
@@ -146,13 +149,15 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 class Formatter {
-    
+
 
     public beautify() {
         // Create as needed
         let window = vscode.window;
         let range;
-        var global = path.join(__dirname, 'formatter.json');
+        // var global = path.join(__dirname, 'formatter.json');
+        var global = process.env.APPDATA + "\\Code\\User\\formatter.json";
+ 
         // Get the current text editor
         let activeEditor = window.activeTextEditor;
         if (!activeEditor) {
@@ -167,6 +172,7 @@ class Formatter {
             range = new vscode.Range(start, end);
         }
 
+
         var result: vscode.TextEdit[] = [];
 
         var content = document.getText(range);
@@ -177,7 +183,7 @@ class Formatter {
 
         var cssdata = require(global)[document.languageId];
 
-        
+
         if (document.languageId == 'css' && cssdata.oneline == true) {
             formatted = formatted.replace(/[\n|\r]/g, "");
             formatted = formatted.replace(/(\s{2,})/g, "");
@@ -213,7 +219,7 @@ class Formatter {
     }
 
     public generateLocalConfig() {
-        
+
         var local = path.join(getRootPath(), '.vscode', 'formatter.json');
 
         var content = fs.readFileSync(path.join(__dirname, 'formatter.json')).toString('utf8');
@@ -261,7 +267,8 @@ class Formatter {
     public onSave(document) {
 
         var docType: Array<string> = ['css', 'scss', 'javascript', 'html', 'json']
-        var global = path.join(__dirname, 'formatter.json');
+        // var global = path.join(__dirname, 'formatter.json');
+        var global = process.env.APPDATA + "\\Code\\User\\formatter.json";
         var local = path.join(getRootPath(), '.vscode', 'formatter.json');
         var onSave;
 
@@ -306,9 +313,9 @@ class Formatter {
             formatted = formatted.replace(/(\s{2,})/g, "");
             formatted = formatted.replace(/}/g, "}\n");
             formatted = formatted.replace(/}\n(\/\*)/g, "}\n\n$1");
-            formatted = formatted.replace(/(\*\/)/g, "$1\n"); 
+            formatted = formatted.replace(/(\*\/)/g, "$1\n");
         }
-        
+
         if (formatted) {
             return activeEditor.edit(function (editor) {
 

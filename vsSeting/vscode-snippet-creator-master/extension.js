@@ -75,7 +75,6 @@ function stripJSONComments(str, opts) {
   return ret + (insideComment ? strip(str.substr(offset)) : str.substr(offset));
 };
 
-console.log('fdff');
 
 function activate(context) {
 
