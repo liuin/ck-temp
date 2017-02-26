@@ -5,4 +5,3 @@ _test
 .vscode-test
 /typings/modules/*
 /typings/index.d.ts
-/*.vsix
