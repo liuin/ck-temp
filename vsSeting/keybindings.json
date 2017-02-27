@@ -7,11 +7,12 @@
     "command": "expandLineSelection",
     "when": "editorTextFocus"
   },
-  {
-    "key": "ctrl+d",
-    "command": "editor.action.addSelectionToNextFindMatch",
-    "when": "editorFocus"
-  },
+  // {
+  //   "key": "ctrl+d",
+  //   "command": "editor.action.addSelectionToNextFindMatch",
+  //   "when": "editorFocus"
+  // },
+
   {
     "key": "alt+shift+b",
     "command": "HookyQR.beautify",
@@ -88,6 +89,36 @@
     "key": "ctrl+alt+]",
     "command": "editor.unfold",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.files.openFileInNewWindow",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "f9",
+    "command": "bookmarks.toggle",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "f5",
+    "command": "bookmarks.jumpToNext",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "f4",
+    "command": "bookmarks.jumpToPrevious",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "f6",
+    "command": "bookmarks.listFromAllFiles",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "editor.action.selectAllMatches",
+    "when": "editorFocus"
   }
 
 ]
