@@ -56,7 +56,7 @@
   },
   {
     "key": "ctrl+a",
-    "command": "workbench.action.files.newFile",
+    "command": "explorer.newFile",
     "when": "!editorFocus"
   }, {
     "key": "shift+a",
@@ -92,7 +92,7 @@
   },
   {
     "key": "ctrl+l",
-    "command": "workbench.action.files.openFileInNewWindow",
+    "command": "extension.openCssImgList",
     "when": "editorTextFocus"
   },
   {

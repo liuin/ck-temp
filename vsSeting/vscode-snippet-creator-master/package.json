@@ -17,9 +17,7 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.createSnippet",
-        "onCommand:extension.createSnippetFile",
-        "onCommand:extension.SnippetFileDelet"
+        "*"   
     ],
     "main": "./extension",
     "contributes": {
@@ -34,6 +32,14 @@
             {
                 "command": "extension.SnippetFileDelet",
                 "title": "Create SnippetFileDelet"
+            },
+            {
+                "command": "extension.openCssImgList",
+                "title": "OpenCssImgList"
+            },
+            {
+                "command": "extension.showCssImgList",
+                "title": "ShowCssImgList"
             }
         ],
         "keybindings": [{
@@ -49,6 +55,16 @@
             {
                 "command": "extension.SnippetFileDelet",
                 "key": "f9",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "extension.openCssImgList",
+                "key": "ctrl+l",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "extension.showCssImgList",
+                "key": "ctrl+shift+l",
                 "when": "editorTextFocus"
             }
         ]

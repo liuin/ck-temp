@@ -3,6 +3,8 @@ var process = require('process');
 var fs = require('fs');
 var util = require('util');
 var os = require('os');
+var path = require('path');
+var exec = require('child_process').exec;
 
 
 var singleComment = 1;
@@ -143,17 +145,17 @@ function activate(context) {
           count++;
           if (count >= files.length) {
             var provlist = new vscode.CompletionList(arr);
-            vscode.languages.registerCompletionItemProvider('css', {
-              provideCompletionItems(docment, postion, token) {
-                return provlist;
-              }
-            });
+            // vscode.languages.registerCompletionItemProvider('*', {
+            //   provideCompletionItems(docment, postion, token) {
+            //     return provlist;
+            //   }
+            // });
             vscode.languages.registerCompletionItemProvider('html', {
               provideCompletionItems(docment, postion, token) {
                 return provlist;
               }
             });
-            vscode.languages.registerCompletionItemProvider('phtml', {
+            vscode.languages.registerCompletionItemProvider('css', {
               provideCompletionItems(docment, postion, token) {
                 return provlist;
               }
@@ -240,7 +242,7 @@ function activate(context) {
           placeHolder: "选择要删除的文件"
         }
       ).then((filename) => {
-        console.log(arguments);
+
         vscode.window.showInformationMessage('确定要删除吗?', '确定').then(function(data) {
           if (data == "确定") {
             fs.unlink(path + filename, function(err) {
@@ -255,6 +257,200 @@ function activate(context) {
 
       })
     })
+  })
+
+
+
+
+
+
+  // vscode.languages.registerDocumentHighlightProvider('css', {
+  //   provideDocumentHighlights(document, position, token) {
+
+  //     var lineText = document.lineAt(position.line);
+
+  //     // if (!lineText.text.indexOf('url')) {
+  //     //   return
+  //     // }
+
+  //     console.log(lineText.text);
+  //     let path = document.filename;
+
+  //     return path;
+  //   }
+  // });
+
+  //css图片显示
+  // var cssListImg = [];
+  // cssListImg.unshift(new vscode.CompletionItem('cssling'))
+  // cssListImg.unshift(new vscode.CompletionItem('cssling2'))
+
+  // vscode.languages.registerCompletionItemProvider('css', {
+  //   provideCompletionItems(document, range, text, token) {
+  //     // console.log(document.lineAt(position.line),position);
+  //     // var hover1 = new Hover('Hello');
+  //     // console.log(vscode.ProviderResult);
+
+  //     return Promise.resolve(cssListImg)
+  //     // return new vscode.Promise(resolve => {
+  //     //   resolve(new vscode.Hover('Hello World'));
+  //     // });
+  //   }
+  // },'/');
+
+  // vscode.languages.registerHoverProvider('css', {
+  //   provideHover(document, position, token) {
+  //     return new vscode.Hover('I am a hover!');
+  //   }
+  // });
+
+
+  //读取图片列表
+
+  function openFolder(path) {
+    let platform = process.platform;
+    switch (platform) {
+      case 'win32':
+        cmd = `start ${path}"`;
+        break;
+      case 'darwin':
+        cmd = `open "${path}"`;
+        break;
+      default:
+        cmd = `xdg-open "${path}"`;
+        break;
+    }
+    exec(cmd, function(err, stdout, stderr) {
+      if (err) {
+        vscode.window.showErrorMessage('error occured!!');
+      }
+    });
+  }
+
+
+  var getpath = "";
+
+  //打开css文件夹
+  var openCssImg = vscode.commands.registerCommand('extension.openCssImgList', function() {
+    // vscode.commands.executeCommand('vscode.openFolder', pathCss, true);
+    let cmd;
+    let path = vscode.workspace.rootPath;
+    // fs.exists(path + '\\images', function(exis) {
+    //   if (exis == true) {
+    //     path += '\\images';
+    //     openFolder(path);
+    //   }
+    // });
+    if (getpath == "") {
+      vscode.window.showInputBox({
+        prompt: "输入你的路径",
+        value: path
+      }).then((name) => {
+        if (name == path) {
+          return
+        }
+        fs.exists(name, function(exis) {
+          if (exis == true) {
+            getpath = name;
+            openFolder(getpath);
+          } else {
+            vscode.window.showErrorMessage('没有找到路径');
+            getpath = "";
+          }
+        });
+      })
+
+    } else {
+      openFolder(getpath);
+    }
+
+    // let position = new vscode.Position();
+
+
+
+    // fs.exists(path + '\\images', function(exis) {
+    //   if (exis == true) {
+    //     path += '\\images';
+    //     openFolder(path);
+    //   }
+    // });
+
+    // cssDoc.lineAt(cssScoucePosition.line);
+
+    // var postion1 = new vscode.Position(10, 20);
+
+    // var textEdit = new vscode.TextEdit();
+
+    // var doc = document.lineAt(position.line);
+
+
+
+    // let platform = process.platform;
+    // switch (platform) {
+    //   case 'win32':
+    //     cmd = `start "" "${path}"`;
+    //     break;
+    //   case 'darwin':
+    //     cmd = `open "${path}"`;
+    //     break;
+    //   default:
+    //     cmd = `xdg-open "${path}"`;
+    //     break;
+    // }
+    // exec(cmd, function(err, stdout, stderr) {
+    //   if (err) {
+    //     vscode.window.showErrorMessage('error occured!!');
+    //   }
+    // });
+
+
+    // vscode.languages.registerDocumentHighlightProvider('css', {
+    //   provideDocumentHighlights(document, position, token){
+    //     console.log(document.lineAt(position.line),position);
+    //   }
+    // });
+
+    // var editor = vscode.window.activeTextEditor;
+    // let document = editor.document;
+    // // var selection = editor.selection;
+    // var selectedText = document.getText(document.getWordRangeAtPosition(position));
+    // var lineText = document.lineAt(position);
+    // console.log(selectedText, lineText);
+
+    // console.log(vscode.window.activeTextEditor.selection.newText);
+    // let line = vscode.TextDocument.lineAt(position);
+
+
+
+    // let platform = process.platform;
+    // let word = document.getText(document.getWordRangeAtPosition(position))
+
+    // switch (platform) {
+    //   case 'win32':
+    //     cmd = `start "" "${path}"`;
+    //     break;
+    //   case 'darwin':
+    //     cmd = `open "${path}"`;
+    //     break;
+    //   default:
+    //     cmd = `xdg-open "${path}"`;
+    //     break;
+    // }
+
+    // console.log(cmd);
+    // exec(cmd, function(err, stdout, stderr) {
+    //   if (err) {
+    //     vscode.window.showErrorMessage('error occured!!');
+    //   }
+    // });
+
+
+
+  })
+
+  //显示css图片目录
+  var showCssImg = vscode.commands.registerCommand('extension.showCssImgList', function() {
+    vscode.window.showQuickPick(['1', '2', '3'])
   })
 
 
@@ -380,6 +576,8 @@ function activate(context) {
   context.subscriptions.push(disposable);
   context.subscriptions.push(disposableFile);
   context.subscriptions.push(FileDele);
+  context.subscriptions.push(openCssImg);
+  context.subscriptions.push(showCssImg);
 }
 exports.activate = activate;
 

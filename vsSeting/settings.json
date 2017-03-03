@@ -1,8 +1,7 @@
 // 将设置放入此文件中以覆盖默认设置
 {
-  "editor.wrappingColumn": 0,
   "editor.tabSize": 2,
-  "editor.wordWrap": false,
+  "editor.wordWrap": true,
   "editor.snippetSuggestions": "top",
   "[php]": {
 
@@ -12,7 +11,7 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/.DS_Store": true,
-    "**/*.js": { "when": "$(basename).ts" },
+    // "**/*.js": { "when": "$(basename).ts" },
     "**/*.css": { "when": "$(basename).less" }
   },
   "files.associations": {
