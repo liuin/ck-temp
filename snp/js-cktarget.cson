@@ -1,0 +1,111 @@
+/*-- 
+  anchor:cuki13
+  use:data-cktarget
+ --*/
+
+;(function($) {
+
+  'use strict';
+  var selectString = '[data-cktarget]';  
+
+  function Cktarget(obj) {
+    this.obj = obj;
+    this.addClass = 'active';
+    this.index = obj.index();
+    this.targetObj = $(obj.data('cktarget'));
+    this.ajaxPro = false;
+    this.loadObj = $('#load-tag');
+    this.ajaxUrl = obj.data('ckurl');
+    this.curPage = 0;
+    this.totlePage = obj.data('totlepage');
+    this.end = false;
+
+    var $this = this;
+
+    //点击事件
+    this.obj.on('click',function  (e) {
+     if ($this.obj.hasClass($this.addClass) || $this.ajaxPro) {
+      return false;
+     }else {         
+       $this.obj.addClass($this.addClass).siblings().removeClass($this.addClass);
+       $this.curPage = 0;
+       $this.end = false;
+       $('.tag-part-more').find('a').removeClass('end');
+       if ($this.ajaxUrl != '' && (!$this.end)) {
+        
+        $this.ajaxLoad();
+       }else {
+         $this.showIn();           
+       }
+     }
+     return false;
+    })
+  }
+
+  Cktarget.prototype.ajaxLoad = function  () {     
+
+    var $this = this;
+    
+    if ($this.end) {
+     
+      return false
+    }
+    var url = $this.ajaxUrl + '?p =' + $this.curPage;
+    var arg = arguments[0];
+    
+    $this.ajaxPro = true;
+    $.ajax({
+        type: "GET",
+        url: url,
+        dataType: 'html',
+        success: function(data){
+          if ($this.curPage == 0) {
+            $this.targetObj.empty();
+          }              
+          
+          $this.targetObj.append(data);
+          
+
+          if ($this.curPage == $this.totlePage) {
+            $this.end = true;
+          }else {
+            $this.curPage++;
+          }
+          
+          $this.showIn(); 
+          $this.afterAjax();
+          $this.loadObj.fadeOut();
+
+          $this.ajaxPro = false;
+
+          
+        },
+        error:function  () {
+        },
+        beforeSend:function  () {
+            if (arg != 'moreload') {
+              $this.loadObj.show();
+            }
+        }
+    });      
+  }
+
+  Cktarget.prototype.afterAjax = function  () {
+    
+  } 
+
+  Cktarget.prototype.showIn = function  () {
+    if (this.targetObj.hasClass(this.addClass)) {
+      return false;
+    }
+    this.targetObj.addClass(this.addClass).fadeIn().siblings().removeClass(this.addClass).hide();
+  }
+
+  $(document).ready(function() {
+    $(selectString).each(function () {
+      $(this).data('cktarget',new Cktarget($(this)))          
+    })
+
+    $(selectString).eq(0).trigger('click');
+  })
+})(jQuery);

@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<javascript>
+	<aliases>
+		<alias name="$" type="wx"/>
+		<alias type="Class&lt;wx&gt;" name="wx"/>
+	</aliases>
+	<class type="wx">
+		<!--<constructors>
+			<constructor>
+				<parameters>
+					<parameter name="selector" type="Selector|SelectorString" usage="required">
+						<description>CSS Selector</description>
+					</parameter>
+				</parameters>
+				<parameters>
+					<parameter name="context" type="mui.fn" usage="optional">
+						<description>在给定上下文中查找</description>
+					</parameter>
+				</parameters>
+				<return-types>
+					<return-type type="mui.fn"/>
+				</return-types>
+				<description>返回匹配的元素集合(CSS Selector)</description>
+			</constructor>
+			<constructor>
+				<parameters>
+					<parameter name="node" type="HTMLElement" usage="required"></parameter>
+				</parameters>
+				<return-types>
+					<return-type type="mui.fn"/>
+				</return-types>
+				<description>包装当前Node为mui对象</description>
+			</constructor>
+		</constructors>-->
+		<methods>
+			<method name="config" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="configjson" type="wx_config_json" usage="required"/>
+				</parameters>
+				<description>初始化微信配置</description>
+			</method>
+			<method name="ready" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="ready" type="Function" usage="required"/>
+				</parameters>
+				<description>微信Api准备好后的回调</description>
+			</method>
+			<method name="error" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="error" type="Function(wx_error_function_args)" usage="required"/>
+				</parameters>
+				<description>微信Api返回错误的回调</description>
+			</method>
+			<method name="checkJsApi" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="jsApiListjson" type="wx_checkJsApi_json" usage=""/>
+				</parameters>
+				<description>判断当前客户端版本是否支持指定JS接口</description>
+			</method>
+			<method name="onMenuShareTimeline" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="onMenuShareTimeline" type="wx_onMenuShareTimeline_json" usage=""/>
+				</parameters>
+				<description>获取“分享到朋友圈”按钮点击状态及自定义分享内容接口</description>
+			</method>
+			<method name="onMenuShareAppMessage" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="onMenuShareAppMessage" type="wx_onMenuShareAppMessage_json" usage=""/>
+				</parameters>
+				<description>获取“分享给朋友”按钮点击状态及自定义分享内容接口</description>
+			</method>
+			<method name="onMenuShareQQ" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="onMenuShareQQ" type="wx_onMenuShareQQ_json" usage=""/>
+				</parameters>
+				<description>获取“分享到QQ”按钮点击状态及自定义分享内容接口</description>
+			</method>
+			<method name="onMenuShareWeibo" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="onMenuShareWeibo" type="wx_onMenuShareWeibo_json" usage=""/>
+				</parameters>
+				<description>获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口</description>
+			</method>
+			<method name="chooseImage" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="chooseImage" type="wx_chooseImage_json" usage=""/>
+				</parameters>
+				<description>拍照或从手机相册中选图接口</description>
+			</method>
+			<method name="previewImage" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="previewImage" type="wx_previewImage_json" usage=""/>
+				</parameters>
+				<description>预览图片接口</description>
+			</method>
+			<method name="uploadImage" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="uploadImage" type="wx_uploadImage_json" usage=""/>
+				</parameters>
+				<description>上传图片接口</description>
+			</method>
+			<method name="downloadImage" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="downloadImage" type="wx_downloadImage_json" usage=""/>
+				</parameters>
+				<description>下载图片接口</description>
+			</method>
+			<method name="startRecord" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					
+				</parameters>
+				<description>开始录音接口</description>
+			</method>
+			<method name="stopRecord" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="stopRecord" type="wx_stopRecord_json" usage=""/>
+				</parameters>
+				<description>停止录音接口</description>
+			</method>
+			<method name="onVoiceRecordEnd" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="onVoiceRecordEnd" type="wx_onVoiceRecordEnd_json" usage=""/>
+				</parameters>
+				<description>监听录音自动停止接口</description>
+			</method>
+			<method name="playVoice" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="playVoice" type="wx_playVoice_json" usage=""/>
+				</parameters>
+				<description>播放语音接口</description>
+			</method>
+			<method name="pauseVoice" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="pauseVoice" type="wx_pauseVoice_json" usage=""/>
+				</parameters>
+				<description>暂停播放接口</description>
+			</method>
+			<method name="stopVoice" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="stopVoice" type="wx_stopVoice_json" usage=""/>
+				</parameters>
+				<description>停止播放接口</description>
+			</method>
+			<method name="onVoicePlayEnd" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="onVoicePlayEnd" type="wx_onVoicePlayEndArg_json" usage=""/>
+				</parameters>
+				<description>监听语音播放完毕接口</description>
+			</method>
+			<method name="uploadVoice" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="uploadVoice" type="wx_uploadVoice_json" usage=""/>
+				</parameters>
+				<description>上传语音接口</description>
+			</method>
+			<method name="downloadVoice" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="downloadVoice" type="wx_downloadVoice_json" usage=""/>
+				</parameters>
+				<description>下载语音接口</description>
+			</method>
+			<method name="translateVoice" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="translateVoice" type="wx_translateVoice_json" usage=""/>
+				</parameters>
+				<description>识别音频并返回识别结果接口</description>
+			</method>
+			<method name="getNetworkType" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="getNetworkType" type="wx_getNetworkType_json" usage=""/>
+				</parameters>
+				<description>获取网络状态接口</description>
+			</method>
+			<method name="openLocation" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="openLocation" type="wx_openLocation_json" usage=""/>
+				</parameters>
+				<description>使用微信内置地图查看位置接口</description>
+			</method>
+			<method name="getLocation" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="getLocation" type="wx_getLocation_json" usage=""/>
+				</parameters>
+				<description>获取地理位置接口</description>
+			</method>
+			<method name="hideOptionMenu" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+				</parameters>
+				<description>隐藏右上角菜单接口</description>
+			</method>
+			<method name="showOptionMenu" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="showOptionMenu" type="wx_showOptionMenu_json" usage=""/>
+				</parameters>
+				<description>显示右上角菜单接口</description>
+			</method>
+			<method name="closeWindow" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+				</parameters>
+				<description>关闭当前网页窗口接口</description>
+			</method>
+			<method name="hideMenuItems" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="hideMenuItems" type="wx_hideMenuItems_json" usage=""/>
+				</parameters>
+				<description>批量隐藏功能按钮接口</description>
+			</method>
+			<method name="showMenuItems" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="showMenuItems" type="wx_showMenuItems_json" usage=""/>
+				</parameters>
+				<description>批量显示功能按钮接口</description>
+			</method>
+			<method name="hideAllNonBaseMenuItem" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+				</parameters>
+				<description>隐藏所有非基础按钮接口</description>
+			</method>
+			<method name="showAllNonBaseMenuItem" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+				</parameters>
+				<description>显示所有功能按钮接口</description>
+			</method>
+			<method name="scanQRCode" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="scanQRCode" type="wx_scanQRCode_json" usage=""/>
+				</parameters>
+				<description>调起微信扫一扫接口</description>
+			</method>
+			<method name="openProductSpecificView" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="openProductSpecificView" type="wx_openProductSpecificView_json" usage=""/>
+				</parameters>
+				<description>跳转微信商品页接口</description>
+			</method>
+			<method name="chooseCard" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="chooseCard" type="wx_chooseCard_json" usage=""/>
+				</parameters>
+				<description>调起适用于门店的卡券列表并获取用户选择列表</description>
+			</method>
+			<method name="addCard" scope="static">
+				<return-types>
+				</return-types>
+				<parameters>
+					<parameter name="addCard" type="wx_addCard_json" usage=""/>
+				</parameters>
+				<description>批量添加卡券接口</description>
+			</method>
+			<method name="openCard" scope="static">
+				<return-types>
+					
+				</return-types>
+				<parameters>
+					<parameter name="openCard" type="wx_openCard_json" usage=""/>
+				</parameters>
+				<description>查看微信卡包中的卡券接口</description>
+			</method>
+			<method name="chooseWXPay" scope="static">
+				<return-types>
+					
+				</return-types>
+				<parameters>
+					<parameter name="chooseWXPay" type="wx_chooseWXPay_json" usage=""/>
+				</parameters>
+				<description>发起一个微信支付请求</description>
+			</method>
+		</methods>
+		<!--<properties>
+			<property type="mui.os" name="os" scope="static"></property>
+			<property type="mui.fn" name="fn" scope="static">
+				<description>mui对象</description>
+			</property>
+		</properties>-->
+	</class>
+	<class type="wx_config_json"  visibility="internal">
+		<properties>
+			<property type="Boolean" name="debug" scope="instance">
+				<description>开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</description>
+			</property>
+			<property type="String" name="appId" scope="instance">
+				<description>必填，公众号的唯一标识</description>
+			</property>
+			<property type="Number" name="timestamp" scope="instance">
+				<description>必填，生成签名的时间戳</description>
+			</property>
+			<property type="String" name="nonceStr" scope="instance">
+				<description>必填，生成签名的随机串</description>
+			</property>
+			<property type="String" name="signature" scope="instance">
+				<description>必填，签名</description>
+			</property>
+			<property type="Array" name="jsApiList" scope="instance">
+				<description>必填，需要使用的JS接口列表</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_checkJsApi_json"  visibility="internal">
+		<properties>
+			<property type="Array" name="jsApiList" scope="instance">
+				<description>需要检测的JS接口列表</description>
+			</property>
+			<property type="Function(Object)" name="success" scope="instance">
+				<description>必填，公众号的唯一标识</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_onMenuShareTimeline_json"  visibility="internal">
+		<properties>
+			<property type="String" name="title" scope="instance">
+				<description>分享标题</description>
+			</property>
+			<property type="String" name="link" scope="instance">
+				<description>分享链接</description>
+			</property>
+			<property type="String" name="imgUrl" scope="instance">
+				<description>分享图标</description>
+			</property>
+			<property type="Function" name="success" scope="instance">
+				<description>用户确认分享后执行的回调函数</description>
+			</property>
+			<property type="Function" name="cancel" scope="instance">
+				<description>用户取消分享后执行的回调函数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_onMenuShareAppMessage_json"  visibility="internal">
+		<properties>
+			<property type="String" name="title" scope="instance">
+				<description>分享标题</description>
+			</property>
+			<property type="String" name="desc" scope="instance">
+				<description>分享描述</description>
+			</property>
+			<property type="String" name="link" scope="instance">
+				<description>分享链接</description>
+			</property>
+			<property type="String" name="imgUrl" scope="instance">
+				<description>分享图标</description>
+			</property>
+			<property type="String" name="type" scope="instance">
+				<description>分享类型,music、video或link，不填默认为link</description>
+			</property>
+			<property type="String" name="dataUrl" scope="instance">
+				<description>如果type是music或video，则要提供数据链接，默认为空</description>
+			</property>
+			<property type="Function" name="success" scope="instance">
+				<description>用户确认分享后执行的回调函数</description>
+			</property>
+			<property type="Function" name="cancel" scope="instance">
+				<description>用户取消分享后执行的回调函数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_onMenuShareQQ_json"  visibility="internal">
+		<properties>
+			<property type="String" name="title" scope="instance">
+				<description>分享标题</description>
+			</property>
+			<property type="String" name="desc" scope="instance">
+				<description>分享描述</description>
+			</property>
+			<property type="String" name="link" scope="instance">
+				<description>分享链接</description>
+			</property>
+			<property type="String" name="imgUrl" scope="instance">
+				<description>分享图标</description>
+			</property>
+			<property type="Function" name="success" scope="instance">
+				<description>用户确认分享后执行的回调函数</description>
+			</property>
+			<property type="Function" name="cancel" scope="instance">
+				<description>用户取消分享后执行的回调函数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_onMenuShareWeibo_json"  visibility="internal">
+		<properties>
+			<property type="String" name="title" scope="instance">
+				<description>分享标题</description>
+			</property>
+			<property type="String" name="desc" scope="instance">
+				<description>分享描述</description>
+			</property>
+			<property type="String" name="link" scope="instance">
+				<description>分享链接</description>
+			</property>
+			<property type="String" name="imgUrl" scope="instance">
+				<description>分享图标</description>
+			</property>
+			<property type="Function" name="success" scope="instance">
+				<description>用户确认分享后执行的回调函数</description>
+			</property>
+			<property type="Function" name="cancel" scope="instance">
+				<description>用户取消分享后执行的回调函数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_chooseImage_json"  visibility="internal">
+		<properties>
+			<property type="Function(chooseImage_function_args)" name="success" scope="instance">
+				<description>返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_previewImage_json"  visibility="internal">
+		<properties>
+			<property type="String" name="current" scope="instance">
+				<description>当前显示的图片链接</description>
+			</property>
+			<property type="Array" name="urls" scope="instance">
+				<description>需要预览的图片链接列表</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_uploadImage_json"  visibility="internal">
+		<properties>
+			<property type="String" name="localId" scope="instance">
+				<description>需要上传的图片的本地ID，由chooseImage接口获得</description>
+			</property>
+			<property type="Number" name="isShowProgressTips" scope="instance">
+				<description>默认为1，显示进度提示</description>
+			</property>
+			<property type="Function(uploadImage_function_args)" name="success" scope="instance">
+				<description></description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_downloadImage_json" visibility="internal">
+		<properties>
+			<property type="String" name="serverId" scope="instance">
+				<description>需要下载的图片的服务器端ID，由uploadImage接口获得</description>
+			</property>
+			<property type="Number" name="isShowProgressTips" scope="instance">
+				<description>默认为1，显示进度提示</description>
+			</property>
+			<property type="Function" name="success" scope="instance">
+				<description></description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_stopRecord_json"  visibility="internal">
+		<properties>
+			<property type="Function(stopRecord_function_args)" name="success" scope="instance">
+				<description></description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_onVoiceRecordEnd_json"  visibility="internal">
+		<properties>
+			<property type="Function(onVoiceRecordEnd_function_args)" name="complete" scope="instance">
+				<description>录音时间超过一分钟没有停止的时候会执行 complete 回调</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_playVoice_json"  visibility="internal">
+		<properties>
+			<property type="String" name="localId" scope="instance">
+				<description>需要播放的音频的本地ID，由stopRecord接口获得</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_pauseVoice_json"  visibility="internal">
+		<properties>
+			<property type="String" name="localId" scope="instance">
+				<description>需要暂停的音频的本地ID，由stopRecord接口获得</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_stopVoice_json"  visibility="internal">
+		<properties>
+			<property type="String" name="localId" scope="instance">
+				<description>需要停止的音频的本地ID，由stopRecord接口获得</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_onVoicePlayEndArg_json" visibility="internal">
+		<properties>
+			<property type="String" name="serverId" scope="instance">
+				<description>需要下载的音频的服务器端ID，由uploadVoice接口获得</description>
+			</property>
+			<property type="Function(onVoicePlayEndArg_function_args)" name="success" scope="instance">
+				<description>adsfa</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_uploadVoice_json" visibility="internal">
+		<properties>
+			<property type="String" name="localId" scope="instance">
+				<description>需要上传的音频的本地ID，由stopRecord接口获得</description>
+			</property>
+			<property type="Number" name="isShowProgressTips" scope="instance">
+				<description>默认为1，显示进度提示</description>
+			</property>
+			<property type="Function(uploadVoice_function_args)" name="success" scope="instance">
+				<description></description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_downloadVoice_json" visibility="internal">
+		<properties>
+			<property type="String" name="serverId" scope="instance">
+				<description>需要下载的音频的服务器端ID，由uploadVoice接口获得</description>
+			</property>
+			<property type="Number" name="isShowProgressTips" scope="instance">
+				<description>默认为1，显示进度提示</description>
+			</property>
+			<property type="Function(downloadVoice_function_args)" name="success" scope="instance">
+				<description></description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_translateVoice_json" visibility="internal">
+		<properties>
+			<property type="String" name="localId" scope="instance">
+				<description>需要识别的音频的本地Id，由录音相关接口获得</description>
+			</property>
+			<property type="Number" name="isShowProgressTips" scope="instance">
+				<description>默认为1，显示进度提示</description>
+			</property>
+			<property type="Function(translateVoice_function_args)" name="success" scope="instance">
+				<description></description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_getNetworkType_json" visibility="internal">
+		<properties>
+			<property type="Function(getNetworkType_function_args)" name="success" scope="instance">
+				<description>返回网络类型2g，3g，4g，wifi</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_openLocation_json" visibility="internal">
+		<properties>
+			<property type="String" name="latitude" scope="instance">
+				<description>纬度，浮点数，范围为90 ~ -90</description>
+			</property>
+			<property type="String" name="longitude" scope="instance">
+				<description>经度，浮点数，范围为180 ~ -180。</description>
+			</property>
+			<property type="String" name="name" scope="instance">
+				<description>位置名</description>
+			</property>
+			<property type="String" name="address" scope="instance">
+				<description>地址详情说明</description>
+			</property>
+			<property type="String" name="scale" scope="instance">
+				<description>地图缩放级别,整形值,范围从1~28。默认为最大</description>
+			</property>
+			<property type="String" name="infoUrl" scope="instance">
+				<description>在查看位置界面底部显示的超链接,可点击跳转</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_getLocation_json" visibility="internal">
+		<properties>
+			<property type="Number" name="timestamp" scope="instance">
+				<description>位置签名时间戳，仅当需要兼容6.0.2版本之前时提供</description>
+			</property>
+			<property type="String" name="nonceStr" scope="instance">
+				<description>位置签名随机串，仅当需要兼容6.0.2版本之前时提供</description>
+			</property>
+			<property type="String" name="addrSign" scope="instance">
+				<description>位置签名，仅当需要兼容6.0.2版本之前时提供</description>
+			</property>
+			<property type="Function(getLocation_function_args)" name="success" scope="instance">
+				<description>返回网络类型2g，3g，4g，wifi</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_hideMenuItems_json" visibility="internal">
+		<properties>
+			<property type="Array" name="menuList" scope="instance">
+				<description>要隐藏的菜单项</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_showMenuItems_json" visibility="internal">
+		<properties>
+			<property type="Array" name="menuList" scope="instance">
+				<description>要隐藏的菜单项</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_scanQRCode_json" visibility="internal">
+		<properties>
+			<property type="String" name="desc" scope="instance">
+				<description>scanQRCode desc</description>
+			</property>
+			<property type="Number" name="needResult" scope="instance">
+				<description>默认为0，扫描结果由微信处理，1则直接返回扫描结果</description>
+			</property>
+			<property type="Array" name="scanType" scope="instance">
+				<description>可以指定扫二维码还是一维码，默认二者都有</description>
+			</property>
+			<property type="Function(wx.scanQRCode.function.args)" name="success" scope="instance">
+				<description>当needResult 为 1 时，扫码返回的结果</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_openProductSpecificView_json" visibility="internal">
+		<properties>
+			<property type="String" name="productId" scope="instance">
+				<description>商品id</description>
+			</property>
+			<property type="String" name="viewType" scope="instance">
+				<description>0.默认值，普通商品详情页1.扫一扫商品详情页2.小店商品详情页</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_chooseCard_json"  visibility="internal">
+		<properties>
+			<property type="String" name="shopId" scope="instance">
+				<description>门店Id</description>
+			</property>
+			<property type="String" name="cardType" scope="instance">
+				<description>卡券类型</description>
+			</property>
+			<property type="String" name="cardId" scope="instance">
+				<description>卡券Id</description>
+			</property>
+			<property type="Number" name="timestamp" scope="instance">
+				<description>卡券签名时间戳</description>
+			</property>
+			<property type="String" name="nonceStr" scope="instance">
+				<description>卡券签名随机串</description>
+			</property>
+			<property type="String" name="cardSign" scope="instance">
+				<description>卡券签名</description>
+			</property>
+			<property type="Function(chooseCard_function_args)" name="success" scope="instance">
+				<description>用户选中的卡券列表信息</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_addCard_json" visibility="internal">
+		<properties>
+			<property type="Array" name="cardList" scope="instance">
+				<description>需要添加的卡券列表</description>
+			</property>
+			<property type="Function(addCard_function_args)" name="success" scope="instance">
+				<description>添加的卡券列表信息</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_openCard_json" visibility="internal">
+		<properties>
+			<property type="Array" name="cardList" scope="instance">
+				<description>需要打开的卡券列表</description>
+			</property>
+		</properties>
+	</class>
+	<class type="wx_chooseWXPay_json" visibility="internal">
+		<properties>
+			<property type="Number" name="timestamp" scope="instance">
+				<description>支付签名时间戳</description>
+			</property>
+			<property type="String" name="nonceStr" scope="instance">
+				<description>支付签名随机串</description>
+			</property>
+			<property type="String" name="package" scope="instance">
+				<description>订单详情扩展字符串</description>
+			</property>
+			<property type="String" name="paySign" scope="instance">
+				<description>支付签名</description>
+			</property>
+		</properties>
+	</class>
+	<class type="chooseImage_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="localIds" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="uploadImage_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="serverId" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="stopRecord_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="localId" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="onVoiceRecordEnd_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="localId" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="onVoicePlayEndArg_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="localId" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="uploadVoice_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="serverId" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="downloadVoice_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="localId" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="translateVoice_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="translateResult" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="getNetworkType_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="networkType" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="getLocation_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="longitude" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+			<property type="String" name="latitude" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+			<property type="String" name="speed" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+			<property type="String" name="accuracy" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="scanQRCode_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="resultStr" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="chooseCard_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="cardList" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+	<class type="addCard_function_args" visibility="internal">
+		<properties>
+			<property type="String" name="cardList" scope="instance">
+				<description>接口调用成功时执行的回调函数的参数</description>
+			</property>
+		</properties>
+	</class>
+</javascript>

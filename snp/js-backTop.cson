@@ -1,0 +1,32 @@
+<style type="text/css">
+.back-top {display: none;width: 18px;line-height: 1.2;padding: 5px 0;background-color: #000;color: #fff;font-size: 12px;text-align: center;position: fixed;_position:absolute;right: 112px;_right: 92px;bottom: 100px;_bottom: "auto";cursor: pointer;opacity: 0.6;filter: Alpha(opacity=60);}
+</style>
+<script type="text/javascript">
+//<![CDATA[
+
+//返回顶部
+(function() {
+  var $backToTopTxt = "返回顶部", 
+    $backToTopEle = $('<div class="back-top"></div>').appendTo($("body"))
+    .text($backToTopTxt).attr("title", $backToTopTxt).click(function() {
+        $("html, body").animate({ scrollTop: 0 }, 300);
+    });
+
+    $backToTopFun = function() {          
+      var st = $(document).scrollTop(), winh = $(window).height();
+      if(st > 200)
+      {
+        if($backToTopEle.data('pos') == 'top'){return false;} $backToTopEle.data('pos','top').stop().css('opacity','1').fadeIn();
+      }else{
+        if($backToTopEle.data('pos') == 'scroll'){return false;}
+        $backToTopEle.data('pos','scroll').stop().fadeOut()
+      }
+    
+      //IE6下的定位
+      if (!window.XMLHttpRequest) {
+        $backToTopEle.css("top", st + winh - 166);
+      }
+    };
+  $(window).bind("scroll", $backToTopFun);
+  $(function() { $backToTopFun(); });
+})();

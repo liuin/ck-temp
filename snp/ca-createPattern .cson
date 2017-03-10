@@ -1,0 +1,1 @@
+createPattern(image,${1:'repeat|no-repeat|repeat-x|repeat-y'});

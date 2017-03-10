@@ -1,0 +1,1 @@
+arc(pos.x,pos.y,rad,sAngle,eAngle,true);

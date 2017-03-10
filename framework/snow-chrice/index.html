@@ -120,18 +120,25 @@
       function v() {
         var a;
         k.fillStyle = l, k.clearRect(0, 0, b, c), k.beginPath();
+        if (m > 50) {
+          m = 50
+        }
+        
         for (a = 0; a < m; a++) {
           k.drawImage(i[o[a][2]], o[a][0], o[a][1]);
         }
 
         k.fill();
         u();
+
+        requestAnimationFrame(snowChirice.draw);
       }
 
       function w(a) {
         b = window.innerWidth,
           c = window.innerHeight,
-          j !== undefined && (j.width = b, j.height = c, m = b * c / 6e3,
+         // j !== undefined && (j.width = b, j.height = c, m = b * c / 6e3,
+          j !== undefined && (j.width = b, j.height = c, m = 50,
             l = k.createLinearGradient(0, 0, 0, c), t())
       }
 
@@ -191,9 +198,9 @@
 
         w(null);
 
-        app.snowTimer = setInterval(function() {
-          q(snowChirice.draw)
-        }, 50);
+        
+        requestAnimationFrame(snowChirice.draw)
+       
       }
 
       function y(a) {
@@ -216,11 +223,15 @@
         j, k, l, m, n = 20,
         o = [],
         p = 0,
-        q = function() {
-          return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(a) {
-            window.setTimeout(a, 62.5)
-          }
-        }();
+        requestAnimationFrame = function  (callback) {
+     if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
+     else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
+     else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
+     else {
+        return window.setTimeout(callback, 1000 / 60);
+     }
+   }
+
       return {
         init: x,
         draw: v,
@@ -259,3 +270,7 @@
 </body>
 
 </html>
+
+
+
+

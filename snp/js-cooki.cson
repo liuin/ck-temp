@@ -1,0 +1,59 @@
+/*-- 
+  anchor:cuki13
+  addCookie = "cookiename cookval cookhous even"
+  removeCookie = "cookiename even"
+  
+  use:
+ --*/
+
+;(function() {
+  'use strict';
+  /*-- cooki操作 --*/
+    
+  var addCookie = '[addCookie]';
+  var removeCookie = '[removeCookie]';
+
+  function Cookie () {
+  }
+
+  Cookie.prototype.addCookie = function  (objName,objValue,objHours) {
+    var str = objName + "=" + escape(objValue);
+    if(objHours > 0){
+      var date = new Date();
+      var ms = objHours*3600*1000;
+      date.setTime(date.getTime() + ms);
+      str += "; expires=" + date.toGMTString();
+    }
+    document.cookie = str;
+  }
+
+  Cookie.prototype.removeCookie = function  (objName) {
+    setCookie(name,"",0)
+  }
+
+  Cookie.prototype.getCookie = function  (objName){
+    var arrStr = document.cookie.split("; ");
+    for(var i = 0;i < arrStr.length;i ++){
+      var temp = arrStr[i].split("=");
+      if(temp[0] == objName) return unescape(temp[1]);
+    }
+  }
+
+  var newCookie = new Cookie();
+  console.log(newCookie.getCookie('mycooki'));
+  $(addCookie).each(function () {
+    var getattr = $(this).attr('addCookie').split(' ');
+    $(this).on(getattr[3],function  () {
+      newCookie.addCookie(getattr[0],getattr[1],getattr[2]);
+
+    })
+  })
+
+  $(removeCookie).each(function () {
+    var getattr = $(this).attr('removeCookie').split(',');
+    $(this).on(getattr[1],function  () {
+      newCookie.removeCookie(getattr[0]);
+    })
+  })
+  
+})(jQuery);

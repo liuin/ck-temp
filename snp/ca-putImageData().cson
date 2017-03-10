@@ -1,0 +1,1 @@
+putImageData(imagedata, 0, 0[,dx,dy,dw,dh]);

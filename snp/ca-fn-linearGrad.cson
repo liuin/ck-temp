@@ -1,0 +1,8 @@
+function linearGrad () {
+  var g1 = ca.createLinearGradient(0,0,400,300);
+  g1.addColorStop(0,'blue');
+  g1.addColorStop(0.5,'red');
+  g1.addColorStop(1,'green');
+  ca.fillStyle=g1;
+  ca.fillRect(0,0,400,300);
+}

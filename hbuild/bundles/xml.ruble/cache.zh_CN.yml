@@ -1,0 +1,287 @@
+!!com.aptana.scripting.model.BundleElement
+author: Christopher Williams
+children:
+- !!com.aptana.scripting.model.MenuElement
+  children:
+  - children: &id001 []
+    commandName: Validate Syntax
+    customProperties: null
+    displayName: Validate Syntax
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: Tidy
+    customProperties: null
+    displayName: Tidy
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: Create XSL Generator for Selection
+    customProperties: null
+    displayName: Create XSL Generator for Selection
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: '-'
+    customProperties: null
+    displayName: '-'
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: Long Tag
+    customProperties: null
+    displayName: Long Tag
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: Long Attribute Tag
+    customProperties: null
+    displayName: Long Attribute Tag
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: Short Tag
+    customProperties: null
+    displayName: Short Tag
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  commandName: XML
+  customProperties: null
+  displayName: XML
+  id: null
+  locationURI: null
+  path: bundle.rb
+  scope: null
+- !!com.aptana.scripting.model.EnvironmentElement {customProperties: null, displayName: environment-22ddf00a-1859-4590-ab3e-6411e7fb2bd1,
+  path: bundle.rb, scope: text.xml}
+- !!com.aptana.scripting.model.CommandElement
+  async: false
+  customProperties: null
+  displayName: Create XSL Generator for Selection
+  id: null
+  input: [selection, document]
+  inputPath: null
+  keyBindingMap: null
+  menuId: null
+  outputPath: null
+  outputType: replace_selection
+  path: commands\create_xsl_generator_for_selection.rb
+  runType: current_thread
+  scope: text.xml
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.CommandElement
+  async: false
+  customProperties: null
+  displayName: Tidy
+  id: null
+  input: [selection, document]
+  inputPath: null
+  keyBindingMap: null
+  menuId: null
+  outputPath: null
+  outputType: replace_selection
+  path: commands\tidy_xml.rb
+  runType: current_thread
+  scope: text.xml
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.CommandElement
+  async: false
+  customProperties: null
+  displayName: Validate Syntax
+  id: null
+  input: [document]
+  inputPath: null
+  keyBindingMap: null
+  menuId: null
+  outputPath: null
+  outputType: show_as_html
+  path: commands\xmllint.rb
+  runType: current_thread
+  scope: text.xml
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [cdata]
+  description: null
+  displayName: CDATA
+  expansion: <![CDATA[$0]]>
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.xml
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [<a]
+  description: null
+  displayName: Long Attribute Tag
+  expansion: '<${1:name} ${2:attr="value"}>$0
+
+    </${1:name}>'
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.xml
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [<]
+  description: null
+  displayName: Long Tag
+  expansion: <${1:name}>$0</${1:name}>
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.xml
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: ['>']
+  description: null
+  displayName: Short Tag
+  expansion: <${1:name} />
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.xml
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: ['<?xml']
+  description: null
+  displayName: XML Processing Instruction
+  expansion: <?xml version="1.0" encoding="UTF-8"?>
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.xml
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.TemplateElement
+  async: false
+  customProperties: null
+  displayName: XML Template
+  filetype: '*.xml'
+  id: null
+  input: []
+  inputPath: null
+  keyBindingMap: null
+  menuId: null
+  outputPath: null
+  outputType: discard
+  path: templates\templates.rb
+  runType: current_thread
+  scope: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.TemplateElement
+  async: false
+  customProperties: null
+  displayName: XSLT Template
+  filetype: '*.xsl'
+  id: null
+  input: []
+  inputPath: null
+  keyBindingMap: null
+  menuId: null
+  outputPath: null
+  outputType: discard
+  path: templates\templates.rb
+  runType: current_thread
+  scope: null
+  workingDirectoryType: UNDEFINED
+copyright: Copyright 2010 Aptana Inc. Distributed under the MIT license.
+customProperties: null
+decreaseIndentMarkers: {!scope 'text.xml': !regexp '(?-mix:^\s*(<\/[^>]+>|-->|--%>))'}
+description: A port of the TextMate bundle that provides support for the <a href="http://www.w3.org/XML/">eXtensible Markup Language</a>.
+displayName: XML
+fileTypeRegistry: {'*.xsl': text.xml.xsl, '*.dtml': text.xml, '*.rss': text.xml, '*.pt': text.xml,
+  '*.tld': text.xml, '*.xml': text.xml, '*.opml': text.xml, '*.xslt': text.xml.xsl,
+  '*.cpt': text.xml}
+fileTypes: ['*.xml', '*.tld', '*.pt', '*.cpt', '*.dtml', '*.rss', '*.opml', '*.xsl',
+  '*.xslt']
+foldingStartMarkers: &id002 {}
+foldingStopMarkers: *id002
+increaseIndentMarkers: {!scope 'text.xml': !regexp '(?-mix:^\s*<(([^!\/?]|%)(?!.+?([\/%]>|<\/.+?>))|[%!]--\s*$))'}
+license: null
+licenseUrl: null
+path: bundle.rb
+repository: git://github.com/aptana/xml.ruble.git
+visible: true

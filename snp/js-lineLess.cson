@@ -1,0 +1,64 @@
+/*-- 
+  anchor:cuki13
+  use:lineLess
+ --*/
+
+;(function($) {
+  'use strict';
+  var selectString = '[lineLess]';
+
+  function lineLess(el) {    
+    this.$obj = $(el);    
+    this.lineclip();
+  }
+
+  lineLess.prototype.isChinese = function (temp){
+    var re= /[\\\\u4E00-\\\\u9FA5]+$/;
+    if (!re.test(temp)) return false ;
+    return true ;    
+  }
+
+
+  lineLess.prototype.lineclip = function  () {
+    var $this = this;
+    var divH = this.$obj.height();
+    var $p = this.$obj.find('p').eq(0);
+    
+    while ($p.outerHeight() > divH) {
+        $p.text($p.text().replace(/(\\\\s)*([a-zA-Z0-9]+|\\\\W)(\\\\.\\\\.\\\\.)?$/, ""));
+    };
+    
+    var p1 = $p.text();
+
+
+    for (var i = 0;  i< 6; i++) {
+      if (i == 5) {
+        removeline ('...');
+      }else {
+        removeline('');
+      }
+    }
+
+    function removeline (a) {
+      if ($this.isChinese(p1.charAt(p1.length - 1))) {
+        $p.text($p.text().replace(/(\\\\s)*([a-zA-Z0-9]+|\\\\W)(\\\\.\\\\.\\\\.)?$/, a));
+      }else {
+        $p.text($p.text().replace(/(\\\\s)*([a-zA-Z0-9]+|\\\\W)(\\\\.\\\\.\\\\.)?$/, ""));
+        $p.text($p.text().replace(/(\\\\s)*([a-zA-Z0-9]+|\\\\W)(\\\\.\\\\.\\\\.)?$/, a));      
+      }
+    }
+
+  }
+
+
+
+
+  $(selectString).each(function () {
+     //callsome
+    new lineLess($(this));
+  })
+
+  $.lineLess = lineLess;
+
+
+})(jQuery);

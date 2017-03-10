@@ -1,313 +1,225 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-  <head>
+<head>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="renderer" content="webkit">
-    <meta name="description" content="">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <!--[if lt IE 9]>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--[if lt IE 9]>
   <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
-    <title>website name</title>
-    <style type="text/css">
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      
-      .container {
-        position: relative;
-        padding-top: 100px;
-        padding-left: 300px;
-      }
-      
-      .thord {
-        width: 200px;
-        position: absolute;
-        -webkit-transform: rotate(10deg);
-        transform: rotate(20deg);
-        background-color: #f60;
-        height: 75px;
-        left: 351px;
-        transform-origin: right center;
-        top: 68px;
-      }
-      
-      .thord.in {
-        -webkit-transform: rotate(-3deg);
-        transform: rotate(-3deg);
-      }
-      
-      .egggorund {
-        position: relative;
-        top: 84px;
-      }
-      
-      .egg {
-        width: 150px;
-        height: 200px;
-        border-radius: 50%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: green;
-      }
-      
-      .egg1 {
-        width: 150px;
-        height: 200px;
-        height: 0;
-        position: absolute;
-        left: 0;
-        top: 0;
-        overflow: hidden;
-      }
-      
-      .egg1 .eggin {
-        width: 150px;
-        height: 200px;
-        border-radius: 50%;
-        background: #f60;
-        background-image: -webkit-linear-gradient(#f60, #f00);
-        background-image: linear-gradient(#f60, #f00);
-        opacity: 1;
-      }
-      
-      .egg1.in {
-        height: 200px;
-        opacity: 1;
-      }
-      /*-- loading --*/
-      
-      #loading {
-        background: transparent;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        display: none;
-      }
-      
-      #loading span {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        line-height: 30px;
-        text-align: center;
-        border: 1px solid #000;
-        border-radius: 5px;
-        background: #000;
-        margin-left: 20px;
-        margin-top: -20px;
-        box-shadow: 0px 0px 3px #000;
-      }
-      
-      #loading span img {
-        position: relative;
-        top: 9px;
-      }
-    </style>
-  </head>
+  <title>website name</title>
+  <style type="text/css">
+* {margin: 0;padding: 0;}
+.container {position: relative;padding-top: 100px;padding-left: 300px;}
+.thord {width: 200px;position: absolute;-webkit-transform: rotate(10deg);transform: rotate(20deg);background-color: #f60;height: 75px;left: 351px;transform-origin: right center;top: 68px;}
+.thord.in {-webkit-transform: rotate(-3deg);transform: rotate(-3deg);}
+.egggorund {position: relative;top: 84px;}
+.egg {width: 150px;height: 200px;border-radius: 50%;position: absolute;left: 0;top: 0;background: green;}
+.egg1 {width: 150px;height: 200px;height: 0;position: absolute;left: 0;top: 0;overflow: hidden;}
+.egg1 .eggin {width: 150px;height: 200px;border-radius: 50%;background: #f60;background-image: -webkit-linear-gradient(#f60, #f00);background-image: linear-gradient(#f60, #f00);opacity: 1;}
+.egg1.in {height: 200px;opacity: 1;}
 
-  <body class="yh">
-    <noscript>
+/*-- loading --*/
+#loading {background: transparent;position: fixed;top: 0;left: 0;right: 0;bottom: 0;width: 100%;height: 100%;display: none;}
+#loading span {position: absolute;top: 50%;left: 50%;display: inline-block;width: 40px;height: 40px;line-height: 30px;text-align: center;border: 1px solid #000;border-radius: 5px;background: #000;margin-left: 20px;margin-top: -20px;box-shadow: 0px 0px 3px #000;}
+#loading span img {position: relative;top: 9px;}
+
+  </style>
+</head>
+
+<body class="yh">
+  <noscript>
     <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
   </noscript>
-    <div class="container">
-      <div class="thord"></div>
-      <div class="egggo>rund">
-        <div class="egg"></div>
-        <div class="egg1">
-          <div class="eggin"></div>
-        </div>
+  <div class="container">
+    <div class="thord"></div>
+    <div class="egggo>rund">
+      <div class="egg"></div>
+      <div class="egg1">
+        <div class="eggin"></div>
       </div>
-
-      <button id="zdan">砸蛋</button>
     </div>
 
-    <div class="" id="loading">
-      <span><img src="data:image/gif;base64,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" alt="加载中..."></span>
-    </div>
-    <!-- /loading -->
+    <button id="zdan">砸蛋</button>
+  </div>
 
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript">
-      //砸蛋效果
-      $.requestAnimationFrame = function(callback) {
-        if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
-        else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
-        else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
-        else {
-          return window.setTimeout(callback, 1000 / 60);
+  <div class="" id="loading">
+    <span><img src="data:image/gif;base64,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" alt="加载中..."></span>
+  </div>
+  <!-- /loading -->
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript">
+    //砸蛋效果
+    $.requestAnimationFrame = function(callback) {
+      if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
+      else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
+      else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
+      else {
+        return window.setTimeout(callback, 1000 / 60);
+      }
+    };
+
+    var startTime = null;
+    var eggheight = 200;
+    var part = 5; //显示多少块
+    var ajaxdone = false;
+    var anmatedone = false;
+
+    function anmatepro(pro, callback, timelong) {
+
+      if (typeof callback == 'string') {
+        timelong = callback;
+      }
+
+      function render(time) {
+
+        if (time === undefined) {
+          time = new Date().getTime();
         }
-      };
 
-      var startTime = null;
-      var eggheight = 200;
-      var part = 5; //显示多少块
-      var ajaxdone = false;
-      var anmatedone = false;
-
-      function anmatepro(pro, callback, timelong) {
-
-        if (typeof callback == 'string') {
-          timelong = callback;
+        if (startTime === null) {
+          startTime = time;
         }
 
-        function render(time) {
-
-          if (time === undefined) {
-            time = new Date().getTime();
-          }
-
-          if (startTime === null) {
-            startTime = time;
-          }
 
 
 
+        var progress = Math.max(Math.min((time - startTime) / timelong, 1), 0);
+        //var easeProgress = (Math.sin( progress * Math.PI/2 ));
+        //console.log(progress.toFixed(1) - 1/part);
 
-          var progress = Math.max(Math.min((time - startTime) / timelong, 1), 0);
-          //var easeProgress = (Math.sin( progress * Math.PI/2 ));
-          //console.log(progress.toFixed(1) - 1/part);
-
-          if (typeof pro == 'function') {
-            pro(progress);
-          }
-
-          //$('.egg1').height(eggheight*Math.max(parseInt(progress.toFixed(2)/(1/part))*(1/part),0));
-          //$('.egg1').height(eggheight*(progress.toFixed(1)));
-
-          console.log(startTime);
-
-          if (progress >= 1) {
-            startTime = null;
-            if (typeof callback == 'function') {
-              callback()
-            }
-            return
-          }
-
-          $.requestAnimationFrame(render);
+        if (typeof pro == 'function') {
+          pro(progress);
         }
+
+        //$('.egg1').height(eggheight*Math.max(parseInt(progress.toFixed(2)/(1/part))*(1/part),0));
+        //$('.egg1').height(eggheight*(progress.toFixed(1)));
+
+        console.log(startTime);
+
+        if (progress >= 1) {
+          startTime = null;
+          if (typeof callback == 'function') {
+            callback()
+          }
+          return
+        }
+
         $.requestAnimationFrame(render);
+      }
+      $.requestAnimationFrame(render);
 
+    }
+
+    function openEgg() {
+
+      anmatepro(function(progress) {
+        $('.egg1').height(eggheight * Math.max(parseInt(progress.toFixed(2) / (1 / part)) * (1 / part), 0));
+      }, function() {
+        //打蛋完成
+        anmatedone = true;
+        componfish();
+
+      }, '3500')
+
+    }
+
+    function componfish() {
+
+
+      if (ajaxdone == 'error') {
+        $('#loading').hide();
+        alert('很抱歉,无法提取数据,请刷新页面');
+        return
       }
 
-      function openEgg() {
 
-        anmatepro(function(progress) {
-          $('.egg1').height(eggheight * Math.max(parseInt(progress.toFixed(2) / (1 / part)) * (1 / part), 0));
-        }, function() {
-          //打蛋完成
-          anmatedone = true;
+      if (ajaxdone && anmatedone) {
+
+        setTimeout(
+          function() {
+            $('#loading').hide();
+            alert('111222');
+          }, 200)
+
+        return
+      }
+
+      if (anmatedone) {
+        $('#loading').show();
+      }
+
+
+
+
+
+    }
+
+    function chuiStar() {
+      anmatepro(function(progress) {
+        var easeProgress = (Math.sin(progress * Math.PI / 2));
+
+        var style = {
+          '-webkit-transform': 'rotate(' + (parseInt(21 * easeProgress)) + 'deg)',
+          'transform': 'rotate(' + ((parseInt(21 * easeProgress))) + 'deg)'
+        }
+
+        $('.thord').css(style);
+      }, function() {
+
+        chuiIn();
+      }, '600')
+    }
+
+    function chuiIn() {
+      anmatepro(function(progress) {
+
+        var easeProgress = (1 - Math.cos(progress * Math.PI / 2));
+
+        var style = {
+          '-webkit-transform': 'rotate(' + (21 - (parseInt(35 * easeProgress))) + 'deg)',
+          'transform': 'rotate(' + (21 - (parseInt(35 * easeProgress))) + 'deg)'
+        }
+
+        $('.thord').css(style);
+      }, function() {
+        $('.thord').fadeOut();
+        openEgg();
+      }, '300')
+    }
+
+
+    $('#zdan').click(function() {
+      chuiStar();
+
+      $.ajax({
+        type: "GET",
+        url: "ajax/json.txt",
+        dataType: 'json',
+        success: function(data) {
+          ajaxdone = true;
           componfish();
+        },
+        error: function() {
 
-        }, '3500')
+          ajaxdone = 'error';
+        },
+        beforeSend: function() {}
+      });
+    })
 
-      }
-
-      function componfish() {
-
-
-        if (ajaxdone == 'error') {
-          $('#loading').hide();
-          alert('很抱歉,无法提取数据,请刷新页面');
-          return
-
-        }
-
-
-        if (ajaxdone && anmatedone) {
-
-          setTimeout(
-            function() {
-              $('#loading').hide();
-              alert('111222');
-            }, 200)
-
-          return
-        }
-
-        if (anmatedone) {
-          $('#loading').show();
-        }
-
-
-
-
-
-      }
-
-      function chuiStar() {
-        anmatepro(function(progress) {
-          var easeProgress = (Math.sin(progress * Math.PI / 2));
-
-          var style = {
-            '-webkit-transform': 'rotate(' + (parseInt(21 * easeProgress)) + 'deg)',
-            'transform': 'rotate(' + ((parseInt(21 * easeProgress))) + 'deg)'
-          }
-
-          $('.thord').css(style);
-        }, function() {
-
-          chuiIn();
-        }, '600')
-      }
-
-      function chuiIn() {
-        anmatepro(function(progress) {
-
-          var easeProgress = (1 - Math.cos(progress * Math.PI / 2));
-
-          var style = {
-            '-webkit-transform': 'rotate(' + (21 - (parseInt(35 * easeProgress))) + 'deg)',
-            'transform': 'rotate(' + (21 - (parseInt(35 * easeProgress))) + 'deg)'
-          }
-
-          $('.thord').css(style);
-        }, function() {
-          $('.thord').fadeOut();
-          openEgg();
-        }, '300')
-      }
-
-
-      $('#zdan').click(function() {
-        chuiStar();
-
-        $.ajax({
-          type: "GET",
-          url: "ajax/json.txt",
-          dataType: 'json',
-          success: function(data) {
-            ajaxdone = true;
-            componfish();
-          },
-          error: function() {
-
-            ajaxdone = 'error';
-          },
-          beforeSend: function() {}
-        });
-      })
-
-      //openEgg(function  () {});
-    </script>
-  </body>
+    //openEgg(function  () {});
+  </script>
+</body>
 
 </html>

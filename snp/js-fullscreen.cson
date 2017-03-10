@@ -1,0 +1,40 @@
+/*-- 元素全屏 
+  fullscreen="even"
+  even :触发事件 hover click tap
+--*/
++(function($) {
+   var selectString = '[fullscreen]'
+   function fullscreen () {
+   }
+
+   fullscreen.prototype.getdect = function  (elem) {
+      var prefix = 'webkit';
+      if ( elem[prefix + 'EnterFullScreen'] ) {
+        return prefix + 'EnterFullScreen';
+      } else if( elem[prefix + 'RequestFullScreen'] ) {
+        return prefix + 'RequestFullScreen';
+      };
+        return false;
+   }
+   
+   fullscreen.prototype.open = function  () {
+     var $this = this;
+     var fullscreenapi =  $this.getdect(document.createElement(this.el[0].tagName));
+     $this.el[0][fullscreenapi]();
+
+   }
+
+   fullscreen.prototype.init = function  (obj) {
+     this.el = obj;
+   }
+  
+  var fullScrenn1 = new fullscreen();
+  $(selectString).each(function () {
+    var attpro = $(this).attr('fullscreen');
+    $(this).on(attpro,function  () {
+      fullScrenn1.init($(this));
+      fullScrenn1.open();
+    })      
+  })
+
+})(jQuery);

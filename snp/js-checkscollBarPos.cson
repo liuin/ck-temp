@@ -1,0 +1,31 @@
+;(function  ($) {
+  var posAry = [
+    '#container-2',
+    '#container-4',
+    '#container-5',
+    '#container-6',
+    '#container-7'
+  ];
+
+  function checkscollBarPos(currentpos,posAry) {    //currentpos can be window.scrollTop();
+    var objArr = [];
+    for (var i = 0; i < posAry.length; i++) {
+      objArr.push($(posAry[i]).offset().top);
+    }
+    var posind = 0;
+    if (objarr[0] > currentpos) {
+      posind = -1;
+    }else {
+      for (var i = 0;  i<objarr.length ; i++) {
+        if ((objarr[i] < currentpos) && (objarr[i+1] > currentpos) ) {
+           posind = i;
+        }
+        if (objarr[objarr.length-1] < currentpos) {
+          posind = (objarr.length-1)
+        }
+      }
+    }
+    return posind;
+  }
+
+})(jQuery)

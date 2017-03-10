@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -21,12 +22,14 @@
     </script>
   <![endif]-->
   <style type="text/css">
-    .swiper-container {height: 300px;}  
-    .swiper-slide {height: 300px;}
+.swiper-container {height: 300px;}
+.swiper-slide {height: 300px;}
+
   </style>
-  
+
   <title>website name</title>
 </head>
+
 <body class="yh">
   <noscript>
     <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
@@ -43,21 +46,20 @@
     <script type="text/javascript" src="../../js/jquery.js"></script>
     <script type="text/javascript" src="swpic-3.3.1.js"></script>
     <script type="text/javascript">
-
-        var mySwiper = new Swiper('.swiper-container',{
-          pagination: '.pagination1',
-          paginationClickable: true,
-          //mode: 'vertical',
-          //direction:'vertical',//3.1++
-          slidesPerView: 'auto',
-          //moveStartThreshold: 100
-          //followFinger : false,
-          onSlideChangeEnd: function  () {
-          },
-          onFirstInit:function  () {
-          }
-         })
-    </script><!-- /swiper-container -->
+      var mySwiper = new Swiper('.swiper-container', {
+        pagination: '.pagination1',
+        paginationClickable: true,
+        //mode: 'vertical',
+        //direction:'vertical',//3.1++
+        slidesPerView: 'auto',
+        //moveStartThreshold: 100
+        //followFinger : false,
+        onSlideChangeEnd: function() {},
+        onFirstInit: function() {}
+      })
+    </script>
+    <!-- /swiper-container -->
   </div>
 </body>
+
 </html>

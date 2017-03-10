@@ -1,0 +1,13 @@
+en:
+  bundle_name: 'Math'
+  eval_line: 'Evaluate Line / Selection'
+  eval_and_replace: 'Evaluate and Replace Expression'
+  eval_and_replace_rounded: 'Evaluate and Replace Expression (rounded)'
+  add_numbers: 'Add Numbers in Line / Selection'
+  subtract_numbers: 'Subtract Numbers in Line / Selection'
+  convert: '转进制'
+  decimal_to_hex: '十进制转十六进制'
+  decimal_to_octal: '十进制转八进制'
+  hex_to_decimal: '十六进制转十进制'
+  octal_to_decimal: '八进制转十进制'
+  send_to_google_calc: 'Send Line / Selection to Google Calculator'

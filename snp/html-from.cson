@@ -1,0 +1,40 @@
+<style type="text/css">
+        /*-- form-bk --*/
+        .form-style {display:block; }
+        .groundform { margin-bottom: 10px; position:relative; overflow:hidden;}
+        .groundform .f-box{width:328px; height: 26px; line-height: 26px;background: #fff; padding-left: 10px;padding-right: 10px; border: 0; border: 1px solid #a3a3a3;}
+        .groundform label{float:left; line-height: 30px; width: 70px;}
+        .groundform i {position: absolute;font-size: 20px;right: -18px;top: 5px; color: }
+      </style>
+       <form action="#" class="form-style">
+          <div class="groundform groundform-car">
+                <label>车　型：</label>
+                <select name="" class="yh" data-form="select" >
+                  <option>车   型1</option>
+                  <option>车   型2</option>
+                </select>
+              </div>
+              <div class="groundform groundform-biz">
+                <label>经销商：</label>
+                <select name="" class="yh" data-form="select" >
+                  <option>经销商1</option>
+                  <option>经销商2</option>
+                </select>
+              </div>
+          <div class="groundform groundform-name">
+            <label>姓　名：</label>
+            <input type="text" name="" class="f-box yh" id="">
+          </div>
+          <div class="groundform groundform-tel">
+            <label>电　话：</label>
+            <input type="text" name="" class="f-box yh" id="">
+          </div>
+
+          <div class="groundform groundform-ck">
+            <label><input type="radio" name="" id="" />是</label>
+          </div>
+
+          <div class="groundform-sub">
+            <button type="submit" class="btn-sub yh">预约试驾</button>
+          </div>
+        </form>

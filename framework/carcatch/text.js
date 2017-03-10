@@ -304,7 +304,6 @@ carCatch.prototype.moveBlock = function(obj) {
 var carCatch1 = new carCatch(9, 9);
 
 
-
 //blocklist["6"].close = true;
 //carCatch1.blocklist["02"].close = true;
 //carCatch1.blocklist["11"].close = true;
@@ -321,7 +320,7 @@ var carCatch1 = new carCatch(9, 9);
 var getCurrent = Math.floor(carCatch1.row / 2).toString() + '-' + Math.floor(carCatch1.col / 2).toString();
 
 carCatch1.resetCurrentPos(getCurrent);
-carCatch1.randomStopBlock(20);
+carCatch1.randomStopBlock(10);
 
 
 //var stoparr = ["2-1","3-0","4-0","5-0","6-1","2-2","2-3","2-4","2-5","2-6","2-7","3-7","4-7","5-7","6-7","6-6","6-5","6-4","6-3","6-2"];

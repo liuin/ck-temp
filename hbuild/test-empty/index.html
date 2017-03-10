@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/mui.indexedlist.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  
+  
+  
+  <body>
+    <header class="mui-bar mui-bar-nav">
+      <h1 class="mui-title">首页</h1>
+    </header>
+    <div class="mui-content">
+      <ul class="mui-table-view" id="list-mui">
+        <li class="mui-table-view-cell">
+          <a class="mui-navigate-right" href="page/indexed-list.html">
+            查看联系人
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    <script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/mui.indexedlist.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      mui.init();
+      //contact.phoneNumbers = [{type:"手机",value:"88888888",preferred:true}];  
+
+      mui.plusReady(function() {
+        //      mui.openWindow({
+        //        url:'page/indexed-list.html'
+        //      })
+        mui('#list-mui').on('tap', 'a', function(e) {
+          mui.openWindow({
+            url: 'page/indexed-list.html'
+          })
+        })
+      })
+    </script>
+  </body>
+</html>

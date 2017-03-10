@@ -1,0 +1,38 @@
+<!DOCTYPE html>   
+<head>   
+<meta charset="UTF-8">  
+<title>Range对象的compareNode方法的使用示例</title>  
+<head>
+<script type="text/javascript">
+function TestPlacement () {
+    var boldText = document.getElementById ("boldText");
+    var selection = document.getSelection ();
+    if (selection.rangeCount > 0) {
+        var selRange = selection.getRangeAt (0);
+        var placement = selRange.compareNode (boldText);
+        switch (placement) {
+            case Range.NODE_BEFORE:
+                alert ("选取文字在粗体文字之后。");
+                break;
+            case Range.NODE_AFTER:
+                alert ("选取文字在粗体文字之前。");
+                break;
+            case Range.NODE_BEFORE_AND_AFTER:
+                alert ("选取文字在粗体文字内部。");
+                break;
+            case Range.NODE_INSIDE:
+                alert ("选取文字中包含粗体文字。");
+                break;
+        };
+    }
+    else {
+        alert ("请选取一些文字。");
+    }
+}
+</script>
+</head>
+<body>
+选取页面中的一些文字后单击“位置比较”按钮，将选取文字与<b id="boldText">粗体文字</b>进行前后位置的比较，并且在弹出提示信息框中显示比较结果。
+<br/>
+<button onclick="TestPlacement ();">Test placement</button>
+</body>

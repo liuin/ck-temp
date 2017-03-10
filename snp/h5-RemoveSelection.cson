@@ -1,0 +1,15 @@
+<!DOCTYPE html>   
+<head>   
+<meta charset="UTF-8">  
+<title>Selection对象的removeAllRanges方法的使用示例</title>  
+<script type="text/javascript">
+function RemoveSelection () {
+    var selection = window.getSelection ();                                        
+    selection.removeAllRanges ();
+}
+</script>
+</head>
+<body>
+示例文字
+<button onclick="RemoveSelection ()">取消选取</button>
+</body>

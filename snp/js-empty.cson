@@ -1,0 +1,21 @@
+/*-- 
+  anchor:cuki13
+  use:
+ --*/
+
+;(function($) {
+  'use strict';
+  var selectString = '[ckUndline]';
+
+  function ckUndline() {    
+  }
+
+
+  $(selectString).each(function () {
+     //callsome
+  })
+
+  $.ckUndline = ckUndline;
+
+
+})(jQuery);

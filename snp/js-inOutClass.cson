@@ -1,0 +1,37 @@
+/*-- 
+  anchor:cuki13
+  两个层重复切换
+  use: in-out-class="inClass inTarget outClass outClassTarget intime outtime event"
+  
+  event:hover tap click;
+  回调:
+  inTarget开始函数:inClassCall;
+  outTarget开始函数:outClassCall;
+ --*/
+
+;(function(){
+  'use strict';
+  var selectString = '[in-out-class]';
+
+  
+  $(selectString).each(function () {
+
+    var attrPro = $(this).attr('in-out-class').split(' ');
+    var inClass = attrPro[0];
+    var outClass = attrPro[2];
+
+    $(this).on(attrPro[6],function  () {
+      $(attrPro[3]).trigger('inClassCall').addClass(outClass);
+      $(attrPro[1]).removeClass(inClass).hide();
+      setTimeout(
+        function(){
+          $(attrPro[3]).removeClass(outClass).hide();
+          $(attrPro[1]).addClass(inClass).show();
+          setTimeout(
+            function(){
+              $(attrPro[1]).removeClass(inClass);
+            }, attrPro[5])
+        }, attrPro[4]);
+    })
+  })
+})(jQuery);

@@ -1,0 +1,1 @@
+createRadialGradient(${1:xStart},yStart,radiusStart,xEnd,yEnd,radiusEnd);

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>    
+
+<head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="renderer" content="webkit">
@@ -23,127 +24,47 @@
     </script>
   <![endif]-->
   <style type="text/css">
-      /*-- counttime --*/
-      .counttime { font-size: 30px;color: #fff;width: 369px;overflow: hidden;margin: 0 auto;margin-top: 21px;}
-      .counttime .item {background:red;  color: #fff; font-size: 17px;float:left;    font-weight: bold;
-        height: 88px;
-        line-height:88px;
-        width: 85px;
-        text-align:center;
-        font-size: 53px;
-      }
-
-
-
-      .counttime .item span{font-size: 53px;color: #fff;display: block;text-align: center;height: 88px;width: 85px;line-height: 88px; font-weight:normal;}
-      .counttime .sp {color: #4968ff; font-size: 17px;float:left;height: 88px; line-height: 88px;display:none;} 
-      
-
-
-      .counttime .item3d{
-      
-          transform: perspective(800px);
-/*    perspective-origin: 50% 50%;*/
-/*    -webkit-perspective-origin: 50% 50%;*/
-/*    -webkit-perspective-origin: 50% 50%;*/
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;   
-    -moz-transform-style: preserve-3d;   
-    position: relative;
-    height: 88px;
-    width: 85px;
-    font-size: 53px;
-    font-weight: normal;
-    line-height:88px;
-        
-      }
-
-      .counttime  .item3d .changebk1{
-      transform: rotateX(-108deg);
-      -webkit-transform: rotateX(-130deg);
-    background: transparent;
-    transform-origin: center bottom;
-    -webkit-transform-origin: center bottom;
-    -moz-transform-origin: center bottom;
-    position: absolute;
-    width: 85px;
-    height: 44px;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    z-index: 20;      
-    }
-
-    .counttime .item3d .changebk1 .sp1{
-    height: 44px;
-    width: 85px;
-    position: absolute;
-    top: 0;
-    background-color: #0D5431;
-    z-index: 10;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-        text-align:center;
-      overflow:hidden;
-}
-    .counttime .item3d .changebk1 .sp2{    
-      height: 44px;
-      width: 85px;
-      text-align:center;
-      position: absolute;
-      top: 0;
-      background: #000;
-      transform: rotateX(180deg);
-      z-index: 15;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      -moz-backface-visibility: hidden;
-      overflow:hidden;
-    }
-
-    .counttime .item3d .changebk1 .sp2 .ins { position:relative;top:-44px;}
-
-    .prevtime { position: absolute;width: 85px;height: 44px;font-size: 53px;color: #fff;line-height: 88px;text-align: center;font-weight: normal;top: 44px;overflow: hidden;
-    
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    
-    }
-    .prevtime .ins {position:relative;top:-44px;}
-
-    .nexttime { position: absolute;width: 85px;height: 44px;font-size: 53px;color: #fff;line-height: 88px;text-align: center;font-weight: normal;z-index: 30;overflow: hidden;
-    
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    }
-
+/*-- counttime --*/
+.counttime {font-size: 30px;color: #fff;width: 369px;overflow: hidden;margin: 0 auto;margin-top: 21px;}
+.counttime .item {background: red;color: #fff;font-size: 17px;float: left;font-weight: bold;height: 88px;line-height: 88px;width: 85px;text-align: center;font-size: 53px;}
+.counttime .item span {font-size: 53px;color: #fff;display: block;text-align: center;height: 88px;width: 85px;line-height: 88px;font-weight: normal;}
+.counttime .sp {color: #4968ff;font-size: 17px;float: left;height: 88px;line-height: 88px;display: none;}
+.counttime .item3d {transform: perspective(800px);/*perspective-origin: 50% 50%;*/
+/*-webkit-perspective-origin: 50% 50%;*/
+/*-webkit-perspective-origin: 50% 50%;*/
+transform-style: preserve-3d;-webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;position: relative;height: 88px;width: 85px;font-size: 53px;font-weight: normal;line-height: 88px;}
+.counttime .item3d .changebk1 {transform: rotateX(-108deg);-webkit-transform: rotateX(-130deg);background: transparent;transform-origin: center bottom;-webkit-transform-origin: center bottom;-moz-transform-origin: center bottom;position: absolute;width: 85px;height: 44px;transform-style: preserve-3d;-webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;z-index: 20;}
+.counttime .item3d .changebk1 .sp1 {height: 44px;width: 85px;position: absolute;top: 0;background-color: #0D5431;z-index: 10;backface-visibility: hidden;-webkit-backface-visibility: hidden;-moz-backface-visibility: hidden;text-align: center;overflow: hidden;}
+.counttime .item3d .changebk1 .sp2 {height: 44px;width: 85px;text-align: center;position: absolute;top: 0;background: #000;transform: rotateX(180deg);z-index: 15;backface-visibility: hidden;-webkit-backface-visibility: hidden;-moz-backface-visibility: hidden;overflow: hidden;}
+.counttime .item3d .changebk1 .sp2 .ins {position: relative;top: -44px;}
+.prevtime {position: absolute;width: 85px;height: 44px;font-size: 53px;color: #fff;line-height: 88px;text-align: center;font-weight: normal;top: 44px;overflow: hidden;transform-style: preserve-3d;-webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;}
+.prevtime .ins {position: relative;top: -44px;}
+.nexttime {position: absolute;width: 85px;height: 44px;font-size: 53px;color: #fff;line-height: 88px;text-align: center;font-weight: normal;z-index: 30;overflow: hidden;transform-style: preserve-3d;-webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;}
 
   </style>
 
   <title>website name</title>
 </head>
+
 <body class="yh">
   <noscript>
     <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
   </noscript>
   <div class="container">
-<!--        <div class="counttime" countTime="2015/05/18 14:40:53,2015/05/08 11:00:00"> -->
-<!--          <span class="item"><span  countDay ></span></span> -->
-<!--          <span class="item"><span countHour ></span></span> -->
-<!--          <span class="item"><span countMin ></span></span> -->
-<!--          <span class="item min"><span countSec ></span></span> -->
-<!--        </div>     -->
+    <!--        <div class="counttime" countTime="2015/05/18 14:40:53,2015/05/08 11:00:00"> -->
+    <!--          <span class="item"><span  countDay ></span></span> -->
+    <!--          <span class="item"><span countHour ></span></span> -->
+    <!--          <span class="item"><span countMin ></span></span> -->
+    <!--          <span class="item min"><span countSec ></span></span> -->
+    <!--        </div>     -->
 
-<div class="counttime" countTime="2015/05/18 15:00:00,2015/05/18 15:00:10">
+    <div class="counttime" countTime="2015/05/18 15:00:00,2015/05/18 15:00:10">
       <div class="item" countday></div>
       <div class="item" counthour></div>
       <div class="item mintime" countmin></div>
       <div class="item" countSec></div>
-      
-<!-- 
+
+      <!-- 
          <span class="item"><span countday="">0</span></span>
          <span class="item"><span counthour="">0</span></span>
          <span class="item"><span countmin="">0</span></span>
@@ -156,329 +77,320 @@
          
          </span>
         -->
-</div>
+    </div>
 
   </div>
   <script type="text/javascript" src="../../js/jquery.js"></script>
   <script type="text/javascript" src="../../js/TweenMax.js"></script>
 
   <script type="text/javascript">
-  +(function() {
-        'use strict';
+    +(function() {
+      'use strict';
 
 
-        function countBox (number,appendObj,callNextNumber) {
-              this.number = number;
-              this.prev = 0;
-              this.appendObj = appendObj;
-              this.obj = '';
-              this.build();
-              this.callNextNumber = callNextNumber;
-              this.proin = false;
+      function countBox(number, appendObj, callNextNumber) {
+        this.number = number;
+        this.prev = 0;
+        this.appendObj = appendObj;
+        this.obj = '';
+        this.build();
+        this.callNextNumber = callNextNumber;
+        this.proin = false;
 
-              this.tweenMax = '';
+        this.tweenMax = '';
 
-             // this.tweenMax.ticker.useRAF(false);
-             // this.tweenMax.ticker.fps(5);
-              
-            }
+        // this.tweenMax.ticker.useRAF(false);
+        // this.tweenMax.ticker.fps(5);
 
-            countBox.prototype.build = function  () { //构建
-              var $this = this;
-              if (Modernizr.preserve3d) {  //如果支持3D
-                var buildHtml = '<div class="changebk1"><div class="sp1">'+ ($this.number) +'</div><div class="sp2"><div class="ins">'+  ($this.number - 1) +'</div></div></div><div class="prevtime"><span class="ins">'+ ($this.number) +'</span></div><div class="nexttime">' +  ($this.number) + '</div>';
+      }
 
-                $this.obj = buildHtml = $(buildHtml);
-                
-                
-                $this.appendObj.addClass('item item3d').append(buildHtml);
+      countBox.prototype.build = function() { //构建
+        var $this = this;
+        if (Modernizr.preserve3d) { //如果支持3D
+          var buildHtml = '<div class="changebk1"><div class="sp1">' + ($this.number) + '</div><div class="sp2"><div class="ins">' + ($this.number - 1) + '</div></div></div><div class="prevtime"><span class="ins">' + ($this.number) + '</span></div><div class="nexttime">' + ($this.number) + '</div>';
 
-                TweenMax.set($this.appendObj[0], {
-                  transformStyle:'preserve-3d',
-                  perspective:300
-                  }
-                );    
+          $this.obj = buildHtml = $(buildHtml);
 
-                TweenMax.set($this.appendObj.find('.changebk1')[0], {
-                    transformStyle:'preserve-3d',
-                    rotationX:2,
-                    transformOrigin:"center bottom"
-                  }
-                );
 
-              }else {
-                $this.appendObj.append($this.number);
+          $this.appendObj.addClass('item item3d').append(buildHtml);
+
+          TweenMax.set($this.appendObj[0], {
+            transformStyle: 'preserve-3d',
+            perspective: 300
+          });
+
+          TweenMax.set($this.appendObj.find('.changebk1')[0], {
+            transformStyle: 'preserve-3d',
+            rotationX: 2,
+            transformOrigin: "center bottom"
+          });
+
+        } else {
+          $this.appendObj.append($this.number);
+        }
+
+
+      }
+
+      countBox.prototype.resetNumber = function(getval) {
+        var $this = this;
+
+        if (Modernizr.preserve3d) {
+          $this.number = getval;
+          $this.appendObj.find('.nexttime').html(getval);
+          $this.obj.parent().find('.changebk1 .sp1').html(getval);
+          $this.obj.parent().find('.changebk1 .sp2 .ins').html(((getval - 1) < 0) ? ($this.callNextNumber - 1) : (getval - 1));
+          $this.obj.parent().find('.prevtime .ins').html(getval);
+          //$this.obj.parent().find('.nexttime .ins').html( getval );                      
+        } else {
+
+          $this.appendObj.html(getval);
+        }
+
+
+
+      }
+
+      countBox.prototype.countNext = function(callback) { //跳转下一页 
+
+        var $this = this;
+        //$this.number--;
+
+        var getNumber = $this.number;
+
+        $this.proin = true;
+
+        if ($this.number == 0 && $this.callNextNumber) {
+          //$this.number = $this.callNextNumber - 1;
+          $this.callNextObj();
+        }
+
+        if (Modernizr.preserve3d) {
+          // supported            
+          setTimeout(
+            function() {
+              $this.obj.parent().find('.nexttime').html(((getNumber - 1) < 0) ? ($this.callNextNumber - 1) : (getNumber - 1));
+            }, 200)
+          //return  
+
+          //TweenMax.ticker.useRAF(false);
+          TweenMax.to($this.obj.parent().find('.changebk1'), 1, {
+            //useFrames: true,
+            ease: Power0.easeNone,
+            //ease:SlowMo.ease.config(0.7, 0.7, false),
+            rotationX: -180,
+            immediateRender: true,
+            onUpdateParams: ["{self}"],
+            onComplete: function() {
+              //debugger;
+
+              $this.number--;
+              $this.resetNumber($this.number);
+
+              TweenMax.set($this.appendObj.find('.changebk1')[0], {
+                transformStyle: 'preserve-3d',
+                rotationX: 2,
+                transformOrigin: "center bottom",
+                onComplete: function() {
+
+                }
+              })
+
+
+              if (callback) {
+                callback($this);
               }
 
-              
+              $this.proin = false;
+
             }
+          });
 
-            countBox.prototype.resetNumber = function  (getval) {
-              var $this = this;
+        } else {
+          $this.number--;
+          $this.resetNumber($this.number);
+        }
+      }
 
-              if (Modernizr.preserve3d) {
-                $this.number = getval;              
-                $this.appendObj.find('.nexttime').html(getval);              
-                $this.obj.parent().find('.changebk1 .sp1').html(getval);
-                $this.obj.parent().find('.changebk1 .sp2 .ins').html( ((getval - 1 ) < 0)? ($this.callNextNumber - 1) : (getval - 1 ));
-                $this.obj.parent().find('.prevtime .ins').html( getval );
-                //$this.obj.parent().find('.nexttime .ins').html( getval );                      
-              }else {
-                
-                $this.appendObj.html(getval);
-              }
-           
+      countBox.prototype.callNextObj = function() {
 
-                 
+      }
+
+
+      var selectString = '[countTime]';
+
+      function CountTime(startTime, endTime, obj) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+
+        this.sbTime = Math.floor((this.endTime - this.startTime) / 1e3);
+
+        //this.sbTime = 970;
+        this.obj = obj;
+
+        this.secondObj = obj.find('[countSec]');
+        this.miniteObj = obj.find('[countMin]');
+        this.hourObj = obj.find('[countHour]');
+        this.dayObj = obj.find('[countDay]');
+        this.el = obj;
+
+        this.second = 0;
+        this.min = 0;
+        this.hour = 0;
+        this.day = 0;
+
+        this.countBoxSecond = null;
+        this.countBoxMin = null;
+        this.countBoxHour = null;
+        this.countBoxDay = null;
+
+      }
+
+      CountTime.prototype.build = function() {
+        var $this = this;
+
+        var getSbTime = this.sbTime;
+
+        this.second = Math.floor(getSbTime % 60);
+
+        $this.countBoxSecond = new countBox($this.second, $this.secondObj, 60);
+
+        this.min = Math.floor(getSbTime / 60 % 60);
+
+        $this.countBoxMin = new countBox($this.min, $this.miniteObj, 60);
+
+        this.hour = Math.floor(getSbTime / 3600 % 24);
+
+        $this.countBoxHour = new countBox($this.hour, $this.hourObj, 24);
+
+
+
+        this.day = Math.floor(getSbTime / 3600 / 24);
+
+        $this.countBoxDay = new countBox($this.day, $this.dayObj);
+
+        //秒回调
+        $this.countBoxSecond.callNextObj = function(obj) {
+          $this.countBoxMin.countNext(function(obj) {
+
+          });
+        }
+
+        //分回调
+        $this.countBoxMin.callNextObj = function() {
+          $this.countBoxHour.countNext(function(obj) {});
+        }
+
+        //时回调
+        $this.countBoxHour.callNextObj = function() {
+          $this.countBoxDay.countNext(function(obj) {
+
+          });
+        }
+
+
+        //TweenMax.ticker.fps(5);
+
+        function countInto() {
+
+
+
+          $this.countBoxSecond.countNext(function(obj) {
+            $this.checkTime();
+            if ($this.sbTime == 0) {
+              $this.obj.trigger('countEnd');
+              return
             }
-
-            countBox.prototype.countNext = function  (callback) { //跳转下一页 
-
-              var $this = this;
-              //$this.number--;
-
-              var getNumber = $this.number;
-
-              $this.proin = true;
-              
-              if ($this.number == 0 && $this.callNextNumber) {                                   
-                //$this.number = $this.callNextNumber - 1;
-                $this.callNextObj();
-              }
-
-              if (Modernizr.preserve3d) {
-                // supported            
-                  setTimeout(
-                    function(){
-                      $this.obj.parent().find('.nexttime').html(((getNumber - 1 ) < 0)? ($this.callNextNumber - 1) : (getNumber - 1 ));
-                    }, 200)
-                  //return  
-                 
-                //TweenMax.ticker.useRAF(false);
-                TweenMax.to($this.obj.parent().find('.changebk1'),1, {
-                  //useFrames: true,
-                  ease: Power0.easeNone,
-                  //ease:SlowMo.ease.config(0.7, 0.7, false),
-                  rotationX:-180,
-                  immediateRender:true,
-                  onUpdateParams:["{self}"],
-                  onComplete:function  () {
-                    //debugger;
-
-                    $this.number--;
-                    $this.resetNumber($this.number);
-
-                    TweenMax.set($this.appendObj.find('.changebk1')[0], {
-                      transformStyle:'preserve-3d',
-                      rotationX:2,
-                      transformOrigin:"center bottom",
-                      onComplete:function  () {
-                        
-                      }
-                      }
-                    )
-
-                    
-                    if (callback) {
-                      callback($this);
-                    }
-
-                    $this.proin = false;
-
-                  }}
-                );
-                
-              }else {
-                $this.number--;
-                $this.resetNumber($this.number);
-              }
-            }
-
-            countBox.prototype.callNextObj = function  () {
-              
-            }
-
-      
-        var selectString = '[countTime]';
-      
-        function CountTime (startTime,endTime,obj) {
-          this.startTime = startTime;
-          this.endTime = endTime;
-          
-          this.sbTime = Math.floor((this.endTime - this.startTime) / 1e3);
-
-          //this.sbTime = 970;
-          this.obj = obj;
-
-          this.secondObj = obj.find('[countSec]');
-          this.miniteObj = obj.find('[countMin]');
-          this.hourObj = obj.find('[countHour]');
-          this.dayObj = obj.find('[countDay]');
-          this.el = obj;
-
-          this.second = 0;
-          this.min = 0;
-          this.hour = 0;
-          this.day = 0;
-
-          this.countBoxSecond = null;
-          this.countBoxMin = null;
-          this.countBoxHour = null;
-          this.countBoxDay = null;
+            countInto();
+          })
 
         }
-      
-          CountTime.prototype.build = function  () {
-            var $this = this;
-            
-            var getSbTime = this.sbTime;                  
 
-            this.second = Math.floor(getSbTime % 60);
+        //开始啦
+        setTimeout(
+          function() {
 
-            $this.countBoxSecond = new countBox($this.second, $this.secondObj,60);
-
-            this.min = Math.floor(getSbTime / 60 % 60);
-
-            $this.countBoxMin = new countBox($this.min, $this.miniteObj,60);
-            
-            this.hour = Math.floor(getSbTime / 3600 % 24);
-
-            $this.countBoxHour = new countBox($this.hour, $this.hourObj, 24);
-            
+            //$this.checkTime();
 
 
-            this.day = Math.floor(getSbTime / 3600 / 24);
 
-            $this.countBoxDay = new countBox($this.day, $this.dayObj);
 
-            //秒回调
-            $this.countBoxSecond.callNextObj = function  (obj) {      
-              $this.countBoxMin.countNext(function  (obj) {  
-          
-              });
+            if (!Modernizr.preserve3d) {
+
+              $this.checkTime();
+
+            } else {
+              countInto();
             }
 
-            //分回调
-            $this.countBoxMin.callNextObj = function  () {              
-              $this.countBoxHour.countNext(function  (obj) {  
-              });
-            }
-            
-            //时回调
-            $this.countBoxHour.callNextObj = function  () {              
-              $this.countBoxDay.countNext(function  (obj) {  
-                           
-              });
-            }
+            var timerinter = setInterval(
+              function() {
 
+                if ($this.sbTime > 0) {
+                  $this.sbTime--;
 
-            //TweenMax.ticker.fps(5);
-
-            function  countInto() {
-
-
-             
-                $this.countBoxSecond.countNext(function  (obj) {
+                  if (!Modernizr.preserve3d) {
                     $this.checkTime();
-                    if ($this.sbTime == 0) {
-                      $this.obj.trigger('countEnd');
-                      return
-                    }
-                  countInto();
-                })
-              
-            }
+                  }
 
-            //开始啦
-            setTimeout(
-              function(){
-               
-                //$this.checkTime();
-                
-                
-                
-                
-                if (!Modernizr.preserve3d) {
-                  
-                  $this.checkTime();
-                   
-                }else {
-                  countInto(); 
+
+                } else {
+                  $this.sbTime = 0;
+                  if (!Modernizr.preserve3d) {
+                    $this.obj.trigger('countEnd');
+                  }
+
+                  clearInterval(timerinter);
+
                 }
+              }, 1000
+            )
 
-                var timerinter = setInterval(
-                  function(){
-                    
-                    if ($this.sbTime > 0) {
-                      $this.sbTime--;   
-                      
-                      if (!Modernizr.preserve3d) {
-                          $this.checkTime();
-                      }
+          }, 1000);
+      }
 
+      CountTime.prototype.checkTime = function() {
+        var $this = this;
+        var getSbTime = $this.sbTime;
+        $this.countBoxSecond.resetNumber(Math.floor(getSbTime % 60));
+        //(Math.floor(getSbTime % 60).toString().length < 2)? '0'+ Math.floor(getSbTime % 60).toString() :Math.floor(getSbTime % 60);
 
-                    }else {                      
-                      $this.sbTime = 0;
-                      if (!Modernizr.preserve3d) {
-                        $this.obj.trigger('countEnd');
-                      }
+        $this.countBoxMin.resetNumber(Math.floor(getSbTime / 60 % 60));
+        //(Math.floor(getSbTime / 60 % 60).toString().length < 2)? '0'+ Math.floor(getSbTime / 60 % 60).toString() :
 
-                      clearInterval(timerinter);
-                      
-                    }             
-                  },1000
-                )
+        $this.countBoxHour.resetNumber(Math.floor(getSbTime / 3600 % 24));
+        //(Math.floor(getSbTime / 3600 % 24).toString().length < 2)? '0' + Math.floor(getSbTime / 3600 % 24).toString()
 
-              }, 1000);
+        $this.countBoxDay.resetNumber(Math.floor(getSbTime / 3600 / 24));
+        //(Math.floor(getSbTime / 3600 / 24).toString().length < 2)? '0' + Math.floor(getSbTime / 3600 / 24).toString() : 
+
+      }
+
+      $(selectString).each(function() {
+        var attrpro = $(this).attr('countTime').split(',');
+        for (var i = 0; i < attrpro.length; i++) {
+          if (attrpro[i] == 'now') {
+            attrpro[i] = new Date().getTime();
+          } else {
+            attrpro[i] = new Date(attrpro[i]).getTime();
           }
-      
-          CountTime.prototype.checkTime = function  () {
-            var $this = this;
-            var getSbTime = $this.sbTime;
-            $this.countBoxSecond.resetNumber(Math.floor(getSbTime % 60));
-            //(Math.floor(getSbTime % 60).toString().length < 2)? '0'+ Math.floor(getSbTime % 60).toString() :Math.floor(getSbTime % 60);
+        }
 
-            $this.countBoxMin.resetNumber(Math.floor(getSbTime / 60 % 60));
-            //(Math.floor(getSbTime / 60 % 60).toString().length < 2)? '0'+ Math.floor(getSbTime / 60 % 60).toString() :
-
-            $this.countBoxHour.resetNumber(Math.floor(getSbTime / 3600 % 24));
-            //(Math.floor(getSbTime / 3600 % 24).toString().length < 2)? '0' + Math.floor(getSbTime / 3600 % 24).toString()
-
-            $this.countBoxDay.resetNumber(Math.floor(getSbTime / 3600 / 24));
-            //(Math.floor(getSbTime / 3600 / 24).toString().length < 2)? '0' + Math.floor(getSbTime / 3600 / 24).toString() : 
-
-          }
-      
-        $(selectString).each(function () {
-          var attrpro = $(this).attr('countTime').split(',');
-          for (var i = 0;  i<attrpro.length ; i++) {
-            if (attrpro[i] == 'now') {
-              attrpro[i] = new Date().getTime();
-            }else {
-              attrpro[i] = new Date(attrpro[i]).getTime();
-            }
-          }
-          
-          var timmer = new CountTime(attrpro[0],attrpro[1],$(this));
-          timmer.build();
-        })
-
-
-
-    
-
-      })(jQuery);
-
-      $('.counttime').on('countEnd',function  () {
-        alert('倒计时结束');
+        var timmer = new CountTime(attrpro[0], attrpro[1], $(this));
+        timmer.build();
       })
-      
 
 
 
-      
 
+
+    })(jQuery);
+
+    $('.counttime').on('countEnd', function() {
+      alert('倒计时结束');
+    })
   </script>
 
 </body>
+
 </html>

@@ -1,0 +1,3988 @@
+!!com.aptana.scripting.model.BundleElement
+author: ''
+children:
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [divc]
+  description: null
+  displayName: div_class
+  expansion: "<div class=\"$1\">\n\t$0\n</div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html text
+  tags: &id001 []
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [ngp]
+  description: null
+  displayName: ng-pluralize
+  expansion: <ng-pluralize>$1</ng-pluralize>
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html text
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [ng-]
+  description: null
+  displayName: ng-
+  expansion: ng-${1:app/bind/bind-html/bind-template/blur/change/checked/class/class-even/class-odd/click/cloak/controller/copy/csp/cut/dblclick/disabled/focus/hide/href/if/include/init/keydown/keypress/keyup/list/model/mousedown/mouseenter/mouseleave/mousemove/mouseover/mouseup/ng-non-bindable/open/options/paste/readonly/repeat-start/repeat-end/selected/show/src/srcset/style/submit/swipe-left/swipe-right/switch/switch-default/switch-when/view}="$2"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: HTML_ATTRIBUTE
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html entity.other.attribute-name.html
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mdoctype]
+  description: null
+  displayName: mDoctype(mui-dom结构)
+  expansion: "<!doctype html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\"\
+    \ />\n    <title>Document</title>\n    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no\"\
+    \ />\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"${1:css\\/mui.css}\"\
+    />\n</head>\n<body>\n    $0\n    <script src=\"${2:js\\/mui.js}\" type=\"text/javascript\"\
+    \ charset=\"utf-8\"></script>\n    <script type=\"text/javascript\">\n    mui.init()$3\n\
+    \    </script>\n</body>\n</html>\n"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mbody]
+  description: null
+  displayName: mBody(主体)
+  expansion: "<div class=\"mui-content\">\n    $0\n</div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mscroll]
+  description: null
+  displayName: mScroll(区域滚动)
+  expansion: "<div class=\"mui-scroll-wrapper\">\n    <div class=\"mui-scroll\">\n\
+    \        ${1:<!--这里放置真实显示的DOM内容-->}\n    </div>\n</div>\n$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mpullrefresh]
+  description: null
+  displayName: mrefreshContainer(刷新容器)
+  expansion: "<!--下拉刷新容器-->\n<div id=\"refreshContainer\" class=\"mui-content mui-scroll-wrapper\"\
+    >\n  <div class=\"mui-scroll\">\n    <!--数据列表-->\n    <ul class=\"mui-table-view\
+    \ mui-table-view-chevron\">\n      $0\n    </ul>\n  </div>\n</div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mheader]
+  description: null
+  displayName: mHeader(标题栏)
+  expansion: "<header class=\"mui-bar mui-bar-nav\">\n    <h1 class=\"mui-title\"\
+    >${1:标题}</h1>\n</header>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mheaderwithBack]
+  description: null
+  displayName: mHeader(带返回箭头的标题栏)
+  expansion: "<header class=\"mui-bar mui-bar-nav\">\n    <a class=\"mui-action-back\
+    \ mui-icon mui-icon-left-nav mui-pull-left\"><\\/a>\n    <h1 class=\"mui-title\"\
+    >${1:标题}</h1>\n</header>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mcheckbox]
+  description: null
+  displayName: mCheckbox(复选框)
+  expansion: "<div class=\"mui-input-row mui-checkbox \">\n    <label>${1:Checkbox}</label>\n\
+    \    <input name=\"${3:Checkbox}\" type=\"checkbox\" ${2:checked}>\n</div>\n$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mcheckbox_left]
+  description: null
+  displayName: mCheckbox(复选框居左)
+  expansion: "<div class=\"mui-input-row mui-checkbox mui-left\">\n  <label>${1:checkbox}</label>\n\
+    \  <input name=\"${3:checkbox1}\" type=\"checkbox\" ${2:checked} >\n</div>\n$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mcheckbox_disabled]
+  description: null
+  displayName: mCheckbox(复选框禁用选项)
+  expansion: "<div class=\"mui-input-row mui-checkbox mui-disabled\">\n    <label>${1:disabled\
+    \ checkbox}</label>\n    <input name=\"checkbox\" type=\"checkbox\" ${2:disabled=\"\
+    disabled\"}>\n</div>\n$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [micon]
+  description: null
+  displayName: mIcon(图标)
+  expansion: <${2:span} class="mui-icon mui-icon-${1:weixin}"></${2:span}>
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [moffcanvasall]
+  description: null
+  displayName: mOffcanvas(侧滑导航-主界面、菜单同时移动)
+  expansion: "<!-- 主界面菜单同时移动 -->\n    <!-- 侧滑导航根容器 -->\n    <div class=\"mui-off-canvas-wrap\
+    \ mui-draggable\">\n        <!-- 主页面容器 -->\n        <div class=\"mui-inner-wrap\"\
+    >\n            <!-- 菜单容器 -->\n            <aside class=\"mui-off-canvas-left\"\
+    \ id=\"offCanvasSide\">\n                <div class=\"mui-scroll-wrapper\">\n\
+    \                    <div class=\"mui-scroll\">\n                        <!--\
+    \ 菜单具体展示内容 -->\n                        \n                    </div>\n       \
+    \         </div>\n            </aside>\n            <!-- 主页面标题 -->\n         \
+    \   <header class=\"mui-bar mui-bar-nav\">\n                <a class=\"mui-icon\
+    \ mui-action-menu mui-icon-bars mui-pull-left\" href=\"#offCanvasSide\"></a>\n\
+    \                <h1 class=\"mui-title\">标题</h1>\n            </header>\n    \
+    \        <nav class=\"mui-bar mui-bar-tab\">\n    \t\t    <a class=\"mui-tab-item\
+    \ mui-active\">\n    \t\t        <span class=\"mui-icon mui-icon-home\"></span>\n\
+    \    \t\t        <span class=\"mui-tab-label\">首页</span>\n    \t\t    </a>\n \
+    \   \t\t    <a class=\"mui-tab-item\">\n    \t\t        <span class=\"mui-icon\
+    \ mui-icon-phone\"></span>\n    \t\t        <span class=\"mui-tab-label\">电话</span>\n\
+    \    \t\t    </a>\n    \t\t    <a class=\"mui-tab-item\">\n    \t\t        <span\
+    \ class=\"mui-icon mui-icon-email\"></span>\n    \t\t        <span class=\"mui-tab-label\"\
+    >邮件</span>\n    \t\t    </a>\n    \t\t    <a class=\"mui-tab-item\">\n    \t\t\
+    \        <span class=\"mui-icon mui-icon-gear\"></span>\n    \t\t        <span\
+    \ class=\"mui-tab-label\">设置</span>\n    \t\t    </a>\n    \t\t</nav>\n      \
+    \      <!-- 主页面内容容器 -->\n            <div class=\"mui-content mui-scroll-wrapper\"\
+    >\n                <div class=\"mui-scroll\">\n                    <!-- 主界面具体展\
+    示内容 -->\n                    \n                </div>\n            </div>\n  \
+    \     \t <div class=\"mui-off-canvas-backdrop\"></div>\n        </div>\n    </div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [moffcanvasmain]
+  description: null
+  displayName: mOffcanvas(侧滑导航-主界面移动、菜单不动)
+  expansion: "<!-- 主界面移动、菜单不动 -->\n<div class=\"mui-off-canvas-wrap mui-draggable\"\
+    >\n  <!-- 菜单容器 -->\n  <aside class=\"mui-off-canvas-left\" id=\"offCanvasSide\"\
+    >\n    <div class=\"mui-scroll-wrapper\">\n      <div class=\"mui-scroll\">\n\
+    \        <!-- 菜单具体展示内容 -->\n        \t$1\n      </div>\n    </div>\n  </aside>\n\
+    \  <!-- 主页面容器 -->\n  <div class=\"mui-inner-wrap\">\n    <!-- 主页面标题 -->\n    <header\
+    \ class=\"mui-bar mui-bar-nav\">\n      <a class=\"mui-icon mui-action-menu mui-icon-bars\
+    \ mui-pull-left\"  href=\"#offCanvasSide\" ></a>\n      <h1 class=\"mui-title\"\
+    >标题</h1>\n    </header>\n    <nav class=\"mui-bar mui-bar-tab\">\n\t    <a class=\"\
+    mui-tab-item mui-active\">\n\t        <span class=\"mui-icon mui-icon-home\"></span>\n\
+    \t        <span class=\"mui-tab-label\">首页</span>\n\t    </a>\n\t    <a class=\"\
+    mui-tab-item\">\n\t        <span class=\"mui-icon mui-icon-phone\"></span>\n\t\
+    \        <span class=\"mui-tab-label\">电话</span>\n\t    </a>\n\t    <a class=\"\
+    mui-tab-item\">\n\t        <span class=\"mui-icon mui-icon-email\"></span>\n\t\
+    \        <span class=\"mui-tab-label\">邮件</span>\n\t    </a>\n\t    <a class=\"\
+    mui-tab-item\">\n\t        <span class=\"mui-icon mui-icon-gear\"></span>\n\t\
+    \        <span class=\"mui-tab-label\">设置</span>\n\t    </a>\n\t</nav>\n    <div\
+    \ class=\"mui-content mui-scroll-wrapper\">\n      <div class=\"mui-scroll\">\n\
+    \        <!-- 主界面具体展示内容 -->\n         \t$2\n      </div>\n    </div> \n    <div\
+    \ class=\"mui-off-canvas-backdrop\"></div>\n  </div> \n</div>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [moffcanvasmenu]
+  description: null
+  displayName: mOffcanvas(侧滑导航-主界面不动、菜单移动)
+  expansion: "<!-- 主界面不动、菜单移动 -->\n<!-- 侧滑导航根容器 -->\n<div class=\"mui-off-canvas-wrap\
+    \ mui-draggable mui-slide-in\">\n  <!-- 菜单容器 -->\n  <aside class=\"mui-off-canvas-left\"\
+    \ id=\"offCanvasSide\">\n    <div class=\"mui-scroll-wrapper\">\n      <div class=\"\
+    mui-scroll\">\n        <!-- 菜单具体展示内容 -->\n        $1\n      </div>\n    </div>\n\
+    \  </aside>\n  <!-- 主页面容器 -->\n  <div class=\"mui-inner-wrap\">\n    <!-- 主页面标\
+    题 -->\n    <header class=\"mui-bar mui-bar-nav\">\n      <a class=\"mui-icon mui-action-menu\
+    \ mui-icon-bars mui-pull-left\" href=\"#offCanvasSide\"></a>\n      <h1 class=\"\
+    mui-title\">标题</h1>\n    </header>\n    <nav class=\"mui-bar mui-bar-tab\">\n\t\
+    \    <a class=\"mui-tab-item mui-active\">\n\t        <span class=\"mui-icon mui-icon-home\"\
+    ></span>\n\t        <span class=\"mui-tab-label\">首页</span>\n\t    </a>\n\t  \
+    \  <a class=\"mui-tab-item\">\n\t        <span class=\"mui-icon mui-icon-phone\"\
+    ></span>\n\t        <span class=\"mui-tab-label\">电话</span>\n\t    </a>\n\t  \
+    \  <a class=\"mui-tab-item\">\n\t        <span class=\"mui-icon mui-icon-email\"\
+    ></span>\n\t        <span class=\"mui-tab-label\">邮件</span>\n\t    </a>\n\t  \
+    \  <a class=\"mui-tab-item\">\n\t        <span class=\"mui-icon mui-icon-gear\"\
+    ></span>\n\t        <span class=\"mui-tab-label\">设置</span>\n\t    </a>\n\t</nav>\n\
+    \    <div class=\"mui-content mui-scroll-wrapper\">\n      <div class=\"mui-scroll\"\
+    >\n        <!-- 主界面具体展示内容 -->\n        $2\n      </div>\n    </div>  \n    <div\
+    \ class=\"mui-off-canvas-backdrop\"></div>\n  </div>\n</div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [moffcanvasscalable]
+  description: null
+  displayName: mOffcanvas(缩放式侧滑(类手机QQ))
+  expansion: "<!-- 缩放式侧滑（类手机QQ） -->\n<!-- 侧滑导航根容器 -->\n<div class=\"mui-off-canvas-wrap\
+    \ mui-draggable mui-scalable\">\n  <!-- 菜单容器 -->\n  <aside class=\"mui-off-canvas-left\
+    \ mui-transitioning\" id=\"offCanvasSide\">\n    <div class=\"mui-scroll-wrapper\"\
+    >\n      <div class=\"mui-scroll\">\n        <!-- 菜单具体展示内容 -->\n        $1\n \
+    \     </div>\n    </div>\n  </aside>\n  <!-- 主页面容器 -->\n  <div class=\"mui-inner-wrap\
+    \ mui-transitioning\">\n    <!-- 主页面标题 -->\n    <header class=\"mui-bar mui-bar-nav\"\
+    >\n      <a class=\"mui-icon mui-action-menu mui-icon-bars mui-pull-left\" href=\"\
+    #offCanvasSide\"></a>\n      <h1 class=\"mui-title\">标题</h1>\n    </header>\n\
+    \    <nav class=\"mui-bar mui-bar-tab\">\n\t    <a class=\"mui-tab-item mui-active\"\
+    >\n\t        <span class=\"mui-icon mui-icon-home\"></span>\n\t        <span class=\"\
+    mui-tab-label\">首页</span>\n\t    </a>\n\t    <a class=\"mui-tab-item\">\n\t  \
+    \      <span class=\"mui-icon mui-icon-phone\"></span>\n\t        <span class=\"\
+    mui-tab-label\">电话</span>\n\t    </a>\n\t    <a class=\"mui-tab-item\">\n\t  \
+    \      <span class=\"mui-icon mui-icon-email\"></span>\n\t        <span class=\"\
+    mui-tab-label\">邮件</span>\n\t    </a>\n\t    <a class=\"mui-tab-item\">\n\t  \
+    \      <span class=\"mui-icon mui-icon-gear\"></span>\n\t        <span class=\"\
+    mui-tab-label\">设置</span>\n\t    </a>\n\t</nav>\n    <div class=\"mui-content\
+    \ mui-scroll-wrapper\">\n      <div class=\"mui-scroll\">\n        <!-- 主界面具体展\
+    示内容 -->\n        $2\n      </div>\n    </div>  \n    <div class=\"mui-off-canvas-backdrop\"\
+    ></div>\n  </div>\n</div>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minputtext]
+  description: null
+  displayName: mText(文本框)
+  expansion: "<div class=\"mui-input-row\">\n    <label>${3:Input}</label>\n    <input\
+    \ type=\"${1:text}\" placeholder=\"${2:普通输入框}\">\n</div>\n$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minputsearch]
+  description: null
+  displayName: mText_Search(搜索框)
+  expansion: "<div class=\"mui-input-row mui-search\">\n    <input type=\"search\"\
+    \ class=\"mui-input-clear\" placeholder=\"$1\">\n</div>\n$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minputclear]
+  description: null
+  displayName: mText_Clear(带清除按钮的文本框)
+  expansion: "<div class=\"mui-input-row\">\n    <label>Input</label>\n    <input\
+    \ type=\"text\" class=\"mui-input-clear\" placeholder=\"${1:带清除按钮的输入框}\">\n</div>\n\
+    $0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minputspeech]
+  description: null
+  displayName: mText_Speech(语音输入)
+  expansion: "<div class=\"mui-input-row\">\n    <label>${2:Input}</label>\n    <input\
+    \ type=\"text\" class=\"mui-input-speech mui-input-clear\" placeholder=\"${1:语\
+    音输入}\">\n</div>\n$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mform]
+  description: null
+  displayName: mForm(表单)
+  expansion: "<form class=\"mui-input-group\">\n    <div class=\"mui-input-row\">\n\
+    \        <label>${3:input}</label>\n        <input type=\"${1:text}\" class=\"\
+    ${2:mui-input-clear}\" placeholder=\"${3:请输入}\">\n    </div>\n</form>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mradio]
+  description: null
+  displayName: mRadio(单选框)
+  expansion: "<div class=\"mui-input-row mui-radio \">\n    <label>${1:Radio}</label>\n\
+    \    <input name=\"${3:radio}\" type=\"radio\" ${2:checked}>\n</div>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mradio_left]
+  description: null
+  displayName: mRadio(单选框居左)
+  expansion: "<div class=\"mui-input-row mui-radio mui-left\">\n    <label>${1:Radio}</label>\n\
+    \    <input name=\"${3:radio}\" type=\"radio\" ${2:checked}>\n</div>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mradio_disable]
+  description: null
+  displayName: mRadio(禁用单选框)
+  expansion: "<div class=\"mui-input-row mui-radio mui-disabled\">\n    <label>${1:Radio}</label>\n\
+    \    <input name=\"${3:radio}\" type=\"radio\" disabled=\"disabled\">\n</div>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mradio_selected]
+  description: null
+  displayName: mRadios(默认选中指定项)
+  expansion: "<ul class=\"mui-table-view mui-table-view-radio\">\n    <li class=\"\
+    mui-table-view-cell\">\n        <a class=\"mui-navigate-right\">${1:Item 1}</a>\n\
+    \    </li>\n    <li class=\"mui-table-view-cell mui-selected\">\n        <a class=\"\
+    mui-navigate-right\">${2:Item 2}</a>\n    </li>\n    <li class=\"mui-table-view-cell\"\
+    >\n        <a class=\"mui-navigate-right\">${3:Item 3}</a>\n    </li>\n</ul>\n\
+    $0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mpopover]
+  description: null
+  displayName: mPopover(弹出菜单)
+  expansion: "${1:<style type=\"text\\/css\">\n#popover{\n\theight: 100px;\n\twidth:200px;\n\
+    \\}\n<\\/style>}\n<div id=\"popover\" class=\"mui-popover\">\n\t<div class=\"\
+    mui-scroll-wrapper\">\n\t    <div class=\"mui-scroll\">\n\t\t    <ul class=\"\
+    mui-table-view\">\n\t\t    \t<li class=\"mui-table-view-cell\"><a href=\"#\">Item1</a></li>\n\
+    \t\t    \t<li class=\"mui-table-view-cell\"><a href=\"#\">Item2</a></li>\n\t\t\
+    \    \t<li class=\"mui-table-view-cell\"><a href=\"#\">Item3</a></li>\n\t\t  \
+    \  \t<li class=\"mui-table-view-cell\"><a href=\"#\">Item4</a></li>\n\t\t    \t\
+    <li class=\"mui-table-view-cell\"><a href=\"#\">Item5</a></li>\n\t\t    </ul>\n\
+    \t\t</div>\n\t</div>\n</div>\n<a href=\"#popover\" id=\"openPopover\" class=\"\
+    mui-btn mui-btn-primary mui-btn-block\">打开弹出菜单</a>\n${2:mui('.mui-scroll-wrapper').scroll()}"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mactionsheet]
+  description: null
+  displayName: mActionsheet(H5模式弹出菜单)
+  expansion: "<div id=\"sheet\" class=\"mui-popover mui-popover-bottom mui-popover-action\
+    \ \">\n    <!-- 可选择菜单 -->\n    <ul class=\"mui-table-view\">\n      <li class=\"\
+    mui-table-view-cell\">\n        <a href=\"#\">${1:菜单1}</a>\n      </li>\n    \
+    \  <li class=\"mui-table-view-cell\">\n        <a href=\"#\">${2:菜单2}</a>\n  \
+    \    </li>\n    </ul>\n    <!-- 取消菜单 -->\n    <ul class=\"mui-table-view\">\n\
+    \      <li class=\"mui-table-view-cell\">\n        <a href=\"#sheet1\"><b>${4:取\
+    消}</b></a>\n      </li>\n    </ul>\n</div>\n<a href=\"#sheet\" id=\"openSheet\"\
+    \ class=\"mui-btn mui-btn-primary mui-btn-block\">${3:打开操作表}</a>\n$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mrangelabel]
+  description: null
+  displayName: mRange(Label+滑块)
+  expansion: "<div class=\"mui-input-row mui-input-range\">\n    <label>Range</label>\n\
+    \    <input type=\"range\" min=\"0\" max=\"100\" value=\"50\">\n</div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mswitch]
+  description: null
+  displayName: mSwitch(开关)
+  expansion: "<div class=\"mui-input-row\">\n    <label>${2:Switch}</label>\n    <div\
+    \ class=\"mui-switch${1: mui-active}\">\n        <div class=\"mui-switch-handle\"\
+    ></div>\n    </div>\n</div>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mswitchblue]
+  description: null
+  displayName: mSwitch(开关 - 蓝色)
+  expansion: "<div class=\"mui-input-row\">\n    <label>${2:Switch}</label>\n    <div\
+    \ class=\"mui-switch${1: mui-active} mui-switch-blue\">\n        <div class=\"\
+    mui-switch-handle\"></div>\n    </div>\n</div>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mswitchmini]
+  description: null
+  displayName: mSwitch(开关Mini)
+  expansion: "<div class=\"mui-switch mui-switch-mini${1: mui-active}\">\n  <div class=\"\
+    mui-switch-handle\"></div>\n</div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mswitchminiblue]
+  description: null
+  displayName: mSwitch(开关Mini - blue)
+  expansion: "<div class=\"mui-switch mui-switch-mini${1: mui-active} mui-switch-blue\"\
+    >\n  <div class=\"mui-switch-handle\"></div>\n</div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mbadge]
+  description: null
+  displayName: mbadge（数字角标）
+  expansion: <span class="mui-badge ${1:mui-btn-blue/mui-btn-green/mui-btn-yellow/mui-btn-red/mui-btn-purple/mui-btn-grey}">${2:1}</span>$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mbadgeinverted]
+  description: null
+  displayName: mbadge（数字角标无底色）
+  expansion: <span class="mui-badge mui-badge-inverted ${1:mui-btn-blue/mui-btn-green/mui-btn-yellow/mui-btn-red/mui-btn-purple/mui-btn-grey}">${2:1}</span>$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mtab]
+  description: null
+  displayName: mTab(底部选项卡)
+  expansion: "<nav class=\"mui-bar mui-bar-tab\">\n    <a class=\"mui-tab-item mui-active\"\
+    >\n        <span class=\"mui-icon mui-icon-home\"></span>\n        <span class=\"\
+    mui-tab-label\">${1:首页}</span>\n    </a>\n    <a class=\"mui-tab-item\">\n   \
+    \     <span class=\"mui-icon mui-icon-phone\"></span>\n        <span class=\"\
+    mui-tab-label\">${2:电话}</span>\n    </a>\n    <a class=\"mui-tab-item\">\n   \
+    \     <span class=\"mui-icon mui-icon-email\"></span>\n        <span class=\"\
+    mui-tab-label\">${3:邮件}</span>\n    </a>\n    <a class=\"mui-tab-item\">\n   \
+    \     <span class=\"mui-icon mui-icon-gear\"></span>\n        <span class=\"mui-tab-label\"\
+    >${4:设置}</span>\n    </a>\n</nav>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mtabsegmented]
+  description: null
+  displayName: mTabSegmented(div选项卡)
+  expansion: "<div class=\"mui-segmented-control\">\n    <a class=\"mui-control-item\
+    \ mui-active\" href=\"#item1\">${1:选项卡1}</a>\n    <a class=\"mui-control-item\"\
+    \ href=\"#item2\">${1:选项卡2}</a>\n</div>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mtabviewpage]
+  description: null
+  displayName: mTabSegmented(可左右拖动的选项卡)
+  expansion: "<div class=\"mui-slider\">\n    <div class=\"mui-slider-indicator mui-segmented-control\
+    \ mui-segmented-control-inverted\">\n        <a class=\"mui-control-item\" href=\"\
+    #item1\">${1:选项卡1}</a>\n        <a class=\"mui-control-item\" href=\"#item2\"\
+    >${2:选项卡2}</a>\n    </div>\n    <div id=\"sliderProgressBar\" class=\"mui-slider-progress-bar\
+    \ mui-col-xs-4\"></div>\n    <div class=\"mui-slider-group\">\n        <div id=\"\
+    item1\" class=\"mui-slider-item mui-control-content mui-active\">\n          \
+    \  <ul class=\"mui-table-view\">\n                <li class=\"mui-table-view-cell\"\
+    >${3:第1个选项卡子项}</li>\n                <li class=\"mui-table-view-cell\">${4:第1个\
+    选项卡子项}</li>\n            </ul>\n        </div>\n        <div id=\"item2mobile\"\
+    \ class=\"mui-slider-item mui-control-content\">\n            <ul class=\"mui-table-view\"\
+    >\n                <li class=\"mui-table-view-cell\">${5:第2个选项卡子项}</li>\n    \
+    \            <li class=\"mui-table-view-cell\">${6:第2个选项卡子项}</li>\n          \
+    \  </ul>\n        </div>\n    </div>\n</div>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mpagination]
+  description: null
+  displayName: mPagination(分页)
+  expansion: "<ul class=\"mui-pagination\">\n    <li class=\"mui-disabled\">\n   \
+    \     <span> &laquo; </span>\n    </li>\n    <li class=\"mui-active\">\n     \
+    \   <a href=\"#\">${1:1}</a>\n    </li>\n    <li>\n        <a href=\"#\">${2:2}</a>\n\
+    \    </li>\n    <li>\n        <a href=\"#\">&raquo;</a>\n    </li>\n</ul>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mlist]
+  description: null
+  displayName: mList(列表)
+  expansion: "<ul class=\"mui-table-view\">\n        <li class=\"mui-table-view-cell\"\
+    >\n            <a class=\"mui-navigate-right\">\n                ${1:Item 1}\n\
+    \            </a>\n        </li>\n        <li class=\"mui-table-view-cell\">\n\
+    \            <a class=\"mui-navigate-right\">\n                 ${2:Item 2}\n\
+    \            </a>\n        </li>\n        <li class=\"mui-table-view-cell\">\n\
+    \            <a class=\"mui-navigate-right\">\n                 ${3:Item 3}\n\
+    \            </a>\n        </li>\n    </ul>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mlist_Media_left]
+  description: null
+  displayName: mListMedia(图文列表图片居左)
+  expansion: "<ul class=\"mui-table-view\">\n    <li class=\"mui-table-view-cell mui-media\"\
+    >\n        <a href=\"javascript:;\">\n            <img class=\"mui-media-object\
+    \ mui-pull-left\" src=\"${1:http:\\/\\/placehold.it\\/40x30}\">\n            <div\
+    \ class=\"mui-media-body\">\n                ${4:幸福}\n                <p class=\"\
+    mui-ellipsis\">${5:能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？}</p>\n            </div>\n  \
+    \      </a>\n    </li>\n    <li class=\"mui-table-view-cell mui-media\">\n   \
+    \     <a href=\"javascript:;\">\n            <img class=\"mui-media-object mui-pull-left\"\
+    \ src=\"${2:http:\\/\\/placehold.it\\/40x30}\">\n            <div class=\"mui-media-body\"\
+    >\n                ${6:木屋}\n                <p class=\"mui-ellipsis\">${7:想要这样\
+    一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.}</p>\n            </div>\n        </a>\n    </li>\n    <li\
+    \ class=\"mui-table-view-cell mui-media\">\n        <a href=\"javascript:;\">\n\
+    \            <img class=\"mui-media-object mui-pull-left\" src=\"${3:http:\\/\\\
+    /placehold.it\\/40x30}\">\n            <div class=\"mui-media-body\">\n      \
+    \         ${8: CBD}\n                <p class=\"mui-ellipsis\">${9:烤炉模式的城，到黄昏，\
+    如同打翻的调色盘一般.}</p>\n            </div>\n        </a>\n    </li>\n</ul>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mlist_Media_right]
+  description: null
+  displayName: mListMedia(图文列表图片居右)
+  expansion: "<ul class=\"mui-table-view\">\n    <li class=\"mui-table-view-cell mui-media\"\
+    >\n        <a href=\"javascript:;\">\n            <img class=\"mui-media-object\
+    \ mui-pull-right\" src=\"${1:http:\\/\\/placehold.it\\/40x30}\">\n           \
+    \ <div class=\"mui-media-body\">\n                ${4:幸福}\n                <p\
+    \ class=\"mui-ellipsis\">${5:能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？}</p>\n            </div>\n\
+    \        </a>\n    </li>\n    <li class=\"mui-table-view-cell mui-media\">\n \
+    \       <a href=\"javascript:;\">\n            <img class=\"mui-media-object mui-pull-right\"\
+    \ src=\"${2:http:\\/\\/placehold.it\\/40x30}\">\n            <div class=\"mui-media-body\"\
+    >\n                ${6:木屋}\n                <p class=\"mui-ellipsis\">${7:想要这样\
+    一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.}</p>\n            </div>\n        </a>\n    </li>\n    <li\
+    \ class=\"mui-table-view-cell mui-media\">\n        <a href=\"javascript:;\">\n\
+    \            <img class=\"mui-media-object mui-pull-right\" src=\"${3:http:\\\
+    /\\/placehold.it\\/40x30}\">\n            <div class=\"mui-media-body\">\n   \
+    \            ${8: CBD}\n                <p class=\"mui-ellipsis\">${9:烤炉模式的城，到\
+    黄昏，如同打翻的调色盘一般.}</p>\n            </div>\n        </a>\n    </li>\n</ul>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mgrid]
+  description: null
+  displayName: mGrid(九宫格)
+  expansion: "<ul class=\"mui-table-view mui-grid-view mui-grid-9\">\n<li class=\"\
+    mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">\n    <a href=\"#\"\
+    >\n        <span class=\"mui-icon mui-icon-home\"></span>\n        <div class=\"\
+    mui-media-body\">${1:Home}</div>\n    </a>\n</li>\n<li class=\"mui-table-view-cell\
+    \ mui-media mui-col-xs-4 mui-col-sm-3\">\n    <a href=\"#\">\n        <span class=\"\
+    mui-icon mui-icon-email\"><span class=\"mui-badge mui-badge-red\">5</span></span>\n\
+    \        <div class=\"mui-media-body\">${2:Email}</div>\n    </a>\n</li>\n<li\
+    \ class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">\n    <a href=\"\
+    #\">\n        <span class=\"mui-icon mui-icon-chatbubble\"></span>\n        <div\
+    \ class=\"mui-media-body\">${3:Chat}</div>\n    </a>\n</li>\n<li class=\"mui-table-view-cell\
+    \ mui-media mui-col-xs-4 mui-col-sm-3\">\n    <a href=\"#\">\n        <span class=\"\
+    mui-icon mui-icon-location\"></span>\n        <div class=\"mui-media-body\">${4:Location}</div>\n\
+    \    </a>\n</li>\n<li class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\"\
+    >\n    <a href=\"#\">\n        <span class=\"mui-icon mui-icon-search\"></span>\n\
+    \        <div class=\"mui-media-body\">${5:Search}</div>\n    </a>\n</li>\n<li\
+    \ class=\"mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3\">\n    <a href=\"\
+    #\">\n        <span class=\"mui-icon mui-icon-phone\"></span>\n        <div class=\"\
+    mui-media-body\">${6:Phone}</div>\n    </a>\n</li>\n    </ul>\n$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mslider_gallery_table]
+  description: null
+  displayName: mGallery-Table(图文表格)
+  expansion: "<ul class=\"mui-table-view mui-grid-view\">\n    <li class=\"mui-table-view-cell\
+    \ mui-media mui-col-xs-6\">\n        <a href=\"#\">\n            <img class=\"\
+    mui-media-object\" src=\"http://placehold.it/400x300\">\n            <div class=\"\
+    mui-media-body\">${1:文字说明1}</div>\n        </a>\n    </li>\n    <li class=\"mui-table-view-cell\
+    \ mui-media mui-col-xs-6\">\n        <a href=\"#\">\n            <img class=\"\
+    mui-media-object\" src=\"http://placehold.it/400x300\">\n            <div class=\"\
+    mui-media-body\">${2:文字说明2}</div>\n        </a>\n    </li>\n</ul>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mslider_gallery]
+  description: null
+  displayName: mGallery图片轮播
+  expansion: "<div id=\"slider\" class=\"mui-slider\" >\n  <div class=\"mui-slider-group\
+    \ mui-slider-loop\">\n    <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->\n    <div class=\"\
+    mui-slider-item mui-slider-item-duplicate\">\n      <a href=\"#\">\n        <img\
+    \ src=\"${1:http:\\/\\/placehold.it\\/400x300}\">\n      </a>\n    </div>\n  \
+    \  <!-- 第一张 -->\n    <div class=\"mui-slider-item\">\n      <a href=\"#\">\n \
+    \       <img src=\"${2:http:\\/\\/placehold.it\\/400x300}\">\n      </a>\n   \
+    \ </div>\n    <!-- 第二张 -->\n    <div class=\"mui-slider-item\">\n      <a href=\"\
+    #\">\n        <img src=\"${3:http:\\/\\/placehold.it\\/400x300}\">\n      </a>\n\
+    \    </div>\n    <!-- 第三张 -->\n    <div class=\"mui-slider-item\">\n      <a href=\"\
+    #\">\n        <img src=\"${4:http:\\/\\/placehold.it\\/400x300}\">\n      </a>\n\
+    \    </div>\n    <!-- 第四张 -->\n    <div class=\"mui-slider-item\">\n      <a href=\"\
+    #\">\n        <img src=\"${1:http:\\/\\/placehold.it\\/400x300}\">\n      </a>\n\
+    \    </div>\n    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->\n    <div class=\"mui-slider-item\
+    \ mui-slider-item-duplicate\">\n      <a href=\"#\">\n        <img src=\"${2:http:\\\
+    /\\/placehold.it\\/400x300}\">\n      </a>\n    </div>\n  </div>\n  <div class=\"\
+    mui-slider-indicator\">\n    <div class=\"mui-indicator mui-active\"></div>\n\
+    \    <div class=\"mui-indicator\"></div>\n    <div class=\"mui-indicator\"></div>\n\
+    \    <div class=\"mui-indicator\"></div>\n  </div>\n</div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mslider]
+  description: null
+  displayName: slide（轮播组件）
+  expansion: "<div class=\"mui-slider\">\n  <div class=\"mui-slider-group\">\n   \
+    \ <!--第一个内容区容器-->\n    <div class=\"mui-slider-item\">\n      <!-- 具体内容 -->\n\
+    \    </div>\n    <!--第二个内容区-->\n    <div class=\"mui-slider-item\">\n      <!--\
+    \ 具体内容 -->\n    </div>\n  </div>\n</div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [actionsheet]
+  description: null
+  displayName: mactionsheet（操作表）
+  expansion: "<div id=\"sheet1\" class=\"mui-popover mui-popover-bottom mui-popover-action\
+    \ \">\n    <!-- 可选择菜单 -->\n    <ul class=\"mui-table-view\">\n      <li class=\"\
+    mui-table-view-cell\">\n        <a href=\"#\">${1菜单1}</a>\n      </li>\n     \
+    \ <li class=\"mui-table-view-cell\">\n        <a href=\"#\">${2菜单2}</a>\n    \
+    \  </li>\n    </ul>\n    <!-- 取消菜单 -->\n    <ul class=\"mui-table-view\">\n  \
+    \    <li class=\"mui-table-view-cell\">\n        <a href=\"#sheet1\"><b>${3取消\
+    }</b></a>\n      </li>\n    </ul>\n</div>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [maccordion]
+  description: null
+  displayName: maccordion（折叠面板）
+  expansion: "<ul class=\"mui-table-view\">\n    <li class=\"mui-table-view-cell mui-collapse\"\
+    >\n        <a class=\"mui-navigate-right\" href=\"#\">${1:面板1}</a>\n        <div\
+    \ class=\"mui-collapse-content\">\n            <p>${2:面板1子内容}</p>\n        </div>\n\
+    \    </li>\n    <li class=\"mui-table-view-cell mui-collapse\">\n        <a class=\"\
+    mui-navigate-right\" href=\"#\">${3:面板}</a>\n            <div class=\"mui-collapse-content\"\
+    >\n            <p>${4:面板2子内容}</p>\n        </div>\n    </li>\n    <li class=\"\
+    mui-table-view-cell mui-collapse\">\n        <a class=\"mui-navigate-right\" href=\"\
+    #\">${5:面板3}</a>\n        <div class=\"mui-collapse-content\">\n            <p>${6:面\
+    板3子内容}</p>\n        </div>\n    </li>\n</ul>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mnumbox]
+  description: null
+  displayName: mnumbox(数字输入框)
+  expansion: "\n<div class=\"mui-numbox\" data-numbox-step='${1:1}' data-numbox-min='${2:0}'\
+    \ data-numbox-max='${3:10}'>\n    <button class=\"mui-btn mui-btn-numbox-minus\"\
+    \ type=\"button\">-</button>\n    <input class=\"mui-input-numbox\" type=\"number\"\
+    \ />\n    <button class=\"mui-btn mui-btn-numbox-plus\" type=\"button\">+</button>\n\
+    </div>$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mbutton]
+  description: null
+  displayName: mButton(按钮)
+  expansion: <button type="button" class="mui-btn ${1:mui-btn-blue/mui-btn-green/mui-btn-yellow/mui-btn-red/mui-btn-purple/mui-btn-grey}">${2:按钮}</button>$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mbutton_outline]
+  description: null
+  displayName: mButton(按钮无底色,有边框)
+  expansion: <button type="button" class="mui-btn ${1:mui-btn-blue/mui-btn-green/mui-btn-yellow/mui-btn-red/mui-btn-purple/mui-btn-grey} mui-btn-outlined">${2:按钮}</button>$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mbutton_block]
+  description: null
+  displayName: mButton(块状按钮)
+  expansion: <button type="button" class="mui-btn ${1:mui-btn-blue/mui-btn-green/mui-btn-yellow/mui-btn-red/mui-btn-purple/mui-btn-grey} mui-btn-block">${2:按钮}</button>$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mprogressbar]
+  description: null
+  displayName: mprogressbar(进度条-有准确值)
+  expansion: "<div class=\"mui-progressbar\">\n\t<span></span>\n</div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mprogressbarinfinite]
+  description: null
+  displayName: mprogressbar(进度条-无限循环)
+  expansion: "<div class=\"mui-progressbar mui-progressbar-infinite\">\n\t<span></span>\n\
+    </div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [ajsvoid]
+  description: null
+  displayName: a_href_javascript
+  expansion: <a href="javascript:void(0);">$1</a>$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mrow]
+  description: null
+  displayName: mui-row
+  expansion: "<div class=\"mui-row\">\n    $0\n</div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mcolsm]
+  description: null
+  displayName: mui-col-sm
+  expansion: '<div class="mui-col-sm-${1:6}">${2:Item 1}</div>
+
+    <div class="mui-col-sm-${3:6}">Item 2</div>'
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mcolxs]
+  description: null
+  displayName: mui-col-xs
+  expansion: '<div class="mui-col-xs-${1:6}">${2:Item 1}</div>
+
+    <div class="mui-col-xs-${3:6}">${2:Item 2}</div>'
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mscrollsegmented]
+  description: null
+  displayName: mscrollsegmented(横向滚动)
+  expansion: "<div class=\"mui-scroll-wrapper mui-slider-indicator mui-segmented-control\
+    \ mui-segmented-control-inverted\">\n    <div class=\"mui-scroll\">\n        <a\
+    \ class=\"mui-control-item mui-active\">\n            ${1:推荐}\n        </a>\n\
+    \        <a class=\"mui-control-item\">\n          ${2:热点}\n        </a>\n   \
+    \     <a class=\"mui-control-item\">\n           ${3:北京}\n        </a>\n     \
+    \   <a class=\"mui-control-item\">\n           ${4:社会}\n        </a>\n       \
+    \ <a class=\"mui-control-item\">\n           ${5:娱乐}\n        </a>\n        <a\
+    \ class=\"mui-control-item\">\n           ${6:科技}\n        </a>\n    </div>\n\
+    </div>"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: text.html - source
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [cl]
+  description: null
+  displayName: console.log();
+  expansion: console.log($1);
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [rtrue]
+  description: null
+  displayName: return true;
+  expansion: return true;
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [rfalse]
+  description: null
+  displayName: return false;
+  expansion: return false;
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [ds]
+  description: null
+  displayName: querySelector
+  expansion: document.querySelector('$1').$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [dsa]
+  description: null
+  displayName: querySelectoraddEventListener
+  expansion: "document.querySelector('$1').addEventListener('${2:tap}',function ($3)\
+    \ {\n        $0\n})"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [dga]
+  description: null
+  displayName: getElementByIdaddEventListener
+  expansion: "document.getElementById('$1').addEventListener('${2:tap}',function ($3)\
+    \ {\n        $0\n})"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [wad]
+  description: null
+  displayName: windowaddEventListener
+  expansion: "window.addEventListener('${1:scroll}',function ($2) {\n        $0\n\
+    })"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [dad]
+  description: null
+  displayName: documentaddEventListener
+  expansion: "document.addEventListener('${1:scroll}',function ($2) {\n        $0\n\
+    })"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mmon]
+  description: null
+  displayName: mui.on
+  expansion: "mui('$1').on('${2:tap}','$3',function($4){\n  $0\n}) "
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mmoff]
+  description: null
+  displayName: mui.off
+  expansion: "mui('$1').off('${2:tap}','$3',function($4){\n  $0\n}) "
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mtrigger]
+  description: null
+  displayName: mui.trigger()
+  expansion: mui.trigger(${1:dom},'${3:tap}'${4:,{a:'as'}})
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mfire]
+  description: null
+  displayName: mui.fire()
+  expansion: mui.fire(${1:targetWebviewObj},'${2:event}',{${3:data}})
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mmui]
+  description: null
+  displayName: mui()
+  expansion: mui('$1')
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mmslider]
+  description: null
+  displayName: mui('').slider
+  expansion: mui('.${1:mui-slider}').slider({$2})$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mmscroll]
+  description: null
+  displayName: mui('').scroll
+  expansion: mui('.${1:mui-scroll-wrapper}').scroll({$2})$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mui]
+  description: null
+  displayName: mui
+  expansion: mui.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [meach]
+  description: null
+  displayName: mui.each()
+  expansion: "mui.each(${1:obj},function (${2:index},${3:element}) {\n\t$0\n})"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mmeach]
+  description: null
+  displayName: mui().each()
+  expansion: "mui('$1').each(function (${3:index},${4:element}) {\n\t$0\n})"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mextend]
+  description: null
+  displayName: mui.extend()
+  expansion: mui.extend(${1:'target'},${2:'source'},${3:'deep'/true/false})
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mlater]
+  description: null
+  displayName: mui.later()
+  expansion: "mui.later(function(){\n\t$2  \n},${1:500/1000/1500/2000})"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mscrollto]
+  description: null
+  displayName: mui.scrollTo()
+  expansion: "mui.scrollTo(${1:ypos},${2:duration},${3:/function () {\n    \t\n}}$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mdalert]
+  description: null
+  displayName: mui.alert()
+  expansion: "mui.alert('${1:message}','${2:title}','${3:btnValue}',function (${4:e})\
+    \ {\n   ${4:e}.index$0\n}${5:,'div'})"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mdconfirm]
+  description: null
+  displayName: mui.confirm()
+  expansion: "mui.confirm('${1:message}','${2:title}',['${3:取消}','${4:确认}'],function\
+    \ (${5:e}) {\n\t${5:e}.index$0\n}${6:,'div'})"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mdprompt]
+  description: null
+  displayName: mui.prompt()
+  expansion: " mui.prompt('${1:text}','${2:defaultText}','${3:title}',['${4:取消}','${5:确\
+    认}'],function (${6:e}) {\n    ${6:e}.index$0\n}${7:,'div'})"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mdtoast]
+  description: null
+  displayName: mui.toast()
+  expansion: mui.toast('${1:message}')$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mdclosePopup]
+  description: null
+  displayName: mui.closePopup()
+  expansion: mui.closePopup()$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mdclosePopups]
+  description: null
+  displayName: mui.closePopups()
+  expansion: mui.closePopups()$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [majax]
+  description: null
+  displayName: mui.ajax()
+  expansion: "mui.ajax('$1',{\n\tdata:{\n\t\t$2\n\t},\n\tdataType:'${3:json}',//服务\
+    器返回json格式数据\n\ttype:'${4:post}',//HTTP请求类型\n\ttimeout:${5:10000},//超时时间设置为10秒；\
+    \n\tsuccess:function(${6:data}){\n\t\t$7\n\t},\n\terror:function(${8:xhr,type,errorThrown}){\n\
+    \t\t$9\n\t}\n});$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mpost]
+  description: null
+  displayName: mui.post()
+  expansion: "mui.post('$1',{\n\t\t$2\n\t},function(${3:data}){\n\t\t$0\n\t},'${4:json}'\n\
+    );"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mget]
+  description: null
+  displayName: mui.get()
+  expansion: "mui.gett('$1',{\n\t\t$2\n\t},function(${3:data}){\n\t\t$0\n\t},'${4:json}'\n\
+    );"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mjson]
+  description: null
+  displayName: mui.getJSON()
+  expansion: "mui.getJSON('$1',{$2},function($3){\n\t\t$4\n\t}\n);$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minit]
+  description: null
+  displayName: mui.init
+  expansion: mui.init({$0})
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minsubpage]
+  description: null
+  displayName: mui.init({子页面})
+  expansion: "mui.init({\n\tsubpages:[{\n\t  url:'${1:url}',\n      id:'${2:id}',\n\
+    \      styles:{\n        $3\n      },\n      extras:{$4}\n\t}]\n})$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minpreload]
+  description: null
+  displayName: mui.init({预加载})
+  expansion: "mui.init({\n\tpreloadPages:[{\n\t  url:'${1:url}',\n      id:'${2:id}',\n\
+    \      styles:{\n        $3\n      },\n      extras:{$4}\n\t}]\n})$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minpullRefresh]
+  description: null
+  displayName: mui.init({刷新组件})
+  expansion: "mui.init({\n  pullRefresh : {\n    container:'#${1:refreshContainer}',\n\
+    \    down : {\n      callback :${2:pullfresh}\n    },\n    up : {\n      callback\
+    \ :${3:pullfresh} \n    }\n  }\n});$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mingesture]
+  description: null
+  displayName: mui.init({手势事件})
+  expansion: "mui.init({\n  \tgestureConfig:{\n\t   tap: ${1:true/false}, \n\t   doubletap:\
+    \ ${2:true/false}, \n\t   longtap: ${3:true/false}, \n\t   swipe: ${4:true/false},\
+    \ \n\t   drag: ${5:true/false}, \n\t   hold:${6:false/true},\n\t   release:${7:false/true}\n\
+    \  \t}\n});$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minswipeback]
+  description: null
+  displayName: mui.init({侧滑返回})
+  expansion: "mui.init({\n\tswipeBack:${1:true/false} \n);$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minkeyevent]
+  description: null
+  displayName: mui.init({按键绑定})
+  expansion: "mui.init({\n\tkeyEventBind: {\n\t\tbackbutton: ${1:true/false},  \n\t\
+    \tmenubutton: ${2:true/false}   \n\t},\n})"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minbeforeback]
+  description: null
+  displayName: mui.init({重写窗口关闭逻辑})
+  expansion: "mui.init({\n\tbeforeback:function () {\n\t\t$0\n\t}\n})"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minstatusbar]
+  description: null
+  displayName: mui.init({设置状态栏颜色})
+  expansion: "mui.init({\n\tstatusBarBackground:'#${1:FFFFFF}'\n})"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [minprelimit]
+  description: null
+  displayName: mui.init({预加载数量})
+  expansion: preloadLimit:${1:5}
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pready]
+  description: null
+  displayName: plusReady
+  expansion: "function plusReady(){\n    $0\n}\nif (window.plus) {\n    plusReady()\n\
+    } else{\n    document.addEventListener('plusready',plusReady,false);\n}"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pacce]
+  description: null
+  displayName: plus.accelerometer
+  expansion: plus.accelerometer.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [paudio]
+  description: null
+  displayName: plus.audio
+  expansion: plus.audio.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pbarcode]
+  description: null
+  displayName: plus.barcode
+  expansion: plus.barcode.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pcamera]
+  description: null
+  displayName: plus.camera
+  expansion: plus.camera.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pcontacts]
+  description: null
+  displayName: plus.contacts
+  expansion: plus.contacts.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pdevice]
+  description: null
+  displayName: plus.device
+  expansion: plus.device.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pgallery]
+  description: null
+  displayName: plus.gallery
+  expansion: plus.gallery.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pgeolocation]
+  description: null
+  displayName: plus.geolocation
+  expansion: plus.geolocation.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pio]
+  description: null
+  displayName: plus.io
+  expansion: plus.io.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pkey]
+  description: null
+  displayName: plus.key
+  expansion: plus.key.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pmaps]
+  description: null
+  displayName: plus.maps
+  expansion: plus.maps.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pmessaging]
+  description: null
+  displayName: plus.messaging
+  expansion: plus.messaging.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pnativeObj]
+  description: null
+  displayName: plus.nativeObj
+  expansion: plus.nativeObj.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pnativeUI]
+  description: null
+  displayName: plus.nativeUI
+  expansion: plus.nativeUI.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pnavigator]
+  description: null
+  displayName: plus.navigator
+  expansion: plus.navigatorsc.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [porientation]
+  description: null
+  displayName: plus.orientation
+  expansion: plus.orientation.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [ppayment]
+  description: null
+  displayName: plus.payment
+  expansion: plus.payment.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pproximity]
+  description: null
+  displayName: plus.proximity
+  expansion: plus.proximity.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [ppush]
+  description: null
+  displayName: plus.push
+  expansion: plus.push.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pruntime]
+  description: null
+  displayName: plus.runtime
+  expansion: plus.runtime.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pshare]
+  description: null
+  displayName: plus.share
+  expansion: plus.share.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pspeech]
+  description: null
+  displayName: plus.speech
+  expansion: plus.speech.$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pnet]
+  description: null
+  displayName: plus.net
+  expansion: plus.net.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pzip]
+  description: null
+  displayName: plus.zip
+  expansion: plus.zip.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pnetworkinfo]
+  description: null
+  displayName: plus.networkinfo
+  expansion: plus.networkinfo.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pdisplay]
+  description: null
+  displayName: plus.display
+  expansion: plus.display.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pScreen]
+  description: null
+  displayName: plus.Screen
+  expansion: plus.Screen.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pos]
+  description: null
+  displayName: plus.os
+  expansion: plus.os.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [poauth]
+  description: null
+  displayName: plus.oauth
+  expansion: plus.oauth.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [poauth]
+  description: null
+  displayName: plus.oauth
+  expansion: plus.oauth.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pstatistic]
+  description: null
+  displayName: plus.statistic
+  expansion: plus.statistic.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pstorage]
+  description: null
+  displayName: plus.storage
+  expansion: plus.storage.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [puploader]
+  description: null
+  displayName: plus.uploader
+  expansion: plus.uploader.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pandroid]
+  description: null
+  displayName: plus.android
+  expansion: plus.android.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pios]
+  description: null
+  displayName: plus.ios
+  expansion: plus.ios.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [poauth]
+  description: null
+  displayName: plus.oauth
+  expansion: plus.oauth.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [pdown]
+  description: null
+  displayName: plus.downloader
+  expansion: plus.downloader.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mplusready]
+  description: null
+  displayName: mui.plusReady()
+  expansion: "mui.plusReady(function () {\n    $1\n})$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mready]
+  description: null
+  displayName: mui.ready
+  expansion: " mui.ready(function () {\n   \t$0\n   })"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mopen]
+  description: null
+  displayName: mui.open
+  expansion: mui.openWindow('${1:url}','${2:id}',{$3})
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mcurrent]
+  description: null
+  displayName: mui.currentWebview
+  expansion: mui.currentWebview.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mback]
+  description: null
+  displayName: mui.back()(返回上级页面)
+  expansion: mui.back()$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mbackfunction]
+  description: null
+  displayName: mui.backFunction(重写返回逻辑)
+  expansion: "mui.back=function () {\n    $0\t\n}"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mbackDouble]
+  description: null
+  displayName: mui.backDouble(双击退出应用)
+  expansion: "//首页返回键处理\n//处理逻辑：1秒内，连续两次按返回键，则退出应用；\nvar first = null;\nmui.back =\
+    \ function() {\n\t//首次按键，提示‘再按一次退出应用’\n\tif (!first) {\n\t\tfirst = new Date().getTime();\n\
+    \t\tmui.toast('再按一次退出应用');\n\t\tsetTimeout(function() {\n\t\t\tfirst = null;\n\
+    \t\t}, 1000);\n\t} else {\n\t\tif (new Date().getTime() - first < 1000) {\n\t\t\
+    \tplus.runtime.quit();\n\t\t}\n\t}\n};"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mbackMoveTaskToBack]
+  description: null
+  displayName: mui.backTask(双击进入后台)
+  expansion: "//首页返回键处理\n//处理逻辑：1秒内，连续两次按返回键，则进入后台；\nvar first = null;\nmui.back =\
+    \ function() {\n\t//首次按键，提示‘再按一次退出应用’\n\tif (!first) {\n\t\tfirst = new Date().getTime();\n\
+    \t\tmui.toast('再按一次退出应用');\n\t\tsetTimeout(function() {\n\t\t\tfirst = null;\n\
+    \t\t}, 1000);\n\t} else {\n\t\tif (new Date().getTime() - first < 1000) {\n\t\t\
+    \tvar main = plus.android.runtimeMainActivity();\n            main.moveTaskToBack(false);\n\
+    \t\t}\n\t}\n};"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mpreload]
+  description: null
+  displayName: mui.preload()
+  expansion: "mui.preload({\n\turl:'${1:url}',\n\tid:'${2:id}',\n\tstyles:{$3},//窗\
+    口参数\n\textras:{$4}//自定义扩展参数\n})$0"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [cloios]
+  description: null
+  displayName: clogios
+  expansion: 'console.log(JSON.stringify(${1:e}));
+
+    console.log(''${2:e}'');'
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mos]
+  description: null
+  displayName: mui.os
+  expansion: mui.os.
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mmask]
+  description: null
+  displayName: mui.mask
+  expansion: "var ${1:mask} = mui.createMask(function () {\n\t$2\n})\n${1:mask}.show()"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [mmpullrefresh]
+  description: null
+  displayName: mui('').pullRefresh
+  expansion: mui('#${1:refreshContainer}').pullRefresh().$2
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: true
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [func]
+  description: null
+  displayName: func
+  expansion: "function $1($2) {\n  $3\n}"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [clog]
+  description: null
+  displayName: console.log();
+  expansion: console.log($1);
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.css
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+copyright: ''
+customProperties: null
+decreaseIndentMarkers: &id002 {}
+description: mui bundle for RadRails
+displayName: bundle_name
+fileTypeRegistry: *id002
+fileTypes: *id001
+foldingStartMarkers: *id002
+foldingStopMarkers: *id002
+increaseIndentMarkers: *id002
+license: null
+licenseUrl: null
+path: bundle.rb
+repository: ''
+visible: true

@@ -1,0 +1,35 @@
+{
+	"index.html": {
+		"href": "index.html",
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/mui.js",
+			"css/mui.indexedlist.css",
+			"css/mui.css",
+			"js/mui.indexedlist.js",
+			"page/indexed-list.html",
+			"fonts/mui.ttf"
+		],
+		"refer": [
+			"page/indexed-list.html"
+		],
+		"priority": 0
+	},
+	"page/indexed-list.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"index.html",
+			"css/mui.indexedlist.css",
+			"js/mui.indexedlist.js",
+			"js/jquery-2.1.0.js",
+			"js/wordlist.js"
+		],
+		"refer": [
+			"index.html"
+		]
+	}
+}

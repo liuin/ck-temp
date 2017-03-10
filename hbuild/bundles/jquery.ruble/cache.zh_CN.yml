@@ -1,0 +1,2193 @@
+!!com.aptana.scripting.model.BundleElement
+author: Jonathan Chaffer
+children:
+- !!com.aptana.scripting.model.BuildPathElement {buildPath: support\jquery.2.sdocml,
+  customProperties: null, displayName: jQuery 2.0, path: bundle.rb, scope: null}
+- !!com.aptana.scripting.model.BuildPathElement {buildPath: support\jquery.1.8.sdocml,
+  customProperties: null, displayName: jQuery 1.8, path: bundle.rb, scope: null}
+- !!com.aptana.scripting.model.BuildPathElement {buildPath: support\zepto.1.1.3.sdocml,
+  customProperties: null, displayName: zepto 1.1.3, path: bundle.rb, scope: null}
+- !!com.aptana.scripting.model.BuildPathElement {buildPath: support\mui.0.5.4.sdocml,
+  customProperties: null, displayName: mui 0.5.4, path: bundle.rb, scope: null}
+- !!com.aptana.scripting.model.BuildPathElement {buildPath: support\weixin.1.0.0.sdocml,
+  customProperties: null, displayName: weixin 1.0.0, path: bundle.rb, scope: null}
+- !!com.aptana.scripting.model.BuildPathElement {buildPath: support\angularjs.1.x.sdocml,
+  customProperties: null, displayName: angular 1.x, path: bundle.rb, scope: null}
+- !!com.aptana.scripting.model.BuildPathElement {buildPath: support\bootstrap.js.sdocml,
+  customProperties: null, displayName: bootstrap 3.x, path: bundle.rb, scope: null}
+- !!com.aptana.scripting.model.BuildPathElement {buildPath: support\jQuery.mobile.sdocml,
+  customProperties: null, displayName: jQuery.mobile 1.5, path: bundle.rb, scope: null}
+- !!com.aptana.scripting.model.BuildPathElement {buildPath: support\jQuery.ui.sdocml,
+  customProperties: null, displayName: jQuery.ui 1.x, path: bundle.rb, scope: null}
+- !!com.aptana.scripting.model.BuildPathElement {buildPath: support\require.js.sdocml,
+  customProperties: null, displayName: require 2.x, path: bundle.rb, scope: null}
+- !!com.aptana.scripting.model.BuildPathElement {buildPath: support\react 0.12.sdocml,
+  customProperties: null, displayName: react 15.1.0, path: bundle.rb, scope: null}
+- !!com.aptana.scripting.model.BuildPathElement {buildPath: support\underscore.sdocml,
+  customProperties: null, displayName: underscore 1.x, path: bundle.rb, scope: null}
+- !!com.aptana.scripting.model.MenuElement
+  children:
+  - children: &id001 []
+    commandName: $ (Select DOM Element)
+    customProperties: null
+    displayName: $ (Select DOM Element)
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: $(this)
+    customProperties: null
+    displayName: $(this)
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: document ready
+    customProperties: null
+    displayName: document ready
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: document ready (safe)
+    customProperties: null
+    displayName: document ready (safe)
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children:
+    - children: *id001
+      commandName: add
+      customProperties: null
+      displayName: add
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: filter
+      customProperties: null
+      displayName: filter
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: contains
+      customProperties: null
+      displayName: contains
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: closest
+      customProperties: null
+      displayName: closest
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: find
+      customProperties: null
+      displayName: find
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: map (function)
+      customProperties: null
+      displayName: map (function)
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: not
+      customProperties: null
+      displayName: not
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: eq
+      customProperties: null
+      displayName: eq
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: first
+      customProperties: null
+      displayName: first
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: last
+      customProperties: null
+      displayName: last
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: contents
+      customProperties: null
+      displayName: contents
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: '-'
+      customProperties: null
+      displayName: '-'
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: end
+      customProperties: null
+      displayName: end
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: andSelf
+      customProperties: null
+      displayName: andSelf
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: '-'
+      customProperties: null
+      displayName: '-'
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: hasClass
+      customProperties: null
+      displayName: hasClass
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: is
+      customProperties: null
+      displayName: is
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    commandName: DOM Traversing
+    customProperties: null
+    displayName: DOM Traversing
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children:
+    - children: *id001
+      commandName: each
+      customProperties: null
+      displayName: each
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: toArray
+      customProperties: null
+      displayName: toArray
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: get
+      customProperties: null
+      displayName: get
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: size
+      customProperties: null
+      displayName: size
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    commandName: Iteration
+    customProperties: null
+    displayName: Iteration
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children:
+    - children: *id001
+      commandName: bind
+      customProperties: null
+      displayName: bind
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: live
+      customProperties: null
+      displayName: live
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: die
+      customProperties: null
+      displayName: die
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: trigger
+      customProperties: null
+      displayName: trigger
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: triggerHandler
+      customProperties: null
+      displayName: triggerHandler
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: one
+      customProperties: null
+      displayName: one
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: undelegate
+      customProperties: null
+      displayName: undelegate
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: '-'
+      customProperties: null
+      displayName: '-'
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: blur
+      customProperties: null
+      displayName: blur
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: change
+      customProperties: null
+      displayName: change
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: click
+      customProperties: null
+      displayName: click
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: dblclick
+      customProperties: null
+      displayName: dblclick
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: error
+      customProperties: null
+      displayName: error
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: focus
+      customProperties: null
+      displayName: focus
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: focusin
+      customProperties: null
+      displayName: focusin
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: focusout
+      customProperties: null
+      displayName: focusout
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: hover
+      customProperties: null
+      displayName: hover
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: keydown
+      customProperties: null
+      displayName: keydown
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: keypress
+      customProperties: null
+      displayName: keypress
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: keyup
+      customProperties: null
+      displayName: keyup
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: load
+      customProperties: null
+      displayName: load
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: mousemove
+      customProperties: null
+      displayName: mousemove
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: mouseover
+      customProperties: null
+      displayName: mouseover
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: mouseout
+      customProperties: null
+      displayName: mouseout
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: mouseenter
+      customProperties: null
+      displayName: mouseenter
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: mouseleave
+      customProperties: null
+      displayName: mouseleave
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: mousedown
+      customProperties: null
+      displayName: mousedown
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: mouseup
+      customProperties: null
+      displayName: mouseup
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: reset
+      customProperties: null
+      displayName: reset
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: resize
+      customProperties: null
+      displayName: resize
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: scroll
+      customProperties: null
+      displayName: scroll
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: select
+      customProperties: null
+      displayName: select
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: submit
+      customProperties: null
+      displayName: submit
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: toggle (event)
+      customProperties: null
+      displayName: toggle (event)
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    commandName: Events
+    customProperties: null
+    displayName: Events
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children:
+    - children: *id001
+      commandName: after
+      customProperties: null
+      displayName: after
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: append
+      customProperties: null
+      displayName: append
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: appendTo
+      customProperties: null
+      displayName: appendTo
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: before
+      customProperties: null
+      displayName: before
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: clone
+      customProperties: null
+      displayName: clone
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: insertAfter
+      customProperties: null
+      displayName: insertAfter
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: insertBefore
+      customProperties: null
+      displayName: insertBefore
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: prepend
+      customProperties: null
+      displayName: prepend
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: prependTo
+      customProperties: null
+      displayName: prependTo
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: remove
+      customProperties: null
+      displayName: remove
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: text
+      customProperties: null
+      displayName: text
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: wrap
+      customProperties: null
+      displayName: wrap
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: wrapAll
+      customProperties: null
+      displayName: wrapAll
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: wrapInner
+      customProperties: null
+      displayName: wrapInner
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: unwrap
+      customProperties: null
+      displayName: unwrap
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: replaceAll
+      customProperties: null
+      displayName: replaceAll
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: replaceWith
+      customProperties: null
+      displayName: replaceWith
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: replaceWith (function)
+      customProperties: null
+      displayName: replaceWith (function)
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    commandName: DOM Modification
+    customProperties: null
+    displayName: DOM Modification
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children:
+    - children: *id001
+      commandName: addClass
+      customProperties: null
+      displayName: addClass
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: removeClass
+      customProperties: null
+      displayName: removeClass
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: toggleClass
+      customProperties: null
+      displayName: toggleClass
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: '-'
+      customProperties: null
+      displayName: '-'
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: width
+      customProperties: null
+      displayName: width
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: height
+      customProperties: null
+      displayName: height
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: innerHeight
+      customProperties: null
+      displayName: innerHeight
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: innerWidth
+      customProperties: null
+      displayName: innerWidth
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: outerHeight
+      customProperties: null
+      displayName: outerHeight
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: outerWidth
+      customProperties: null
+      displayName: outerWidth
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: offsetParent
+      customProperties: null
+      displayName: offsetParent
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: scrollLeft
+      customProperties: null
+      displayName: scrollLeft
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: scrollTop
+      customProperties: null
+      displayName: scrollTop
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    commandName: Style
+    customProperties: null
+    displayName: Style
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children:
+    - children: *id001
+      commandName: animate
+      customProperties: null
+      displayName: animate
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: animate (with callback)
+      customProperties: null
+      displayName: animate (with callback)
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    commandName: Effects
+    customProperties: null
+    displayName: Effects
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children:
+    - children: *id001
+      commandName: removeAttr
+      customProperties: null
+      displayName: removeAttr
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: removeData
+      customProperties: null
+      displayName: removeData
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    commandName: :attributes
+    customProperties: null
+    displayName: :attributes
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children:
+    - children: *id001
+      commandName: ajaxComplete
+      customProperties: null
+      displayName: ajaxComplete
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: ajaxError
+      customProperties: null
+      displayName: ajaxError
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: ajaxSend
+      customProperties: null
+      displayName: ajaxSend
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: ajaxSuccess
+      customProperties: null
+      displayName: ajaxSuccess
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: ajaxStart
+      customProperties: null
+      displayName: ajaxStart
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: ajaxStop
+      customProperties: null
+      displayName: ajaxStop
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: serialize
+      customProperties: null
+      displayName: serialize
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: serializeArray
+      customProperties: null
+      displayName: serializeArray
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    commandName: :ajax
+    customProperties: null
+    displayName: :ajax
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children:
+    - children: *id001
+      commandName: :button
+      customProperties: null
+      displayName: :button
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :checkbox
+      customProperties: null
+      displayName: :checkbox
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :checked
+      customProperties: null
+      displayName: :checked
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :contains('test')
+      customProperties: null
+      displayName: :contains('test')
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :disabled
+      customProperties: null
+      displayName: :disabled
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :enabled
+      customProperties: null
+      displayName: :enabled
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :empty
+      customProperties: null
+      displayName: :empty
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :eq(n)
+      customProperties: null
+      displayName: :eq(n)
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :even
+      customProperties: null
+      displayName: :even
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :file
+      customProperties: null
+      displayName: :file
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :first
+      customProperties: null
+      displayName: :first
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :first-child
+      customProperties: null
+      displayName: :first-child
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :gt(n)
+      customProperties: null
+      displayName: :gt(n)
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :hidden
+      customProperties: null
+      displayName: :hidden
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :image
+      customProperties: null
+      displayName: :image
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :input
+      customProperties: null
+      displayName: :input
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :last
+      customProperties: null
+      displayName: :last
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :last-child
+      customProperties: null
+      displayName: :last-child
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :lt(n)
+      customProperties: null
+      displayName: :lt(n)
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :not(s)
+      customProperties: null
+      displayName: :not(s)
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :nth-child(n)
+      customProperties: null
+      displayName: :nth-child(n)
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :odd
+      customProperties: null
+      displayName: :odd
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :only-child
+      customProperties: null
+      displayName: :only-child
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :parent
+      customProperties: null
+      displayName: :parent
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :password
+      customProperties: null
+      displayName: :password
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :radio
+      customProperties: null
+      displayName: :radio
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :reset
+      customProperties: null
+      displayName: :reset
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :root
+      customProperties: null
+      displayName: :root
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :selected
+      customProperties: null
+      displayName: :selected
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :submit
+      customProperties: null
+      displayName: :submit
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :text
+      customProperties: null
+      displayName: :text
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: :visible
+      customProperties: null
+      displayName: :visible
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    commandName: Selectors
+    customProperties: null
+    displayName: Selectors
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children:
+    - children: *id001
+      commandName: $.inArray
+      customProperties: null
+      displayName: $.inArray
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: $.each
+      customProperties: null
+      displayName: $.each
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: $.extend
+      customProperties: null
+      displayName: $.extend
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: $.merge
+      customProperties: null
+      displayName: $.merge
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: $.unique
+      customProperties: null
+      displayName: $.unique
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: $.map
+      customProperties: null
+      displayName: $.map
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: $.trim
+      customProperties: null
+      displayName: $.trim
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: $.browser.version
+      customProperties: null
+      displayName: $.browser.version
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: $.boxModel
+      customProperties: null
+      displayName: $.boxModel
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: $.isPlainObject
+      customProperties: null
+      displayName: $.isPlainObject
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: $.isEmptyObject
+      customProperties: null
+      displayName: $.isEmptyObject
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    commandName: Utilities
+    customProperties: null
+    displayName: Utilities
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children:
+    - children: *id001
+      commandName: plugin (method)
+      customProperties: null
+      displayName: plugin (method)
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: plugin (selector)
+      customProperties: null
+      displayName: plugin (selector)
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    - children: *id001
+      commandName: plugin (animation)
+      customProperties: null
+      displayName: plugin (animation)
+      id: null
+      locationURI: null
+      path: bundle.rb
+      scope: null
+    commandName: Plugins
+    customProperties: null
+    displayName: Plugins
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  - children: *id001
+    commandName: Documentation for Selection (jQuery)
+    customProperties: null
+    displayName: Documentation for Selection (jQuery)
+    id: null
+    locationURI: null
+    path: bundle.rb
+    scope: null
+  commandName: jQuery
+  customProperties: null
+  displayName: jQuery
+  id: null
+  locationURI: null
+  path: bundle.rb
+  scope: null
+- !!com.aptana.scripting.model.CommandElement
+  async: false
+  customProperties: null
+  displayName: Documentation for Selection (jQuery)
+  id: null
+  input: [selection, word]
+  inputPath: null
+  keyBindingMap: null
+  menuId: null
+  outputPath: null
+  outputType: show_as_html
+  path: commands\documentation_for_word.rb
+  runType: current_thread
+  scope: source.js
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [$]
+  description: null
+  displayName: $ (Select DOM Element)
+  expansion: \$(${1:'string'/element/array/function/jQuery object/'string', context})$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [this]
+  description: null
+  displayName: $(this)
+  expansion: \$(this)$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [$.ajax]
+  description: null
+  displayName: $.ajax
+  expansion: "$$.ajax({\n\ttype:\"${1:get/post/put}\",\n\turl:\"$2\",\n\tasync:${3:true/false}\n\
+    });"
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :button
+  expansion: :button
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :checkbox
+  expansion: :checkbox
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :checked
+  expansion: :checked
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :contains('test')
+  expansion: :contains('${1:test}')$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :disabled
+  expansion: :disabled
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :empty
+  expansion: :empty
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :enabled
+  expansion: :enabled
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :eq(n)
+  expansion: :eq(${1:n})$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :even
+  expansion: :even
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :file
+  expansion: :file
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :first-child
+  expansion: :first-child
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :first
+  expansion: :first
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :gt(n)
+  expansion: :gt(${1:n})$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :hidden
+  expansion: ':hidden
+
+    '
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :image
+  expansion: :image
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :input
+  expansion: :input
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :last-child
+  expansion: :last-child
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :last
+  expansion: :last
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :lt(n)
+  expansion: :lt(${1:n})$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :not(s)
+  expansion: :not(${1:s})$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :nth-child(n)
+  expansion: :nth-child(${1:n})$0
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :odd
+  expansion: :odd
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :only-child
+  expansion: :only-child
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :parent
+  expansion: ':parent
+
+    '
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :password
+  expansion: :password
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :radio
+  expansion: :radio
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :reset
+  expansion: :reset
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :root
+  expansion: :root
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :selected
+  expansion: :selected
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :submit
+  expansion: :submit
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :text
+  expansion: :text
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+- !!com.aptana.scripting.model.SnippetElement
+  async: false
+  category: null
+  customProperties:
+    prefix_values: [':']
+  description: null
+  displayName: :visible
+  expansion: ':visible
+
+    '
+  iconPath: null
+  id: null
+  input: [none]
+  inputPath: null
+  keyBindingMap: null
+  locationType: null
+  menuId: null
+  needApplyReContentAssist: false
+  outputPath: null
+  outputType: insert_as_snippet
+  path: snippets\snippets.rb
+  runType: current_thread
+  scope: source.js meta.selector.jquery
+  tags: *id001
+  version: null
+  workingDirectoryType: UNDEFINED
+copyright: null
+customProperties: {contact_email_rot_13: wpunssre@fgehpghervagrenpgvir.pbz}
+decreaseIndentMarkers: &id002 {}
+description: Support for the <a href="http://jquery.com/">jQuery JavaScript library</a>.
+displayName: jQuery
+fileTypeRegistry: *id002
+fileTypes: *id001
+foldingStartMarkers: *id002
+foldingStopMarkers: *id002
+increaseIndentMarkers: *id002
+license: null
+licenseUrl: null
+path: bundle.rb
+repository: git://github.com/aptana/javascript-jquery.ruble.git
+visible: true

@@ -1,0 +1,110 @@
+/** 
+/* ajax加载 */
+* 
+* @package jquery
+* @author cuki13
+*/
+;(function($){
+  'use strict';
+  var ajax = null;
+  var urlLink = function  (el) {
+    this.$el = $(el) || null;
+    this.url = $(el).attr("href") || null;
+  }
+  urlLink.prototype.jump = function  () {
+    var $this = this;
+    $.ajax({
+      type: "POST",
+      url: $this.url,
+      //dataType: 'json',
+      success: function(data){
+       $.blockHide($("#loading-wrap"));
+        var cotenData = null;
+        var data = $(data);
+        var gTitle = null;
+        $(data).each(function (n) {
+          var findContainer = $(data)[n];
+          var container = $(findContainer);
+          if (container.is("title")) {
+            gTitle = $($(data)[n]).html();
+          }
+          if (container.hasClass("container")) {
+            cotenData = findContainer.outerHTML;
+           
+            if ($.support.transition) {
+              $(".container").addClass("out").one('bsTransitionEnd',function  () {
+                $(".container").removeClass("out");
+                $(".container").replaceWith(container);
+                
+                container.addClass("in");
+                setTimeout(
+                  function(){
+                    container.removeClass("in");
+                  }, 320);
+              }).emulateTransitionEnd(320);
+            }else {
+              $(".container").replaceWith(container);
+            }
+            return false;
+          }
+        })
+        document.title = gTitle;
+        var state = {
+          url: $this.url,
+          title: document.title,
+          getHtml: cotenData
+        };
+
+        history.pushState(state,gTitle,$this.url);
+        ajax = true;
+      },
+      error:function  () {
+        alert('加载错误');
+        $.blockHide($("#loading-wrap"));
+      },
+      beforeSend:function  () {
+        $.blockShow($("#loading-wrap"));
+      }
+    });
+  }
+
+  $(document).ready(function() {
+    urlLink.currentState = {
+      url : document.location.href,
+      title :  document.title,
+      getHtml : $(".container")[0].outerHTML
+    }
+
+    //history.pushState(urlLink.currentState,document.title,location.href);
+    $("body").on('click','[data-url="true"]',function  (e) {
+      e.preventDefault();
+      $(this).data("url",new urlLink(this));
+      $(this).data("url").jump();
+    })
+  })
+
+
+
+  window.addEventListener("popstate",function(event){
+    if(event && event.state){
+      var gcontent = $(event.state.getHtml);
+      $(".container").replaceWith(gcontent);
+      $(".container").removeClass("out");
+      document.title = event.state.title;
+    }else{
+      if (ajax == null) {
+        return false;
+      }
+      document.title = urlLink.currentState.title;
+      $(".container").replaceWith(urlLink.currentState.getHtml);
+      $(".container").removeClass("out");
+    }
+  });
+
+ $.pUrl = function (url) {
+   var blink = new urlLink();
+   blink.url = url;
+   blink.jump();
+ }
+
+})(jQuery);

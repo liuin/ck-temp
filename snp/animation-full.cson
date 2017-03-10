@@ -1,0 +1,1 @@
+animation: ${1:name} ${2:duration(s)} ${3:timing-function(linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n))} ${4:delay(s)} ${5:iteration-count(n|infinite)} ${6:direction(normal|alternate)}
