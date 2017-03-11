@@ -300,6 +300,10 @@
 
         var listhtml = showlist(listArry);
         $('#list ul.mui-table-view').append(listhtml);
+        
+        
+        window.indexedList.init($('#list')[0]);
+        
 
         //点击拨打电话
         mui('#list ul.mui-table-view').on('tap', 'li', function() {
