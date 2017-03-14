@@ -201,10 +201,16 @@
 					"css/mui.indexedlist.css",
 					"css/mui.css",
 					"js/mui.indexedlist.js",
-					"page/indexed-list.html"
+					"page/indexed-list.html",
+					"js/jquery-2.1.0.js",
+					"js/browser.min.js",
+					"js/react.min.js",
+					"js/react-dom.min.js"
 				],
 				"priority": 0,
-				"refer": []
+				"refer": [
+					"page/guide.html"
+				]
 			},
 			"page/indexed-list.html": {
 				"resources": [
@@ -215,7 +221,18 @@
 					"css/mui.indexedlist.css",
 					"js/mui.indexedlist.js",
 					"js/jquery-2.1.0.js",
-					"js/wordlist.js"
+					"js/wordlist.js",
+					"js/browser.min.js",
+					"js/react.min.js",
+					"js/react-dom.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/guide.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0

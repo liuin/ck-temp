@@ -9,39 +9,154 @@
     <link rel="stylesheet" type="text/css" href="css/mui.indexedlist.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
-  
-  
-  
-  <body>
-    <header class="mui-bar mui-bar-nav">
-      <h1 class="mui-title">首页</h1>
+
+  <body id="indexpage">
+    <header class="mui-bar mui-bar-nav" id="header">
+      <!--<h1 class="mui-title">首页</h1>-->
     </header>
-    <div class="mui-content">
-      <ul class="mui-table-view" id="list-mui">
+    <div class="mui-content" id="mui-content">
+      <!--<ul class="mui-table-view" id="list-mui">
         <li class="mui-table-view-cell">
           <a class="mui-navigate-right" href="page/indexed-list.html">
             查看联系人
           </a>
         </li>
-      </ul>
-
+      </ul>-->
     </div>
+    <script type="text/javascript" src="js/react.min.js" ></script>
+    <script type="text/javascript" src="js/react-dom.min.js" ></script>
+    <script type="text/javascript" src="js/browser.min.js" ></script>
+
     <script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/mui.indexedlist.js" type="text/javascript" charset="utf-8"></script>
+    <!--<script src="js/mui.indexedlist.js" type="text/javascript" charset="utf-8"></script>-->
+      
+    <script type="text/babel">
+      'use strict';
+      
+      var MyHead = React.createClass({
+        getInitialState: function () {
+          return { txt: '首页' };
+        },        
+        showName:function(){
+//        alert('1212');          
+        },
+        render:function(){
+          return (
+            <h1 onClick={this.showName} className="mui-title">
+              {this.state.txt}
+            </h1>
+          )                   
+        }
+      });
+      
+      
+      var Showlist = React.createClass({
+        getInitialState:function(){
+          return {
+            lists:[
+              {
+              'label':'查看联系人',
+              'href':'page/indexed-list.html'
+              },
+              {
+              'label':'waiter',
+              'href':'#'
+              }
+            ]
+          }
+        },
+        
+        gopage:function(e){
+          var link = e.target.getAttribute("data-href");
+          if(link!="#" || link!=""){
+            mui.openWindow({
+              url: link
+            })            
+          }
+        },
+       
+        render:function(){
+                    
+          var items = this.state.lists.map(function(item, i) {
+          return (  
+            <li className="mui-table-view-cell">
+              <a className="mui-navigate-right" ref={"item" + i} onClick={this.gopage} data-href={item.href} >{item.label}</a>
+            </li>
+          );
+          }.bind(this));
+                 
+          return (
+            <ul className="mui-table-view" id="list-mui">
+              {items}
+            </ul>
+          )
+        }
+      })
+      
+      ReactDOM.render(<MyHead />, document.getElementById('header'));
+      ReactDOM.render(<Showlist />, document.getElementById('mui-content'));
+      
+      
+
+    </script>
+    
     <script type="text/javascript">
+      
       mui.init();
       //contact.phoneNumbers = [{type:"手机",value:"88888888",preferred:true}];  
-
+//    var body = document.getElementsByTagName('body');
+//    body[0].style.display = "none";
+      
       mui.plusReady(function() {
         //      mui.openWindow({
         //        url:'page/indexed-list.html'
         //      })
-        mui('#list-mui').on('tap', 'a', function(e) {
+//      mui('#list-mui').on('tap', 'a', function(e) {
+//        mui.openWindow({
+//          url: 'page/indexed-list.html'
+//        })
+//      })
+
+        //读取本地存储，检查是否为首次启动
+        var showGuide = plus.storage.getItem("lauchFlag");
+        //仅支持竖屏显示
+        plus.screen.lockOrientation("portrait-primary");
+        if(showGuide) {
+//      if(false) {
+          //有值，说明已经显示过了，无需显示；
+          //关闭splash页面；
+          plus.navigator.closeSplashscreen();
+          plus.navigator.setFullscreen(false);
+          //预加载
+//        preload();
+        } else {
+          //显示启动导航
           mui.openWindow({
-            url: 'page/indexed-list.html'
-          })
-        })
+            id: 'guide',
+            url: 'page/guide.html',
+            styles: {
+              popGesture: "none"
+            },
+            show: {
+              aniShow: 'none'
+            },
+            waiting: {
+              autoShow: false
+            }
+          });
+          
+          body[0].style.display = "";
+
+
+          //延迟的原因：优先打开启动导航页面，避免资源争夺
+//        setTimeout(function() {
+//          //预加载
+////          preload();
+//        }, 200);
+        }
+
       })
     </script>
   </body>
+
 </html>

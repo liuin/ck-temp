@@ -60,8 +60,8 @@
         </div>
         <div class="mui-indexed-list-alert"></div>
         <div class="mui-indexed-list-inner" id="contactlist">
-          <!--<div class="mui-indexed-list-empty-alert">没有数据</div>-->
-          <!--<ul class="mui-table-view">-->
+          <div class="mui-indexed-list-empty-alert">没有数据</div>
+          <ul class="mui-table-view">
 
             <!--<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>
             <li data-value="AKU" data-tags="AKeSu" class="mui-table-view-cell mui-indexed-list-item">阿克苏机场</li>
@@ -244,23 +244,18 @@
             <li data-value="ZHY" data-tags="ZhongWeiXiangShan" class="mui-table-view-cell mui-indexed-list-item">中卫香山机场</li>
             <li data-value="HSN" data-tags="ZhouShanZhuJiaJian" class="mui-table-view-cell mui-indexed-list-item">舟山朱家尖机场</li>
             <li data-value="ZUH" data-tags="ZhuHaiSanZao" class="mui-table-view-cell mui-indexed-list-item">珠海三灶机场</li>-->
-          <!--</ul>-->
+          </ul>
         </div>
       </div>
     </div>
-    
-    <script type="text/javascript" src="../js/react.min.js" ></script>
-    <script type="text/javascript" src="../js/react-dom.min.js" ></script>
-    <script type="text/javascript" src="../js/browser.min.js" ></script>
-    
+        
     <script src="../js/mui.min.js"></script>
     <script src="../js/mui.indexedlist.js"></script>
     <script src="../js/wordlist.js"></script>
     
-    <script type="text/babel">
-      'use strict';      
+    
+    <script type="text/javascript" charset="utf-8">
       mui.init();
-      
       mui.ready(function() {
         var header = document.querySelector('header.mui-bar');
         var list = document.getElementById('list');
@@ -268,174 +263,8 @@
         list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
         //create
         window.indexedList = new mui.IndexedList(list);
+
       });
-      
-      
-      mui.plusReady(function() {
-        
-
-      function printObj(obj) {
-        var listArry = [];
-        for(var i = 65; i <= 90; i++) {
-          listArry.push(String.fromCharCode(i));
-        }
-
-        for(var i in obj) {
-          //        console.log(obj[i]['displayName'] + obj[i]['phoneNumbers'][0].value);
-          var item = {};
-          item.name = obj[i]['displayName'];
-          //        console.log(item.name);
-          if(item.name == null || item.name == undefined || item.name == "") {
-            //          console.log('do');
-            break
-          }
-
-//        item.phone = $.trim(obj[i]['phoneNumbers'][0].value);
-          item.phone = obj[i]['phoneNumbers'][0].value;
-
-          var getWord = Wordlist.makePy(item.name);
-
-          if(listArry.indexOf(getWord) < 0) {
-            if(getWord != "number" && getWord != "unknow") {
-              listArry.push(getWord);
-            }
-          }
-          listArry.splice((listArry.indexOf(getWord) + 1), 0, item);
-
-          //        listArry.push(item);
-
-          //        listHtml += '<li data-value="" data-tags="" data-number="'+obj[i]['phoneNumbers'][0].value+'" class="mui-table-view-cell mui-indexed-list-item">'+obj[i]['displayName']+'</li>';
-
-        }
-        
-        return listArry;
-
-//      var listhtml = showlist(listArry);
-//      $('#list ul.mui-table-view').append(listhtml);
-
-        //点击拨打电话
-//      mui('#list ul.mui-table-view').on('tap', 'li', function() {
-//        var bts = ["是", "否"];
-//        var phone = $(this).data('number');
-//        var name = $(this).html();
-//        plus.nativeUI.confirm("确定拨打" + name + '(' + phone + ')' + '的电话吗?', function(e) {
-//          var i = e.index;
-//          if(i == 0) {
-//            plus.device.dial(phone, false);
-//          }
-//        }, "nativeUI", bts);
-//
-//      })
-
-      }
-      
-     
-
-        var ListContent = React.createClass({
-          getInitialState: function () {
-            
-            var _this = this;
-            
-            //显示联系人号码
-            plus.contacts.getAddressBook(plus.contacts.ADDRESSBOOK_PHONE, function(addressbook) {
-              // 可通过addressbook进行通讯录操作
-              addressbook.find(["displayName", "phoneNumbers"], function(contacts) {
-                //          alert(contacts.length);
-                //          console.log(contacts)
-                var nameData = printObj(contacts);                
-                _this.state.listDate = nameData;
-                
-                ReactDOM.render(<ListContent />, document.getElementById('contactlist'));
-                
-                
-                window.indexedList.init(document.getElementById('list'));
-                
-              }, function() {
-                alert("error");
-              }, { multiple: true });
-    
-            }, function(e) {
-              alert("Get address book failed: " + e.message);
-            }); 
-            
-            
-            
-            return { listDate : [
-              {
-                name:'加载中...',
-                phone:''
-              }
-              ]};
-          },
-          showName:function(){
-           
-          },
-          callNumber:function(e){
-            
-//          mui(this.refs.listground).on('tap','li',function(){
-//            
-//          })
-          
-          var getInd = e.target.getAttribute("data-ind");
-          
-         var bts = ["是", "否"];
-          var phone = this.state.listDate[getInd].phone;
-          var name = this.state.listDate[getInd].name;
-          plus.nativeUI.confirm("确定拨打" + name + '(' + phone + ')' + '的电话吗?', function(e) {
-            var i = e.index;
-            if(i == 0) {
-              plus.device.dial(phone, false);
-            }
-          }, "拨打"+ name, bts);
-
-            
-          },
-          componentDidMount:function(){
-//          alert(this.state.listDate.length);
-          },
-          render:function(){
-                       
-            var items = this.state.listDate.map(function(item, i) {                            
-              if(typeof(item) == 'string'){
-                return(
-                  <li data-group={item} className="mui-table-view-divider mui-indexed-list-group">{item}</li>
-                )
-              }else{
-                return(
-                  <li data-value="" data-tags="" data-ind={i} onClick={this.callNumber} data-number={item.phone} className="mui-table-view-cell mui-indexed-list-item">{item.name}</li>
-                )
-              }              
-            }.bind(this));                          
-            
-            return (
-              <div>
-                <div className="mui-indexed-list-empty-alert">没有数据</div>
-                <ul className="mui-table-view" ref="listground">
-                  {items}
-                </ul>
-              </div>
-            )          
-          }
-        })
-        
-        ReactDOM.render(<ListContent />, document.getElementById('contactlist'));
-        
-      })                  
-      
-    </script>
-    
-    <script type="text/javascript" charset="utf-8">
-    
-//    mui.init();
-//    mui.ready(function() {
-//      var header = document.querySelector('header.mui-bar');
-//      var list = document.getElementById('list');
-//      //calc hieght
-//      list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
-//      //create
-//      window.indexedList = new mui.IndexedList(list);
-//
-//    });
 
       function printObj(obj) {
         var listArry = [];
@@ -483,12 +312,12 @@
             if(i == 0) {
               plus.device.dial(phone, false);
             }
-          }, "拨打电话", bts);
+          }, "nativeUI", bts);
 
         })
 
       }
-
+mui
       function showlist(arr) {
         var listhtml = "";
         for(var i = 0; i < arr.length; i++) {
@@ -501,24 +330,24 @@
         return listhtml;
       }
 
-//    mui.plusReady(function() {
-//      //显示联系人号码
-//      plus.contacts.getAddressBook(plus.contacts.ADDRESSBOOK_PHONE, function(addressbook) {
-//        // 可通过addressbook进行通讯录操作
-//
-//        addressbook.find(["displayName", "phoneNumbers"], function(contacts) {
-//          //          alert(contacts.length);
-//          //          console.log(contacts)
-////          printObj(contacts);
-//
-//        }, function() {
-//          alert("error");
-//        }, { multiple: true });
-//
-//      }, function(e) {
-//        alert("Get address book failed: " + e.message);
-//      });
-//    })
+      mui.plusReady(function() {
+        //显示联系人号码
+        plus.contacts.getAddressBook(plus.contacts.ADDRESSBOOK_PHONE, function(addressbook) {
+          // 可通过addressbook进行通讯录操作
+
+          addressbook.find(["displayName", "phoneNumbers"], function(contacts) {
+            //          alert(contacts.length);
+            //          console.log(contacts)
+            printObj(contacts);
+
+          }, function() {
+            alert("error");
+          }, { multiple: true });
+
+        }, function(e) {
+          alert("Get address book failed: " + e.message);
+        });
+      })
     </script>
   </body>
 
