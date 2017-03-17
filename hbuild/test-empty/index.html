@@ -32,6 +32,7 @@
       
     <script type="text/babel">
       'use strict';
+      mui.init();
       
       var MyHead = React.createClass({
         getInitialState: function () {
@@ -95,28 +96,11 @@
       
       ReactDOM.render(<MyHead />, document.getElementById('header'));
       ReactDOM.render(<Showlist />, document.getElementById('mui-content'));
-      
-      
 
-    </script>
-    
-    <script type="text/javascript">
-      
-      mui.init();
-      //contact.phoneNumbers = [{type:"手机",value:"88888888",preferred:true}];  
-//    var body = document.getElementsByTagName('body');
-//    body[0].style.display = "none";
+      var body = document.getElementsByTagName('body');
+      body[0].style.display = "none";
       
       mui.plusReady(function() {
-        //      mui.openWindow({
-        //        url:'page/indexed-list.html'
-        //      })
-//      mui('#list-mui').on('tap', 'a', function(e) {
-//        mui.openWindow({
-//          url: 'page/indexed-list.html'
-//        })
-//      })
-
         //读取本地存储，检查是否为首次启动
         var showGuide = plus.storage.getItem("lauchFlag");
         //仅支持竖屏显示
@@ -127,6 +111,7 @@
           //关闭splash页面；
           plus.navigator.closeSplashscreen();
           plus.navigator.setFullscreen(false);
+
           //预加载
 //        preload();
         } else {
@@ -144,19 +129,15 @@
               autoShow: false
             }
           });
-          
-          body[0].style.display = "";
-
-
-          //延迟的原因：优先打开启动导航页面，避免资源争夺
-//        setTimeout(function() {
-//          //预加载
-////          preload();
-//        }, 200);
         }
+        body[0].style.display = "";
 
       })
+
+      
+
     </script>
+        
   </body>
 
 </html>

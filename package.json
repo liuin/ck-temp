@@ -1,0 +1,23 @@
+{
+  "name": "ck-temp",
+  "version": "1.0.0",
+  "description": "liuin",
+  "main": "nodefms.js",
+  "dependencies": {
+    "js-beautify": "^1.6.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liuin/ck-temp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liuin/ck-temp/issues"
+  },
+  "homepage": "https://github.com/liuin/ck-temp#readme"
+}
