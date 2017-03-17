@@ -3240,8 +3240,6 @@ fs.readFile('E:\\xampp\\htdocs\\ck-temp\\ajax.html', 'utf8', function (err, data
 function (req,res){
   ^!
 }
-#T=nj-goble //全局路径
-C:\Users\Caffrey\AppData\Roaming\npm\
 #T=nj-listen
 listen(^!)
 #T=nj-mail //邮件发送
@@ -3413,6 +3411,8 @@ connection.query('SELECT * FROM text', function(err, rows, fields) {
 });
 connection.end();
 
+#T=nj-pach //全局路径
+C:\Documents and Settings\Administrator\Application Data\npm\node_modules
 #T=nj-process
 process
 #T=nj-process-env-PORT
@@ -3599,6 +3599,8 @@ parseFloat(^!)
 parseInt(^!)
 #T=pasteHTML
 pasteHTML(^!)
+#T=pause
+pause
 #T=pb
 padding-bottom:^!;
 #T=pd
