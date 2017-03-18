@@ -2,8 +2,7 @@ var beautify = require('js-beautify');
 var formatertyle = "";
 var fs = require('fs');
 var exec = require('child_process').exec;
-var request = require('request');
- 
+
 var options = process.argv;
 formatertyle = beautify.js;
 
@@ -68,53 +67,6 @@ fs.readFile(options[3], 'utf8', function (err, data) {
       });
     });
 
-//    fs.writeFileSync(options[3], getDate, function (err) {
-//      if (err) throw err;
-//      console.log('It\'s saved!');
-//    });
-
 });
 
 
- 
-// request({
-//         method: 'POST',
-//         uri:'E:\\xampp\\htdocs\\byd-1130\\index.phtml',
-//         headers: {
-//             'Content-Type':'application/json'
-//         },
-//         body: JSON.stringify({
-//             "loginname":"lixing1@0101005",
-//             "pw":"aebc3ebee2f0c8b08b43d26c2b0055b19caeaf4a",
-//             "res":"web"
-//         })
-//     }, function (err, result, body) {
-//         console.log(body);
-////         body = JSON.parse(body);
-//         copyToClipboard(body, function (text, stdout) {
-//             console.log('token copy successed!', text, stdout);
-//         })
-// });
-
-
-  // 简单的复制文本到剪切板的函数，参数依次是文本，成功回调
-//  var copyToClipboard = function(text, func) {
-//      // 这种复制出来后最后有个换行符，不合要求
-//      'echo ' + text + ' | clip';
-//      // 这种复制出来最后有个空格，还将就
-////      ' ${temp} 
-////  clip < ${temp} 
-////  del ${temp}
-////  `;
-////  // 这句加入批处理，会导致报错，虽然能执行(复制)成功。原因应该是，del批处理文件自身的时候，nodejs还在使用他
-////  // 'del "%~f0"';
-////      var cmdFile = 'ttzkxlcjv.cmd';
-////      fs.writeFile(cmdFile, str);
-////    exec(cmdFile, function(err, stdout, stderr) {
-////      if (err || stderr) return console.log(err, stdout, stderr);
-////      // 用nodejs删除文件
-////      fs.unlink(cmdFile);
-////      func(text, stdout);
-////    });
-//  };
- 
