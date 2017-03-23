@@ -2718,6 +2718,8 @@ insertCell(^!)
 insertData(^!)
 #T=insertRow
 insertRow(^!)
+#T=instanceof //只能用来判断对象和函数
+instanceof
 #T=int
 var /*int*/ 
 #T=invalid
@@ -3739,6 +3741,19 @@ read-write
 ready(function(){^!})
 #T=recalc
 recalc(^!)
+#T=reduce //js 数组内部计算
+var items = [10, 120, 1000];
+
+// our reducer function
+var reducer = function add(sumSoFar, item) {
+  sumSoFar.sum = sumSoFar.sum + item;
+  return sumSoFar;
+};
+
+// do the job
+var total = items.reduce(reducer, {sum: 0});
+
+console.log(total); // {sum:1130}
 #T=refresh
 refresh(^!)
 #T=releaseCapture
@@ -4050,6 +4065,8 @@ case 2:
 break
 default:
 }
+#T=Symbol() //新的JS类型
+Symbol()
 #T=t
 top:^!;
 #T=t7-external //no ajax link
@@ -9238,6 +9255,8 @@ updateSettings(^!)
 urns(^!)
 #T=use
 use(^!)
+#T=use-strict //严格模式
+'use strict'
 #T=UTC
 UTC(^!)
 #T=v

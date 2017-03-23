@@ -25,7 +25,7 @@ function _toString (val) {
 /**
  * Convert a input value to a number for persistence.
  * If the conversion fails, return original string.
- */
+ */ 
 function toNumber (val) {
   var n = parseFloat(val, 10);
   return (n || n === 0) ? n : val
@@ -229,6 +229,7 @@ function looseEqual (a, b) {
     return false
   }
 }
+
 
 function looseIndexOf (arr, val) {
   for (var i = 0; i < arr.length; i++) {
@@ -2265,6 +2266,7 @@ function normalizeChildren (children) {
       : undefined
 }
 
+
 function normalizeArrayChildren (children, nestedIndex) {
   var res = [];
   var i, c, last;
@@ -2725,6 +2727,7 @@ function createFunctionalComponent (
     children: children,
     slots: function () { return resolveSlots(children, context); }
   });
+  
   if (vnode instanceof VNode) {
     vnode.functionalContext = context;
     if (data.slot) {
