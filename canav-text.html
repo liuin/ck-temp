@@ -13,7 +13,7 @@
 
   <title>website name</title>
   <style type="text/css">
-    #canvas {background:#999; width: 300px; margin-left: 100px;}  
+    #canvas {background:#999; width: 300px; margin-left: 100px; background:url('') 0 0 no-repeat #fff;}  
     .container {text-align:left;}
   </style>
 </head>
@@ -22,6 +22,7 @@
     <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
   </noscript>
   <div class="container">
+    
     <div class="container">
       <canvas id="canvas" width="500" height="300"  ></canvas>
     </div>
@@ -30,6 +31,7 @@
   <script type="text/javascript">
     var canvas = document.getElementById('canvas');
     var canvas2d = canvas.getContext('2d');
+    
     
     canvas2d.fillStyle="#f60";
     canvas2d.fillRect(40,40,100,100);
@@ -53,6 +55,7 @@
       var pos = windowToCanvas(e.clientX,e.clientY);     
     })
 
+    
     
     canvas2d.beginPath();
     canvas2d.moveTo(0,0);

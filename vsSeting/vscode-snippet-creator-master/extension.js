@@ -133,7 +133,7 @@ function activate(context) {
           filenameSub = filename.substr(0, filename.lastIndexOf('.'));
         } else {
           filenameSub = filename;
-        }
+          }
 
 
         let item = new vscode.CompletionItem(filenameSub, 0);
@@ -145,31 +145,31 @@ function activate(context) {
           count++;
           if (count >= files.length) {
             var provlist = new vscode.CompletionList(arr);
-            // vscode.languages.registerCompletionItemProvider('*', {
+            vscode.languages.registerCompletionItemProvider('*', {
+              provideCompletionItems(docment, postion, token) {
+                return provlist;
+              }
+            },'/');
+            // vscode.languages.registerCompletionItemProvider('html', {
             //   provideCompletionItems(docment, postion, token) {
             //     return provlist;
             //   }
             // });
-            vscode.languages.registerCompletionItemProvider('html', {
-              provideCompletionItems(docment, postion, token) {
-                return provlist;
-              }
-            });
-            vscode.languages.registerCompletionItemProvider('css', {
-              provideCompletionItems(docment, postion, token) {
-                return provlist;
-              }
-            });
-            vscode.languages.registerCompletionItemProvider('php', {
-              provideCompletionItems(docment, postion, token) {
-                return provlist;
-              }
-            });
-            vscode.languages.registerCompletionItemProvider('javascript', {
-              provideCompletionItems(docment, postion, token) {
-                return provlist;
-              }
-            });
+            // vscode.languages.registerCompletionItemProvider('css', {
+            //   provideCompletionItems(docment, postion, token) {
+            //     return provlist;
+            //   }
+            // });
+            // vscode.languages.registerCompletionItemProvider('php', {
+            //   provideCompletionItems(docment, postion, token) {
+            //     return provlist;
+            //   }
+            // });
+            // vscode.languages.registerCompletionItemProvider('javascript', {
+            //   provideCompletionItems(docment, postion, token) {
+            //     return provlist;
+            //   }
+            // });
           }
         });
         arr.push(item);
