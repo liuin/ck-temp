@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -23,39 +24,39 @@
 
   <title>website name</title>
 </head>
+
 <body class="yh">
   <noscript>
-  <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
   </noscript>
-  <div class="container">
-    
-  </div>
+  
   <script type="text/javascript">
     var img = new Image();
-    var imgLoad = new Promise(function (resolve, reject) {
+    var imgLoad = new Promise(function(resolve, reject) {
       img.src = 'images/app-img1.jpg';
-      img.onload = function  () {
+      img.onload = function() {
         return resolve(img);
       };
       img.onerror = reject;
-       
 
-//      if (img.complete === true) {
-//        resolve(img);
-//      }
-      
-//      return resolve(img);
+
+//            if (img.complete === true) {
+//              resolve(img);
+//            }
+//
+//            return resolve(img);
 
     });
 
-    imgLoad.then(function (img) {
-      console.log(img.width);
-    },function  (e) {
-      console.log('erro');
-    })
-    .then(function  (obj) {
-      console.log('1212');
-    })
+    imgLoad.then(function(img) {
+        console.log(img.width);
+      }, function(e) {
+        console.log('erro');
+      })
+      .then(function(obj) {
+        console.log('1212');
+      })
   </script>
 </body>
+
 </html>

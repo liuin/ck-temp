@@ -56,9 +56,9 @@ addRule(^!)
 #T=a-email
 <a href="mailto:^!">
 #T=after
-after
-#T=after
 after(^!)
+#T=after
+after
 #T=afunc
 function (^!) {
 }
@@ -251,9 +251,9 @@ border-image:none;
 #T=bdi-w
 -webkit-border-image:url(^!) 0 0 0 0 stretch stretch;
 #T=bdl
-border-length:^!;
-#T=bdl
 border-left:^!;
+#T=bdl
+border-length:^!;
 #T=bdl-
 border-left:1px solid #000;
 #T=bdl-a
@@ -363,9 +363,9 @@ border-top-width:^!;
 #T=bdw
 border-width:^!;
 #T=before
-before
-#T=before
 before(^!)
+#T=before
+before
 #T=bg
 background:^!;
 #T=bg-
@@ -1183,11 +1183,11 @@ dblclick(^!)
 #T=decodeURI
 decodeURI(^!)
 #T=decodeURIComponent
+decodeURIComponent(^!)
+#T=decodeURIComponent
 decodeURIComponent('11654-%E5%8F%98%E5%B9%BB%E4%B9%8B%E9%A3%
  
 8E.mp3')
-#T=decodeURIComponent
-decodeURIComponent(^!)
 #T=default
 default
 #T=del
@@ -1215,9 +1215,9 @@ detach(^!)
 #T=detachEvent
 detachEvent(^!)
 #T=details
-details
-#T=details
 <details>^!</details>
+#T=details
+details
 #T=d-fl
 display:flex;
 #T=dfn
@@ -1323,9 +1323,9 @@ else if (^!) {
 #T=embed
 <embed src="^!" quality="high" type="application/x-shockwave-flash"></embed>
 #T=empty
-empty
-#T=empty
 empty(^!)
+#T=empty
+empty
 #T=enabled
 enabled
 #T=encodeURI
@@ -1365,9 +1365,9 @@ font-family:fantasy;
 #T=ff-m
 font-family:monospace;
 #T=ff-st
-font-family:"\5B8B\4F53"
-#T=ff-st
 font-family:'\5B8B\4F53',Arial;
+#T=ff-st
+font-family:"\5B8B\4F53"
 #T=ff-yh
 font-family:'微软雅黑';
 #T=fieldset
@@ -1461,9 +1461,9 @@ floor(^!)
 #T=fl-r
 float:right;
 #T=focus
-focus
-#T=focus
 focus(^!)
+#T=focus
+focus
 #T=fontcolor
 fontcolor(^!)
 #T=fontsize
@@ -2078,9 +2078,9 @@ history.back();
 #T=history-p
 history.prev();
 #T=hover
-hover
-#T=hover
 hover(^!)
+#T=hover
+hover
 #T=hr
 <hr />^!
 #T=href-j
@@ -2901,9 +2901,9 @@ list-style-type:upper-roman;
 #T=live
 live(^!)
 #T=ll
-"^!"
-#T=ll
 '^!'
+#T=ll
+"^!"
 #T=load
 load(^!)
 #T=localeCompare
@@ -2930,11 +2930,11 @@ max-height:^!;
 #T=mah-n
 max-height:none;
 #T=map
+map(^!)
+#T=map
 <map id="^!">
   <area shape="" href="" coords="" alt="" />
 </map>
-#T=map
-map(^!)
 #T=map-html
 <map name="bk2"> <area coords="972,527,1206,591" href="#" alt="1元订金" /> </map>
 #T=mark
@@ -3407,6 +3407,8 @@ connection.end();
 
 #T=nj-pach //全局路径
 C:\Documents and Settings\Administrator\Application Data\npm\node_modules
+#T=nj-path //win7系统变量
+C:\Documents and Settings\Administrator\Application Data\npm\node_modules
 #T=nj-process
 process
 #T=nj-process-env-PORT
@@ -3690,9 +3692,9 @@ padding-top:^!;
 #T=push
 push(^!)
 #T=q
-quotes:^!;
-#T=q
 <q>^!</q>
+#T=q
+quotes:^!;
 #T=q-en
 quotes:'\201C' '\201D' '\2018' '\2019';
 #T=q-n
@@ -3853,9 +3855,9 @@ ScriptEngineMinorVersion(^!)
 #T=script-src
 <script type="text/javascript" src="^!"></script>
 #T=scroll
-scroll(function(){^!})
-#T=scroll
 scroll(^!)
+#T=scroll
+scroll(function(){^!})
 #T=scrollBy
 scrollBy(^!)
 #T=scrollIntoView
@@ -3990,9 +3992,9 @@ slideToggle(^!)
 #T=slideUp
 slideUp(^!)
 #T=small
-<small>^!</small>
-#T=small
 small(^!)
+#T=small
+<small>^!</small>
 #T=sort
 sort(^!)
 #T=source
@@ -4030,9 +4032,9 @@ var /*string*/ ^!
 #T=style=""
 style="^!"
 #T=sub
-<sub>^!</sub>
-#T=sub
 sub(^!)
+#T=sub
+<sub>^!</sub>
 #T=submit
 submit(^!)
 #T=substr
@@ -4044,9 +4046,9 @@ substringData(^!)
 #T=summary
 <summary>^!</summary>
 #T=sup
-<sup>^!</sup>
-#T=sup
 sup(^!)
+#T=sup
+<sup>^!</sup>
 #T=swapNode
 swapNode(^!)
 #T=switch
@@ -4072,14 +4074,14 @@ text-align:^!;
 #T=t-a
 top:auto;
 #T=table
+table(^!)
+#T=table
 <table>
 <tr>
   <td>^!</td>
   <td></td>
 </tr>
 </table>
-#T=table
-table(^!)
 #T=ta-c
 text-align:center;
 #T=tagName
@@ -4165,9 +4167,9 @@ text(^!)
 #T=tfoot
 <tfoot>^!</tfoot>
 #T=th
-text-height:^!;
-#T=th
 <th>^!</th>
+#T=th
+text-height:^!;
 #T=th-a
 text-height:auto;
 #T=thead
@@ -4360,9 +4362,9 @@ toUpperCase(^!)
 #T=toUTCString
 toUTCString(^!)
 #T=tr
-text-replace:^!;
-#T=tr
 <tr>^!</tr>
+#T=tr
+text-replace:^!;
 #T=transform- //全部属性
 transform: rotate(45deg) scale(1.2) skew(10deg) translate(x,y);   
 -webkit-transform: rotate(45deg); transform: rotate(45deg);
@@ -4396,9 +4398,9 @@ text-shadow:none;
 #T=tstring
 /*string*/ 
 #T=tt
-text-transform:^!;
-#T=tt
 /*^!*/ 
+#T=tt
+text-transform:^!;
 #T=tt-c
 text-transform:capitalize;
 #T=tt-l
@@ -9376,9 +9378,9 @@ word-wrap:suppress;
 #T=wow-u
 word-wrap:unrestricted;
 #T=wrap
-wrap
-#T=wrap
 wrap(^!)
+#T=wrap
+wrap
 #T=wrapAll
 wrapAll(^!)
 #T=wrapInner

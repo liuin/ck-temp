@@ -58,6 +58,7 @@
     })();
 
 
+
     _html2canvas.Util.parseBackgroundImage = function (value) {
         var whitespace = ' \r\n\t',
             method, definition, prefix, prefix_i, block, results = [],
