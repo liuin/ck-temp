@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -16,6 +17,7 @@
   <![endif]-->
   <title>website name</title>
 </head>
+
 <body class="yh">
 
   <noscript>
@@ -23,56 +25,55 @@
   </noscript>
   <div class="container">
     <div ms-controller="demo">
-      <button  class="btn btn-default" ms-click="loadJSON">我要加载json数据 </button>
+      <button class="btn btn-default" ms-click="loadJSON">我要加载json数据 </button>
       <button class="btn btn-default" ms-click="loadAJAX">我要加载点数据</button>
       <p>---------</p>
       <div>
-          <p 
-             ms-if="!jsonData.length">还没有加载数据</p>
-          <p 
-             ms-repeat-item="jsonData">
-              {{item.name}} - {{time}}
-          </p>
+        <p ms-if="!jsonData.length">还没有加载数据</p>
+        <p ms-repeat-item="jsonData">
+          {{item.name}} - {{time}}
+        </p>
       </div>
-  </div>
+    </div>
   </div>
   <script type="text/javascript" src="js/avalon.js"></script>
   <script type="text/javascript">
-  <!--
-    require(['domReady!','../lib/mmRequest/mmRequest'], function(a) {
-      var vm =  avalon.define({
-          $id: "demo",
-          jsonData:[],
-          time:"",
-          loadJSON:function  () {
-            avalon.post("ajax.php", {
-                page: 1,
-                name: 2
-            }, function(res) {
-             
-                vm.time = +new Date()
-                vm.jsonData = res
-            }, 'json')
-          },
-          loadAJAX : function() {
-            avalon.ajax({
-              url: "ajaxhtml.html",
-              dataType: "text",
-              data: {
-                  page: 1,
-                  name: 1
-              },
-              success: function(res) {
-                res = eval(res);
-                vm.time = +new Date();
-                vm.jsonData = res; 
-              }
-            })
+    <!--
+    require(['domReady!', '../lib/mmRequest/mmRequest'], function(a) {
+      var vm = avalon.define({
+        $id: "demo",
+        jsonData: [],
+        time: "",
+        loadJSON: function() {
+          avalon.post("ajax.php", {
+            page: 1,
+            name: 2
+          }, function(res) {
+
+            vm.time = +new Date()
+            vm.jsonData = res
+          }, 'json')
+        },
+        loadAJAX: function() {
+          avalon.ajax({
+            url: "ajaxhtml.html",
+            dataType: "text",
+            data: {
+              page: 1,
+              name: 1
+            },
+            success: function(res) {
+              res = eval(res);
+              vm.time = +new Date();
+              vm.jsonData = res;
             }
-        })
-        avalon.scan();
+          })
+        }
+      })
+      avalon.scan();
     })
-  //-->
+    //-->
   </script>
 </body>
+
 </html>

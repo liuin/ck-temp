@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <script type="text/javascript">
     function browserRedirect() {
@@ -23,35 +24,35 @@
     browserRedirect();
   </script>
   <script type="text/javascript">
-  (function(){
-    'use strict';
-    var Fixmobile = function  () {
-      this.viwep();
-    }
-
-    Fixmobile.width = 640;
-
-    Fixmobile.prototype.viwep = function  (e) {
-      var phoneWidth = parseInt(window.screen.width),
-      phoneScale = phoneWidth/Fixmobile.width,
-      ua = navigator.userAgent,
-      headmate;
-      if (/Android (\d+\.\d+)/.test(ua)){
-        var version = parseFloat(RegExp.$1);
-        // andriod 2.3
-        if(version > 2.3){
-          document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', minimum-scale = ' + phoneScale + ', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
-        // andriod 2.3以上
-        }else{
-          document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', target-densitydpi=device-dpi">');
-        }
-        // 其他系统
-      } else {
-        document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', user-scalable=no, target-densitydpi=device-dpi">');
+    (function() {
+      'use strict';
+      var Fixmobile = function() {
+        this.viwep();
       }
-    }
-    var newviewport = new Fixmobile();
-  })();
+
+      Fixmobile.width = 640;
+
+      Fixmobile.prototype.viwep = function(e) {
+        var phoneWidth = parseInt(window.screen.width),
+          phoneScale = phoneWidth / Fixmobile.width,
+          ua = navigator.userAgent,
+          headmate;
+        if (/Android (\d+\.\d+)/.test(ua)) {
+          var version = parseFloat(RegExp.$1);
+          // andriod 2.3
+          if (version > 2.3) {
+            document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            // andriod 2.3以上
+          } else {
+            document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', target-densitydpi=device-dpi">');
+          }
+          // 其他系统
+        } else {
+          document.write('<meta name="viewport" content="width=' + Fixmobile.width + ', user-scalable=no, target-densitydpi=device-dpi">');
+        }
+      }
+      var newviewport = new Fixmobile();
+    })();
   </script>
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -76,127 +77,124 @@
 
   <title>website name</title>
 </head>
+
 <body class="yh">
   <noscript>
     <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
   </noscript>
   <div class="container">
-     
+
   </div>
   <script type="text/javascript">
-   //Tween效果
-   var TweenType = { //四次方缓动
-     easeOut:function  (t,b,c,d) {
-       return -c *(t/=d)*(t-2) + b;
-     }
-   }
+    //Tween效果
+    var TweenType = { //四次方缓动
+      easeOut: function(t, b, c, d) {
+        return -c * (t /= d) * (t - 2) + b;
+      }
+    }
 
-   //动画效果
-   var Tween = function() {}
+    //动画效果
+    var Tween = function() {}
 
-   Tween.requestAnimationFrame = function  (callback) {
-     if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
-     else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
-     else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
-     else {
+    Tween.requestAnimationFrame = function(callback) {
+      if (window.requestAnimationFrame) return window.requestAnimationFrame(callback);
+      else if (window.webkitRequestAnimationFrame) return window.webkitRequestAnimationFrame(callback);
+      else if (window.mozRequestAnimationFrame) return window.mozRequestAnimationFrame(callback);
+      else {
         return window.setTimeout(callback, 1000 / 60);
-     }
-   }
+      }
+    }
 
-   Tween.animate = function  (pro,callback,timelong,type,startPos,endPos) {
-     var $this = this;
+    Tween.animate = function(pro, callback, timelong, type, startPos, endPos) {
+      var $this = this;
 
-     if (typeof callback != 'function') {
-       timelong = callback;      
-     }
+      if (typeof callback != 'function') {
+        timelong = callback;
+      }
 
-     if (typeof type != 'undefined') {
-       $this.type = TweenType[type];      
-     }else {
-       $this.type = TweenType['linear'];
-     }
+      if (typeof type != 'undefined') {
+        $this.type = TweenType[type];
+      } else {
+        $this.type = TweenType['linear'];
+      }
 
-     if (typeof startPos == 'undefined') {
-      startPos = 0;
-     }
+      if (typeof startPos == 'undefined') {
+        startPos = 0;
+      }
 
-     if (typeof endPos == 'undefined') {
-      endPos = 1;
-     }
+      if (typeof endPos == 'undefined') {
+        endPos = 1;
+      }
 
 
-    var movePos = endPos - startPos;
-     
-     
-     
-     var startTime = null;
-     var totelTime = 0;
-
-     
-     function render (time) {
-       
-       //console.log(time);
-       
-       if (time === undefined) {
-         time = new Date().getTime();
-       }
-
-       
-       
-       if (startTime == null) {         
-         startTime = time;
-       }
-
-       totelTime += ((time - startTime) < 20) ? (time - startTime) : 20;
-     
-       var progress = TweenType[type](totelTime, startPos, movePos, timelong);
-              
-       if (typeof pro == 'function') {
-         //progress = (progress > 1)? 1 : progress;
-         pro(progress);
-       }
-     
-
-       if ((totelTime) >= (timelong)) {
-         if (typeof pro == 'function') {
-           progress = (movePos + startPos);
-           pro(progress);
-         }
-         
-         
-         startTime = null;
-         if (typeof callback == 'function') {
-           callback()
-         }
-         return
-       }
-       $this.requestAnimationFrame(render);
-     }
-     $this.requestAnimationFrame(render);
-   }
+      var movePos = endPos - startPos;
 
 
 
-   
-
-   var repeat = 7;
-   var totoleNumber = 9;
-   var luckNumber = 3;   
-   var perwaiter = 50;
-   var distance = repeat*perwaiter*totoleNumber + luckNumber*perwaiter;
+      var startTime = null;
+      var totelTime = 0;
 
 
-   Tween.animate(function  (pro) {
-     console.log(Math.floor(pro%(totoleNumber*perwaiter) / perwaiter));
-   },function  () {
-     //结束后回调
+      function render(time) {
 
-   }, 7000 ,'easeOut',0,distance);
+        //console.log(time);
 
-
-  
+        if (time === undefined) {
+          time = new Date().getTime();
+        }
 
 
+
+        if (startTime == null) {
+          startTime = time;
+        }
+
+        totelTime += ((time - startTime) < 20) ? (time - startTime) : 20;
+
+        var progress = TweenType[type](totelTime, startPos, movePos, timelong);
+
+        if (typeof pro == 'function') {
+          //progress = (progress > 1)? 1 : progress;
+          pro(progress);
+        }
+
+
+        if ((totelTime) >= (timelong)) {
+          if (typeof pro == 'function') {
+            progress = (movePos + startPos);
+            pro(progress);
+          }
+
+
+          startTime = null;
+          if (typeof callback == 'function') {
+            callback()
+          }
+          return
+        }
+        $this.requestAnimationFrame(render);
+      }
+      $this.requestAnimationFrame(render);
+    }
+
+
+
+
+
+    var repeat = 7;
+    var totoleNumber = 9;
+    var luckNumber = 3;
+    var perwaiter = 50;
+    var distance = repeat * perwaiter * totoleNumber + luckNumber * perwaiter;
+
+
+    Tween.animate(function(pro) {
+      console.log(Math.floor(pro % (totoleNumber * perwaiter) / perwaiter));
+    }, function() {
+      //结束后回调
+
+    }, 7000, 'easeOut', 0, distance);
   </script>
 </body>
+
 </html>
