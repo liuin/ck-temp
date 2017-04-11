@@ -102,3 +102,5 @@ node5.data = "data5";
 graph1.addNode(node1);
 graph1.addNode(node2,[node1]);
 graph1.addNode(node3,[node1,node2]);
+
+console.log(graph1);

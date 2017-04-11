@@ -48,8 +48,6 @@ fs.readFile(options[3], 'utf8', function (err, data) {
         getDate = getDate.replace(/(\*\/)/g, "$1\n");
       break
       case 'html':
-        
-        
 
       break
       default:

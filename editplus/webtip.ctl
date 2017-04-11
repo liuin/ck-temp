@@ -943,6 +943,8 @@ componentFromPoint(^!)
 concat(^!)
 #T=confirm
 confirm(^!)
+#T=const //固定常量
+const
 #T=constructor //js构造函数
 constructor
 #T=container
@@ -1180,6 +1182,8 @@ display:block;
 dblclick(^!)
 #T=dd
 <dd>^!</dd>
+#T=debugger
+debugger;
 #T=decodeURI
 decodeURI(^!)
 #T=decodeURIComponent
@@ -1208,6 +1212,10 @@ deleteRow(^!)
 deleteTFoot(^!)
 #T=deleteTHead
 deleteTHead(^!)
+#T=dependencies //package 需要的类库 比如 jquery
+    "dependencies": {
+        "js-beautify": "^1.6.4"       
+    }
 #T=dequeue
 dequeue(^!)
 #T=detach
@@ -1218,6 +1226,10 @@ detachEvent(^!)
 <details>^!</details>
 #T=details
 details
+#T=devDependencies //package 开发需要的类库 (完成后不需要依赖)
+"devDependencies": {
+        "typescript": "^2.0.3"
+    }
 #T=d-fl
 display:flex;
 #T=dfn
@@ -1348,6 +1360,8 @@ exec(^!)
 execCommand(^!)
 #T=exp
 exp(^!)
+#T=exports \\node 导出模块
+exports
 #T=extend //$.extend(defaultObj, optionsObj);
 $.extend(defaultObj, optionsObj);
 #T=fadein
@@ -2602,6 +2616,8 @@ if (^!) {
 }
 #T=iframe
 <iframe allowTransparency="true" scrolling="no" border="0" frameborder="no" width="900" height="224"   src="<?=$this->getUrl('*/*/wfile')?>"></iframe>
+#T=ignore
+ignore
 #T=img
 <img src="^!" alt="" />
 #T=important
@@ -2989,6 +3005,8 @@ min-width:^!;
 margin-left:^!;
 #T=ml-a
 margin-left:auto;
+#T=module //模块化
+module
 #T=mousedown
 mousedown(function(){^!})
 #T=mouseenter
@@ -3411,6 +3429,10 @@ C:\Documents and Settings\Administrator\Application Data\npm\node_modules
 C:\Documents and Settings\Administrator\Application Data\npm\node_modules
 #T=nj-process
 process
+#T=nj-process.exit(1) //退出程序
+process.exit(1)
+#T=nj-process-args //传入的参数
+var args = process.argv;
 #T=nj-process-env-PORT
 process.env.PORT
 #T=nj-require
@@ -3800,6 +3822,8 @@ replaceData(^!)
 replaceNode(^!)
 #T=replaceWith
 replaceWith(^!)
+#T=require() //node require()
+require("^!");
 #T=required
 required="required"
 #T=reset
@@ -9317,6 +9341,8 @@ width:auto;
       animation-duration: 0.5s;
 #T=-webkit-box-flex: 2;
 -webkit-box-flex: 2;
+#T=WebKitCSSMatrix //转化矩阵
+WebKitCSSMatrix(el.style.webkittransform)
 #T=while
 while (^!) {
 }

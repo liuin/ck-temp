@@ -4,10 +4,11 @@ var h2cSelector, h2cOptions;
         document.write('<script type="text/javascript" src="' + src + '.js?' + Math.random() + '"></script>');
     }
 
-    ['/node_modules/bluebird/js/browser/bluebird', '/tests/assets/jquery-1.6.2', '/dist/html2canvas'].forEach(appendScript);
+//    ['/node_modules/bluebird/js/browser/bluebird', '/tests/assets/jquery-1.6.2', '/dist/html2canvas'].forEach(appendScript);
+    ['../node_modules/bluebird/js/browser/bluebird', 'assets/jquery-1.6.2', '../dist/html2canvas'].forEach(appendScript);
 
     if (typeof(noFabric) === "undefined") {
-        appendScript('/dist/html2canvas.svg');
+        appendScript('../dist/html2canvas.svg');
     }
 
     window.onload = function() {

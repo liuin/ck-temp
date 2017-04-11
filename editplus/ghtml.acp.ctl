@@ -12,6 +12,8 @@ $(this)[0].offsetWidth;
 #T=@内核判断
 @-moz-document url-prefix() {.body { overflow-x: hidden; }}
 @media screen and (-webkit-min-device-pixel-ratio:0) { .body { overflow-y: hidden;}}
+#T=gulp 路径匹配
+http://www.cnblogs.com/2050/p/4198792.html
 #T=““
 “  ”
 #T=<div id='fancybox-loading'><div></div></div>
@@ -530,6 +532,11 @@ href="(.[^^"]*)"
             </action>
             <block type="cms/page" name="cms_page"/>
 </reference>
+#T=parseInt // js实现二进制与十进制的相互转换
+var a = 1010;
+alert(a.toString(2)); //转成二进制 
+alert(parseInt( "101110100 ",2)) ;//转成十进制
+
 #T=style="(.[^"]*)" //搜索里面的内容
 style="(.[^^"]*)"
 #T=tablefix
