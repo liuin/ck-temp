@@ -42,6 +42,8 @@ exports.decode64 = function(base64) {
         }
     }
 
+    
+
     return output;
 };
 

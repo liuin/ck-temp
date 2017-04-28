@@ -140,6 +140,15 @@ applyElement(^!)
 <area shape="^!" href="" coords="" alt="" />
 #T=arguments
 arguments
+#T=arraybuffer
+Int8Array：8位有符号整数，长度1个字节。
+Uint8Array：8位无符号整数，长度1个字节。
+Int16Array：16位有符号整数，长度2个字节。
+Uint16Array：16位无符号整数，长度2个字节。
+Int32Array：32位有符号整数，长度4个字节。
+Uint32Array：32位无符号整数，长度4个字节。
+Float32Array：32位浮点数，长度4个字节。
+Float64Array：64位浮点数，长度8个字节。
 #T=article
 <article>^!<article>
 #T=aside
@@ -1194,6 +1203,8 @@ decodeURIComponent('11654-%E5%8F%98%E5%B9%BB%E4%B9%8B%E9%A3%
 8E.mp3')
 #T=default
 default
+#T=defineProperty //定义
+defineProperty
 #T=del
 <del>^!</del>
 #T=delay
@@ -2782,6 +2793,8 @@ $(^!)
 })(jQuery);
 #T=js
 show()^!
+#T=JSON.stringify(buf); //将类用json方式打印出来
+JSON.stringify(buf);
 #T=js-v
 javascript:void(0);
 #T=jtriggerHandler
@@ -3481,6 +3494,8 @@ nth-last-child(-n+5)
 outline:^!;
 #T=object
 <object type="^!" width="550" height="400"></object>
+#T=Object
+Object
 #T=oc
 outline-color:#000;
 #T=oc-i
@@ -3772,6 +3787,8 @@ var total = items.reduce(reducer, {sum: 0});
 console.log(total); // {sum:1130}
 #T=refresh
 refresh(^!)
+#T=RegExp()
+RegExp(^!)
 #T=releaseCapture
 releaseCapture(^!)
 #T=reload

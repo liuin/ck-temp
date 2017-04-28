@@ -183,3 +183,5 @@ function hasEntries(array) {
 }
 
 module.exports = CanvasRenderer;
+
+

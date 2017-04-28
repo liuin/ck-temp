@@ -456,9 +456,8 @@ NodeParser.prototype.paintText = function(container) {
         this.renderer.clearShadow();
     }
 
-    this.renderer.clip(container.parent.clip, function() {
-        
-        textList.map(this.parseTextBounds(container), this).forEach(function(bounds, index) {           
+    this.renderer.clip(container.parent.clip, function() {        
+        textList.map(this.parseTextBounds(container), this).forEach(function(bounds, index) {    
             if (bounds) {                
                 this.renderer.text(textList[index], bounds.left, bounds.bottom);
                 this.renderTextDecoration(container.parent, bounds, this.fontMetrics.getMetrics(family, size));

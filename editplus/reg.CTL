@@ -4,7 +4,9 @@ New Cliptext library
 #SORT=n
 
 #T=[\u4e00-\u9fa5] 匹配中文
-[\u4e00-\u9fa5]
+//判断是中文
+var s = '中文';
+console.log(s.match(/[\u4e00-\u9fa5]$/g));
 #T=[^\x00-\xff] 双字节
 [^\x00-\xff]
 #T=/<(.*)>.*<\/\1>|<(.*) \/>/  匹配HTML标记的正则表达式

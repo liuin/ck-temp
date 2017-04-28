@@ -9,7 +9,7 @@ var assign = require('lodash.assign');
 
 // 在这里添加自定义 browserify 选项
 var customOpts = {
-  entries: ['./src/core.js'],
+  entries: ['./src/myindex.js'],
   debug: false
 };
 var opts = assign({}, watchify.args, customOpts);

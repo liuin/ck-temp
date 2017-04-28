@@ -58,6 +58,9 @@ html2canvas.NodeContainer = NodeContainer;
 html2canvas.log = log;
 html2canvas.utils = utils;
 
+
+
+
 var html2canvasExport = (typeof(document) === "undefined" || typeof(Object.create) !== "function" || typeof(document.createElement("canvas").getContext) !== "function") ? function() {
     return Promise.reject("No canvas support");
 } : html2canvas;
