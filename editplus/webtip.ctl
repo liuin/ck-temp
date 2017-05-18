@@ -1394,7 +1394,7 @@ font-family:'\5B8B\4F53',Arial;
 #T=ff-st
 font-family:"\5B8B\4F53"
 #T=ff-yh
-font-family:'Î¢ÈíÑÅºÚ';
+font-family:'Î¢ÈíÑÅºÚ',Microsoft YaHei;
 #T=fieldset
 <fieldset>
   <legend>^!</legend>

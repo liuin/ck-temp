@@ -16,12 +16,17 @@ var buffer = require('vinyl-buffer');
 var htmlmin = require('gulp-htmlmin'), //html压缩
   imagemin = require('gulp-imagemin'), //图片压缩
   pngcrush = require('imagemin-pngcrush'),
+  pngquant = require('imagemin-pngquant'),
   minifycss = require('gulp-minify-css'), //css压缩
   //jshint = require('gulp-jshint'), //js检测
   //uglify = require('gulp-uglify'), //js压缩
   //concat = require('gulp-concat'), //文件合并
   //rename = require('gulp-rename'), //文件更名
   notify = require('gulp-notify'); //提示信息
+
+var smushit = require('gulp-smushit');
+
+
 
 // 压缩html
 
@@ -41,14 +46,27 @@ var htmlmin = require('gulp-htmlmin'), //html压缩
 // 压缩图片
 gulp.task('img', function() {
   return gulp.src(options[4]+'/*+(.jpg|.png)')
-    .pipe(imagemin({
-      progressive: true,
-      svgoPlugins: [{
-        removeViewBox: false
-      }],
-      use: [pngcrush()]
-    }))
-//    .pipe(gulp.dest('./dest/images/'))
+//  return gulp.src('E:/xampp/htdocs/tlbb/img/'+'/shabk.png')
+//    .pipe(imagemin({
+//      progressive: false,
+//      optimizationLevel: 3,
+//      use: [pngcrush()]
+//    }))
+
+//  .pipe(imagemin({
+//            optimizationLevel: 0, //类型：Number  默认：3  取值范围：0-7（优化等级）
+//            progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
+//            interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
+//            multipass: true //类型：Boolean 默认：false 多次优化svg直到完全优化
+//        }))
+
+  
+//        .pipe(smushit({
+//            verbose: true
+//        }))
+//        .pipe(gulp.dest('smushit-dist'));
+
+//    .pipe(gulp.dest('E:/xampp/htdocs/tlbb/img/images/'))
     .pipe(gulp.dest(options[4] + '/images/'))
 //    .pipe(notify({
 //      message: 'img task ok'

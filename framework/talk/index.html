@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>website name</title>
+</head>
+<body class="yh">
+  <input type="text"  x-webkit-speech id="d1" lang="zh-CN" x-webkit-grammar="bUIltin:search" onwebkitspeechchange="foo()"/>
+
+  <script>
+    function foo(){
+      var n = document.getElementById("d1").value;
+      if(n == "百度"){
+        window.location.href = "http://www.baidu.com";
+        }else {
+          
+        }
+       }
+</body>
+</html>

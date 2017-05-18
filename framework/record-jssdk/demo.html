@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>喜马拉雅FM-JSSDK</title>
+    <style>
+      body {
+        margin: 10px;
+        padding-bottom: 30px;
+        font: 16px Helvetica, sans-serif;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      h4 {
+        margin-bottom: 6px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+      button {
+        outline: none;
+      }
+      .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 8px 10px;
+        font-size: 16px;
+        color: #333;
+        line-height: 1.5;
+        text-align: center;
+        white-space: nowrap;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+      }
+      .btn-primary {
+        color: #fff;
+        background-color: #fc5832;
+      }
+      .btn-primary:hover {
+        color: #fff;
+        background-color: #ff9070;
+      }
+      .desc {
+        margin: 5px 0;
+        font-size: 13px;
+        color: #888;
+      }
+      .col-2 {
+        font-size: 0;
+        white-space: nowrap;
+      }
+      #multiShare .btn{
+        display: inline-block;
+        width: calc(50% - 5px);
+        margin: 0 10px 10px 0;
+      }
+      #record-wrapper .btn {
+          display: inline-block;
+          width: auto;
+          margin-right: 15px;;
+      }
+      .tips {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        padding: 0 2px;
+        color: #fff;
+        line-height: 36px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 40px;
+        opacity: 0;
+        word-wrap: break-word;
+        -webkit-transition: opacity .3s;
+        transition: opacity .4s;
+      }
+      .tips-txt {
+        margin: 7px 0;
+        line-height: 22px;
+      }
+      .hidden {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <h4>获取用户/设备相关信息</h4>
+        <button id="device" class="btn btn-primary">device</button>
+      </li>
+      <li>
+        <h4>toast提示</h4>
+        <button id="toast" class="btn btn-primary">toast</button>
+      </li>
+      <li>
+        <h4>关闭webview</h4>
+        <button id="closeWebView" class="btn btn-primary">closeWebView</button>
+      </li>
+      <li>
+        <h4>登录接口</h4>
+        <p class="desc">登录状态下调用此方法，会返回登录信息，否则跳转登录页</p>
+        <button id="login" class="btn btn-primary">login</button>
+      </li>
+      <li id="record-wrapper">
+        <h4>开始录音</h4>
+        <button id="record" class="btn btn-primary">录制</button>
+        <button id="againRecord" class="btn btn-primary hidden">重录</button>
+        <button id="stopRecord" class="btn btn-primary hidden">停止</button>
+        <div id="voice-wrapper" class=" hidden">
+          <button id="voice" class="btn btn-primary">播放</button>
+          <button id="againVoice" class="btn btn-primary hidden">重播</button>
+          <button id="stopVoice" class="btn btn-primary hidden">停止</button>
+        </div>
+      </li>
+      <li>
+        <h4>上传录音文件</h4>
+        <button id="uploadVoice" class="btn btn-primary">uploadVoice</button>
+      </li>
+      <li id="multiShare">
+        <h4>分享接口</h4>
+      </li>
+    </ul>
+    <div class="tips"></div>
+  </body>
+  <script src="record.min.js?v=19"></script>
+  <script src="jssdk-demo.js?v=14"></script>
+</html>

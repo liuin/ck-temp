@@ -1,0 +1,485 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>录音相关接口</title>
+	<meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+
+	<style type="text/css">
+		body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,form { margin:0; padding:0;}
+		html {  -webkit-tap-highlight-color: rgba(255,255,255,0);}
+		body {font-family:"Microsoft YaHei", STHeiTi; color:#333; background:#f8f8f8; line-height: 1.5; overflow-y: scroll;}
+		a { text-decoration:none; outline:0; cursor:pointer; color: inherit;}
+		a:active {color: inherit;}
+		ul,ol { list-style: none;}
+		img { border: 0; max-width: 100%;}
+
+		input,textarea { margin: 0; padding: 0; outline: none; border-radius: 4px; resize:none;}
+		textarea{-webkit-appearance: none;}
+		button,.btn { outline:0; border:none; text-align: center; user-select: none; -webkit-user-select: none; border-radius: 0.4rem;}
+
+		.over-hidden{height: 100%;overflow: hidden;}
+		.cl:before, .cl:after { content: ""; display: table; height: 0px; clear: both; }
+		.fl { float: left;}
+		.fr { float: right;}
+		.rel { position: relative;}
+		.abs { position: absolute;}
+		.fixed { position: fixed;}
+		.tc { text-align: center;}
+		.ta-r { text-align: right;}
+		.mgtb-10 { margin: 1rem 0;}
+		.mgtb-15 { margin: 1.5rem 0;}
+		.mgtb-20 { margin: 2rem 0;}
+		.mglr-10 { margin: 0 1rem;}
+		.mglr-5 { margin: 0 0.5rem;}
+		.mgt-5 { margin-top: 0.5rem;}
+		.mgt-10 { margin-top: 1rem;}
+		.mgt-40 { margin-top: 4rem;}
+		.mgb-20 { margin-bottom: 2rem;}
+		.mgl-5 { margin-left: 0.5rem;}
+		.mgl-10 { margin-left: 1rem;}
+		.mgl-20 { margin-left: 2rem;}
+		.mgr-5 { margin-right: 0.5rem;}
+		.ovf { overflow: hidden;}
+		pre{
+		    padding: 10px;
+		    background-color:#FDEADA;
+		    margin: 10px 0;
+		}
+
+		* { box-sizing: border-box;  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+
+
+		.wrapper{
+		    margin: 15px;
+		}
+
+		.api-item{
+		    margin-bottom: 30px;
+		}
+
+		legend{
+			padding: 0 10px;
+			font-weight: bold;
+		}
+		fieldset{
+			border:1px solid #2DB158;
+			margin-bottom: 30px;
+		}
+		ol{
+			list-style: decimal;
+			padding-left:20px;
+		}
+		ol li{
+			line-height: 1.8;
+		}
+
+	</style>
+</head>
+
+<body class="bg-f">
+	<div class="wrapper" data-page="ad-tip">
+
+	<!-- <fieldset>
+		<legend>接入流程</legend>
+		<ol>
+			<li>页面引入js脚本 &lt;script src="http://s1.xmcdn.com/lib/open-ya/last/js/ya-record.min.js?v=1464831870595"&gt;&lt;/script&gt;</li>
+			<li>录音上传接口需要先登录，登录可通过onReady中判断uid是否存在</li>
+		</ol>
+	</fieldset> -->
+
+		<section class="api-item">
+			<h4>初始化 onReady</h4>
+<pre>
+ya.onReady(function(){
+	// TODO 初始化回调函数，通过ya.device获取,可以拿到用户,设备相关信息
+	ya.device 为 {
+	        platformVersion: "", //操作系统的版本
+	        name："android"  //["android" "ios"],
+	        platform: "", // ios平台下可能存在多个值，ios｜iphone OS
+	        version: "", //应用的版本
+	        uuid:"dvece1213wsdefr3", // 设备的唯一标识
+	        uid: "", //用户id
+	        token: "" //用户登录后token，可通过此值判断是否登录
+	    }
+});
+</pre>
+			<p class="desc">
+				描述：获取设备，用户相关信息
+			</p>
+		</section>
+
+
+		<section class="api-item">
+			<h4>toast提示</h4>
+<pre>
+ya.toast(msg);
+</pre>
+			<p class="desc">
+				描述：toast 提示
+			</p>
+		</section>
+
+		<section class="api-item">
+			<h4>关闭webview</h4>
+<pre>
+ya.closeWebView();
+</pre>
+			<p class="desc">
+				描述：关闭webview
+			</p>
+		</section>
+
+		<section class="api-item">
+			<h4>登录 login</h4>
+<pre>
+ya.login(function(res){
+    res 为 {   // res 为返回的json串
+	        uid：12306,
+	        token:1fdretqhbfgretgregdgjiryfejfls,
+	        nickName:"微微一笑很倾城",
+	        imgUrl:"这里是图像的绝对地址"
+	    }
+ })
+</pre>
+			<p class="desc">
+				描述：登录状态下调用此方法，会返回登录信息，见上述res，否则跳转登录页（回调不会执行）
+			</p>
+		</section>
+
+		<section class="api-item">
+			<h4>分享  multiShare</h4>
+<pre>
+ya.multiShare({
+	channel: '', // 枚举值
+	title: '', // 分享标题
+	desc: '', // 分享描述
+	link: '', // 分享链接
+	imgUrl: '', // 分享图标
+	type: '', // 分享类型,music、video或link，不填默认为link
+	dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+	},function(res){
+		res为{
+		        "ret":0,  // 0 代表分享成功  非0 代表分享失败
+		        "msg":"分享成功",
+		        "data":{
+		            "device":"ios",   // ios or  android   ios 都小写
+		            "deviceId":"设备唯一标识符",
+		            "appVersion":"4.8.9", // app 版本号
+		            "osVersion":"系统版本号",
+		            "channel":"weixinGroup"
+		        }
+		    }
+	})
+
+ ＃分享的渠道channel的枚举值["qq", "qzone", "tSina",  "weixin", "weixinGroup", "message"]
+    QQ：qq 	 QQ空间：qzone	微信: weixin 	微信朋友圈： weixinGroup	短信： message  新浪微博：tSina
+</pre>
+			<p class="desc">
+				描述：多渠道分享
+			</p>
+		</section>
+
+		<section class="api-item">
+			<h4>开始录音</h4>
+<pre>
+ya.recorder.startRecord(function(){
+	// TODO 开始录音后执行的回调
+});
+</pre>
+			<p class="desc">
+				描述：开始录音
+			</p>
+		</section>
+
+
+		<section class="api-item">
+			<h4>暂停录音</h4>
+<pre>
+ya.recorder.pauseRecord(function(localId){
+	// TODO 暂停录音后执行的回调，回调参数为本地临时文件唯一标识localId (播放会用到localId)
+});
+</pre>
+			<p class="desc">
+				描述：暂停录音，回调函数传入localId
+			</p>
+		</section>
+
+
+		<section class="api-item">
+			<h4>恢复录音</h4>
+<pre>
+ya.recorder.resumeRecord(localId,function(localId){
+	// TODO 恢复录音后执行的回调，
+	// 第一参数是localId (pauseRecord生成的)即本地临时文件唯一标识localId
+	// 第二个参数是恢复后的回调
+});
+</pre>
+			<p class="desc">
+				描述：恢复录音
+			</p>
+		</section>
+
+
+		<section class="api-item">
+			<h4>停止录音</h4>
+			<pre>
+ya.recorder.stopRecord(function(localId){
+	// TODO 暂停录音后执行的回调，回调参数为本地临时文件唯一标识localId (播放会用到localId)
+});
+			</pre>
+
+			<p class="desc">
+				描述：停止录音
+			</p>
+
+		</section>
+
+
+		<section class="api-item">
+			<h4>播放录音</h4>
+			<pre>
+ya.recorder.playVoice(localId,function(localId){
+	// 第一参数是localId (stopRecord生成的)即本地临时文件唯一标识localId
+	// 第二个参数是播放后的回调
+});
+			</pre>
+
+			<p class="desc">
+				描述：播放录音
+			</p>
+
+		</section>
+
+
+
+		<section class="api-item">
+			<h4>暂停播放录音</h4>
+			<pre>
+ya.recorder.pauseVoice(localId,function(localId){
+	// TODO 暂停播放录音后执行的回调
+	// 第一参数是localId (stopRecord生成的)即本地临时文件唯一标识localId
+});
+			</pre>
+
+			<p class="desc">
+				描述：暂停播放录音
+			</p>
+
+		</section>
+
+		<section class="api-item">
+			<h4>恢复播放录音</h4>
+			<pre>
+ya.recorder.resumeVoice(localId,function(localId){
+	// TODO 恢复播放录音后执行的回调
+	// 第一参数是localId (stopRecord生成的)即本地临时文件唯一标识localId
+});
+			</pre>
+
+			<p class="desc">
+				描述：恢复播放录音
+			</p>
+
+		</section>
+
+		<section class="api-item">
+			<h4>停止播放录音</h4>
+			<pre>
+ya.recorder.stopVoice(localId,function(localId){
+	// TODO停止播放录音后执行的回调
+	// 第一参数是localId (stopRecord生成的)即本地临时文件唯一标识localId
+});
+			</pre>
+
+			<p class="desc">
+				描述：停止播放录音
+			</p>
+
+		</section>
+
+
+		<section class="api-item">
+			<h4>上传录音文件</h4>
+			<pre>
+ya.recorder.uploadVoice(localId,function(res){
+	// TODO上传完成后执行的回调
+	// 第一参数是localId (stopRecord，或pauseRecord生成的)即本地临时文件唯一标识localId
+	// res 为上传后的响应数据，如果res.ret == 0 代表上传成功
+});
+			</pre>
+
+			<p class="desc">
+				描述：上传录音文件
+			</p>
+		</section>
+
+
+
+		<section class="api-item">
+			<h4>录音开始事件 onRecordStart</h4>
+			<pre>
+ya.recorder.bind('onRecordStart',function(milliseconds){
+	// TODO录音开始执行的事件回调
+});
+			</pre>
+
+			<p class="desc">
+				描述：录音开始事件回调
+			</p>
+		</section>
+
+
+		<section class="api-item">
+			<h4>录音中事件 onRecording</h4>
+			<pre>
+ya.recorder.bind('onRecording',function(milliseconds){
+	// TODO录音过程中执行的事件回调
+});
+			</pre>
+
+			<p class="desc">
+				描述：录音过程中不断触发事件回调
+			</p>
+		</section>
+
+		<section class="api-item">
+			<h4>录音暂停事件 onRecordPause</h4>
+			<pre>
+ya.recorder.bind('onRecordPause',function(milliseconds){
+	// TODO录音暂停执行的事件回调
+});
+			</pre>
+			<p class="desc">
+				描述：录音暂停触发事件回调
+			</p>
+		</section>
+
+		<section class="api-item">
+			<h4>录音恢复事件 onRecordResume</h4>
+			<pre>
+ya.recorder.bind('onRecordResume',function(milliseconds){
+	// TODO录音恢复执行的事件回调
+});
+			</pre>
+
+			<p class="desc">
+				描述：录音恢复触发事件回调
+			</p>
+		</section>
+
+		<section class="api-item">
+			<h4>录音结束事件 onRecordEnd</h4>
+			<pre>
+ya.recorder.bind('onRecordEnd',function(obj){
+	// obj {"localId"：1212，"milliseconds"：125}
+	// TODO录音结束执行/录音超时的事件回调
+});
+			</pre>
+
+			<p class="desc">
+				描述：录音结束触发事件回调
+			</p>
+		</section>
+
+
+		<section class="api-item">
+			<h4>播放录音开始事件 onPlayStart</h4>
+			<pre>
+ya.recorder.bind('onPlayStart',function(objStr){
+	// objStr {"localId"：1212，"milliseconds"：125}
+	// TODO开始播放录音执行的事件回调
+});
+			</pre>
+
+			<p class="desc">
+				描述：开始播放录音执行的事件回调
+			</p>
+		</section>
+
+
+		<section class="api-item">
+			<h4>播放录音中事件 onPlaying</h4>
+			<pre>
+ya.recorder.bind('onPlaying',function(objStr){
+	// objStr {"localId"：1212，"milliseconds"：125}
+	// TODO播放录音过程中执行的事件回调
+});
+			</pre>
+
+			<p class="desc">
+				描述：播放录音过程中不断触发事件回调
+			</p>
+		</section>
+
+		<section class="api-item">
+			<h4>播放录音暂停事件 onPlayPause</h4>
+			<pre>
+ya.recorder.bind('onPlayPause',function(objStr){
+	// objStr {"localId"：1212，"milliseconds"：125}
+	// TODO播放录音暂停执行的事件回调
+});
+			</pre>
+			<p class="desc">
+				描述：播放录音暂停触发事件回调
+			</p>
+		</section>
+
+		<section class="api-item">
+			<h4>播放录音恢复事件 onPlayResume</h4>
+			<pre>
+ya.recorder.bind('onPlayResume',function(objStr){
+	// objStr {"localId"：1212，"milliseconds"：125}
+	// TODO播放录音恢复执行的事件回调
+});
+			</pre>
+
+			<p class="desc">
+				描述：播放录音恢复触发事件回调
+			</p>
+		</section>
+
+		<section class="api-item">
+			<h4>播放录音结束事件 onPlayEnd</h4>
+			<pre>
+ya.recorder.bind('onPlayEnd',function(objStr){
+	// objStr {"localId"：1212，"milliseconds"：125}
+	// TODO播放录音结束执行的事件回调
+});
+			</pre>
+
+			<p class="desc">
+				描述：播放录音结束触发事件回调
+			</p>
+		</section>
+
+		<section class="api-item">
+			<h4>绑定事件 bind</h4>
+			<pre>
+ya.recorder.bind({
+	onPlayEnd:function(objStr){
+
+	},
+	onPlayResume:function(objStr){
+
+	}
+});
+			</pre>
+
+			<p class="desc">
+				描述：绑定以上相关事件,事件只会绑定一次，后绑定的事件会覆盖之前的事件
+			</p>
+		</section>
+
+	</div>
+
+	<!-- 一些配置信息 -->
+    <!-- <script src="../js/ya.js"></script> -->
+</body>
+
+</html>
