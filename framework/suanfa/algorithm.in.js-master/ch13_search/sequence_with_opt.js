@@ -1,4 +1,3 @@
-
 var init = function (n, max) {
   n = n || 10;
   max = max || 100;
@@ -28,7 +27,7 @@ var search = function (lst, v) {
 };
 
 var l = init(20);
-console.log(l);
+
 var l2 = init(l.length, l.length);
 var i,j,s;
 for (i = 0;i < l.length;i++) {
