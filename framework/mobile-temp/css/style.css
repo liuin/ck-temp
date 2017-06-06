@@ -37,3 +37,48 @@ body,html{height: 100%;}
   40%{-webkit-transform:scale(1.0)}}
 @keyframes bouncedelay{0%, 80%, 100%{transform:scale(.0); -webkit-transform:scale(.0)}
   40%{transform:scale(1.0); -webkit-transform:scale(1.0)}}
+
+
+
+/*-- 音乐旋转 --*/
+ #audio-btn {width: .68rem;height: .68rem;background: url(../img/musciebg.png) 0 -1.28rem no-repeat;background-size: .68rem auto;position: absolute;top: .60rem;right: .34rem;z-index: 20;  }
+
+  #audio-btn.rotate { background-position: 0 0rem;}
+  .rotate {
+      -webkit-animation: rotating 1.2s linear infinite;
+     -moz-animation: rotating 1.2s linear infinite;
+     -o-animation: rotating 1.2s linear infinite;
+     animation: rotating 1.2s linear infinite;
+ }
+ 
+ @-webkit-keyframes rotating {
+     from { -webkit-transform: rotate(0) }
+     to { -webkit-transform: rotate(360deg) }
+ }
+ 
+ @keyframes rotating {
+     from { transform: rotate(0) }
+     to { transform: rotate(360deg) }
+ }
+ @-moz-keyframes rotating {
+     from { -moz-transform: rotate(0) }
+     to { -moz-transform: rotate(360deg) }
+ }
+
+/*-- 箭头 --*/
+@-webkit-keyframes down {
+  0%,30% {opacity: 0;-webkit-transform: translate(0,-.10rem);}
+  60% {opacity: 1;-webkit-transform: translate(0,0);}
+  100% {opacity: 0;-webkit-transform: translate(0,.08rem);}
+}
+@-moz-keyframes down {
+  0%,30% {opacity: 0;-moz-transform: translate(0,-.10rem);}
+  60% {opacity: 1;-moz-transform: translate(0,0);}
+  100% {opacity: 0;-moz-transform: translate(0,.08rem);}
+}
+@keyframes down {
+  0%,30% {opacity: 0;transform: translate(0,-.10rem);}
+  60% {opacity: 1;transform: translate(0,0);}
+  100% {opacity: 0;transform: translate(0,.08rem);}
+}
+

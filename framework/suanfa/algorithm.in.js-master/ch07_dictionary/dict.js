@@ -31,7 +31,6 @@ Dict.prototype.count = function () {
 Dict.prototype.clear = function () {
   this.items = [];
 };
-
 if (!module.parent) {
   var d = new Dict();
   d.add('me', 'Ralph-Wang');
@@ -39,5 +38,5 @@ if (!module.parent) {
   d.add('sex', 'man');
   d.add('job', 'SDT');
   d.display();
-  console.log(d.count());
+//  console.log(d.count());
 }
