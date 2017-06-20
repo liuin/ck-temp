@@ -1,6 +1,5 @@
 (function(){
     'use strict';
-
     importScripts('lame.min.js');
 
     var mp3Encoder, maxSamples = 1152, samplesMono, lame, config, dataBuffer;

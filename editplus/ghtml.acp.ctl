@@ -1,6 +1,8 @@
 #TITLE=有用copy
 #SORT=y
 
+#T="hsl(角度,饱和度,亮度)"; hsl颜色
+"hsl(" + Math.random() * 360 + ",100%,50%)";
 #T=$(this)[0].offsetWidth;
 $(this)[0].offsetWidth;
 #T=:(.[^:]*)px;//选择PX 变成rem
@@ -12,8 +14,6 @@ $(this)[0].offsetWidth;
 #T=@内核判断
 @-moz-document url-prefix() {.body { overflow-x: hidden; }}
 @media screen and (-webkit-min-device-pixel-ratio:0) { .body { overflow-y: hidden;}}
-#T=gulp 路径匹配
-http://www.cnblogs.com/2050/p/4198792.html
 #T=““
 “  ”
 #T=<div id='fancybox-loading'><div></div></div>
@@ -470,6 +470,8 @@ $ cd /path/to/welab/webapp/develop
 $ pure release # 编译
 $ pure release -omp # -omp 代表压缩,md5后缀,打包
 $ pure release -d build # -d 代表发布到配置文件中的build节点
+#T=gulp 路径匹配
+http://www.cnblogs.com/2050/p/4198792.html
 #T=href="(.[^"]*)" ep搜索href="内容"的内容
 href="(.[^^"]*)"
 #T=iframe
