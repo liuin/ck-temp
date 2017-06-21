@@ -140,6 +140,15 @@ applyElement(^!)
 <area shape="^!" href="" coords="" alt="" />
 #T=arguments
 arguments
+#T=arraybuffer
+Int8Array：8位有符号整数，长度1个字节。
+Uint8Array：8位无符号整数，长度1个字节。
+Int16Array：16位有符号整数，长度2个字节。
+Uint16Array：16位无符号整数，长度2个字节。
+Int32Array：32位有符号整数，长度4个字节。
+Uint32Array：32位无符号整数，长度4个字节。
+Float32Array：32位浮点数，长度4个字节。
+Float64Array：64位浮点数，长度8个字节。
 #T=article
 <article>^!<article>
 #T=aside
@@ -943,6 +952,8 @@ componentFromPoint(^!)
 concat(^!)
 #T=confirm
 confirm(^!)
+#T=const //固定常量
+const
 #T=constructor //js构造函数
 constructor
 #T=container
@@ -1062,6 +1073,9 @@ background-image: -webkit-linear-gradient(-45deg,rgba(255,255,255,0) 0,rgba(255,
 background-image: -moz-linear-gradient(-45deg,rgba(255,255,255,0) 0,rgba(255,255,255,.8) 40%,rgba(255,255,255,.8) 60%,rgba(255,255,255,0) 100%);
 background-image: -o-linear-gradient(-45deg,rgba(255,255,255,0) 0,rgba(255,255,255,.8) 40%,rgba(255,255,255,.8) 60%,rgba(255,255,255,0) 100%);
 background-image: linear-gradient(135deg,rgba(69, 51, 51, 0) 0,rgba(255,255,255,.8) 40%,rgba(255,255,255,.8) 60%,rgba(255,255,255,0) 100%);
+#T=css-filter // css3 颜色过滤
+-webkit-filter: grayscale(70%);
+filter: grayscale(70%);
 #T=css-justify-content //css3内部排列
 justify-content: flex-start|flex-end|center|space-between|space-around|initial|inherit;-webkit-justify-content: flex-start|flex-end|center|space-between|space-around|initial|inherit;
 #T=css-line-clamp //多行溢出省略
@@ -1180,6 +1194,8 @@ display:block;
 dblclick(^!)
 #T=dd
 <dd>^!</dd>
+#T=debugger
+debugger;
 #T=decodeURI
 decodeURI(^!)
 #T=decodeURIComponent
@@ -1190,6 +1206,8 @@ decodeURIComponent('11654-%E5%8F%98%E5%B9%BB%E4%B9%8B%E9%A3%
 8E.mp3')
 #T=default
 default
+#T=defineProperty //定义
+defineProperty
 #T=del
 <del>^!</del>
 #T=delay
@@ -1208,6 +1226,10 @@ deleteRow(^!)
 deleteTFoot(^!)
 #T=deleteTHead
 deleteTHead(^!)
+#T=dependencies //package 需要的类库 比如 jquery
+    "dependencies": {
+        "js-beautify": "^1.6.4"       
+    }
 #T=dequeue
 dequeue(^!)
 #T=detach
@@ -1218,6 +1240,10 @@ detachEvent(^!)
 <details>^!</details>
 #T=details
 details
+#T=devDependencies //package 开发需要的类库 (完成后不需要依赖)
+"devDependencies": {
+        "typescript": "^2.0.3"
+    }
 #T=d-fl
 display:flex;
 #T=dfn
@@ -1348,6 +1374,8 @@ exec(^!)
 execCommand(^!)
 #T=exp
 exp(^!)
+#T=exports \\node 导出模块
+exports
 #T=extend //$.extend(defaultObj, optionsObj);
 $.extend(defaultObj, optionsObj);
 #T=fadein
@@ -1369,7 +1397,7 @@ font-family:'\5B8B\4F53',Arial;
 #T=ff-st
 font-family:"\5B8B\4F53"
 #T=ff-yh
-font-family:'微软雅黑';
+font-family:'微软雅黑',Microsoft YaHei;
 #T=fieldset
 <fieldset>
   <legend>^!</legend>
@@ -2602,6 +2630,8 @@ if (^!) {
 }
 #T=iframe
 <iframe allowTransparency="true" scrolling="no" border="0" frameborder="no" width="900" height="224"   src="<?=$this->getUrl('*/*/wfile')?>"></iframe>
+#T=ignore
+ignore
 #T=img
 <img src="^!" alt="" />
 #T=important
@@ -2766,6 +2796,8 @@ $(^!)
 })(jQuery);
 #T=js
 show()^!
+#T=JSON.stringify(buf); //将类用json方式打印出来
+JSON.stringify(buf);
 #T=js-v
 javascript:void(0);
 #T=jtriggerHandler
@@ -2989,6 +3021,8 @@ min-width:^!;
 margin-left:^!;
 #T=ml-a
 margin-left:auto;
+#T=module //模块化
+module
 #T=mousedown
 mousedown(function(){^!})
 #T=mouseenter
@@ -3179,6 +3213,8 @@ var handlebars = require('express3-handlebars').create({
 });
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
+#T=nj-devtool ^! --watch //chorme 调试工具
+devtool ^! --watch
 #T=nj-file post //表单提交,文件上传
  app.post('/file-upload', function(req, res) {
    // 获得文件的临时路径
@@ -3411,6 +3447,10 @@ C:\Documents and Settings\Administrator\Application Data\npm\node_modules
 C:\Documents and Settings\Administrator\Application Data\npm\node_modules
 #T=nj-process
 process
+#T=nj-process.exit(1) //退出程序
+process.exit(1)
+#T=nj-process-args //传入的参数
+var args = process.argv;
 #T=nj-process-env-PORT
 process.env.PORT
 #T=nj-require
@@ -3459,6 +3499,8 @@ nth-last-child(-n+5)
 outline:^!;
 #T=object
 <object type="^!" width="550" height="400"></object>
+#T=Object
+Object
 #T=oc
 outline-color:#000;
 #T=oc-i
@@ -3750,6 +3792,8 @@ var total = items.reduce(reducer, {sum: 0});
 console.log(total); // {sum:1130}
 #T=refresh
 refresh(^!)
+#T=RegExp()
+RegExp(^!)
 #T=releaseCapture
 releaseCapture(^!)
 #T=reload
@@ -3800,6 +3844,12 @@ replaceData(^!)
 replaceNode(^!)
 #T=replaceWith
 replaceWith(^!)
+#T=requestAnimationFrame  //H5动画
+var requestAnimationFrame = window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame ||
+        function(fn){window.setTimeout(fn, 15);};
+#T=require() //node require()
+require("^!");
 #T=required
 required="required"
 #T=reset
@@ -9317,6 +9367,8 @@ width:auto;
       animation-duration: 0.5s;
 #T=-webkit-box-flex: 2;
 -webkit-box-flex: 2;
+#T=WebKitCSSMatrix //转化矩阵
+WebKitCSSMatrix(el.style.webkittransform)
 #T=while
 while (^!) {
 }

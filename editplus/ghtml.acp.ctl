@@ -1,6 +1,8 @@
 #TITLE=有用copy
 #SORT=y
 
+#T="hsl(角度,饱和度,亮度)"; hsl颜色
+"hsl(" + Math.random() * 360 + ",100%,50%)";
 #T=$(this)[0].offsetWidth;
 $(this)[0].offsetWidth;
 #T=:(.[^:]*)px;//选择PX 变成rem
@@ -468,6 +470,8 @@ $ cd /path/to/welab/webapp/develop
 $ pure release # 编译
 $ pure release -omp # -omp 代表压缩,md5后缀,打包
 $ pure release -d build # -d 代表发布到配置文件中的build节点
+#T=gulp 路径匹配
+http://www.cnblogs.com/2050/p/4198792.html
 #T=href="(.[^"]*)" ep搜索href="内容"的内容
 href="(.[^^"]*)"
 #T=iframe
@@ -530,6 +534,11 @@ href="(.[^^"]*)"
             </action>
             <block type="cms/page" name="cms_page"/>
 </reference>
+#T=parseInt // js实现二进制与十进制的相互转换
+var a = 1010;
+alert(a.toString(2)); //转成二进制 
+alert(parseInt( "101110100 ",2)) ;//转成十进制
+
 #T=style="(.[^"]*)" //搜索里面的内容
 style="(.[^^"]*)"
 #T=tablefix

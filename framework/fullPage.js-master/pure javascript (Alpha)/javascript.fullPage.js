@@ -1,5 +1,5 @@
 /**
- * fullPage Pure Javascript v.0.0.8 (Alpha) - Not support given until Beta version.
+ * fullPage Pure Javascript v.0.0.9 (Alpha) - Not support given until Beta version.
  * https://github.com/alvarotrigo/fullPage.js
  * MIT licensed
  *
@@ -17,7 +17,7 @@
         module.exports = factory(window, document);
     } else {
         // Browser globals.
-        root.fullpage = factory(window, document);
+        window.fullpage = factory(window, document);
     }
 }(this, window, document, function(window, document, undefined){
     'use strict';
@@ -1007,7 +1007,7 @@
     */
     function touchMoveHandler(event){
 
-        var e = window.event || e || e.originalEvent;
+        var e = window.event || event || event.originalEvent;
 
         if(isReallyTouch(e)){
             if(options.autoScrolling){
@@ -1066,7 +1066,7 @@
     * Handler for the touch start event.
     */
     function touchStartHandler(event){
-        var e = window.event || e || e.originalEvent;
+        var e = window.event || event || event.originalEvent;
 
         //stopping the auto scroll to adjust to a section
         if(options.fitToSection){
@@ -1530,7 +1530,7 @@
 
             //if the site is not just resizing and readjusting the slides
             if(!localIsResizing && xMovement!=='none'){
-                isFunction( options.onSlideLeave ) && options.onSlideLeave.call( prevSlide, anchorLink, (sectionIndex + 1), prevSlideIndex, xMovement);
+                isFunction( options.onSlideLeave ) && options.onSlideLeave.call( prevSlide, anchorLink, (sectionIndex + 1), prevSlideIndex, xMovement, slideIndex);
             }
         }
 
@@ -1754,7 +1754,7 @@
     * Scrolls to the given section and slide
     */
     function scrollPageAndSlide(destiny, slide){
-        var section = getSectionByAnchor(destiny);
+        var section = getSectionByAnchor(decodeURI(destiny));
 
         if (typeof slide === 'undefined') {
             slide = 0;
