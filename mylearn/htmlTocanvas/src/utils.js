@@ -8,6 +8,8 @@ exports.bind = function(callback, context) {
     };
 };
 
+
+
 /*
  * base64-arraybuffer
  * https://github.com/niklasvh/base64-arraybuffer
