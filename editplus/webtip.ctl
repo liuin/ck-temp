@@ -68,6 +68,10 @@ $.ajax({
   url: "test.html",
   data: getdata,
   dataType: 'json',
+//async: false,  
+//cache: false,  
+ // contentType: false,  上传文件必要
+ // processData: false,  上传文件必要
   success: function(data){
   },
   error:function  () {
@@ -540,6 +544,8 @@ color:^!;
 addColorStop(0,'blue')
 #T=ca-arc() //角度
 arc(pos.x,pos.y,rad,sAngle,eAngle,true);
+#T=ca-arcTo() //画弧线
+arcTo(x1,y1,x2,y2,radius);
 #T=ca-beginPath()
 beginPath();
 #T=ca-bezierCurveTo() //绘制贝济埃曲线
@@ -815,13 +821,15 @@ quadraticCurveTo(dx + x * s,dy + y * s - 100,dx + x * s + 100,dy + y * s);
 #T=ca-restore() //恢复画布环境
 restore()
 #T=ca-rotate();//旋转
-rotate(Math.PI / 11);
+rotate((Math.PI / 180*)60);
 #T=cas
 stroke();
 #T=ca-save() //保存画布环境
 save()
 #T=ca-scale() //缩放
 scale(0.95,0.95);
+#T=ca-scale(-1,1); 水平翻转
+ctx.scale(-1,1);
 #T=case
 case ^!:
 #T=ca-setTransform //设置坐标移动后的位置
@@ -948,6 +956,10 @@ compile(^!)
 complete
 #T=componentFromPoint
 componentFromPoint(^!)
+#T=computed //vue 计算属性
+computed:{
+  ^!
+}
 #T=concat
 concat(^!)
 #T=confirm
@@ -1378,6 +1390,8 @@ exp(^!)
 exports
 #T=extend //$.extend(defaultObj, optionsObj);
 $.extend(defaultObj, optionsObj);
+#T=extends
+extends
 #T=fadein
 fadeIn(^!)
 #T=fadeout
@@ -2798,6 +2812,8 @@ $(^!)
 })(jQuery);
 #T=js
 show()^!
+#T=JSON.parse(data);
+JSON.parse(data);
 #T=JSON.stringify(buf); //将类用json方式打印出来
 JSON.stringify(buf);
 #T=js-v
@@ -2942,6 +2958,8 @@ live(^!)
 load(^!)
 #T=localeCompare
 localeCompare(^!)
+#T=location
+location
 #T=log
 log(^!)
 #T=lorem
@@ -3013,6 +3031,8 @@ mergeAttributes(^!)
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 #T=meter
 <meter>^!</meter>
+#T=methods //vue 
+methods
 #T=mih
 min-height:^!;
 #T=min
@@ -5218,6 +5238,18 @@ china['香港特别行政区']=new Array('台北市','高雄市','基隆市','台中市','台南市','
     $(selectString).eq(0).trigger('click');
   })
   })(jQuery);
+#T=ui-class Es6类的方法
+class Screen{
+  constructor(){
+    alert('111222');    
+  }
+  static methor(x){  //静态类方法，直接调用
+    
+  }
+  normalfc(){  //普通类方法
+    
+  }
+}
 #T=ui-console.log //兼容不支持console上的写法
 function log() {
   if (window.console) {
@@ -9354,16 +9386,34 @@ $('#video1')[0].pause();
 $('#video1')[0].play();   
 #T=visible
 visible
+#T=v-model=""
+v-model="^!"
 #T=vobject
 var /*object*/ ^! = {};
 #T=vregexp
 var /*RegExp*/ ^! = new RegExp ();
+#T=vue //app 
+  var app = new Vue({
+    el:'#app',
+    data:{
+
+    },
+    methods:{
+      
+    }
+  })
 #T=v-v
 visibility:visible;
 #T=w
 width:^!;
 #T=w-a
 width:auto;
+#T=watch //vue
+ watch:{
+      type:function  (newValue, oldValue) {
+        
+      }
+    },
 #T=-webkit-animation-duration //播放时间
 -webkit-animation-duration: 0.5s;
       animation-duration: 0.5s;
