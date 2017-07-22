@@ -56,9 +56,9 @@ addRule(^!)
 #T=a-email
 <a href="mailto:^!">
 #T=after
-after(^!)
-#T=after
 after
+#T=after
+after(^!)
 #T=afunc
 function (^!) {
 }
@@ -68,6 +68,10 @@ $.ajax({
   url: "test.html",
   data: getdata,
   dataType: 'json',
+//async: false,  
+//cache: false,  
+ // contentType: false,  上传文件必要
+ // processData: false,  上传文件必要
   success: function(data){
   },
   error:function  () {
@@ -260,9 +264,9 @@ border-image:none;
 #T=bdi-w
 -webkit-border-image:url(^!) 0 0 0 0 stretch stretch;
 #T=bdl
-border-left:^!;
-#T=bdl
 border-length:^!;
+#T=bdl
+border-left:^!;
 #T=bdl-
 border-left:1px solid #000;
 #T=bdl-a
@@ -372,9 +376,9 @@ border-top-width:^!;
 #T=bdw
 border-width:^!;
 #T=before
-before(^!)
-#T=before
 before
+#T=before
+before(^!)
 #T=bg
 background:^!;
 #T=bg-
@@ -540,6 +544,8 @@ color:^!;
 addColorStop(0,'blue')
 #T=ca-arc() //角度
 arc(pos.x,pos.y,rad,sAngle,eAngle,true);
+#T=ca-arcTo() //画弧线
+arcTo(x1,y1,x2,y2,radius);
 #T=ca-beginPath()
 beginPath();
 #T=ca-bezierCurveTo() //绘制贝济埃曲线
@@ -815,13 +821,15 @@ quadraticCurveTo(dx + x * s,dy + y * s - 100,dx + x * s + 100,dy + y * s);
 #T=ca-restore() //恢复画布环境
 restore()
 #T=ca-rotate();//旋转
-rotate(Math.PI / 11);
+rotate((Math.PI / 180*)60);
 #T=cas
 stroke();
 #T=ca-save() //保存画布环境
 save()
 #T=ca-scale() //缩放
 scale(0.95,0.95);
+#T=ca-scale(-1,1); 水平翻转
+ctx.scale(-1,1);
 #T=case
 case ^!:
 #T=ca-setTransform //设置坐标移动后的位置
@@ -948,6 +956,10 @@ compile(^!)
 complete
 #T=componentFromPoint
 componentFromPoint(^!)
+#T=computed //vue 计算属性
+computed:{
+  ^!
+}
 #T=concat
 concat(^!)
 #T=confirm
@@ -1199,11 +1211,11 @@ debugger;
 #T=decodeURI
 decodeURI(^!)
 #T=decodeURIComponent
-decodeURIComponent(^!)
-#T=decodeURIComponent
 decodeURIComponent('11654-%E5%8F%98%E5%B9%BB%E4%B9%8B%E9%A3%
  
 8E.mp3')
+#T=decodeURIComponent
+decodeURIComponent(^!)
 #T=default
 default
 #T=defineProperty //定义
@@ -1237,9 +1249,9 @@ detach(^!)
 #T=detachEvent
 detachEvent(^!)
 #T=details
-<details>^!</details>
-#T=details
 details
+#T=details
+<details>^!</details>
 #T=devDependencies //package 开发需要的类库 (完成后不需要依赖)
 "devDependencies": {
         "typescript": "^2.0.3"
@@ -1349,9 +1361,9 @@ else if (^!) {
 #T=embed
 <embed src="^!" quality="high" type="application/x-shockwave-flash"></embed>
 #T=empty
-empty(^!)
-#T=empty
 empty
+#T=empty
+empty(^!)
 #T=enabled
 enabled
 #T=encodeURI
@@ -1378,6 +1390,8 @@ exp(^!)
 exports
 #T=extend //$.extend(defaultObj, optionsObj);
 $.extend(defaultObj, optionsObj);
+#T=extends
+extends
 #T=fadein
 fadeIn(^!)
 #T=fadeout
@@ -1393,9 +1407,9 @@ font-family:fantasy;
 #T=ff-m
 font-family:monospace;
 #T=ff-st
-font-family:'\5B8B\4F53',Arial;
-#T=ff-st
 font-family:"\5B8B\4F53"
+#T=ff-st
+font-family:'\5B8B\4F53',Arial;
 #T=ff-yh
 font-family:'微软雅黑',Microsoft YaHei;
 #T=fieldset
@@ -1489,9 +1503,9 @@ floor(^!)
 #T=fl-r
 float:right;
 #T=focus
-focus(^!)
-#T=focus
 focus
+#T=focus
+focus(^!)
 #T=fontcolor
 fontcolor(^!)
 #T=fontsize
@@ -2106,9 +2120,9 @@ history.back();
 #T=history-p
 history.prev();
 #T=hover
-hover(^!)
-#T=hover
 hover
+#T=hover
+hover(^!)
 #T=hr
 <hr />^!
 #T=href-j
@@ -2634,6 +2648,8 @@ if (^!) {
 ignore
 #T=img
 <img src="^!" alt="" />
+#T=img-base64
+data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
 #T=important
 important
 #T=indeterminate
@@ -2796,6 +2812,8 @@ $(^!)
 })(jQuery);
 #T=js
 show()^!
+#T=JSON.parse(data);
+JSON.parse(data);
 #T=JSON.stringify(buf); //将类用json方式打印出来
 JSON.stringify(buf);
 #T=js-v
@@ -2933,13 +2951,15 @@ list-style-type:upper-roman;
 #T=live
 live(^!)
 #T=ll
-'^!'
-#T=ll
 "^!"
+#T=ll
+'^!'
 #T=load
 load(^!)
 #T=localeCompare
 localeCompare(^!)
+#T=location
+location
 #T=log
 log(^!)
 #T=lorem
@@ -2962,11 +2982,11 @@ max-height:^!;
 #T=mah-n
 max-height:none;
 #T=map
-map(^!)
-#T=map
 <map id="^!">
   <area shape="" href="" coords="" alt="" />
 </map>
+#T=map
+map(^!)
 #T=map-html
 <map name="bk2"> <area coords="972,527,1206,591" href="#" alt="1元订金" /> </map>
 #T=mark
@@ -3011,6 +3031,8 @@ mergeAttributes(^!)
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 #T=meter
 <meter>^!</meter>
+#T=methods //vue 
+methods
 #T=mih
 min-height:^!;
 #T=min
@@ -3497,10 +3519,10 @@ nth-child(2n-1)
 nth-last-child(-n+5)
 #T=o
 outline:^!;
-#T=object
-<object type="^!" width="550" height="400"></object>
 #T=Object
 Object
+#T=object
+<object type="^!" width="550" height="400"></object>
 #T=oc
 outline-color:#000;
 #T=oc-i
@@ -3734,9 +3756,9 @@ padding-top:^!;
 #T=push
 push(^!)
 #T=q
-<q>^!</q>
-#T=q
 quotes:^!;
+#T=q
+<q>^!</q>
 #T=q-en
 quotes:'\201C' '\201D' '\2018' '\2019';
 #T=q-n
@@ -3905,9 +3927,9 @@ ScriptEngineMinorVersion(^!)
 #T=script-src
 <script type="text/javascript" src="^!"></script>
 #T=scroll
-scroll(^!)
-#T=scroll
 scroll(function(){^!})
+#T=scroll
+scroll(^!)
 #T=scrollBy
 scrollBy(^!)
 #T=scrollIntoView
@@ -4042,9 +4064,9 @@ slideToggle(^!)
 #T=slideUp
 slideUp(^!)
 #T=small
-small(^!)
-#T=small
 <small>^!</small>
+#T=small
+small(^!)
 #T=sort
 sort(^!)
 #T=source
@@ -4082,9 +4104,9 @@ var /*string*/ ^!
 #T=style=""
 style="^!"
 #T=sub
-sub(^!)
-#T=sub
 <sub>^!</sub>
+#T=sub
+sub(^!)
 #T=submit
 submit(^!)
 #T=substr
@@ -4096,9 +4118,9 @@ substringData(^!)
 #T=summary
 <summary>^!</summary>
 #T=sup
-sup(^!)
-#T=sup
 <sup>^!</sup>
+#T=sup
+sup(^!)
 #T=swapNode
 swapNode(^!)
 #T=switch
@@ -4124,14 +4146,14 @@ text-align:^!;
 #T=t-a
 top:auto;
 #T=table
-table(^!)
-#T=table
 <table>
 <tr>
   <td>^!</td>
   <td></td>
 </tr>
 </table>
+#T=table
+table(^!)
 #T=ta-c
 text-align:center;
 #T=tagName
@@ -4217,9 +4239,9 @@ text(^!)
 #T=tfoot
 <tfoot>^!</tfoot>
 #T=th
-<th>^!</th>
-#T=th
 text-height:^!;
+#T=th
+<th>^!</th>
 #T=th-a
 text-height:auto;
 #T=thead
@@ -4412,9 +4434,9 @@ toUpperCase(^!)
 #T=toUTCString
 toUTCString(^!)
 #T=tr
-<tr>^!</tr>
-#T=tr
 text-replace:^!;
+#T=tr
+<tr>^!</tr>
 #T=transform- //全部属性
 transform: rotate(45deg) scale(1.2) skew(10deg) translate(x,y);   
 -webkit-transform: rotate(45deg); transform: rotate(45deg);
@@ -4448,9 +4470,9 @@ text-shadow:none;
 #T=tstring
 /*string*/ 
 #T=tt
-/*^!*/ 
-#T=tt
 text-transform:^!;
+#T=tt
+/*^!*/ 
 #T=tt-c
 text-transform:capitalize;
 #T=tt-l
@@ -5216,6 +5238,18 @@ china['香港特别行政区']=new Array('台北市','高雄市','基隆市','台中市','台南市','
     $(selectString).eq(0).trigger('click');
   })
   })(jQuery);
+#T=ui-class Es6类的方法
+class Screen{
+  constructor(){
+    alert('111222');    
+  }
+  static methor(x){  //静态类方法，直接调用
+    
+  }
+  normalfc(){  //普通类方法
+    
+  }
+}
 #T=ui-console.log //兼容不支持console上的写法
 function log() {
   if (window.console) {
@@ -9352,16 +9386,34 @@ $('#video1')[0].pause();
 $('#video1')[0].play();   
 #T=visible
 visible
+#T=v-model=""
+v-model="^!"
 #T=vobject
 var /*object*/ ^! = {};
 #T=vregexp
 var /*RegExp*/ ^! = new RegExp ();
+#T=vue //app 
+  var app = new Vue({
+    el:'#app',
+    data:{
+
+    },
+    methods:{
+      
+    }
+  })
 #T=v-v
 visibility:visible;
 #T=w
 width:^!;
 #T=w-a
 width:auto;
+#T=watch //vue
+ watch:{
+      type:function  (newValue, oldValue) {
+        
+      }
+    },
 #T=-webkit-animation-duration //播放时间
 -webkit-animation-duration: 0.5s;
       animation-duration: 0.5s;
@@ -9430,9 +9482,9 @@ word-wrap:suppress;
 #T=wow-u
 word-wrap:unrestricted;
 #T=wrap
-wrap(^!)
-#T=wrap
 wrap
+#T=wrap
+wrap(^!)
 #T=wrapAll
 wrapAll(^!)
 #T=wrapInner
