@@ -1478,6 +1478,7 @@
         * Performs the vertical movement (by CSS3 or by jQuery)
         */
         function performMovement(v){
+            
             // using CSS3 translate functionality
             if (options.css3 && options.autoScrolling && !options.scrollBar) {
 
@@ -1492,6 +1493,7 @@
                     clearTimeout(afterSectionLoadsId);
                     afterSectionLoadsId = setTimeout(function () {
                         afterSectionLoads(v);
+                       
                     }, options.scrollingSpeed);
                 }else{
                     afterSectionLoads(v);
@@ -1599,7 +1601,7 @@
         */
         function afterSectionLoads (v){
             continuousVerticalFixSectionOrder(v);
-
+           
             //callback (afterLoad) if the site is not just resizing and readjusting the slides
             $.isFunction(options.afterLoad) && !v.localIsResizing && options.afterLoad.call(v.element, v.anchorLink, (v.sectionIndex + 1));
             options.scrollOverflowHandler.afterLoad();
@@ -2023,6 +2025,7 @@
 
             //if the site is not just resizing and readjusting the slides
             if(!v.localIsResizing){
+             
                 $.isFunction( options.afterSlideLoad ) && options.afterSlideLoad.call( v.destiny, v.anchorLink, (v.sectionIndex + 1), v.slideAnchor, v.slideIndex);
 
                 //needs to be inside the condition to prevent problems with continuousVertical and scrollHorizontally
@@ -2043,12 +2046,12 @@
         */
         function performHorizontalMove(slides, v, fireCallback){
             var destinyPos = v.destinyPos;
-
+           
             if(options.css3){
                 var translate3d = 'translate3d(-' + Math.round(destinyPos.left) + 'px, 0px, 0px)';
 
                 addAnimation(slides.find(SLIDES_CONTAINER_SEL)).css(getTransforms(translate3d));
-
+               
                 afterSlideLoadsId = setTimeout(function(){
                     fireCallback && afterSlideLoads(v);
                 }, options.scrollingSpeed, options.easing);

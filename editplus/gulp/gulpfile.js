@@ -61,10 +61,10 @@ gulp.task('img', function() {
 //        }))
 
   
-//        .pipe(smushit({
-//            verbose: true
-//        }))
-//        .pipe(gulp.dest('smushit-dist'));
+        .pipe(smushit({
+            verbose: true
+        }))
+        .pipe(gulp.dest('smushit-dist'))
 
 //    .pipe(gulp.dest('E:/xampp/htdocs/tlbb/img/images/'))
     .pipe(gulp.dest(options[4] + '/images/'))

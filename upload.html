@@ -24,6 +24,7 @@
     <div class="noscript"><strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。</div>
   </noscript>
   <div class="container">
+    <img src="e://xampp/htdocs/xiyou/tpl/img/brank.png">
     <form action="#">
       <div class="imgbk" id="imgbk">
         
@@ -75,6 +76,7 @@
         this.apImg.append(imgIe);
         imgIe[0].style.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)';
         imgIe[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = path;
+        alert(path);
       }
 
       UpLoad.prototype.changeToBase = function  () {                    

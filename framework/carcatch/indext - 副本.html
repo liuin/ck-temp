@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="description" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <!--[if IE]>
+    <script type="text/javascript">
+       var console = { log: function() {} };
+    </script>
+  <![endif]-->
+
+  <title>website name</title>
+  <style type="text/css">
+* {margin: 0;padding: 0;border: 0;}
+#catrun {position: relative;left: 100px;top: 100px;}
+#catrun .item {background-color: #999;border-radius: 50%;text-align: center;font-size: 24px;cursor: pointer;}
+#catrun .item.current {background: green;color: #fff;}
+#catrun .item.stop {background: #f60;color: #000;}
+
+  </style>
+</head>
+
+<body class="yh">
+  <noscript>
+    <strong>你的浏览器似乎禁用了 JavaScript。</strong><br />您必须在浏览器中启用JavaScript才能使用本网站的功能。
+  </noscript>
+  <div class="container">
+    <div id="catrun">
+    </div>
+  </div>
+  <script type="text/javascript" src="../../js/jquery.js"></script>
+  <script type="text/javascript" src="text.js"></script>
+</body>

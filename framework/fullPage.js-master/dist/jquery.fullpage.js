@@ -2020,7 +2020,7 @@
 
         function afterSlideLoads(v){
             activeSlidesNavigation(v.slidesNav, v.slideIndex);
-
+            
             //if the site is not just resizing and readjusting the slides
             if(!v.localIsResizing){
                 $.isFunction( options.afterSlideLoad ) && options.afterSlideLoad.call( v.destiny, v.anchorLink, (v.sectionIndex + 1), v.slideAnchor, v.slideIndex);
@@ -2043,13 +2043,14 @@
         */
         function performHorizontalMove(slides, v, fireCallback){
             var destinyPos = v.destinyPos;
-
+           
             if(options.css3){
                 var translate3d = 'translate3d(-' + Math.round(destinyPos.left) + 'px, 0px, 0px)';
 
                 addAnimation(slides.find(SLIDES_CONTAINER_SEL)).css(getTransforms(translate3d));
 
                 afterSlideLoadsId = setTimeout(function(){
+                    
                     fireCallback && afterSlideLoads(v);
                 }, options.scrollingSpeed, options.easing);
             }else{

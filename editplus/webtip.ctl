@@ -13,6 +13,8 @@ New Cliptext library
 @font-face {font-family:^!;src:url();}
 #T=@i
 @import url(^!);
+#T=@import //css导入
+@import
 #T=@m
 @media print {^!}
 #T=@media screen
@@ -56,9 +58,9 @@ addRule(^!)
 #T=a-email
 <a href="mailto:^!">
 #T=after
-after
-#T=after
 after(^!)
+#T=after
+after
 #T=afunc
 function (^!) {
 }
@@ -80,6 +82,17 @@ $.ajax({
     alert('1212');
   }
 });
+#T=ajax-ajax同步 $.Deferred
+function getData3(){        
+  var defer = $.Deferred();
+        $.ajax({
+          url : 'p.php',            //async : false,            
+          success: function(data){
+          defer.resolve(data)
+        }
+  });        
+  return defer.promise();
+}
 #T=ajaxComplete
 ajaxComplete(function(event, request, settings){
   ^!
@@ -153,6 +166,8 @@ Int32Array：32位有符号整数，长度4个字节。
 Uint32Array：32位无符号整数，长度4个字节。
 Float32Array：32位浮点数，长度4个字节。
 Float64Array：64位浮点数，长度8个字节。
+#T=arr-copy  //slice 数组复制；
+app.bizlist.slice(0);
 #T=article
 <article>^!<article>
 #T=aside
@@ -161,6 +176,8 @@ Float64Array：64位浮点数，长度8个字节。
 asin(^!)
 #T=assign
 assign(^!)
+#T=async //同步异步
+async
 #T=atan
 atan(^!)
 #T=atan2
@@ -171,8 +188,14 @@ attachEvent(^!)
 attr(^!)
 #T=audio
 <audio src="^!"></audio>
+#T=autocomplete
+autocomplete
+#T=autocomplete="new-password"
+autocomplete="new-password"
 #T=autofocus
 autofocus
+#T=await //同步异步
+await
 #T=b
 
   ^!
@@ -264,9 +287,9 @@ border-image:none;
 #T=bdi-w
 -webkit-border-image:url(^!) 0 0 0 0 stretch stretch;
 #T=bdl
-border-length:^!;
-#T=bdl
 border-left:^!;
+#T=bdl
+border-length:^!;
 #T=bdl-
 border-left:1px solid #000;
 #T=bdl-a
@@ -376,9 +399,9 @@ border-top-width:^!;
 #T=bdw
 border-width:^!;
 #T=before
-before
-#T=before
 before(^!)
+#T=before
+before
 #T=bg
 background:^!;
 #T=bg-
@@ -954,8 +977,12 @@ compareEndPoints(^!)
 compile(^!)
 #T=complete
 complete
+#T=Component
+Component
 #T=componentFromPoint
 componentFromPoint(^!)
+#T=components //vue定义组件
+components
 #T=computed //vue 计算属性
 computed:{
   ^!
@@ -1030,9 +1057,28 @@ createTFoot(^!)
 createTHead(^!)
 #T=css
 css(^!)
+#T=css- //文字竖排
+writing-mode: vertical-lr;/*从左向右 从右向左是 writing-mode: vertical-rl;*/    
+    writing-mode: tb-lr;/*IE浏览器的从左向右 从右向左是 writing-mode: tb-rl；*/    
+#T=css- 长按屏蔽弹出框
+ -webkit-user-select: none;
+user-select: none;
+-webkit-touch-callout: none;
+pointer-events: none;
+
+document.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+}, false);
 #T=css-//弹性滚动条
 //弹性滚动条
 -webkit-overflow-scrolling:touch;
+#T=css-//帧动画
+animation: frameAnim2 steps(1, start) 1.5s infinite;
+#T=css-appearance//去掉箭头
+appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+
 #T=css-arrow //border 右箭头
 border-left: 10px solid #b50001;
 border-top: 10px solid transparent;
@@ -1195,6 +1241,22 @@ $dom7.dispatchEvent(evt);
 dashed
 #T=data
 data(^!)
+#T=data.format //时间格式化
+Date.prototype.Format = function (fmt) { //author: meizz 
+    var o = {
+        "M+": this.getMonth() + 1, //月份 
+        "d+": this.getDate(), //日 
+        "h+": this.getHours(), //小时 
+        "m+": this.getMinutes(), //分 
+        "s+": this.getSeconds(), //秒 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+        "S": this.getMilliseconds() //毫秒 
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
 #T=datalist
 <datalist>
   <option value="^!"></option>
@@ -1211,11 +1273,11 @@ debugger;
 #T=decodeURI
 decodeURI(^!)
 #T=decodeURIComponent
+decodeURIComponent(^!)
+#T=decodeURIComponent
 decodeURIComponent('11654-%E5%8F%98%E5%B9%BB%E4%B9%8B%E9%A3%
  
 8E.mp3')
-#T=decodeURIComponent
-decodeURIComponent(^!)
 #T=default
 default
 #T=defineProperty //定义
@@ -1249,9 +1311,9 @@ detach(^!)
 #T=detachEvent
 detachEvent(^!)
 #T=details
-details
-#T=details
 <details>^!</details>
+#T=details
+details
 #T=devDependencies //package 开发需要的类库 (完成后不需要依赖)
 "devDependencies": {
         "typescript": "^2.0.3"
@@ -1268,6 +1330,8 @@ display:inline-block;
 die(^!)
 #T=disabled
 disabled
+#T=dispatch //react dva触发
+dispatch
 #T=display
 display:^!;
 #T=display:box
@@ -1361,9 +1425,9 @@ else if (^!) {
 #T=embed
 <embed src="^!" quality="high" type="application/x-shockwave-flash"></embed>
 #T=empty
-empty
-#T=empty
 empty(^!)
+#T=empty
+empty
 #T=enabled
 enabled
 #T=encodeURI
@@ -1407,9 +1471,9 @@ font-family:fantasy;
 #T=ff-m
 font-family:monospace;
 #T=ff-st
-font-family:"\5B8B\4F53"
-#T=ff-st
 font-family:'\5B8B\4F53',Arial;
+#T=ff-st
+font-family:"\5B8B\4F53"
 #T=ff-yh
 font-family:'微软雅黑',Microsoft YaHei;
 #T=fieldset
@@ -1503,9 +1567,9 @@ floor(^!)
 #T=fl-r
 float:right;
 #T=focus
-focus
-#T=focus
 focus(^!)
+#T=focus
+focus
 #T=fontcolor
 fontcolor(^!)
 #T=fontsize
@@ -2120,9 +2184,9 @@ history.back();
 #T=history-p
 history.prev();
 #T=hover
-hover
-#T=hover
 hover(^!)
+#T=hover
+hover
 #T=hr
 <hr />^!
 #T=href-j
@@ -2650,6 +2714,8 @@ ignore
 <img src="^!" alt="" />
 #T=img-base64
 data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
+#T=import //node 导入
+import
 #T=important
 important
 #T=indeterminate
@@ -2951,9 +3017,9 @@ list-style-type:upper-roman;
 #T=live
 live(^!)
 #T=ll
-"^!"
-#T=ll
 '^!'
+#T=ll
+"^!"
 #T=load
 load(^!)
 #T=localeCompare
@@ -2982,11 +3048,11 @@ max-height:^!;
 #T=mah-n
 max-height:none;
 #T=map
+map(^!)
+#T=map
 <map id="^!">
   <area shape="" href="" coords="" alt="" />
 </map>
-#T=map
-map(^!)
 #T=map-html
 <map name="bk2"> <area coords="972,527,1206,591" href="#" alt="1元订金" /> </map>
 #T=mark
@@ -3045,6 +3111,10 @@ margin-left:^!;
 margin-left:auto;
 #T=module //模块化
 module
+#T=module.exports 
+module.exports = {
+   ^!
+}
 #T=mousedown
 mousedown(function(){^!})
 #T=mouseenter
@@ -3519,10 +3589,10 @@ nth-child(2n-1)
 nth-last-child(-n+5)
 #T=o
 outline:^!;
-#T=Object
-Object
 #T=object
 <object type="^!" width="550" height="400"></object>
+#T=Object
+Object
 #T=oc
 outline-color:#000;
 #T=oc-i
@@ -3558,6 +3628,8 @@ opacity:^!;
 open(^!)
 #T=op-ie
 filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+#T=opl- href //友盟thankphp地址
+{:U('Manage/create')}
 #T=op-ms
 -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 #T=optgroup
@@ -3639,6 +3711,16 @@ padding:0 0;
 padding:0 0 0;
 #T=p-4
 padding:0 0 0 0;
+#T=package-json
+{
+  "name": "reacte",
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
 #T=param
 <param name="^!" value="" />
 #T=parentElement
@@ -3725,6 +3807,8 @@ prepend(^!)
 prepend(^!)
 #T=prependTo
 prependTo(^!)
+#T=presets //babeirc 配置
+presets //babeirc 配置
 #T=prev
 prev(^!)
 #T=prev- //preventDefault()
@@ -3756,9 +3840,9 @@ padding-top:^!;
 #T=push
 push(^!)
 #T=q
-quotes:^!;
-#T=q
 <q>^!</q>
+#T=q
+quotes:^!;
 #T=q-en
 quotes:'\201C' '\201D' '\2018' '\2019';
 #T=q-n
@@ -3789,6 +3873,49 @@ right:auto;
 raiseEvent(^!)
 #T=random
 random(^!)
+#T=react-class//react类
+class Clock extends React.Component {
+
+  //构造函数定义好属性 
+  constructor(props){
+    super(props);
+    this.state = {date: new Date()};    
+  }
+
+  //当组件输出到 DOM 后会执行
+  componentDidMount() {  
+  }
+
+  //生命周期钩子中卸载计时器
+  componentWillUnmount() {
+  }
+
+  //自定义一个方法函数 setState可以更新状态
+  tick() {
+    //第一种形态直接变量赋值
+    this.setState({
+      date: new Date()
+    });
+
+    //第二种形态函数赋值,涉及到有变量操作的时候
+    this.setState((prevState, props) => ({
+      counter: prevState.counter + props.increment
+    }))
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+#T=react-componentDidMount //当组件输出到 DOM 后会执行
+//当组件输出到 DOM 后会执行
+componentDidMount() {  
+}
 #T=readonly
 readonly
 #T=read-only
@@ -3927,9 +4054,9 @@ ScriptEngineMinorVersion(^!)
 #T=script-src
 <script type="text/javascript" src="^!"></script>
 #T=scroll
-scroll(function(){^!})
-#T=scroll
 scroll(^!)
+#T=scroll
+scroll(function(){^!})
 #T=scrollBy
 scrollBy(^!)
 #T=scrollIntoView
@@ -4064,9 +4191,9 @@ slideToggle(^!)
 #T=slideUp
 slideUp(^!)
 #T=small
-<small>^!</small>
-#T=small
 small(^!)
+#T=small
+<small>^!</small>
 #T=sort
 sort(^!)
 #T=source
@@ -4104,9 +4231,9 @@ var /*string*/ ^!
 #T=style=""
 style="^!"
 #T=sub
-<sub>^!</sub>
-#T=sub
 sub(^!)
+#T=sub
+<sub>^!</sub>
 #T=submit
 submit(^!)
 #T=substr
@@ -4118,9 +4245,9 @@ substringData(^!)
 #T=summary
 <summary>^!</summary>
 #T=sup
-<sup>^!</sup>
-#T=sup
 sup(^!)
+#T=sup
+<sup>^!</sup>
 #T=swapNode
 swapNode(^!)
 #T=switch
@@ -4146,14 +4273,14 @@ text-align:^!;
 #T=t-a
 top:auto;
 #T=table
+table(^!)
+#T=table
 <table>
 <tr>
   <td>^!</td>
   <td></td>
 </tr>
 </table>
-#T=table
-table(^!)
 #T=ta-c
 text-align:center;
 #T=tagName
@@ -4230,6 +4357,8 @@ text-emphasis:none;
 test(^!)
 #T=text
 text
+#T=text/babel
+text/babel
 #T=textarea
 <textarea name="^!"></textarea>
 #T=textj
@@ -4239,9 +4368,9 @@ text(^!)
 #T=tfoot
 <tfoot>^!</tfoot>
 #T=th
-text-height:^!;
-#T=th
 <th>^!</th>
+#T=th
+text-height:^!;
 #T=th-a
 text-height:auto;
 #T=thead
@@ -4434,12 +4563,11 @@ toUpperCase(^!)
 #T=toUTCString
 toUTCString(^!)
 #T=tr
-text-replace:^!;
-#T=tr
 <tr>^!</tr>
+#T=tr
+text-replace:^!;
 #T=transform- //全部属性
-transform: rotate(45deg) scale(1.2) skew(10deg) translate(x,y);   
--webkit-transform: rotate(45deg); transform: rotate(45deg);
+transform: rotate(45deg) scale(1.2) skew(10deg) translate(x,y);  -webkit-transform: rotate(45deg);
 
 #T=transform-origin //中心点
 transform-origin:top|bottom|left|right|center;
@@ -4470,9 +4598,9 @@ text-shadow:none;
 #T=tstring
 /*string*/ 
 #T=tt
-text-transform:^!;
-#T=tt
 /*^!*/ 
+#T=tt
+text-transform:^!;
 #T=tt-c
 text-transform:capitalize;
 #T=tt-l
@@ -5846,6 +5974,15 @@ $(".ckiput").prop('checked',true);
 * @author cuki13  
 
 */
+
+.form-select-ui {display:inline-block;width: 120px; position:relative;background:url("../img/arrow-down2.png") right center no-repeat;height: 35px;line-height:35px; border:1px solid #aaa;margin: 0 10px;}
+.form-select-ui .val {padding-left:10px;}
+.form-select-ui .option {position:absolute;border: 1px solid #aaa;left: -1px;}
+.form-select-ui .option li:first-child {padding-top:0;color: #a1ba1a;}
+.form-select-ui .option li:last-child {margin-bottom:0;}
+.form-select-ui .option li {margin:0;padding: 0;border:0; padding-left:10px; cursor:pointer;color: #ff1818;}
+.form-select-ui .val.firstval {color: #a1ba1a;}
+
 (function() {
   var formSting = '[data-form="select"]';
   var Select = function  (number) {
@@ -9229,6 +9366,17 @@ valid-form = "req" 不能为空
   })
   
   })(jQuery);
+#T=ui-WeixinJSBridgeReady //微信预加载 inphon有效
+document.addEventListener("WeixinJSBridgeReady", function () {
+    
+    if ($(".startplay").length > 0) {
+      $(".startplay video")[0].load();
+     
+      $("#audio-btn").find('audio')[0].load();
+    }
+
+
+}, false);
 #T=ui-zoomin //放大效果
 
   $(document).ready(function() {
@@ -9402,6 +9550,12 @@ var /*RegExp*/ ^! = new RegExp ();
       
     }
   })
+#T=vue-$nextTick //vue渲染后触发
+this.$nextTick(function () {})
+#T=vue-mounted //渲染后回调
+mounted:function(){
+    alert('render complete')
+  }
 #T=v-v
 visibility:visible;
 #T=w
@@ -9482,9 +9636,9 @@ word-wrap:suppress;
 #T=wow-u
 word-wrap:unrestricted;
 #T=wrap
-wrap
-#T=wrap
 wrap(^!)
+#T=wrap
+wrap
 #T=wrapAll
 wrapAll(^!)
 #T=wrapInner
@@ -9493,6 +9647,13 @@ wrapInner(^!)
 write(^!)
 #T=writeln
 writeln(^!)
+#T=wx- 解决微信播放
+		   document.addEventListener("WeixinJSBridgeReady", function () {
+            $('.opensound').trigger('click');
+            $('.mxbq-audio-bottom')[0].play();
+          
+             
+       }, false);
 #T=z
 /*-- ^! --*/
 #T=z-a
