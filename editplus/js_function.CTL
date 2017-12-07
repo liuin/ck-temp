@@ -674,6 +674,8 @@ function loadJs(file){
 Math.round
 #T=node 全局环境变量
 C:\Documents and Settings\Administrator\Application Data\npm\node_modules
+#T=npm view vuex versions //npm查看版本
+npm view vuex versions
 #T=parent window的内置对象
 parent：
 该变量指的是包含当前分割窗口的父窗口。如果在一个窗口内有分割窗口，而在其中一个分割窗口中又包含着分割窗口，则第2层的分割窗口可以用parent变量引用包含它的父分割窗口。
