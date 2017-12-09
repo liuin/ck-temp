@@ -57,9 +57,9 @@ Block.prototype.showIn = function() {
     'line-height': this.size + 'px'
   }
 
-  var item = $('<div class="item" data-number="' + this.number + '">' + this.number + '</div>');
+//  var item = $('<div class="item" data-number="' + this.number + '">' + this.number + '</div>');
 
-  //var item = $('<div class="item" data-number="'+ this.number +'"></div>');
+  var item = $('<div class="item" data-number="'+ this.number +'"></div>');
   item.css(style);
 
   if (this.pos.current == true) {

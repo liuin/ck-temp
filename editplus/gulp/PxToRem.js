@@ -5,7 +5,7 @@ var exec = require('child_process').exec;
 var options = process.argv;
 
 
-var fit = 1/100; //默认是1/100倍数rem/px;
+var fit = 0.01; //默认是1/100倍数rem/px;
 
 fs.readFile(options[3], 'utf8', function(err, data) {
   if (err) {
@@ -15,8 +15,9 @@ fs.readFile(options[3], 'utf8', function(err, data) {
     var i = arguments[3];
     var sing = arguments[2];
     var n = arguments[4]? arguments[4].replace(".","") : "" ;
-
-    i = i*fit.toString();
+    
+    i = (i*fit).toFixed(2);
+    
     return ":" + sing + i + n + "rem";
   })
 

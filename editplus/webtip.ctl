@@ -13,6 +13,8 @@ New Cliptext library
 @font-face {font-family:^!;src:url();}
 #T=@i
 @import url(^!);
+#T=@import //css导入
+@import
 #T=@m
 @media print {^!}
 #T=@media screen
@@ -80,6 +82,17 @@ $.ajax({
     alert('1212');
   }
 });
+#T=ajax-ajax同步 $.Deferred
+function getData3(){        
+  var defer = $.Deferred();
+        $.ajax({
+          url : 'p.php',            //async : false,            
+          success: function(data){
+          defer.resolve(data)
+        }
+  });        
+  return defer.promise();
+}
 #T=ajaxComplete
 ajaxComplete(function(event, request, settings){
   ^!
@@ -153,6 +166,8 @@ Int32Array：32位有符号整数，长度4个字节。
 Uint32Array：32位无符号整数，长度4个字节。
 Float32Array：32位浮点数，长度4个字节。
 Float64Array：64位浮点数，长度8个字节。
+#T=arr-copy  //slice 数组复制；
+app.bizlist.slice(0);
 #T=article
 <article>^!<article>
 #T=aside
@@ -161,6 +176,8 @@ Float64Array：64位浮点数，长度8个字节。
 asin(^!)
 #T=assign
 assign(^!)
+#T=async //同步异步
+async
 #T=atan
 atan(^!)
 #T=atan2
@@ -171,8 +188,14 @@ attachEvent(^!)
 attr(^!)
 #T=audio
 <audio src="^!"></audio>
+#T=autocomplete
+autocomplete
+#T=autocomplete="new-password"
+autocomplete="new-password"
 #T=autofocus
 autofocus
+#T=await //同步异步
+await
 #T=b
 
   ^!
@@ -954,8 +977,12 @@ compareEndPoints(^!)
 compile(^!)
 #T=complete
 complete
+#T=Component
+Component
 #T=componentFromPoint
 componentFromPoint(^!)
+#T=components //vue定义组件
+components
 #T=computed //vue 计算属性
 computed:{
   ^!
@@ -1030,9 +1057,28 @@ createTFoot(^!)
 createTHead(^!)
 #T=css
 css(^!)
+#T=css- //文字竖排
+writing-mode: vertical-lr;/*从左向右 从右向左是 writing-mode: vertical-rl;*/    
+    writing-mode: tb-lr;/*IE浏览器的从左向右 从右向左是 writing-mode: tb-rl；*/    
+#T=css- 长按屏蔽弹出框
+ -webkit-user-select: none;
+user-select: none;
+-webkit-touch-callout: none;
+pointer-events: none;
+
+document.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+}, false);
 #T=css-//弹性滚动条
 //弹性滚动条
 -webkit-overflow-scrolling:touch;
+#T=css-//帧动画
+animation: frameAnim2 steps(1, start) 1.5s infinite;
+#T=css-appearance//去掉箭头
+appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+
 #T=css-arrow //border 右箭头
 border-left: 10px solid #b50001;
 border-top: 10px solid transparent;
@@ -1195,6 +1241,22 @@ $dom7.dispatchEvent(evt);
 dashed
 #T=data
 data(^!)
+#T=data.format //时间格式化
+Date.prototype.Format = function (fmt) { //author: meizz 
+    var o = {
+        "M+": this.getMonth() + 1, //月份 
+        "d+": this.getDate(), //日 
+        "h+": this.getHours(), //小时 
+        "m+": this.getMinutes(), //分 
+        "s+": this.getSeconds(), //秒 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+        "S": this.getMilliseconds() //毫秒 
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
 #T=datalist
 <datalist>
   <option value="^!"></option>
@@ -1268,6 +1330,8 @@ display:inline-block;
 die(^!)
 #T=disabled
 disabled
+#T=dispatch //react dva触发
+dispatch
 #T=display
 display:^!;
 #T=display:box
@@ -2650,6 +2714,8 @@ ignore
 <img src="^!" alt="" />
 #T=img-base64
 data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
+#T=import //node 导入
+import ^! from ""
 #T=important
 important
 #T=indeterminate
@@ -3045,6 +3111,10 @@ margin-left:^!;
 margin-left:auto;
 #T=module //模块化
 module
+#T=module.exports 
+module.exports = {
+   ^!
+}
 #T=mousedown
 mousedown(function(){^!})
 #T=mouseenter
@@ -3558,6 +3628,8 @@ opacity:^!;
 open(^!)
 #T=op-ie
 filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+#T=opl- href //友盟thankphp地址
+{:U('Manage/create')}
 #T=op-ms
 -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 #T=optgroup
@@ -3639,6 +3711,16 @@ padding:0 0;
 padding:0 0 0;
 #T=p-4
 padding:0 0 0 0;
+#T=package-json
+{
+  "name": "reacte",
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
 #T=param
 <param name="^!" value="" />
 #T=parentElement
@@ -3725,6 +3807,8 @@ prepend(^!)
 prepend(^!)
 #T=prependTo
 prependTo(^!)
+#T=presets //babeirc 配置
+presets //babeirc 配置
 #T=prev
 prev(^!)
 #T=prev- //preventDefault()
@@ -3789,6 +3873,49 @@ right:auto;
 raiseEvent(^!)
 #T=random
 random(^!)
+#T=react-class//react类
+class Clock extends React.Component {
+
+  //构造函数定义好属性 
+  constructor(props){
+    super(props);
+    this.state = {date: new Date()};    
+  }
+
+  //当组件输出到 DOM 后会执行
+  componentDidMount() {  
+  }
+
+  //生命周期钩子中卸载计时器
+  componentWillUnmount() {
+  }
+
+  //自定义一个方法函数 setState可以更新状态
+  tick() {
+    //第一种形态直接变量赋值
+    this.setState({
+      date: new Date()
+    });
+
+    //第二种形态函数赋值,涉及到有变量操作的时候
+    this.setState((prevState, props) => ({
+      counter: prevState.counter + props.increment
+    }))
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+#T=react-componentDidMount //当组件输出到 DOM 后会执行
+//当组件输出到 DOM 后会执行
+componentDidMount() {  
+}
 #T=readonly
 readonly
 #T=read-only
@@ -4230,6 +4357,8 @@ text-emphasis:none;
 test(^!)
 #T=text
 text
+#T=text/babel
+text/babel
 #T=textarea
 <textarea name="^!"></textarea>
 #T=textj
@@ -4438,8 +4567,7 @@ text-replace:^!;
 #T=tr
 <tr>^!</tr>
 #T=transform- //全部属性
-transform: rotate(45deg) scale(1.2) skew(10deg) translate(x,y);   
--webkit-transform: rotate(45deg); transform: rotate(45deg);
+transform: rotate(45deg) scale(1.2) skew(10deg) translate(x,y);  -webkit-transform: rotate(45deg);
 
 #T=transform-origin //中心点
 transform-origin:top|bottom|left|right|center;
@@ -5846,6 +5974,15 @@ $(".ckiput").prop('checked',true);
 * @author cuki13  
 
 */
+
+.form-select-ui {display:inline-block;width: 120px; position:relative;background:url("../img/arrow-down2.png") right center no-repeat;height: 35px;line-height:35px; border:1px solid #aaa;margin: 0 10px;}
+.form-select-ui .val {padding-left:10px;}
+.form-select-ui .option {position:absolute;border: 1px solid #aaa;left: -1px;}
+.form-select-ui .option li:first-child {padding-top:0;color: #a1ba1a;}
+.form-select-ui .option li:last-child {margin-bottom:0;}
+.form-select-ui .option li {margin:0;padding: 0;border:0; padding-left:10px; cursor:pointer;color: #ff1818;}
+.form-select-ui .val.firstval {color: #a1ba1a;}
+
 (function() {
   var formSting = '[data-form="select"]';
   var Select = function  (number) {
@@ -9229,6 +9366,17 @@ valid-form = "req" 不能为空
   })
   
   })(jQuery);
+#T=ui-WeixinJSBridgeReady //微信预加载 inphon有效
+document.addEventListener("WeixinJSBridgeReady", function () {
+    
+    if ($(".startplay").length > 0) {
+      $(".startplay video")[0].load();
+     
+      $("#audio-btn").find('audio')[0].load();
+    }
+
+
+}, false);
 #T=ui-zoomin //放大效果
 
   $(document).ready(function() {
@@ -9402,6 +9550,12 @@ var /*RegExp*/ ^! = new RegExp ();
       
     }
   })
+#T=vue-$nextTick //vue渲染后触发
+this.$nextTick(function () {})
+#T=vue-mounted //渲染后回调
+mounted:function(){
+    alert('render complete')
+  }
 #T=v-v
 visibility:visible;
 #T=w
@@ -9493,6 +9647,13 @@ wrapInner(^!)
 write(^!)
 #T=writeln
 writeln(^!)
+#T=wx- 解决微信播放
+		   document.addEventListener("WeixinJSBridgeReady", function () {
+            $('.opensound').trigger('click');
+            $('.mxbq-audio-bottom')[0].play();
+          
+             
+       }, false);
 #T=z
 /*-- ^! --*/
 #T=z-a

@@ -672,6 +672,10 @@ function loadJs(file){
 } 
 #T=Math.round 4舍5入
 Math.round
+#T=node 全局环境变量
+C:\Documents and Settings\Administrator\Application Data\npm\node_modules
+#T=npm view vuex versions //npm查看版本
+npm view vuex versions
 #T=parent window的内置对象
 parent：
 该变量指的是包含当前分割窗口的父窗口。如果在一个窗口内有分割窗口，而在其中一个分割窗口中又包含着分割窗口，则第2层的分割窗口可以用parent变量引用包含它的父分割窗口。
@@ -728,10 +732,6 @@ var Highlighter = {
 	}
 };
 
-#T=手机自适应 以640为准
-<script type="text/javascript">
-	var e={androidShowPage:function(){var e=document.documentElement.clientWidth,t=(e/320<2)?(e/320):2;document.body.style.zoom=t},iosShowPage:function(){var e=document.documentElement.clientWidth,t=(e/320<2)?(e/320):2;document.body.style.zoom=t,document.body.style.fontSize=Math.floor(t*100)+"%"}};navigator.userAgent.toLowerCase().indexOf("mac os x")!=-1?(window.addEventListener("load",function(){e.iosShowPage()},!1),window.addEventListener("orientationchange",function(){e.iosShowPage()},!1)):(window.addEventListener("load",function(){e.androidShowPage()},!1),window.addEventListener("orientationchange",function(){e.androidShowPage()},!1));
-</script>
 #T=滚动相册设置
 var refesh='';
 
@@ -850,6 +850,10 @@ $(this).removeAttr('filter');
 		}
 		obj.css({"z-index":"1010"});
 	}
+#T=手机自适应 以640为准
+<script type="text/javascript">
+	var e={androidShowPage:function(){var e=document.documentElement.clientWidth,t=(e/320<2)?(e/320):2;document.body.style.zoom=t},iosShowPage:function(){var e=document.documentElement.clientWidth,t=(e/320<2)?(e/320):2;document.body.style.zoom=t,document.body.style.fontSize=Math.floor(t*100)+"%"}};navigator.userAgent.toLowerCase().indexOf("mac os x")!=-1?(window.addEventListener("load",function(){e.iosShowPage()},!1),window.addEventListener("orientationchange",function(){e.iosShowPage()},!1)):(window.addEventListener("load",function(){e.androidShowPage()},!1),window.addEventListener("orientationchange",function(){e.androidShowPage()},!1));
+</script>
 #T=图片预加载
 var img = '<img />';
 img = $(img);
