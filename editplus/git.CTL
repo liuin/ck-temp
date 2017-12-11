@@ -30,6 +30,9 @@ git update-index --assume-unchanged Xml/config.xml
 后面的 Xml/config.xml 是要忽略的文件的路径。如果要忽略一个目录，打开 git bash，cd到 目标目录下，执行：
 [plain] view plain copy
 git update-index --assume-unchanged $(git ls-files | tr '\n' ' ')  
+
+
+git update-index --no-assume-unchanged /path/file  来恢复跟踪
 #T=希望用代码库中的文件完全覆盖本地工作版本
 反过来,如果希望用代码库中的文件完全覆盖本地工作版本. 方法如下:
 git reset --hard
