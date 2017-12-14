@@ -58,9 +58,9 @@ addRule(^!)
 #T=a-email
 <a href="mailto:^!">
 #T=after
-after(^!)
-#T=after
 after
+#T=after
+after(^!)
 #T=afunc
 function (^!) {
 }
@@ -287,9 +287,9 @@ border-image:none;
 #T=bdi-w
 -webkit-border-image:url(^!) 0 0 0 0 stretch stretch;
 #T=bdl
-border-left:^!;
-#T=bdl
 border-length:^!;
+#T=bdl
+border-left:^!;
 #T=bdl-
 border-left:1px solid #000;
 #T=bdl-a
@@ -399,9 +399,9 @@ border-top-width:^!;
 #T=bdw
 border-width:^!;
 #T=before
-before(^!)
-#T=before
 before
+#T=before
+before(^!)
 #T=bg
 background:^!;
 #T=bg-
@@ -981,12 +981,6 @@ complete
 Component
 #T=componentFromPoint
 componentFromPoint(^!)
-#T=components //vue定义组件
-components
-#T=computed //vue 计算属性
-computed:{
-  ^!
-}
 #T=concat
 concat(^!)
 #T=confirm
@@ -1144,6 +1138,8 @@ justify-content: flex-start|flex-end|center|space-between|space-around|initial|i
   -webkit-box-orient: vertical;
 #T=css-pointer-events:none; //底部可点击事件
 pointer-events:none;
+#T=css-scoped //父层css有效
+scoped
 #T=css-textep //截断文字
 .textep{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #T=css-webkit-appearance
@@ -1273,11 +1269,11 @@ debugger;
 #T=decodeURI
 decodeURI(^!)
 #T=decodeURIComponent
-decodeURIComponent(^!)
-#T=decodeURIComponent
 decodeURIComponent('11654-%E5%8F%98%E5%B9%BB%E4%B9%8B%E9%A3%
  
 8E.mp3')
+#T=decodeURIComponent
+decodeURIComponent(^!)
 #T=default
 default
 #T=defineProperty //定义
@@ -1311,9 +1307,9 @@ detach(^!)
 #T=detachEvent
 detachEvent(^!)
 #T=details
-<details>^!</details>
-#T=details
 details
+#T=details
+<details>^!</details>
 #T=devDependencies //package 开发需要的类库 (完成后不需要依赖)
 "devDependencies": {
         "typescript": "^2.0.3"
@@ -1425,9 +1421,9 @@ else if (^!) {
 #T=embed
 <embed src="^!" quality="high" type="application/x-shockwave-flash"></embed>
 #T=empty
-empty(^!)
-#T=empty
 empty
+#T=empty
+empty(^!)
 #T=enabled
 enabled
 #T=encodeURI
@@ -1451,7 +1447,9 @@ execCommand(^!)
 #T=exp
 exp(^!)
 #T=exports \\node 导出模块
-exports
+export
+#T=exports default //导出模块
+export default
 #T=extend //$.extend(defaultObj, optionsObj);
 $.extend(defaultObj, optionsObj);
 #T=extends
@@ -1471,9 +1469,9 @@ font-family:fantasy;
 #T=ff-m
 font-family:monospace;
 #T=ff-st
-font-family:'\5B8B\4F53',Arial;
-#T=ff-st
 font-family:"\5B8B\4F53"
+#T=ff-st
+font-family:'\5B8B\4F53',Arial;
 #T=ff-yh
 font-family:'微软雅黑',Microsoft YaHei;
 #T=fieldset
@@ -1558,10 +1556,6 @@ float:^!;
   })
 </script>
 
-#T=fl-l
-float:left;
-#T=fl-n
-float:none;
 #T=flex-align-content 属性定义了多根轴线的对齐方式
 align-content: flex-start | flex-end | center | space-between | space-around | stretch;
 #T=flex-align-items属性定义项目在交叉轴上如何对齐。
@@ -1578,14 +1572,18 @@ order: <integer>;
 justify-content: flex-start | flex-end | center | space-between | space-around;
 #T=flex-wrap:  //排不下去如何换行
 flex-wrap: nowrap | wrap | wrap-reverse;
+#T=fl-l
+float:left;
+#T=fl-n
+float:none;
 #T=floor
 floor(^!)
 #T=fl-r
 float:right;
 #T=focus
-focus(^!)
-#T=focus
 focus
+#T=focus
+focus(^!)
 #T=fontcolor
 fontcolor(^!)
 #T=fontsize
@@ -2200,9 +2198,9 @@ history.back();
 #T=history-p
 history.prev();
 #T=hover
-hover(^!)
-#T=hover
 hover
+#T=hover
+hover(^!)
 #T=hr
 <hr />^!
 #T=href-j
@@ -3033,9 +3031,9 @@ list-style-type:upper-roman;
 #T=live
 live(^!)
 #T=ll
-'^!'
-#T=ll
 "^!"
+#T=ll
+'^!'
 #T=load
 load(^!)
 #T=localeCompare
@@ -3064,11 +3062,11 @@ max-height:^!;
 #T=mah-n
 max-height:none;
 #T=map
-map(^!)
-#T=map
 <map id="^!">
   <area shape="" href="" coords="" alt="" />
 </map>
+#T=map
+map(^!)
 #T=map-html
 <map name="bk2"> <area coords="972,527,1206,591" href="#" alt="1元订金" /> </map>
 #T=mark
@@ -3605,10 +3603,10 @@ nth-child(2n-1)
 nth-last-child(-n+5)
 #T=o
 outline:^!;
-#T=object
-<object type="^!" width="550" height="400"></object>
 #T=Object
 Object
+#T=object
+<object type="^!" width="550" height="400"></object>
 #T=oc
 outline-color:#000;
 #T=oc-i
@@ -3856,9 +3854,9 @@ padding-top:^!;
 #T=push
 push(^!)
 #T=q
-<q>^!</q>
-#T=q
 quotes:^!;
+#T=q
+<q>^!</q>
 #T=q-en
 quotes:'\201C' '\201D' '\2018' '\2019';
 #T=q-n
@@ -4070,9 +4068,9 @@ ScriptEngineMinorVersion(^!)
 #T=script-src
 <script type="text/javascript" src="^!"></script>
 #T=scroll
-scroll(^!)
-#T=scroll
 scroll(function(){^!})
+#T=scroll
+scroll(^!)
 #T=scrollBy
 scrollBy(^!)
 #T=scrollIntoView
@@ -4207,9 +4205,9 @@ slideToggle(^!)
 #T=slideUp
 slideUp(^!)
 #T=small
-small(^!)
-#T=small
 <small>^!</small>
+#T=small
+small(^!)
 #T=sort
 sort(^!)
 #T=source
@@ -4247,9 +4245,9 @@ var /*string*/ ^!
 #T=style=""
 style="^!"
 #T=sub
-sub(^!)
-#T=sub
 <sub>^!</sub>
+#T=sub
+sub(^!)
 #T=submit
 submit(^!)
 #T=substr
@@ -4261,9 +4259,9 @@ substringData(^!)
 #T=summary
 <summary>^!</summary>
 #T=sup
-sup(^!)
-#T=sup
 <sup>^!</sup>
+#T=sup
+sup(^!)
 #T=swapNode
 swapNode(^!)
 #T=switch
@@ -4289,14 +4287,14 @@ text-align:^!;
 #T=t-a
 top:auto;
 #T=table
-table(^!)
-#T=table
 <table>
 <tr>
   <td>^!</td>
   <td></td>
 </tr>
 </table>
+#T=table
+table(^!)
 #T=ta-c
 text-align:center;
 #T=tagName
@@ -4384,9 +4382,9 @@ text(^!)
 #T=tfoot
 <tfoot>^!</tfoot>
 #T=th
-<th>^!</th>
-#T=th
 text-height:^!;
+#T=th
+<th>^!</th>
 #T=th-a
 text-height:auto;
 #T=thead
@@ -4579,9 +4577,9 @@ toUpperCase(^!)
 #T=toUTCString
 toUTCString(^!)
 #T=tr
-<tr>^!</tr>
-#T=tr
 text-replace:^!;
+#T=tr
+<tr>^!</tr>
 #T=transform- //全部属性
 transform: rotate(45deg) scale(1.2) skew(10deg) translate(x,y);  -webkit-transform: rotate(45deg);
 
@@ -4614,9 +4612,9 @@ text-shadow:none;
 #T=tstring
 /*string*/ 
 #T=tt
-/*^!*/ 
-#T=tt
 text-transform:^!;
+#T=tt
+/*^!*/ 
 #T=tt-c
 text-transform:capitalize;
 #T=tt-l
@@ -9568,6 +9566,14 @@ var /*RegExp*/ ^! = new RegExp ();
   })
 #T=vue-$nextTick //vue渲染后触发
 this.$nextTick(function () {})
+#T=vue-component //vue路由
+component //vue定义组件
+#T=vue-components //vue定义组件
+components
+#T=vue-computed //vue 计算属性
+computed:{
+  ^!
+}
 #T=vue-mounted //渲染后回调
 mounted:function(){
     alert('render complete')
@@ -9652,9 +9658,9 @@ word-wrap:suppress;
 #T=wow-u
 word-wrap:unrestricted;
 #T=wrap
-wrap(^!)
-#T=wrap
 wrap
+#T=wrap
+wrap(^!)
 #T=wrapAll
 wrapAll(^!)
 #T=wrapInner

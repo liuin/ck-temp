@@ -749,6 +749,10 @@ var refesh='';
 			}
 		}
 	});
+#T=移动端网页拨号
+<a href="tel:18511178920">拨打18511178920</a>  
+<a href="mailto:nobody@wordpress.com"></a>  
+<meta name="format-detection" content="telephone=yes">  移动web页面自动探测电话号码
 #T=获取页面可见区域总宽
 $('body').height();
 #T=几秒后返回
