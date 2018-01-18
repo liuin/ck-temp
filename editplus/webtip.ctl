@@ -1131,11 +1131,7 @@ filter: grayscale(70%);
 #T=css-justify-content //css3内部排列
 justify-content: flex-start|flex-end|center|space-between|space-around|initial|inherit;-webkit-justify-content: flex-start|flex-end|center|space-between|space-around|initial|inherit;
 #T=css-line-clamp //多行溢出省略
-  overflow: hidden;
-  max-height: 40px;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;
 #T=css-pointer-events:none; //底部可点击事件
 pointer-events:none;
 #T=css-scoped //父层css有效
@@ -2892,10 +2888,14 @@ $(^!)
 })(jQuery);
 #T=js
 show()^!
+#T=js-getBoundingClientRect() //获取元素与页面显示部分的距离
+getBoundingClientRect()
 #T=JSON.parse(data);
 JSON.parse(data);
 #T=JSON.stringify(buf); //将类用json方式打印出来
 JSON.stringify(buf);
+#T=js-scrollTop //获取滚动距离
+document.body.scrollTop ? document.body.scrollTop : document.documentElement.scrollTop
 #T=js-v
 javascript:void(0);
 #T=jtriggerHandler
@@ -3829,6 +3829,8 @@ prev(^!)
 preventDefault()
 #T=prevAll
 prevAll(^!)
+#T=prevent
+prevent
 #T=previousPage
 previousPage(^!)
 #T=prevUntil
@@ -3979,6 +3981,8 @@ removeChild(^!)
 removeClass(^!)
 #T=removeData
 removeData(^!)
+#T=removeEventListener
+removeEventListener('event',funcuton(){})
 #T=removeExpression
 removeExpression(^!)
 #T=removeImport
@@ -4226,6 +4230,10 @@ split(^!)
 splitText(^!)
 #T=sqrt
 sqrt(^!)
+#T=src-1 //src
+../src/assets/images/
+#T=src-2 // asset
+../assets/images/
 #T=start
 start(^!)
 #T=stop
@@ -9068,6 +9076,14 @@ removeElement()
   })
 
 }(jQuery);
+#T=ui-validate.call
+    //如果为验证规则为数组则进行遍历
+    if (Array.isArray(rule)) {
+        return rule.map(function (item) {
+                return validate.call(self, field, item);
+            }).indexOf(false) === -1;
+    }
+
 #T=ui-valid-form
 /*-- 
 验证 [valid-form="tel"] 
@@ -9566,18 +9582,132 @@ var /*RegExp*/ ^! = new RegExp ();
   })
 #T=vue-$nextTick //vue渲染后触发
 this.$nextTick(function () {})
+#T=vue-//beforeCreate
+beforeCreate () {
+  setTimeout(function(){
+    document.querySelector('body').className='gray';
+  },200);},
+beforeDestroy () {
+   document.querySelector('body').className='';
+},
+#T=vue-ajax //用axion集成
+      this.$api.ajax({
+        type: "post",
+        url: this.$api.url.serviceSelect,
+        data: {'order_sn':this.$route.params.OrderId,'id':this.$route.params.CodeId},
+        success: data =>{
+//          console.log(data);
+          data.shipping_status = "9";
+          this.orders = [data]
+        }
+      });
+#T=vue-beforeDestroy //页面退出时候执行
+beforeDestroy
 #T=vue-component //vue路由
 component //vue定义组件
 #T=vue-components //vue定义组件
-components
+components:{
+  ^!
+}
 #T=vue-computed //vue 计算属性
 computed:{
   ^!
 }
+#T=vue-created // 渲染前执行
+created(){
+  ^!
+}
+#T=vue-css//过滤flex效果
+.list-complete-item {transition: all 1s;display: inline-block;width: 100%;display:flex;}
+.list-complete-enter,.list-complete-leave-to
+{opacity: 0;transform: translate(100%,0%);}
+.list-complete-leave-active {position:absolute;}
+.none-enter,.none-leave-to{-webkit-transition:0s; transition:0s;}
+
+@keyframes slideleft {
+  0% {
+    transform: translate(100%,0);
+  }
+  100% {
+    transform: translate(0,0%);
+  }
+}
+#T=vue-directives //自定义指令
+ directives: {
+      ckverify: {
+        //定义指令
+        inserted: function (el,binding,vnode) {            
+            let errorMsg = el.getAttribute("data-ckmsg") || '请填写内容';
+            var newdiv=document.createElement("div");
+            newdiv.classList.add("error");
+            newdiv.innerHTML = errorMsg;
+            newdiv.style.display="none";
+            el.parentNode.appendChild(newdiv);
+            
+           
+//            Vue.$set(this.$data,'item-'+binding.arg ,binding.value)
+        },
+        bind:function  (el,binding,vnode) {
+          let getType = binding.value || 'none';
+//          console.log(binding.value);
+          function check () {
+//            console.log(binding.value);
+            switch (getType) {
+            case 'required':              
+              if (el.value == "" || el.value == 0) {                
+                el.nextElementSibling.style.display='block';
+              }else {
+                el.nextElementSibling.style.display='none';
+              }
+            break
+            case 2:
+            break
+            default:
+            }
+          }
+
+          el.addEventListener('input',function  () {check()})
+          el.addEventListener('focus',function  () {check()})
+          el.addEventListener('blur',function  () {check()})
+          el.addEventListener('click',function  () {check()})
+        }
+      }
+    },
 #T=vue-mounted //渲染后回调
 mounted:function(){
     alert('render complete')
   }
+#T=vue-new //新建项目模板
+<template>
+	<div class="cart">
+		<headerback title="消息中心"  />
+	</div>
+</template>
+
+<script>
+	import '../assets/js/headerback.js';
+
+	export default {
+		name: '',
+		data() {
+			return {
+				
+			}
+		},
+		created() {
+		},
+		methods: {			
+		},
+    mounted:function(){
+    }
+	}
+</script>
+
+<style lang="less" scoped>
+	@import "../assets/css/theme.less";	
+</style>
+#T=vue-props //组件属性
+props:[]
 #T=v-v
 visibility:visible;
 #T=w
