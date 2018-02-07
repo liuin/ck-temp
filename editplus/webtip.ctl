@@ -4240,6 +4240,8 @@ start(^!)
 stop(^!)
 #T=stopPropagation
 stopPropagation()
+#T=strict  //严格模式
+strict
 #T=strike
 strike(^!)
 #T=string
@@ -4282,6 +4284,8 @@ default:
 }
 #T=Symbol() //新的JS类型
 Symbol()
+#T=sync
+sync
 #T=t
 top:^!;
 #T=t7-external //no ajax link
@@ -4401,6 +4405,10 @@ text-height:auto;
 text-height:font-size;
 #T=th-m
 text-height:max-size;
+#T=then-data
+then(data => {
+  ^!
+})
 #T=three- mesh //网格
 var mesh = new THREE.Mesh( geometry, material );
 #T=three-//new THREE.MeshNormalMaterial() 法向材质
@@ -5678,6 +5686,29 @@ function log() {
 
 
 })(jQuery);
+#T=ui-findMenu //寻找数组对应的序列
+var ckdeep = ""
+      function findMenu (arr, path) {
+        
+        for (var i = 0;  i<arr.length ; i++) {
+          if ((arr[i].action) && (arr[i].action != "") && ('/' + arr[i].action ==  path )) {
+            deep.push(arr[i]);
+            that.current = deep
+//            console.log(deep);
+            break
+          }else {
+            if ((arr[i].sub) && (arr[i].sub.length > 0)) {
+              if (that.current.length == 0) {
+                deep.push(arr[i])
+              }              
+              findMenu (arr[i].sub, path, deep)
+            }else {
+              deep = [];
+            }
+          }
+        }
+      }
+
 #T=ui-fixtable
 /*固定表格
 fixhead($(".fixhead"));
@@ -9570,6 +9601,8 @@ v-model="^!"
 var /*object*/ ^! = {};
 #T=vregexp
 var /*RegExp*/ ^! = new RegExp ();
+#T=vue- $forceUpdate(); //强制刷新
+this.$forceUpdate();
 #T=vue //app 
   var app = new Vue({
     el:'#app',
@@ -9603,6 +9636,10 @@ beforeDestroy () {
       });
 #T=vue-beforeDestroy //页面退出时候执行
 beforeDestroy
+#T=vue-beforeRouteEnter //组件组入路由参数
+    beforeRouteEnter(){
+      alert('111222');
+    },
 #T=vue-component //vue路由
 component //vue定义组件
 #T=vue-components //vue定义组件
@@ -9708,6 +9745,47 @@ mounted:function(){
 </style>
 #T=vue-props //组件属性
 props:[]
+#T=vue-watch //watch属性
+     watch:{
+          type:function  (newValue, oldValue) {
+            
+          }
+        }
+
+#T=vuex-commit //vuex 触发状态函数
+commit
+#T=vuex-dispatch//action事件 可以异步
+dispatch('event')
+#T=vuex-moudble //模块化模板
+const leftMenu = {
+  namespaced: true,
+  state: {
+  },
+  getters: {
+    
+  },
+  mutations: {
+    
+  },
+  actions:{
+
+  }
+}
+
+export default leftMenu
+
+#T=vuex-return promist
+      return new Promise((resolve, reject) => {
+        api.ajax({
+          type: "post",
+          url: api.url.login,
+          data: data,
+          success: data =>{
+            commit('changeToken',data.token);
+            resolve();
+          }
+        });                  
+      })
 #T=v-v
 visibility:visible;
 #T=w

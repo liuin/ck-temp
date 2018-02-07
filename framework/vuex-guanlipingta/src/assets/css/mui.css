@@ -1,0 +1,31 @@
+/* table */
+
+.el-table th.is-leaf {
+  background: rgba(243, 247, 249, .5);
+  color: #76838f;
+}
+
+.el-table td {
+  color: #76838f;
+}
+
+.el-button--default span {
+  color: #76838f;
+}
+
+.el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li {
+  margin: 0;
+  color: #606266;
+  min-width: 30px;
+  border-radius: 0;
+  border: 1px solid #e4eaec;
+  margin-left: -1px;
+  font-weight: normal;
+}
+
+.el-pagination.is-background .el-pager li.active {
+  background-color: #62a8ea;
+  border-color: #62a8ea;
+  color: #fff;
+
+}
