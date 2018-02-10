@@ -1,11 +1,8 @@
 <template>
-  <div class="system-account-add">
-    <div class="line2"></div>
-    <el-button size="medium" type="primary" class="add-btn" @click="addBtn">添加角色</el-button>
-    <div class="line2"></div>
-
-
+  <div class="system-account-add">    
     <div class="box">
+      <el-button size="medium" type="primary" class="add-btn" @click="addBtn">添加角色</el-button>
+      <div class="line2"></div>
       <el-table :data="listData" border v-loading="_.isEmpty(list.res)">
         <el-table-column prop="id" label="账号ID"></el-table-column>
         <el-table-column prop="title" label="角色名"></el-table-column>

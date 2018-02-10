@@ -61,7 +61,7 @@ const ordersCanceledReason = {
     show({ commit, state }, sendData) {
       return new Promise((resolve, reject) => {
         api.ajax({
-          type: "post",
+          type: "get",
           url: api.url.ordersCanceledReasonShow,
           data: sendData,
           success: data => {

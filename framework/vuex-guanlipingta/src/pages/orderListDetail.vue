@@ -1,8 +1,5 @@
 <template>
-  <div class="order-list-detail w1000">
-    <breadcrumb />
-
-    <div class="line2"></div>
+  <div class="order-list-detail">
 
     <el-row :gutter="20">
       <el-col :span="24">
@@ -12,7 +9,7 @@
             <span>基本信息</span>
           </div>
           <div class="ct">
-            <div class="item">物流单号：{{orders.orders_sn}} &nbsp;&nbsp;&nbsp;&nbsp;订单状态：{{orders.state}}</div>
+            <div class="item">物流单号：{{orders.orders_sn}} &nbsp;&nbsp;&nbsp;&nbsp;订单状态：{{orderState[orders.state]}}</div>
             <div class="item">厂商账号：{{orders.driver_name}}</div>
             <div class="item">行驶里程：{{orders.estimated_mileage}}</div>
             <div class="item">备注：{{orders.remark}}</div>
@@ -35,8 +32,8 @@
           <div class="ct">
             <dl class="dl1">
               <dt>
-                <b>厂商信息</b>：</dt>
-              <dd>接单时间：{{api.toTime(orders.receive_time)}} </dd>
+                <b>收货地信息</b>：</dt>
+              <dd>预计收货：{{api.toTime(orders.receive_time)}} </dd>
               <dd>收货地址：{{orders.warehouse_address}}</dd>
               <dd>联系人：{{orders.warehouse_title}}</dd>
               <dd>联系电话：{{orders.warehouse_phone}}</dd>
@@ -44,7 +41,7 @@
             <dl>
               <dt>
                 <b>目的地信息</b>：</dt>
-              <dd>完成时间：{{orders.complete_time}}</dd>
+              <dd>预计送达：{{orders.complete_time}}</dd>
               <dd>收货地址：{{orders.company_address}}</dd>
               <dd>联系人：{{orders.company_title}}</dd>
               <dd>联系电话：{{orders.company_phone}}</dd>
@@ -61,9 +58,9 @@
           </div>
           <div class="ct">
             <p>
-              司机姓名：{{orders.driver_name}} <br />
-              司机评分：{{orders.driver_score}}分 <br />
-              联系电话：{{orders.driver_mobile}} 
+              司机姓名：{{orders.driver_name}}
+              <br /> 司机评分：{{orders.driver_score}}分
+              <br /> 联系电话：{{orders.driver_mobile}}
             </p>
           </div>
         </el-card>
@@ -79,18 +76,18 @@
         <el-row :gutter="20">
           <el-col :span="17">
             <p class="p1 ov-h">
-              <span class="fl">货物体积：共1.8㎡ </span>
-              <span class="fl" style="margin-left:20px;">重量：25kg</span>
+              <span class="fl">货物体积：共{{weigth}}m³ </span>
+              <span class="fl" style="margin-left:20px;">重量：{{heawt}}kg</span>
             </p>
             <p class="p1 p1-come ov-h">
               <span class="fl">来源订单：</span>
               <span class="sp1">{{goodsInOrders.platform_title}}: {{goodsInOrders.platform_order_sn}} </span>
             </p>
 
-
-            <el-table :data="goodsInOrders.goods_list">
+            <div class="line1"></div> 
+            <el-table border :data="getGoods">
               <el-table-column prop="title" label="名称"></el-table-column>
-              <el-table-column  label="体积(m³)">
+              <el-table-column label="体积(m³)">
                 <template slot-scope="scope">
                   {{scope.row.length}}*{{scope.row.width}}*{{scope.row.height}}
                 </template>
@@ -103,8 +100,7 @@
           </el-col>
           <el-col :span="7">
             <p>回执图片</p>
-            <img :src="orders.receipt" style="width:100%; height:100px; background:#eee;"
-              alt="" />
+            <img :src="orders.receipt" style="width:100%; height:100px; background:#eee;" alt="" />
           </el-col>
         </el-row>
       </div>
@@ -138,7 +134,30 @@
       };
     },
     computed: {
-      ...mapState("orders", ["show", "orderState"])
+      ...mapState("orders", ["show", "orderState"]),
+      getGoods(){
+        var goods = [];
+        this.goodsInOrders.map(item => {
+          item.goods_list.map(itemSub => {
+            goods.push(itemSub)
+          })
+        })
+        return goods
+      },
+      weigth(){
+        var weigth = 0;
+        this.getGoods.map(item => {
+          weigth += (item.length*item.width*item.height)
+        })
+        return weigth
+      },
+      heawt(){
+        var heawt = 0;
+        this.getGoods.map(item => {
+          heawt += (item.weight)
+        })
+        return heawt        
+      }
     },
     created() {
       this.$store
@@ -163,7 +182,6 @@
     height: 100%;
     .ct {
       font-size: 14px;
-      line-height: 20px;
     }
     .dl1 {
       margin-bottom: 10px;

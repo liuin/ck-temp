@@ -1,38 +1,38 @@
 <template>
   <div class="system-account">
-    <breadcrumb></breadcrumb>
-    <div class="line3"></div>
+    
+    <div class="box">
+      <el-table :data="articlePage.res" border>
+        <el-table-column prop="id" label="ID"></el-table-column>
+        <el-table-column prop="title" label="标题"></el-table-column>
+        <el-table-column prop="author" label="作者"></el-table-column>
+        <el-table-column prop="article_category_title" label="分类"></el-table-column>
+        <el-table-column label="发布时间">
+          <template slot-scope="scope">
+            {{api.toTime(scope.row.modify)}}
+          </template>
+  
+        </el-table-column>
+        <el-table-column prop="" label="操作">
+          <template slot-scope="scope">
+            <delBtn @del="del(scope.row.id)" />
+            <!-- <el-popover ref="popover1"  placement="top"  width="160"  >
+                   <p>确定删除?</p>
+                   <div class="line2"></div>
+                    <div style="text-align: right; margin: 0">
+                      <el-button size="mini" type="text" @click="visible1 = false">取消</el-button>
+                      <el-button type="primary" size="mini" @click="visible1 = false">确定</el-button>
+                    </div>
+                  </el-popover>
+                  <el-button v-popover:popover1 size="mini"  type="danger">删除</el-button> -->
+            <el-button size="mini" @click="$router.push({path: '/article/listEdit', 'query': {'id': scope.row.id}})">编辑</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <pnation v-if="articlePage.total>0" :total="articlePage.total" @changePage="changePage" :size="articlePage.count"></pnation>
+    </div>
 
-
-    <el-table :data="articlePage.res">
-      <el-table-column prop="id" label="ID"></el-table-column>
-      <el-table-column prop="title" label="标题"></el-table-column>
-      <el-table-column prop="author" label="作者"></el-table-column>
-      <el-table-column prop="article_category_title" label="分类"></el-table-column>
-      <el-table-column label="发布时间">
-        <template slot-scope="scope">
-          {{api.toTime(scope.row.modify)}}
-        </template>
-
-      </el-table-column>
-      <el-table-column prop="" label="操作">
-        <template slot-scope="scope">
-          <delBtn @del="del(scope.row.id)" />
-          <!-- <el-popover ref="popover1"  placement="top"  width="160"  >
-                 <p>确定删除?</p>
-                 <div class="line2"></div>
-                  <div style="text-align: right; margin: 0">
-                    <el-button size="mini" type="text" @click="visible1 = false">取消</el-button>
-                    <el-button type="primary" size="mini" @click="visible1 = false">确定</el-button>
-                  </div>
-                </el-popover>
-                <el-button v-popover:popover1 size="mini"  type="danger">删除</el-button> -->
-          <el-button size="mini" @click="$router.push({path: '/article/listEdit', 'query': {'id': scope.row.id}})">编辑</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-
-    <pnation v-if="articlePage.total>0" :total="articlePage.total" @changePage="changePage" :size="articlePage.count"></pnation>
+    
 
 
   </div>

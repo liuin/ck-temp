@@ -63,8 +63,7 @@ router.afterEach((to, from) => {
   setTimeout(() => {
     store.commit('setState', [{
       ajaxLoad: false
-    }]) //loading效果   
-
+    }]) //loading效果
   }, 300);
 })
 

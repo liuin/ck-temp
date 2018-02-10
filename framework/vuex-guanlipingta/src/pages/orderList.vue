@@ -1,10 +1,5 @@
 <template>
-  <div class="order-list">
-    <breadcrumb />
-    <div class="line2"></div>
-
-    
-      
+  <div class="order-list">                  
     <div class="box">
       <el-form label-width="80px" class="box-search">
         <el-row :gutter="10">
@@ -43,8 +38,8 @@
             </el-form-item>
           </el-col>
 
-          <el-col :sm="24" :md="3">
-            <el-form-item label="">
+          <el-col :span="4">
+            <el-form-item label="" label-width="40px">
                <el-button class="btn-save" @click="seach()" :loading="false" icon="el-icon-search" type="primary">搜　索</el-button>
             </el-form-item>
           </el-col>
@@ -53,30 +48,30 @@
       </el-form>
 
       <div class="line3"></div>
-      <el-tabs @tab-click="handleClickTab">
-        <el-tab-pane label="全部" ></el-tab-pane>
-        <el-tab-pane label="待接单"></el-tab-pane>
-        <el-tab-pane label="待收货"></el-tab-pane>
-        <el-tab-pane label="待确认"></el-tab-pane>
-        <el-tab-pane label="已完成"></el-tab-pane>
-        <el-tab-pane label="已取消"></el-tab-pane>
+      <el-tabs @tab-click="handleClickTab"  :value="list.order_state">
+        <el-tab-pane v-for="(item,index) in orderState" :label="item" :key="item" :name="index"  ></el-tab-pane>      
       </el-tabs>
 
-      <el-table  :data="searchData.list">
-        <el-table-column prop="orders_sn" label="物流单号" ></el-table-column>      
-        <el-table-column prop="maker_mobile" label="厂商" ></el-table-column>      
-        <el-table-column prop="warehouse_address" label="收货地地址" ></el-table-column>      
+      <el-table border :data="searchData.list">
+        <el-table-column prop="orders_sn" width="150" label="物流单号" ></el-table-column>      
+        <el-table-column prop="maker_mobile" label="厂商" width="100" ></el-table-column>      
+        <el-table-column prop="warehouse_address" width="200px" label="收货地地址" ></el-table-column>      
         <el-table-column prop="park_address" label="目的地地址" ></el-table-column>      
-        <el-table-column prop="driver_mobile" label="司机方" ></el-table-column>      
-        <el-table-column prop="total" label="结算金额" ></el-table-column>          
-        <el-table-column prop="" label="状态" ></el-table-column>          
+        <el-table-column prop="driver_mobile" label="司机方" width="120"></el-table-column>      
+        <el-table-column prop="total" label="结算金额" width="80"></el-table-column>          
+        <el-table-column label="状态" >
+          <template slot-scope="scope">
+            {{orderState[scope.row.state]}}
+          </template>  
+        </el-table-column>          
         <el-table-column  label="操作"  width="180">
-          <template slot-scope="scope"><orderEditBtn :scope="scope" />
+          <template slot-scope="scope">
+            <orderEditBtn @changeState="changeState" :scope="scope" />&nbsp;
             <router-link :to="{path: '/order/ListDetail', query: {id: scope.row.id}}">详情</router-link>
           </template> 
         </el-table-column>
-      </el-table>       
-      <pnation v-if="pager.total!=0" :total="pager.total" @changePage="changePage" :size="pager.count"></pnation>
+      </el-table>    
+      <pnation v-if="pager.total > 0" :total="pager.total" @changePage="changePage" :currentPage="pager.page" :size="pager.count"></pnation>
 
     </div>  
   </div>
@@ -97,14 +92,43 @@ export default {
     orderEditBtn
   },
   computed: {
-    ...mapState("orders", ["list", "orderState", "pager", "searchData"]),
+    ...mapState("orders", [
+      "list",
+      "orderState",
+      "pager",
+      "searchData",
+      "dispose"
+    ]),
     ...mapGetters("orders", ["conditions"])
   },
   created() {
+    // this.pager.page = 1;
+    // if(this.list.order_state == "0"){
+    //   this.list.order_state = "";      
+    // }
+
+
+    if(this.$route.query.maker_id){
+      this.list.maker_id = this.$route.query.maker_id;
+    }
+    
+
+    if(this.$route.query.maker_mobile){
+      this.list.maker_mobile = this.$route.query.maker_mobile;
+    }
+
     this.seach();
   },
   methods: {
+    changeState(val, scope) {
+      this.dispose.id = scope.row.id;
+      this.dispose.state = val;
+      this.$store.dispatch("orders/dispose").then(data => {
+        this.searchData.list[scope.$index].state = val;
+      });
+    },
     changePage(pager) {
+      this.pager.page = pager
       this.seach(pager);
     },
     seach(pager) {
@@ -112,7 +136,8 @@ export default {
         var sendDate = {
           conditions: this.conditions,
           page: pager,
-          count: this.pager.count
+          count: this.pager.count,
+          total: 1
         };
       } else {
         var sendDate = {
@@ -130,16 +155,10 @@ export default {
       });
     },
     handleClickTab(tab, event) {
-      if (tab.index == 0) {
-        this.list.order_state = "";
-      }
-
-      if (tab.index == 1) {
-        this.list.order_state = 0;
-      }
-      if (tab.index == 2) {
-        this.list.order_state = 8;
-      }
+     
+      this.list.order_state = tab.name;
+      this.pager.page = 1;
+      this.pager.total = 0;
       this.seach();
     }
   },
@@ -149,6 +168,6 @@ export default {
 
 <style lang="less" scoped>
 .box-search {
-  width: 1000px;
+  max-width: 1000px;
 }
 </style>

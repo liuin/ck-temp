@@ -5,15 +5,20 @@
   color: #76838f;
 }
 
-.el-table td {
+.el-table td,
+.el-form-item__label,
+.el-tabs__item,
+.el-card {
   color: #76838f;
 }
 
 .el-button--default span {
-  color: #76838f;
+  /* color: #76838f; */
 }
 
-.el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li {
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .el-pager li {
   margin: 0;
   color: #606266;
   min-width: 30px;
@@ -23,9 +28,33 @@
   font-weight: normal;
 }
 
+.el-table__empty-block {
+  border-bottom: 1px solid #ebeef5;
+}
+
 .el-pagination.is-background .el-pager li.active {
   background-color: #62a8ea;
   border-color: #62a8ea;
   color: #fff;
+}
 
+.el-radio,
+.el-checkbox {
+  color: #76838f
+}
+
+.el-loading-mask {
+  background: transparent;
+}
+
+.el-main {
+  padding: 0;
+}
+
+
+.el-card__header{
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 40px;
+  line-height: 40px;
 }

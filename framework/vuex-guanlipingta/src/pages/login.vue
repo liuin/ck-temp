@@ -1,5 +1,5 @@
 <template>  
-  <div class="login">      
+  <div class="login" >      
     <el-form :model="formLogin" status-icon :rules="rulesLogin" ref="formLogin" label-width="100px" class="formlogin">
       <h2 class="h2">登录</h2>
       <el-form-item label="用户名" prop="username">
@@ -24,6 +24,10 @@
     name: 'login',
     data() {
       return {
+        isdone: true,
+        loading:{
+
+        },
         formLogin: {
           username: '',
           pwd: ''
@@ -53,9 +57,29 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
             //提交内容
+            const loading = this.$loading({
+              lock: true,
+              // text: 'Loading',
+              // spinner: 'el-icon-loading',
+              background: 'rgba(255, 255, 255, 0.7)'
+            });
+
+           
             this.$store.dispatch('login/login',{'account':this.formLogin.username,'password':this.formLogin.pwd})
-            .then(()=> {
-              this.$router.push('/');
+            .then((data)=> {
+              this.isdone = false
+              
+              setTimeout(() => {
+                loading.close()
+                sessionStorage.setItem('aid', data.aid);
+                sessionStorage.setItem('token', data.token);
+                this.$store.commit('setState', [{'aid': data.aid}, this.$store.state.login])
+                this.$store.commit('login/changeToken',data.token);                
+                this.$router.push('/');
+              }, 300);                            
+            })
+            .catch(data => {
+              loading.close()
             })
           } else {
             console.log('error submit!!');

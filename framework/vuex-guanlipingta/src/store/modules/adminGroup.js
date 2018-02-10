@@ -15,7 +15,7 @@ const adminGroup = {
     },
     list:{
       page: 1,
-      count: 1,
+      count: 15,
       totle: 0,
       res:[]
     },
@@ -94,7 +94,7 @@ const adminGroup = {
       
       return new Promise((resolve, reject) => {
         api.ajax({
-          type: "get",
+          type: "post",
           url: api.url.adminGroupList,
           data: rodeData || state.list,
           success: data =>{            

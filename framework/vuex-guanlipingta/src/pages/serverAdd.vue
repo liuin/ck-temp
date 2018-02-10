@@ -1,26 +1,26 @@
 <template>
   <div class="server-add">
-    <breadcrumb></breadcrumb>
-    <div class="line3"></div>
-
-    <el-form class="form" label-position="right" label-width="120px" >
-      <el-form-item label="平台名称">
-        <el-input v-model="create.title"></el-input>
-      </el-form-item>
-      <el-form-item label="平台所属公司">
-        <el-input v-model="create.company"></el-input>
-      </el-form-item>
-      <el-form-item label="合作状态">
-        <el-select v-model="create.state">
-          <el-option v-for="(item,index) in state" :key="item" :value="index" :label="item"></el-option>
-        </el-select>
-      </el-form-item>
-
-      <el-form-item label="">
-        <el-button type="primary" @click="save()">保存</el-button>
-      </el-form-item>
-
-    </el-form>
+    
+    <div class="box">
+      <el-form class="form" label-position="right" label-width="120px" >
+        <el-form-item label="平台名称">
+          <el-input v-model="create.title"></el-input>
+        </el-form-item>
+        <el-form-item label="平台所属公司">
+          <el-input v-model="create.company"></el-input>
+        </el-form-item>
+        <el-form-item label="合作状态">
+          <el-select v-model="create.state">
+            <el-option v-for="(item,index) in state" :key="item" :value="index" :label="item"></el-option>
+          </el-select>
+        </el-form-item>
+  
+        <el-form-item label="">
+          <el-button type="primary" @click="save()">保存</el-button>
+        </el-form-item>
+  
+      </el-form>
+    </div>
 
   </div>
 </template>

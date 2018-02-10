@@ -1,71 +1,73 @@
 <template>
   <div class="system-account-add">
-    <breadcrumb></breadcrumb>
-    <div class="line3"></div>
-
-  <el-form class="form" label-position="right" label-width="120px" >
-    <el-row>
-      <el-col :span="7">
-        <el-form-item label="省份城市">
-          
-         <Region :clearable="true" :selected.sync="regionUpdate" :limitLen="2" @change="regionCahge" />   
-        </el-form-item> 
-      </el-col>
-     
-    </el-row>
-    
-    <el-form-item label="园区名称">
-      <el-input v-model="update.title"></el-input>
-    </el-form-item> 
-    <el-form-item label="具体地址">
-      <el-autocomplete
-        popper-class="my-autocomplete"
-        v-model="address" class="my-autocomplete1"
-        :fetch-suggestions="querySearch"
-        placeholder="请输入内容"
-        @select="handleSelect">
-        <i
-          class="el-icon-edit el-input__icon"
-          slot="suffix"
-          @click="handleIconClick">
-        </i>
-        <template slot-scope="props">
-          <div class="name">{{ props.item.value }}</div>
-          <span class="addr">{{ props.item.address }}</span>
-        </template>
-      </el-autocomplete>
-<!--       <el-input v-model=""></el-input> -->
-    </el-form-item> 
-    <el-form-item label="园区区域坐标">
-<!--           {{aMap.arr}} -->
-<!--       <el-input ></el-input> -->
-<!--       <div class="line2"></div> -->
-<!--       <el-amap class="amap-box" :vid="'amap-vue'"></el-amap> -->
-      <el-button id="polygon" :disabled="aMap.hasDraw">绘画区域</el-button>
-      <el-button id="done" :disabled="!aMap.hasDraw">完成</el-button>
-      <el-button id="doneEdit" :disabled="!aMap.hasDraw">重新编辑</el-button>
-      <el-button id="reset" :disabled="!aMap.hasDraw">清除重画</el-button>
-      <div class="line2"></div>
-      <div class="amap-box" id="amapContainer"></div>
-    </el-form-item> 
-    <el-form-item label="简介" >
-      <el-input type="textarea" v-model="update.introduction" :autosize="{ minRows: 4, maxRows: 10}"></el-input>
-    </el-form-item> 
-    <el-form-item label="状态">
-      <el-radio-group v-model="update.state">    
-        <el-radio v-for="(item,index) in state" :label="index" :key="index">{{item}}</el-radio>
-      </el-radio-group>
-    </el-form-item> 
-
-    <el-form-item label="">
-      <el-button type="primary" @click="save()">提　交</el-button>
-    </el-form-item> 
-
-
-
-
-    
-    </el-form>
+        
+  <div class="box">
+    <el-form class="form" label-position="right" label-width="120px" >
+      <el-row>
+        <el-col :span="7">
+          <el-form-item label="省份城市">
+            
+           <Region :clearable="true" :selected.sync="regionUpdate" :limitLen="2" @change="regionCahge" />   
+          </el-form-item> 
+        </el-col>
+       
+      </el-row>
+      
+      <el-form-item label="园区名称">
+        <el-input v-model="update.title"></el-input>
+      </el-form-item> 
+      <el-form-item label="具体地址">
+        <el-autocomplete
+          popper-class="my-autocomplete"
+          v-model="address" class="my-autocomplete1"
+          :fetch-suggestions="querySearch"
+          :debounce="700"
+          placeholder="请输入内容"
+          @select="handleSelect">
+          <i
+            class="el-icon-edit el-input__icon"
+            slot="suffix"
+            @click="handleIconClick">
+          </i>
+          <template slot-scope="props">
+            <div class="name">{{ props.item.value }}</div>
+            <span class="addr">{{ props.item.address }}</span>
+          </template>
+        </el-autocomplete>
+  <!--       <el-input v-model=""></el-input> -->
+      </el-form-item> 
+      <el-form-item label="园区区域坐标">
+  <!--           {{aMap.arr}} -->
+  <!--       <el-input ></el-input> -->
+  <!--       <div class="line2"></div> -->
+  <!--       <el-amap class="amap-box" :vid="'amap-vue'"></el-amap> -->
+        <el-button id="polygon" :disabled="aMap.hasDraw">绘画区域</el-button>
+        <el-button id="done" :disabled="!aMap.hasDraw">完成</el-button>
+        <el-button id="doneEdit" :disabled="!aMap.hasDraw">重新编辑</el-button>
+        <el-button id="reset" :disabled="!aMap.hasDraw">清除重画</el-button>
+        <div class="line2"></div>
+        <div class="amap-box" id="amapContainer"></div>
+      </el-form-item> 
+      <el-form-item label="简介" >
+        <el-input type="textarea" v-model="update.introduction" :autosize="{ minRows: 4, maxRows: 10}"></el-input>
+      </el-form-item> 
+      <el-form-item label="状态">
+        <el-radio-group v-model="update.state">    
+          <el-radio v-for="(item,index) in state" :label="index" :key="index">{{item}}</el-radio>
+        </el-radio-group>
+      </el-form-item> 
+  
+      <el-form-item label="">
+        <el-button type="primary" @click="save()">提　交</el-button>
+      </el-form-item> 
+  
+  
+  
+  
+      
+      </el-form>
+  </div>
+  
 </div>
 </template>
 
@@ -96,6 +98,7 @@ export default {
   data() {
     return {
       map: "",
+      firsetLoad:true,
       aMap: {
         arr: [],
         hasDraw: false,
@@ -126,8 +129,8 @@ export default {
       this.update.city = data.park.city_id;
       this.update.state = data.park.state.toString();
 
-      //        var loc = api.toLocations(this.update.locations);
-      var loc = this.update.locations;
+      var loc = api.toLocations(this.update.locations);
+      // var loc = this.update.locations;
 
       this.aMap.arr = loc;
 
@@ -141,49 +144,48 @@ export default {
   },
   watch: {
     address: _.debounce(function(newValue, oldValue) {
-      if (newValue != "" && this.aMap.geocoder != "") {
-        this.currentLabels[0] =
-          this.currentLabels[0] == undefined ? "" : this.currentLabels[0];
-        this.currentLabels[1] =
-          this.currentLabels[1] == undefined ? "" : this.currentLabels[1];
-        this.aMap.geocoder.getLocation(
-          this.currentLabels[0] + this.currentLabels[1] + this.address,
-          (status, result) => {
-            console.log(
-              this.currentLabels[0] + this.currentLabels[1] + this.address,
-              status
-            );
-            if (status === "complete" && result.info === "OK") {
-              this.map.setCenter([
-                result.geocodes[0].location.lng,
-                result.geocodes[0].location.lat
-              ]);
-              this.map.setZoom(20);
+        if(this.firsetLoad){return false}
+        if (newValue != "" && this.aMap.geocoder != "") {
+          this.currentLabels[0] =
+            this.currentLabels[0] == undefined ? "" : this.currentLabels[0];
+          this.currentLabels[1] =
+            this.currentLabels[1] == undefined ? "" : this.currentLabels[1];
+          this.aMap.geocoder.getLocation(
+            this.currentLabels[0] + this.currentLabels[1] + this.address,
+            (status, result) => {
+              if (status === "complete" && result.info === "OK") {
+                this.map.setCenter([
+                  result.geocodes[0].location.lng,
+                  result.geocodes[0].location.lat
+                ]);
+                this.map.setZoom(20);
+              }
             }
-          }
-        );
-      }
+          );
+        }
     }, 700)
   },
   methods: {
     handleIconClick(ev) {
       console.log(ev);
     },
-
-    querySearch: _.debounce(function(queryString, cb) {
-      if (queryString == "") {
+    querySearch: function(queryString, cb) {      
+      if (_.trim(queryString) == "" || queryString.length < 3) {
         return cb([]);
       }
       this.aMap.autoTip = [];
       this.aMap.autocomplete.search(queryString, (status, result) => {
         if (status == "complete") {
           result.tips.map(item => {
-            this.aMap.autoTip.push({ value: item.address, address: item.name });
+            console.log(item.address);
+            if(item.address != ""){
+              this.aMap.autoTip.push({ value: item.address, address: item.name });
+            }
           });
         }
         cb(this.aMap.autoTip);
       });
-    }, 700),
+    },
     handleSelect() {},
     save() {
       var locations = this.aMap.arr.join("|");
@@ -289,6 +291,10 @@ export default {
           });
           polygon1.setMap(_this.map);
           _this.map.setFitView();
+          
+          setTimeout(() => {
+            this.firsetLoad = false;
+          }, 1000);
           polygon1Editor = new AMap.PolyEditor(_this.map, polygon1);
           //            polygon1Editor.open();
         }
@@ -340,7 +346,7 @@ export default {
               _this.aMap.arr.push([item.lng, item.lat]);
             });
 
-            console.log(_this.aMap.arr);
+            console.log(_this.aMap.arr.join('|'));
           },
           false
         );

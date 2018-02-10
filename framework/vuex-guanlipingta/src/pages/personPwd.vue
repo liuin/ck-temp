@@ -1,21 +1,21 @@
 <template>
-  <div class="personPwd">
-    <breadcrumb></breadcrumb>
-    <div class="line3"></div>
-    <el-form label-width="100px" class="changelogin">
-      <el-form-item label="原密码" prop="username">
-        <el-input type="password" v-model="changePwd.old_password"  auto-complete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="新密码"  prop="pwd">
-        <el-input type="password" v-model="changePwd.new_password" auto-complete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="确认新密码" prop="pwd">
-        <el-input type="password" v-model="changePwd.re_new_password"  auto-complete="off"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submit">提交</el-button>
-      </el-form-item>
-    </el-form> 
+  <div class="personPwd">        
+    <div class="box">
+      <el-form label-width="100px" class="changelogin">
+        <el-form-item label="原密码" prop="username">
+          <el-input type="password" v-model="changePwd.old_password"  auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="新密码"  prop="pwd">
+          <el-input type="password" v-model="changePwd.new_password" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="确认新密码" prop="pwd">
+          <el-input type="password" v-model="changePwd.re_new_password"  auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submit">提交</el-button>
+        </el-form-item>
+      </el-form>
+    </div> 
   </div>
 </template>
 

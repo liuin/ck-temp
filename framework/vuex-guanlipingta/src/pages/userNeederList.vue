@@ -1,10 +1,10 @@
 <template>
   <div class="user-driver-list">
-  <breadcrumb></breadcrumb>    
-  <div class="line3"></div>
+      
+  
 
 
-<div class="box box-search">
+<div class="box">
       <el-form label-width="80px">
         <el-row :gutter="10">
           <el-col :span="8" >
@@ -38,7 +38,7 @@
       </el-form>
 
       <div class="line3"></div>
-          <el-table   :data="searchDate" >
+          <el-table border   :data="searchDate" >
             <el-table-column prop="id" label="ID" ></el-table-column>      
             <el-table-column prop="mobile" label="手机号" ></el-table-column>      
             <el-table-column prop="created" label="注册时间"> 
@@ -46,68 +46,69 @@
                 {{api.toTime(scope.row.created)}}
               </template>
             </el-table-column>             
-            <el-table-column  label="操作"  width="180">
+            <el-table-column  label="操作"  width="200">
               <template slot-scope="scope">
-                <router-link :to="{path: '/user/neederListDetail', query: {id: '123'}}">查看详情</router-link>
-                <router-link :to="{path: '/order/listDetail', query: {id: '123'}}">查看订单</router-link>
+                <el-button @click="$router.push({path: '/user/neederListDetail', query: {id: scope.row.id}})">查看详情</el-button>
+                <el-button @click="$router.push({path: '/order/list', query: {maker_id: scope.row.id, maker_mobile: scope.row.mobile}})">查看订单</el-button>
+                <!-- <router-link :to=""></router-link> -->
+                <!-- <router-link :to="{path: '/order/list', query: {maker_id: scope.row.id, maker_mobile: scope.row.mobile}}"></router-link> -->
               </template>
             </el-table-column>
           </el-table>   
-          <pnation v-if="listTotal!=0" :total.number="listTotal" @changePage="changePage" :size.number="pager.count"></pnation>
+          <pnation v-if="listTotal!=0" :total="listTotal" @changePage="changePage" :size="pager.count"></pnation>
     </div>
 
   </div>
 </template>
 
 <script>
-  import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters } from "vuex";
 
-  export default {
-    name: '',
-    data() {
-      return {
-        searchDate: [],
-        listTotal: 0
+export default {
+  name: "",
+  data() {
+    return {
+      searchDate: [],
+      listTotal: 0
+    };
+  },
+  computed: {
+    ...mapState("maker", ["list", "pager"]),
+    ...mapGetters("maker", ["conditions"])
+  },
+  created() {
+    this.seach();
+  },
+  methods: {
+    changePage(pager) {
+      this.seach(pager);
+    },
+    seach(pager) {
+      if (pager) {
+        var sendDate = {
+          conditions: this.conditions,
+          page: pager,
+          count: this.pager.count
+        };
+      } else {
+        var sendDate = {
+          conditions: this.conditions,
+          page: this.pager.page,
+          count: this.pager.count,
+          total: 1
+        };
       }
-    },
-    computed:{
-      ...mapState('maker', ['list', 'pager']),
-      ...mapGetters('maker', ['conditions']),
-    },
-    created() {
-      this.seach()
-    },
-    methods: {
-      changePage(pager){        
-        this.seach(pager)
-      },
-      seach(pager){
-        if (pager) {
-          var sendDate = {
-            conditions: this.conditions,
-            page: pager,
-            count: this.pager.count,
-          }          
-        }else {
-          var sendDate = {
-            conditions: this.conditions,
-            page: this.pager.page,
-            count: this.pager.count,
-            total: 1
-          }
-        }
 
-        this.$store.dispatch('maker/list', sendDate).then( data => {
-           this.listTotal = data.list_total || this.listTotal
-           this.searchDate = data.list
-        })
-      },
-    },
-    mounted:function(){
+      this.$store.dispatch("maker/list", sendDate).then(data => {
+        this.listTotal = data.list_total || this.listTotal;
+        this.searchDate = data.list;
+      });
     }
-  }
+  },
+  mounted: function() {}
+};
 </script>
 
 <style lang="less" scoped>
-  
+
 </style>

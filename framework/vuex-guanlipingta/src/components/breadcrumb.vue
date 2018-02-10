@@ -20,11 +20,17 @@ export default {
     };
   },
   computed: {
-    ...mapState("leftMenu", ["menuData"])
+    ...mapState("leftMenu", ["menuData"]),
+    ...mapState(["ajaxLoad"])
   },
-  created() {
-    
+  watch: {
+    ajaxLoad() {
+      this.current = [];
+      // console.log(this.$route.path);
+      this.findMenu(this.menuData, this.$route.path);
+    }
   },
+  created() {},
   methods: {
     findMenu(menu, path) {
       if (this.current.length > 0) {
@@ -80,7 +86,6 @@ export default {
     //        query = ""
     //      }
     //      this.findMenu(this.menuData, this.$route.path + query)
-    this.findMenu(this.menuData, this.$route.path);
   }
 };
 </script>
@@ -88,12 +93,10 @@ export default {
 <style lang="less" scoped>
 .breadcrumb {
   background: #fff;
-  margin-left: -20px;
-  margin-right: -20px;
   padding-left: 20px;
   padding-right: 20px;
   line-height: 40px;
   height: 40px;
+  border-bottom: solid 1px #e4eaec;
 }
-
 </style>

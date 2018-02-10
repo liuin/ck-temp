@@ -18,6 +18,9 @@ import comment from "./modules/comment.js"
 import tags from "./modules/tags.js"
 import articleCategory from "./modules/articleCategory.js"
 import feedback from "./modules/feedback.js"
+import uploadImg from "./modules/uploadImg.js"
+import warehouse from "./modules/warehouse.js"
+import company from "./modules/company.js"
 
 
 Vue.use(Vuex)
@@ -29,6 +32,9 @@ const store = new Vuex.Store({
     userInfo:null,
     ajaxLoad: false
   },
+
+  strict: false,
+
   mutations: mutations,
 
   modules:{
@@ -47,7 +53,10 @@ const store = new Vuex.Store({
     comment: comment,
     tags: tags,
     articleCategory: articleCategory,
-    feedback: feedback
+    feedback: feedback,
+    uploadImg: uploadImg,
+    warehouse: warehouse,
+    company: company
   }
 
 })

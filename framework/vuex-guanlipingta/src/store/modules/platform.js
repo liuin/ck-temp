@@ -102,7 +102,7 @@ const platform = {
     getMakersById({ state, commit, getters }, sendDate) {
       return new Promise((resolve, reject) => {
         api.ajax({
-          type: "get",
+          type: "post",
           url: api.url.platformGetMakersById,
           data: sendDate,
           success: data => {

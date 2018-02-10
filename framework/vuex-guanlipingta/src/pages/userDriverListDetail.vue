@@ -1,8 +1,6 @@
 <template>
-  <div class="user-driver-list-etail" >
-    <breadcrumb></breadcrumb>
-    <div class="line3"></div>    
-
+  <div class="user-driver-list-etail" >    
+        
      <el-card class="box-card" >
       <div slot="header" class="clearfix">
         <i class="el-icon-info"></i>　<span>基本信息</span>            

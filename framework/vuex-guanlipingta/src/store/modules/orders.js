@@ -7,16 +7,20 @@ const orders = {
       "order_sn": "",
       "driver_name": "",
       "created": ["", ""],
-      "order_state": ""
+      "order_state": "",
+      "maker_id": ""
     },
     orderState: {
-      0: "全部",
-      1: "待接单",
-      2: "待收货",
-      3: "待送达",
-      4: "待确认",
-      9: "已完成",
-      6: "已取消"
+      "0": "全部",
+      "1": "待接单",
+      "2": "已指派",
+      "3": "待收货",
+      "4": "已收货",
+      "5": "待送达",
+      "6": "已抵达",
+      "7": "待确认",
+      "8": "已取消",
+      "9": "已完成"
     },
     show: {
       id: 1,
@@ -29,6 +33,11 @@ const orders = {
     },
     searchData: {
       list: []
+    },
+    dispose: {
+      id: "",
+      state: "",
+      description:""
     }
   },
   getters: {
@@ -45,7 +54,8 @@ const orders = {
               }
             })
           }
-        } else if (state.list[i] !== "") {
+        } else if (state.list[i] !== "" && state.list[i] != 0) {          
+
           arr[i] = state.list[i]
         }
       }
@@ -90,7 +100,29 @@ const orders = {
           }
         });
       })
-    }
+    },
+    dispose({state}, sendDate) {
+      return new Promise((resolve, reject) => {
+        api.ajax({
+          type: "post",
+          url: api.url.ordersDispose,
+          data: state.dispose,
+          success: data => {
+            // state.commit('setState', [])
+            state.dispose = {
+              id: "",
+              state: "",
+              description:""
+            }        
+            resolve(data)
+          },
+          error: data => {
+            reject(data)
+          }
+        });
+      })
+    }    
+
   }
 }
 

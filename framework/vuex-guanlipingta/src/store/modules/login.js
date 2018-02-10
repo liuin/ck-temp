@@ -5,7 +5,8 @@ const loginModule = {
   state: {
     token:null,
     userInfo:null,
-    aid: sessionStorage.getItem('aid') || ''
+    aid: sessionStorage.getItem('aid') || '',
+    nickname: sessionStorage.getItem('nickname') || '用户'
   },
   mutations: {   //唯一修改状态的state方法 ，只能同步，不能异步
     changeToken(state,tk){
@@ -40,23 +41,19 @@ const loginModule = {
       sessionStorage.setItem('userInfo',JSON.stringify(info));
       commit('changeUserInfo',info);
     },
-    login({commit, state},data){ //登录     
-      
+    login({commit, state},data){ //登录           
       return new Promise((resolve, reject) => {
         api.ajax({
           type: "post",
           url: api.url.login,
           data: data,
           success: data =>{
-            sessionStorage.setItem('aid', data.aid);
-            commit('setState', [{'aid': data.aid}, state], {root: true})
-
-            
-            commit('changeToken',data.token);   
-            resolve();
+             state.nickname = data.nickname
+             sessionStorage.setItem('nickname', data.nickname)
+             resolve(data);
           },
           error: data =>{
-           
+            reject(456);
           }
         });                  
       })

@@ -1,8 +1,9 @@
 <template>
   <div class="knowledgeCarType">
-    <breadcrumb></breadcrumb>
+    
+  
+        <div class="box">
 
-  <div class="line3"></div>
               <el-popover ref="popover2" v-model="visible"  placement="bottom"  width="160"  >
                   <div style="text-align: left; margin: 0">
                     <el-form label-position="top" label-width="100px">
@@ -15,25 +16,29 @@
                   </div>
                 </el-popover>
         
-        <el-button icon="el-icon-edit" v-popover:popover2  class="btn-edit">添加原因</el-button>
+        <el-button size="medium" type="primary" icon="el-icon-edit" v-popover:popover2  class="btn-edit">添加原因</el-button>
         <div class="line2"></div>
-        <el-table  width="100%"  :data="list.res"  >
-            <el-table-column prop="order" label="排序" ></el-table-column>      
-            <el-table-column prop="title" label="取消原因" ></el-table-column>      
-            <el-table-column prop="total" label="次数统计" ></el-table-column>  
-            <el-table-column label="状态"  >
-              <template slot-scope="scope">
-                {{state[scope.row.state]}}
-              </template>
-            </el-table-column> 
-            <el-table-column prop="" label="操作">
-              <template slot-scope="scope">
-                <editBtn @changeEdit="changeEdit" :scope="scope" />                 
-                <el-button size="mini" @click="$router.push({path: '/knowledge/cancelDetail', 'query': {'id': scope.row.id}})">查看</el-button>              
-              </template>
-            </el-table-column>                  
-          </el-table> 
-        <pnation :size="list.count" :total="list.total" @changePage="changePage" v-if="list.total>0"></pnation>
+
+
+          <el-table border width="100%"  :data="list.res"  >
+              <el-table-column prop="order" label="排序" ></el-table-column>      
+              <el-table-column prop="title" label="取消原因" ></el-table-column>      
+              <el-table-column prop="total" label="次数统计" ></el-table-column>  
+              <el-table-column label="状态"  >
+                <template slot-scope="scope">
+                  {{state[scope.row.state]}}
+                </template>
+              </el-table-column> 
+              <el-table-column prop="" label="操作">
+                <template slot-scope="scope">
+                  <editBtn @changeEdit="changeEdit" :scope="scope" />                 
+                  <el-button size="mini" @click="$router.push({path: '/knowledge/cancelDetail', 'query': {'id': scope.row.id}})">查看</el-button>              
+                </template>
+              </el-table-column>                  
+            </el-table>
+            <pnation :size="list.count" :currentPage="list.page" :total="list.total" @changePage="changePage" v-if="list.total>0"></pnation>
+        </div> 
+        
 
   </div>
 </template>
@@ -64,8 +69,9 @@ export default {
       this.$store
         .dispatch("ordersCanceledReason/create", sendDate)
         .then(data => {
-          this.load();
           this.visible = false
+          this.load();          
+          this.create.title = ""
           // this.$alert("添加成功", "", {
           //   confirmButtonText: "确定",
           //   type: "success",
@@ -82,6 +88,7 @@ export default {
       this.list.res[index].total = item.total;
     },
     changePage(pager) {
+      this.list.page = pager
       this.load(pager);
     },
     load(pager) {

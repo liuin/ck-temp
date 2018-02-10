@@ -1,78 +1,91 @@
 const maker = {
   namespaced: true,
-  state:{
+  state: {
     list: {
-      "id":"",
-      "mobile":"",
-//      "mobile":"",
-//      "referee_mobile":"",
-      "created":["",""]
-//      "state": ""
+      "id": "",
+      "mobile": "",
+      //      "mobile":"",
+      //      "referee_mobile":"",
+      "created": ["", ""]
+      //      "state": ""
     },
     pager: {
       page: 1,
       count: 10,
       total: 0
+    },
+    show: {
+      id: 0,
+      res: {}
     }
   },
   getters: {
     conditions: state => {
       var arr = {};
-       for (var i in state.list) {
-        if (i == 'created') {         
+      for (var i in state.list) {
+        if (i == 'created') {
           if (state.list[i][0] != undefined && state.list[i][0] != "") {
             arr.created = state.list[i].map(item => {
-             if (_.isDate(item)) {
-                return item = item.getTime()/1000 
-             }else {
-               return item
-             }
+              if (_.isDate(item)) {
+                return item = item.getTime() / 1000
+              } else {
+                return item
+              }
             })
-          }    
-        }else if(state.list[i] !== "") {
+          }
+        } else if (state.list[i] !== "") {
           arr[i] = state.list[i]
         }
-       }     
-//      arr.created = arr.created.map(item => {   
-//         if (_.isDate(item)) {
-//          return item = item.getTime()/1000 
-//         }   
-//      })
+      }
+      //      arr.created = arr.created.map(item => {   
+      //         if (_.isDate(item)) {
+      //          return item = item.getTime()/1000 
+      //         }   
+      //      })
 
       return JSON.stringify(arr);
     }
   },
-  actions:{
-    list ({state, commit, getters}, sendDate) {
+  actions: {
+    list({
+      state,
+      commit,
+      getters
+    }, sendDate) {
       return new Promise((resolve, reject) => {
         api.ajax({
           type: "post",
           url: api.url.makerList,
           data: sendDate,
-          success: data =>{
+          success: data => {
             resolve(data);
           },
-          error: data =>{
-           
+          error: data => {
+
           }
-        });                 
+        });
       })
     },
-    show ({state, commit, getters}, sendDate) {
+    show({
+      state,
+      commit,
+      getters
+    }, sendDate) {
       return new Promise((resolve, reject) => {
         api.ajax({
           type: "get",
           url: api.url.makerShow,
-          data: sendDate,
-          success: data =>{
+          data: {id: state.show.id},
+          success: data => {
+            state.show.res = data.maker_list
             resolve(data)
           },
-          error: data =>{
-           
+          error: data => {
+            reject(data)
           }
-        });                 
+        });
       })
-    }    
+    }
   }
 }
 

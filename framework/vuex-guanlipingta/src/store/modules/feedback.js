@@ -2,24 +2,29 @@ const feedback = {
   namespaced: true,
   state: {
     type: {
-      1: "司机",
-      2: "厂商"
+      "1": "司机",
+      "2": "厂商"
     },
     state: {
-      0: "待处理",
-      1: "处理中",
-      9: "已完成"
+      "0": "待处理",
+      "1": "处理中",
+      "9": "已完成"
     },
     list: {
       "created": ["", ""],
-      "type": "",
-      "state": "",
+      "type": "1",
+      "state": ""
     },
     pager: {
       "count": 10,
       "page": 1,
       "total": 1,
       "res": []
+    },
+    show: {
+      id: 0,
+      type: "1",
+      res: []
     },
     dispose: {
       "id": 0,
@@ -41,22 +46,29 @@ const feedback = {
               }
             })
           }
-        } else if (state.list[i] !== "") {
+        } else if (state.list[i] !== "" && (i != 'type')) {
           arr[i] = state.list[i]
         }
       }
       return JSON.stringify(arr);
+    },
+    imgs: ({show}) => {   
+      if(show.res.imgs){
+        return show.res.imgs.split(",")
+      }
     }
   },
   mutations: {
 
   },
   actions: {
-    list(state, sendDate) {
+    list({
+      state
+    }, sendDate) {
       return new Promise((resolve, reject) => {
         api.ajax({
           type: "post",
-          url: api.url.feedbackList,
+          url: api.url.feedbackList + '?type=' + state.list.type,
           data: sendDate,
           success: data => {
             resolve(data);
@@ -67,12 +79,12 @@ const feedback = {
         });
       })
     },
-    dispose(state, sendDate) {
+    dispose({state}, sendDate) {
       return new Promise((resolve, reject) => {
         api.ajax({
           type: "post",
           url: api.url.feedbackDispose,
-          data: sendDate,
+          data: state.dispose,
           success: data => {
             resolve(data);
           },
@@ -81,7 +93,26 @@ const feedback = {
           }
         });
       })
-    } 
+    },
+    show({
+      state
+    }, sendDate) {
+      return new Promise((resolve, reject) => {
+        api.ajax({
+          type: "get",
+          url: api.url.feedbackShow + '?type=' + state.show.type,
+          data: {"id": state.show.id},
+          success: data => {
+            state.show.res = data.feedback
+            state.show.res.state = _.toString(state.show.res.state)
+            resolve(data)
+          },
+          error: data => {
+            reject(data)
+          }
+        });
+      })
+    }
   }
 }
 export default feedback

@@ -5,10 +5,10 @@ const cars = {
       title: "",
       icon: "",
       state: "",
-      long: 100,
-      with: 100,
-      high: 100,
-      load: 1000,
+      long: "",
+      with: "",
+      high: "",
+      load: "",
       order: 1
     },
     update: {

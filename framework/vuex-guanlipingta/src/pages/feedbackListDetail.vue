@@ -1,42 +1,40 @@
 <template>
   <div class="feedback-list-detail">
-    <breadcrumb></breadcrumb>
-    <div class="line3"></div>
-    <div class="line3"></div>
-
-    <el-form class="form" label-position="right" label-width="80px">
-      <el-row>
-        <el-col :span="8">反馈人: XXXX </el-col>
-        <el-col :span="8">反馈来源: XXXX </el-col>
-        <el-col :span="8">反馈时间: XXXX </el-col>
-      </el-row>
-      <el-form-item label="反馈内容">
-<p>反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容反馈内容</p>
-      </el-form-item>
-      <el-form-item label="图片信息" class="imgs">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
-      </el-form-item>
-      <el-form-item label="状态">
-        <el-select>
-            <el-option :key="index" v-for="(item,index) in state" :label="item" :value="index"></el-option>
+    <div class="box">
+      <el-form class="form" label-position="right" label-width="80px">
+        <el-row>
+          <el-col :span="8">反馈人: {{show.res.create_user}} </el-col>
+          <el-col :span="8">反馈来源: {{type[show.res.type]}} </el-col>
+          <el-col :span="8">反馈时间: {{api.toTime(show.res.created)}} </el-col>
+        </el-row>
+        <div class="line3"></div>
+        <el-form-item label="反馈内容">
+          {{show.res.content}}
+        </el-form-item>
+        <el-form-item label="图片信息" class="imgs">
+          <img :src="item" v-for="item in imgs" :key="item" alt="">
+        </el-form-item>
+        <el-form-item label="状态">
+          <el-select clearable v-model="show.res.state">
+            <el-option :key="index" v-for="(item,index) in state" :label="item" :value="index.toString()"></el-option>
           </el-select>
-      </el-form-item>
-      <el-form-item label="备注">
-        <el-input :rows="5" type="textarea" />
-      </el-form-item>
-    
-      <el-form-item label="">
-        <el-button size="medium" type="primary" @click="save()">保存</el-button>
-      </el-form-item>
-    </el-form>
+        </el-form-item>
+        <el-form-item label="备注">
+          <el-input :rows="5" type="textarea" v-model="show.res.remark" />
+        </el-form-item>
 
+        <el-form-item label="">
+          <el-button size="medium" type="primary" @click="save()">保存</el-button>
+        </el-form-item>
+      </el-form>
+
+
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   name: "",
@@ -44,11 +42,33 @@ export default {
     return {};
   },
   computed: {
-    ...mapState("feedback", ["type", "state"])
+    ...mapState("feedback", ["type", "state", "show", "dispose"]),
+    ...mapGetters("feedback", ["imgs"])
   },
-  created() {},
+  created() {
+    // this.selectVal = this.state[show.res.state]
+    this.show.id = this.$route.query.id;
+    this.show.type = this.$route.query.type;
+    this.$store.dispatch("feedback/show");
+    // console.log(this.show.res.state.toString());
+    //  this.show.res.state = _.toString(this.show.res.state)
+  },
   methods: {
-    save() {}
+    save() {
+      this.dispose.id = this.show.id
+      this.dispose.state = this.show.res.state
+      this.dispose.remark = this.show.res.remark
+ 
+      this.$store.dispatch("feedback/dispose").then(data => {
+        this.$alert("修改成功", "", {
+          confirmButtonText: "确定",
+          type: "success",
+          callback: action => {
+            this.$router.back();
+          }
+        });
+      });
+    }
   },
   mounted: function() {}
 };
@@ -62,6 +82,9 @@ export default {
     height: 200px;
     margin-left: 10px;
     background: #eee;
+  }
+  img:first-child {
+    margin-left: 0px;
   }
 }
 

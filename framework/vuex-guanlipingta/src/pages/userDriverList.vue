@@ -1,7 +1,7 @@
 <template>
   <div class="user-driver-list">
-    <breadcrumb></breadcrumb>
-    <div class="line3"></div>    
+    
+        
 
 
 <div class="box box-search">
@@ -58,7 +58,7 @@
         <el-tab-pane label="已冻结"></el-tab-pane>        
       </el-tabs>
        
-          <el-table  :data="searchDate"  >
+          <el-table border :data="searchDate"  >
             <el-table-column prop="id" label="ID" ></el-table-column>      
             <el-table-column prop="driver_name" label="姓名" ></el-table-column>      
             <el-table-column prop="mobile" label="手机号" ></el-table-column>      

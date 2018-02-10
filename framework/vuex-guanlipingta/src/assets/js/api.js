@@ -18,6 +18,7 @@ api.pathEnd='/';*/
 api.path = configApi;
 
 api.url.login = api.path + '/login/getToken' + api.pathEnd; //登录接口
+api.url.uploadImg = api.path + '/upload' + api.pathEnd; //上传图片
 api.url.leftMenu = api.path + '/sysMenu/listOnSidebar' + api.pathEnd; //左边目录
 
 //左边目录
@@ -60,7 +61,7 @@ api.url.platformUpdate = api.path + '/platform/update' + api.pathEnd; //
 api.url.platformShow = api.path + '/platform/show' + api.pathEnd; // 
 api.url.platformList = api.path + '/platform/list' + api.pathEnd; // 
 api.url.platformTotal = api.path + '/platform/total' + api.pathEnd; // 
-api.url.platformGetMakersById = api.path + '/platform/getMakersById' + api.pathEnd; // 
+api.url.platformGetMakersById = api.path + '/platform/getMakers' + api.pathEnd; // 
 
 //创建物流园
 api.url.parkCreate = api.path + '/park/create' + api.pathEnd;
@@ -79,6 +80,7 @@ api.url.carsTotal = api.path + '/cars/total' + api.pathEnd;
 //订单
 api.url.ordersList = api.path + '/orders/list' + api.pathEnd;
 api.url.ordersShow = api.path + '/orders/show' + api.pathEnd;
+api.url.ordersDispose = api.path + '/orders/dispose' + api.pathEnd;
 
 //订单取消原因
 api.url.ordersCanceledReasonCreate = api.path + '/ordersCanceledReason/create' + api.pathEnd;
@@ -98,6 +100,10 @@ api.url.tagsList = api.path + '/tags/list' + api.pathEnd;
 api.url.tagsDestroy = api.path + '/tags/destroy' + api.pathEnd;
 api.url.tagsDriverBind = api.path + '/tagsDriver/bind' + api.pathEnd;
 api.url.tagsMakerBind = api.path + '/tagsMaker/bind' + api.pathEnd;
+api.url.tagsDriverList = api.path + '/tagsDriver/list' + api.pathEnd;
+api.url.tagsMakerList = api.path + '/tagsMaker/list' + api.pathEnd;
+api.url.tagsDriverUnbind = api.path + '/tagsDriver/unbind' + api.pathEnd;
+api.url.tagsMakerUnbind = api.path + '/tagsMaker/unbind' + api.pathEnd;
 
 //文章分类&文章
 api.url.articleCategoryCreate = api.path + '/articleCategory/create' + api.pathEnd;
@@ -114,10 +120,13 @@ api.url.articleDestroy = api.path + '/article/destroy' + api.pathEnd;
 //反馈列表
 api.url.feedbackList = api.path + '/feedback/list' + api.pathEnd;
 api.url.feedbackDispose = api.path + '/feedback/dispose' + api.pathEnd;
+api.url.feedbackShow = api.path + '/feedback/show' + api.pathEnd;
 
+// 收货地(仓库)模块 / 根据厂商Id获取收货地址
+api.url.warehouseListByMaker = api.path + '/warehouse/listByMaker' + api.pathEnd;
 
-
-
+//目的地(物流公司) / 根据厂商id获取目的地
+api.url.companyListByMaker = api.path + '/company/listByMaker' + api.pathEnd;
 
 api.ajaxHandle = function (res, options) {
   // store.commit('setState',[{ajaxLoad: false}])
@@ -173,6 +182,7 @@ api.ajaxHandle = function (res, options) {
 
 
 api.ajax = function (options) {
+
   if (!options.data) options.data = {};
   options.data.client = 3;
   options.data.token = store.getters['login/getToken'];
@@ -221,10 +231,24 @@ api.toTime = function (timeVal) {
   return newDate.toLocaleString();
 }
 
-//区域转化
+// //区域转化
+// api.toLocations = function (loc) {
+//   var a = loc.split(',')
+//   return _.chunk(a, 2)
+// }
 api.toLocations = function (loc) {
-  var a = loc.split(',')
-  return _.chunk(a, 2)
+  var ar = loc.split('|');
+  var ar1 = []
+  ar.map(item=>{
+    item = item.split(',')
+    ar1.push(item)
+  })
+
+  return ar1
+}
+
+api.spImg = function(str){
+  return str.split(",")
 }
 
 

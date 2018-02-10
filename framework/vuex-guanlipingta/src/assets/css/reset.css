@@ -403,6 +403,15 @@ li {
   padding: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0
+}
+
 .waring {
   color: #f56c6c;
 }
@@ -426,7 +435,14 @@ p {
 .main-wrap {
   min-width: 1000px;
   display: flex;
-  height: 100%;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.page {
+  padding: 20px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .main-wrap>div {
@@ -452,19 +468,54 @@ dl {
   background: #fff;
 }
 
+
+.user-driver-lable .el-table th.is-leaf{
+  background: transparent;
+}
+
+
 .el-breadcrumb {
   height: 40px;
   line-height: 40px;
-  border-bottom: solid 1px #e4eaec;
 }
 
-.el-breadcrumb__item:last-child .el-breadcrumb__inner, .el-breadcrumb__item:last-child .el-breadcrumb__inner a, .el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover, .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover{
+.el-breadcrumb__item:last-child .el-breadcrumb__inner,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner a,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
   color: rgb(118, 131, 143);
 }
-.el-breadcrumb__inner, .el-breadcrumb__inner a{
-  color: rgb(118, 131, 143);  
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  color: rgb(118, 131, 143);
   font-weight: normal;
 }
+
+/* .el-autocomplete-suggestion li */
+
+.el-autocomplete-suggestion li {
+  padding: 0 20px;
+  margin: 0;
+  cursor: pointer;
+  color: #606266;
+  font-size: 14px;
+  list-style: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.my-autocomplete li .addr {
+  font-size: 12px;
+  color: #b4b4b4;
+  display: block;
+  line-height: 1.2;
+}
+
+.my-autocomplete li .name {line-height: 24px}
 
 /*-- menu --*/
 
@@ -555,7 +606,10 @@ li {
 
 /*-- box --*/
 
-.box {background: #fff; padding: 20px;}
+.box {
+  background: #fff;
+  padding: 20px;
+}
 
 .tab-item {
   border: 1px solid #e4e7ed;
