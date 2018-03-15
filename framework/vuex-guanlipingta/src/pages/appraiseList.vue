@@ -65,57 +65,53 @@
 </template>
 
 <script>
-  import {
-    mapState,
-    mapGetters
-  } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
-  export default {
-    name: "",
-    data() {
-      return {};
+export default {
+  name: "",
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState("comment", ["list", "pager", "searchData"]),
+    ...mapGetters("comment", ["conditions"])
+  },
+  created() {
+    this.seach();
+  },
+  methods: {
+    changePage(pager) {
+      this.seach(pager);
     },
-    computed: {
-      ...mapState("comment", ["list", "pager", "searchData"]),
-      ...mapGetters("comment", ["conditions"])
-    },
-    created() {
-      this.seach();
-    },
-    methods: {
-      changePage(pager) {
-        this.seach(pager);
-      },
-      seach(pager) {
-        if (pager) {
-          var sendDate = {
-            conditions: this.conditions,
-            page: pager,
-            count: this.pager.count
-          };
-        } else {
-          var sendDate = {
-            conditions: this.conditions,
-            page: this.pager.page,
-            count: this.pager.count,
-            total: 1
-          };
-        }
-
-        this.$store.dispatch("comment/list", sendDate).then(data => {
-          console.log(data);
-          this.pager.total = data.list_total || this.pager.total;
-          this.searchData.list = data.list;
-          // this.searchData.list = [{},{}];
-        });
+    seach(pager) {
+      if (pager) {
+        var sendDate = {
+          conditions: this.conditions,
+          page: pager,
+          count: this.pager.count,
+          total: 1
+        };
+      } else {
+        var sendDate = {
+          conditions: this.conditions,
+          page: this.pager.page,
+          count: this.pager.count,
+          total: 1
+        };
       }
-    },
-    mounted: function () {}
-  };
 
+      this.$store.dispatch("comment/list", sendDate).then(data => {
+        console.log(this.pager, data);
+        this.pager.total = data.list_total;
+        this.searchData.list = data.list;
+        // this.searchData.list = [{},{}];
+      });
+    }
+  },
+  mounted: function() {}
+};
 </script>
 
 <style lang="less" scoped>
-
 
 </style>

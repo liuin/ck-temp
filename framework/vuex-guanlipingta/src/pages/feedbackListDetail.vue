@@ -12,7 +12,7 @@
           {{show.res.content}}
         </el-form-item>
         <el-form-item label="图片信息" class="imgs">
-          <img :src="item" v-for="item in imgs" :key="item" alt="">
+          <img :src="item + '!desc'" v-for="item in imgs" :key="item" alt="">
         </el-form-item>
         <el-form-item label="状态">
           <el-select clearable v-model="show.res.state">
@@ -55,10 +55,10 @@ export default {
   },
   methods: {
     save() {
-      this.dispose.id = this.show.id
-      this.dispose.state = this.show.res.state
-      this.dispose.remark = this.show.res.remark
- 
+      this.dispose.id = this.show.id;
+      this.dispose.state = this.show.res.state;
+      this.dispose.remark = this.show.res.remark;
+
       this.$store.dispatch("feedback/dispose").then(data => {
         this.$alert("修改成功", "", {
           confirmButtonText: "确定",

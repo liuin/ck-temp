@@ -91,6 +91,7 @@ const platform = {
           url: api.url.platformList,
           data: sendDate,
           success: data => {
+            state.list.res = data.list
             resolve(data)
           },
           error: data => {

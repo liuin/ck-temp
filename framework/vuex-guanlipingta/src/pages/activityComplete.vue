@@ -2,25 +2,30 @@
   <div class="system-account">
     <div class="box">
 
-
       <el-button type="primary" size="medium" @click="$router.push({path: '/activity/completeAdd'})">添加活动</el-button>
       <div class="line2"></div>
-
-      <el-table width="100%" border :data="[{id:18821214125},{}]">
-        <el-table-column prop="id" label="活动ID"></el-table-column>
-        <el-table-column prop="" label="活动名称"></el-table-column>
-        <el-table-column prop="" label="活动时间"></el-table-column>
-        <el-table-column prop="" label="活动状态"></el-table-column>
+      <el-table border width="100%" :data="activityListRes" v-loading="loading">
+        <el-table-column prop="id" label="活动ID" width="70"></el-table-column>
+        <el-table-column prop="title" label="活动名称"></el-table-column>
+        <el-table-column prop="" label="活动时间" width="300">
+          <template slot-scope="scope">
+            {{api.toTime(scope.row.start_time)}}至{{api.toTime(scope.row.end_time)}}
+          </template>
+        </el-table-column>
+        <el-table-column prop="" label="活动状态">
+          <template slot-scope="scope">
+            {{activityState[scope.row.state]}}
+          </template>
+        </el-table-column>
         <el-table-column prop="" label="操作" width="250px">
           <template slot-scope="scope">
-            <el-button size="mini">暂停</el-button>
-            <el-button size="mini" @click="$router.push({path: '/activity/completeDetail', 'query': {'id': '123'}})">详情</el-button>
-            <el-button size="mini" @click="$router.push({path: '/activity/completeAdd', 'query': {'edit': '123'}})">编辑</el-button>
+            <el-button size="mini" @click="stop(scope.row.id)" v-if="(scope.row.state == 1 || scope.row.state == 4)">{{(scope.row.state == 4) ? '开始': '暂停'}}</el-button>
+            <el-button size="mini" @click="$router.push({path: '/activity/completeDetail', 'query': {'id': scope.row.id}})">详情</el-button>
+            <el-button size="mini" @click="$router.push({path: '/activity/completeEdit', 'query': {'id': scope.row.id}})">编辑</el-button>
           </template>
         </el-table-column>
       </el-table>
-      <pnation :size="7" :total="10"></pnation>
-
+      <pnation v-if="activityList.total != 0" :total="activityList.total" @changePage="changePage" :size="activityList.count"></pnation>
 
 
     </div>
@@ -28,26 +33,50 @@
 </template>
 
 <script>
-  import pnation from '@/components/pnation'
+import {
+  activityList,
+  activityPauseOrStart,
+  activityState
+} from "../store/modules/activity.js";
 
-  export default {
-    name: '',
-    data() {
-      return {
-        visible1: false
-      }
+export default {
+  name: "",
+  mixins: [activityList, activityPauseOrStart, activityState],
+  data() {
+    return {
+      loading: false,
+      visible1: false,
+      type: 3 //成单模块
+    };
+  },
+  created() {
+    console.log(activityState);
+    this.activityListCall(this.type);
+  },
+  methods: {
+    stop(id) {
+      this.loading = true;
+      this.activityPauseOrStart.id = id;
+      this.activityPauseOrStartCall(this.type).then(data => {
+        this.changePage();
+      });
     },
-    components: {
-      pnation
-    },
-    created() {},
-    methods: {},
-    mounted: function () {}
-  }
-
+    changePage(val) {
+      this.loading = true;
+      this.activityList.page = val || this.activityList.page;
+      this.activityListCall(this.type)
+        .then(data => {
+          this.loading = false;
+        })
+        .catch(data => {
+          this.loading = false;
+        });
+    }
+  },
+  mounted: function() {}
+};
 </script>
 
 <style lang="less" scoped>
-
 
 </style>

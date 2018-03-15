@@ -16,6 +16,7 @@ const orderListDetail = r => require.ensure([], () => r(require('../pages/orderL
 
 const messageList = r => require.ensure([], () => r(require('../pages/messageList.vue'))); //消息列表
 const messageListAdd = r => require.ensure([], () => r(require('../pages/messageListAdd.vue'))); //消息增加
+const messageListEdit = r => require.ensure([], () => r(require('../pages/messageListEdit.vue'))); //消息编辑
 const messageListDetail = r => require.ensure([], () => r(require('../pages/messageListDetail.vue'))); //消息详情
 const messageDrafts = r => require.ensure([], () => r(require('../pages/messageDrafts.vue'))); //草稿箱
 const messageCate = r => require.ensure([], () => r(require('../pages/messageCate.vue'))); //消息分类
@@ -30,12 +31,15 @@ const feedbackListDetail = r => require.ensure([], () => r(require('../pages/fee
 const activityList = r => require.ensure([], () => r(require('../pages/activityList.vue'))); //活动列表
 const activityComplete = r => require.ensure([], () => r(require('../pages/activityComplete.vue'))); //成单奖励
 const activityCompleteAdd = r => require.ensure([], () => r(require('../pages/activityCompleteAdd.vue'))); //成单奖励 添加编辑
+const activityCompleteEdit = r => require.ensure([], () => r(require('../pages/activityCompleteEdit.vue'))); //成单奖励 编辑
 const activityCompleteDetail = r => require.ensure([], () => r(require('../pages/activityCompleteDetail.vue'))); //成单奖励 详情
 const activityInvite = r => require.ensure([], () => r(require('../pages/activityInvite.vue'))); //邀请奖励
 const activityInviteAdd = r => require.ensure([], () => r(require('../pages/activityInviteAdd.vue'))); //邀请奖励 添加编辑
+const activityInviteEdit = r => require.ensure([], () => r(require('../pages/activityInviteEdit.vue'))); //邀请奖励 编辑
 const activityInviteDetail = r => require.ensure([], () => r(require('../pages/activityInviteDetail.vue'))); //邀请奖励 详情
 const activityRecharge = r => require.ensure([], () => r(require('../pages/activityRecharge.vue'))); //充值奖励
-const activityRechargeAdd = r => require.ensure([], () => r(require('../pages/activityRechargeAdd.vue'))); //充值奖励 添加编辑
+const activityRechargeAdd = r => require.ensure([], () => r(require('../pages/activityRechargeAdd.vue'))); //充值奖励 添加
+const activityRechargeEdit = r => require.ensure([], () => r(require('../pages/activityRechargeEdit.vue'))); //充值奖励 编辑
 const activityRechargeDetail = r => require.ensure([], () => r(require('../pages/activityRechargeDetail.vue'))); //充值奖励详情
 
 const operate = r => require.ensure([], () => r(require('../pages/operate.vue'))); //运营管理
@@ -75,6 +79,7 @@ const serverDetail = r => require.ensure([], () => r(require('../pages/serverDet
 
 
 
+
 //const Demo = r => require.ensure([], () => r(require('../pages/demo-region.vue'))); //测试
 
 
@@ -83,75 +88,330 @@ Vue.use(Router);
 
 export default new Router({
   mode: 'history',
-  routes: [
-    {path: '/', component: home, name:'home'},
-    {path: '/login', component: login, name:'login'},
+  routes: [{
+      path: '/',
+      component: home,
+      name: 'home'
+    },
+    {
+      path: '/login',
+      component: login,
+      name: 'login'
+    },
 
-    {path: '/user/driverList', component: userDriverList, name:'userDriverList'},
-    {path: '/user/driverListDetail', component: userDriverListDetail, name:'userDriverListDetail'},
-    {path: '/user/neederList', component: userNeederList, name:'userNeederList'},
-    {path: '/user/neederListDetail', component: userNeederListDetail, name:'userNeederListDetail'},
-    {path: '/user/driverLable', component: userDriverLable, name:'userDriverLable'},
-    {path: '/user/neederLable', component: userNeederLable, name:'userNeederLable'},
-    {path: '/order/list', component: orderList, name:'orderList'},
-    {path: '/order/ListDetail', component: orderListDetail, name:'orderListDetail'},
-    {path: '/message/list', component: messageList, name:'messageList'},
-    {path: '/message/listAdd', component: messageListAdd, name:'messageListAdd'},
-    {path: '/message/listDetail', component: messageListDetail, name:'messageListDetail'},
-    {path: '/message/drafts', component: messageDrafts, name:'messageDrafts'},
-    {path: '/message/cate', component: messageCate, name:'messageCate'},
-    {path: '/appraise/list', component: appraiseList, name:'appraiseList'},
-    {path: '/money/draw', component: moneyDraw, name:'moneyDraw'},
-    {path: '/money/freeze', component: moneyFreeze, name:'moneyFreeze'},
-    {path: '/money/recharge', component: moneyRecharge, name:'moneyRecharge'},
-    {path: '/money/consume', component: moneyConsume, name:'moneyConsume'},
-    {path: '/feedback/list', component: feedbackList, name:'feedbackList'},
-    {path: '/feedback/listDetail', component: feedbackListDetail, name:'feedbackListDetail'},
+    {
+      path: '/user/driverList',
+      component: userDriverList,
+      name: 'userDriverList'
+    },
+    {
+      path: '/user/driverListDetail',
+      component: userDriverListDetail,
+      name: 'userDriverListDetail'
+    },
+    {
+      path: '/user/neederList',
+      component: userNeederList,
+      name: 'userNeederList'
+    },
+    {
+      path: '/user/neederListDetail',
+      component: userNeederListDetail,
+      name: 'userNeederListDetail'
+    },
+    {
+      path: '/user/driverLable',
+      component: userDriverLable,
+      name: 'userDriverLable'
+    },
+    {
+      path: '/user/neederLable',
+      component: userNeederLable,
+      name: 'userNeederLable'
+    },
+    {
+      path: '/order/list',
+      component: orderList,
+      name: 'orderList'
+    },
+    {
+      path: '/order/ListDetail',
+      component: orderListDetail,
+      name: 'orderListDetail'
+    },
+    {
+      path: '/message/list',
+      component: messageList,
+      name: 'messageList'
+    },
+    {
+      path: '/message/listAdd',
+      component: messageListAdd,
+      name: 'messageListAdd'
+    },
+    {
+      path: '/message/listDetail',
+      component: messageListDetail,
+      name: 'messageListDetail'
+    },
+    {
+      path: '/message/drafts',
+      component: messageDrafts,
+      name: 'messageDrafts'
+    },
+    {
+      path: '/message/cate',
+      component: messageCate,
+      name: 'messageCate'
+    },
+    {
+      path: '/appraise/list',
+      component: appraiseList,
+      name: 'appraiseList'
+    },
+    {
+      path: '/money/draw',
+      component: moneyDraw,
+      name: 'moneyDraw'
+    },
+    {
+      path: '/money/freeze',
+      component: moneyFreeze,
+      name: 'moneyFreeze'
+    },
+    {
+      path: '/money/recharge',
+      component: moneyRecharge,
+      name: 'moneyRecharge'
+    },
+    {
+      path: '/money/consume',
+      component: moneyConsume,
+      name: 'moneyConsume'
+    },
+    {
+      path: '/feedback/list',
+      component: feedbackList,
+      name: 'feedbackList'
+    },
+    {
+      path: '/feedback/listDetail',
+      component: feedbackListDetail,
+      name: 'feedbackListDetail'
+    },
 
-    {path: '/activity/complete', component: activityComplete, name:'activityComplete'},
-    {path: '/activity/completeAdd', component: activityCompleteAdd, name:'activityCompleteAdd'},
-    {path: '/activity/completeDetail', component: activityCompleteDetail, name:'activityCompleteDetail'},
-    {path: '/activity/invite', component: activityInvite, name:'activityInvite'},
-    {path: '/activity/inviteAdd', component: activityInviteAdd, name:'activityInviteAdd'},
-    {path: '/activity/inviteDetail', component: activityInviteDetail, name:'activityInviteDetail'},
-    {path: '/activity/recharge', component: activityRecharge, name:'activityRecharge'},
-    {path: '/activity/rechargeAdd', component: activityRechargeAdd, name:'activityRechargeAdd'},
-    {path: '/activity/rechargeDetail', component: activityRechargeDetail, name:'activityRechargeDetail'},
+    {
+      path: '/activity/complete',
+      component: activityComplete,
+      name: 'activityComplete'
+    },
+    {
+      path: '/activity/completeAdd',
+      component: activityCompleteAdd,
+      name: 'activityCompleteAdd'
+    },
+    {
+      path: '/activity/completeDetail',
+      component: activityCompleteDetail,
+      name: 'activityCompleteDetail'
+    },
+    {
+      path: '/activity/completeEdit',
+      component: activityCompleteEdit,
+      name: 'activityCompleteEdit'
+    },
+    {
+      path: '/activity/invite',
+      component: activityInvite,
+      name: 'activityInvite'
+    },
+    {
+      path: '/activity/inviteAdd',
+      component: activityInviteAdd,
+      name: 'activityInviteAdd'
+    },
+    {
+      path: '/activity/inviteEdit',
+      component: activityInviteEdit,
+      name: 'activityInviteEdit'
+    },
+    {
+      path: '/activity/inviteDetail',
+      component: activityInviteDetail,
+      name: 'activityInviteDetail'
+    },
+    {
+      path: '/activity/recharge',
+      component: activityRecharge,
+      name: 'activityRecharge'
+    },
+    {
+      path: '/activity/rechargeAdd',
+      component: activityRechargeAdd,
+      name: 'activityRechargeAdd'
+    },
+    {
+      path: '/activity/rechargeEdit',
+      component: activityRechargeEdit,
+      name: 'activityRechargeEdit'
+    },
+    {
+      path: '/activity/rechargeDetail',
+      component: activityRechargeDetail,
+      name: 'activityRechargeDetail'
+    },
 
-    {path: '/operate/driver', component: operateDriver, name:'operateDriver'},
-    {path: '/operate/needer', component: operateNeeder, name:'operateNeeder'},
-    {path: '/operate/price', component: operatePrice, name:'operatePrice'},
+    {
+      path: '/operate/driver',
+      component: operateDriver,
+      name: 'operateDriver'
+    },
+    {
+      path: '/operate/needer',
+      component: operateNeeder,
+      name: 'operateNeeder'
+    },
+    {
+      path: '/operate/price',
+      component: operatePrice,
+      name: 'operatePrice'
+    },
 
-    {path: '/article/list', component: articleList, name:'articleList'},
-    {path: '/article/cate', component: articleCate, name:'articleCate'},
-    {path: '/article/drafts', component: articleDrafts, name:'articleDrafts'},
-    {path: '/article/listAdd', component: articleListAdd, name:'articleListAdd'},
-    {path: '/article/listEdit', component: articleListEdit, name:'articleListEdit'},
+    {
+      path: '/article/list',
+      component: articleList,
+      name: 'articleList'
+    },
+    {
+      path: '/article/cate',
+      component: articleCate,
+      name: 'articleCate'
+    },
+    {
+      path: '/article/drafts',
+      component: articleDrafts,
+      name: 'articleDrafts'
+    },
+    {
+      path: '/article/listAdd',
+      component: articleListAdd,
+      name: 'articleListAdd'
+    },
+    {
+      path: '/article/listEdit',
+      component: articleListEdit,
+      name: 'articleListEdit'
+    },
 
-    {path: '/knowledge/logisticsList', component: knowledgeLogisticsList, name:'knowledgeLogisticsList'},
-    {path: '/knowledge/logisticsListAdd', component: knowledgeLogisticsListAdd, name:'knowledgeLogisticsListAdd'},
-    {path: '/knowledge/logisticsListEdit', component: knowledgeLogisticsListEdit, name:'knowledgeLogisticsListEdit'},
+    {
+      path: '/knowledge/logisticsList',
+      component: knowledgeLogisticsList,
+      name: 'knowledgeLogisticsList'
+    },
+    {
+      path: '/knowledge/logisticsListAdd',
+      component: knowledgeLogisticsListAdd,
+      name: 'knowledgeLogisticsListAdd'
+    },
+    {
+      path: '/knowledge/logisticsListEdit',
+      component: knowledgeLogisticsListEdit,
+      name: 'knowledgeLogisticsListEdit'
+    },
 
-    {path: '/knowledge/carTypeAdd', component: knowledgeCarTypeAdd, name:'knowledgeCarTypeAdd'},
-    {path: '/knowledge/carTypeEdit', component: knowledgeCarTypeEdit, name:'knowledgeCarTypeEdit'},
-    {path: '/knowledge/carType', component: knowledgeCarType, name:'knowledgeCarType'},
-    {path: '/knowledge/cancel', component: knowledgeCancel, name:'knowledgeCancel'},
-    {path: '/knowledge/cancelDetail', component: knowledgeCancelDetail, name:'knowledgeCancelDetail'},
-    {path: '/system/account', component: systemAccount, name:'systemAccount'},
-    {path: '/system/accountAdd', component: systemAccountAdd, name:'systemAccountAdd'},
-    {path: '/system/accountEdit', component: systemAccountEdit, name:'systemAccountEdit'},
-    {path: '/system/role', component: systemRole, name:'systemRole'},
-    {path: '/system/roleAdd', component: systemRoleAdd, name:'systemRoleAdd'},
-    {path: '/system/roleEdit', component: systemRoleEdit, name:'systemRoleEdit'},
-    {path: '/server', component: server, name:'server'},
-    {path: '/server/add', component: serverAdd, name:'serveradd'},
-    {path: '/server/edit', component: serverEdit, name:'serverEdit'},
-    {path: '/server/Detail', component: serverDetail, name:'serverDetail'},
-    {path: '/person', component: person, name:'person'},
-    {path: '/person/pwd', component: personPwd, name:'personPwd'},
-    
-    
-//    {path: '/demo', component: Demo, name:'demo'}
+    {
+      path: '/knowledge/carTypeAdd',
+      component: knowledgeCarTypeAdd,
+      name: 'knowledgeCarTypeAdd'
+    },
+    {
+      path: '/knowledge/carTypeEdit',
+      component: knowledgeCarTypeEdit,
+      name: 'knowledgeCarTypeEdit'
+    },
+    {
+      path: '/knowledge/carType',
+      component: knowledgeCarType,
+      name: 'knowledgeCarType'
+    },
+    {
+      path: '/knowledge/cancel',
+      component: knowledgeCancel,
+      name: 'knowledgeCancel'
+    },
+    {
+      path: '/knowledge/cancelDetail',
+      component: knowledgeCancelDetail,
+      name: 'knowledgeCancelDetail'
+    },
+    {
+      path: '/system/account',
+      component: systemAccount,
+      name: 'systemAccount'
+    },
+    {
+      path: '/system/accountAdd',
+      component: systemAccountAdd,
+      name: 'systemAccountAdd'
+    },
+    {
+      path: '/system/accountEdit',
+      component: systemAccountEdit,
+      name: 'systemAccountEdit'
+    },
+    {
+      path: '/system/role',
+      component: systemRole,
+      name: 'systemRole'
+    },
+    {
+      path: '/system/roleAdd',
+      component: systemRoleAdd,
+      name: 'systemRoleAdd'
+    },
+    {
+      path: '/system/roleEdit',
+      component: systemRoleEdit,
+      name: 'systemRoleEdit'
+    },
+    {
+      path: '/server',
+      component: server,
+      name: 'server'
+    },
+    {
+      path: '/server/add',
+      component: serverAdd,
+      name: 'serveradd'
+    },
+    {
+      path: '/server/edit',
+      component: serverEdit,
+      name: 'serverEdit'
+    },
+    {
+      path: '/server/Detail',
+      component: serverDetail,
+      name: 'serverDetail'
+    },
+    {
+      path: '/person',
+      component: person,
+      name: 'person'
+    },
+    {
+      path: '/person/pwd',
+      component: personPwd,
+      name: 'personPwd'
+    },
+    {
+      path: '/message/listEdit',
+      component: messageListEdit,
+      name: 'messageListEdit'
+    },
+
+
+    //    {path: '/demo', component: Demo, name:'demo'}
 
   ]
 })

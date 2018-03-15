@@ -3,37 +3,40 @@
     <div class="box">
 
 
-      <el-button type="primary" size="medium" @click="$router.push({path:'/message/listAdd', query: {'edit': '123'}})" class="edit">重新编辑</el-button>
+      <el-button type="primary" size="medium" @click="$router.push({path:'/message/listEdit', query: {'id': templateShowRes.id}})"
+        class="edit">重新编辑</el-button>
 
       <div class="line2"></div>
       <el-row>
         <el-col :span="8">
-          <p class="p1">标题：我是标题我是标题</p>
-          <p class="p1">推送时间：2018-01-10 00:00:00</p>
-          <p class="p1">活动时间：2018-01-10至 2018-01-18</p>
+          <p class="p1">标题：{{templateShowRes.title}}</p>
+          <p class="p1">推送时间：{{api.toTime(templateShowRes.push_time)}}</p>
+          <p class="p1">活动时间：{{api.toTime(templateShowRes.activity_start_time)}}至 {{api.toTime(templateShowRes.activity_end_time)}}</p>
           <p class="p1">封面图片：
-            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="width:200px; height:150px; display:inline-block; background:#eee; vertical-align:top;"
+            <img :src="templateShowRes.cover_image" style="width:200px; height:150px; display:inline-block; background:#eee; vertical-align:top;"
               alt=""> </p>
         </el-col>
 
         <el-col :span="7">
-          <p class="p1">分类：分类一</p>
-          <p class="p1">状态：已结束</p>
-          <p class="p1">点击量：</p>
-          <p class="p1">送达量：</p>
-          <p class="p1">推送量：</p>
+          <p class="p1">分类：{{templateShowRes.message_category_title}}</p>
+          <p class="p1">状态：{{activity_state[templateShowRes.activity_state]}}</p>
+          <p class="p1">点击量：{{templateShowRes.click_amount}}</p>
+          <p class="p1">送达量：{{templateShowRes.arrived_amount}}</p>
+          <p class="p1">推送量：{{templateShowRes.push_amount}}</p>
         </el-col>
 
         <el-col :span="7">
-          <p class="p1">推送用户：标签一</p>
-          <p class="p1">推送地区：广东省 中山市</p>
-          <p class="p1">点击率：</p>
-          <p class="p1">送达率：</p>
+          <p class="p1">推送用户：{{templateShowRes.push_tags_title}}</p>
+          <p class="p1" >推送地区：{{(templateShowRes.province !=0)? RegionJson[1][templateShowRes.province] + '  ' + RegionJson[templateShowRes.province][templateShowRes.city] : '--' }}</p>
+          <!-- <p class="p1">点击率：{{ (templateShowRes.arrived_amount==0)? '0' : (templateShowRes.click_amount / templateShowRes.arrived_amount
+            * 100).toFixed(2) + '%'}}</p>
+          <p class="p1">送达率：{{ (templateShowRes.push_amount==0)? '0' : (templateShowRes.arrived_amount / templateShowRes.push_amount * 100).toFixed(2) +
+            '%'}}</p> -->
         </el-col>
       </el-row>
 
       <div class="editbox">
-        在这个寒冷的冬季 小熊物流联合灯网、熊居网发暖心福利了 好了接下来 直接进入主题， 从现在起， 我说的每一个字， 都希望认真看懂哈， 因为这是一个事关： 如何0元拿福利的事 新客户0元购保温杯或者莫斯利安（二选一） 老客户可领取红包 人人有份！
+        {{templateShowRes.content}}
       </div>
 
 
@@ -43,17 +46,37 @@
 </template>
 
 <script>
+  import {
+    mapState
+  } from "vuex";
+  import RegionJson from "../assets/json/region.json";
+
   export default {
-    name: '',
+    name: "",
     data() {
       return {
-
-      }
+        RegionJson: {}
+      };
     },
-    created() {},
+    computed: {
+      ...mapState("message", [
+        "templateShow",
+        "templateShowRes",
+        "categoryListRes",
+        "activity_state"
+      ])
+    },
+    created() {
+      this.templateShow.id = this.$route.query.id;
+      this.$store.dispatch("message/categoryList");
+      this.$store.dispatch("message/templateShow").then(data => {
+        console.log(this.templateShowRes);
+      });
+      this.RegionJson = RegionJson;
+    },
     methods: {},
     mounted: function () {}
-  }
+  };
 
 </script>
 
@@ -65,6 +88,9 @@
 
   .p1 {
     line-height: 30px;
+  }
+  .editbox{
+    padding: 20px;
   }
 
 </style>

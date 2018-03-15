@@ -8,10 +8,9 @@
       <el-table :data="list.res" border>
         <el-table-column prop="order" label="排序"></el-table-column>
         <el-table-column prop="title" label="车辆类型名称"></el-table-column>
-        <el-table-column label="车型图片">
-          <template slot-scope="scope">
-
-            <img :src="scope.row.icon" alt="" />
+        <el-table-column label="车型图片" width="150px">
+          <template slot-scope="scope">         
+            <img :src="scope.row.icon_url + '!120px'" alt="" />
           </template>
         </el-table-column>
         <el-table-column prop="total" label="车型数量"></el-table-column>
@@ -44,50 +43,46 @@
 </template>
 
 <script>
-  import {
-    mapState
-  } from "vuex";
-  export default {
-    name: "",
-    data() {
-      return {};
+import { mapState } from "vuex";
+export default {
+  name: "",
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState("cars", ["list", "state"])
+  },
+  created() {
+    this.load();
+  },
+  methods: {
+    changePage(pager) {
+      this.load(pager);
     },
-    computed: {
-      ...mapState("cars", ["list", "state"])
-    },
-    created() {
-      this.load()
-    },
-    methods: {
-      changePage(pager) {
-        this.load(pager);
-      },
-      load(pager) {
-        if (pager) {
-          var sendData = {
-            page: pager,
-            count: this.list.count
-          };
-        } else {
-          var sendData = {
-            page: this.list.page,
-            count: this.list.count,
-            total: 1
-          };
-        }
-
-        this.$store.dispatch("cars/list", sendData).then(data => {
-          this.list.res = data.list;
-          this.list.total = data.list_total ? data.list_total : this.list.total;
-        });
+    load(pager) {
+      if (pager) {
+        var sendData = {
+          page: pager,
+          count: this.list.count
+        };
+      } else {
+        var sendData = {
+          page: this.list.page,
+          count: this.list.count,
+          total: 1
+        };
       }
-    },
-    mounted: function () {}
-  };
 
+      this.$store.dispatch("cars/list", sendData).then(data => {
+        this.list.res = data.list;
+        this.list.total = data.list_total ? data.list_total : this.list.total;
+      });
+    }
+  },
+  mounted: function() {}
+};
 </script>
 
 <style lang="less" scoped>
-
 
 </style>

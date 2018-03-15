@@ -10,30 +10,30 @@ main,
 nav,
 section,
 summary {
-  display: block
+    display: block
 }
 
 audio,
 canvas,
 video {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1
+    display: inline-block;
+    *display: inline;
+    *zoom: 1
 }
 
 audio:not([controls]) {
-  display: none;
-  height: 0
+    display: none;
+    height: 0
 }
 
 [hidden] {
-  display: none
+    display: none
 }
 
 html {
-  font-size: 100%;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%
+    font-size: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
 }
 
 html,
@@ -41,366 +41,367 @@ button,
 input,
 select,
 textarea {
-  font-family: sans-serif
+    font-family: sans-serif
 }
 
 body {
-  margin: 0
+    margin: 0
 }
 
 a:focus {
-  outline: thin dotted
+    outline: thin dotted
 }
 
 a:active,
 a:hover {
-  outline: 0
+    outline: 0
 }
 
 h1 {
-  font-size: 2em;
-  margin: .67em 0
+    font-size: 2em;
+    margin: .67em 0
 }
 
 h2 {
-  font-size: 1.5em;
-  margin: .83em 0
+    font-size: 1.5em;
+    margin: .83em 0
 }
 
 h3 {
-  font-size: 1.17em;
-  margin: 1em 0
+    font-size: 1.17em;
+    margin: 1em 0
 }
 
 h4 {
-  font-size: 1em;
-  margin: 1.33em 0
+    font-size: 1em;
+    margin: 1.33em 0
 }
 
 h5 {
-  font-size: .83em;
-  margin: 1.67em 0
+    font-size: .83em;
+    margin: 1.67em 0
 }
 
 h6 {
-  font-size: .67em;
-  margin: 2.33em 0
+    font-size: .67em;
+    margin: 2.33em 0
 }
 
 abbr[title] {
-  border-bottom: 1px dotted
+    border-bottom: 1px dotted
 }
 
 b,
 strong {
-  font-weight: bold
+    font-weight: bold
 }
 
 blockquote {
-  margin: 1em 40px
+    margin: 1em 40px
 }
 
 dfn {
-  font-style: italic
+    font-style: italic
 }
 
 hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0
 }
 
 mark {
-  background: #ff0;
-  color: #000
+    background: #ff0;
+    color: #000
 }
 
 p,
 pre {
-  margin: 1em 0
+    margin: 1em 0
 }
 
 code,
 kbd,
 pre,
 samp {
-  font-family: monospace, serif;
-  _font-family: 'courier new', monospace;
-  font-size: 1em
+    font-family: monospace, serif;
+    _font-family: 'courier new', monospace;
+    font-size: 1em
 }
 
 pre {
-  white-space: pre;
-  white-space: pre-wrap;
-  word-wrap: break-word
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word
 }
 
 q {
-  quotes: none
+    quotes: none
 }
 
 q:before,
 q:after {
-  content: '';
-  content: none
+    content: '';
+    content: none
 }
 
 small {
-  font-size: 80%
+    font-size: 80%
 }
 
 sub,
 sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
 }
 
 sup {
-  top: -0.5em
+    top: -0.5em
 }
 
 sub {
-  bottom: -0.25em
+    bottom: -0.25em
 }
 
 dl,
 menu,
 ol,
 ul {
-  margin: 1em 0
+    margin: 1em 0
 }
 
 dd {
-  margin: 0 0 0 40px
+    margin: 0 0 0 40px
 }
 
 menu,
 ol,
 ul {
-  padding: 0 0 0 40px
+    padding: 0 0 0 40px
 }
 
 nav ul,
 nav ol {
-  list-style: none;
-  list-style-image: none
+    list-style: none;
+    list-style-image: none
 }
 
 img {
-  border: 0;
-  -ms-interpolation-mode: bicubic
+    border: 0;
+    -ms-interpolation-mode: bicubic
 }
 
 svg:not(:root) {
-  overflow: hidden
+    overflow: hidden
 }
 
 figure {
-  margin: 0
+    margin: 0
 }
 
 form {
-  margin: 0
+    margin: 0
 }
 
 fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: .35em .625em .75em
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: .35em .625em .75em
 }
 
 legend {
-  border: 0;
-  padding: 0;
-  white-space: normal;
-  *margin-left: -7px
+    border: 0;
+    padding: 0;
+    white-space: normal;
+    *margin-left: -7px
 }
 
 button,
 input,
 select,
 textarea {
-  font-size: 100%;
-  margin: 0;
-  vertical-align: baseline;
-  *vertical-align: middle
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+    *vertical-align: middle
 }
 
 button,
 input {
-  line-height: normal
+    line-height: normal
 }
 
 button,
 select {
-  text-transform: none
+    text-transform: none
 }
 
 button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
-  *overflow: visible
+    -webkit-appearance: button;
+    cursor: pointer;
+    *overflow: visible
 }
 
 button[disabled],
 html input[disabled] {
-  cursor: default
+    cursor: default
 }
 
 input[type="checkbox"],
 input[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-  *height: 13px;
-  *width: 13px
+    box-sizing: border-box;
+    padding: 0;
+    *height: 13px;
+    *width: 13px
 }
 
 input[type="search"] {
-  -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
 }
 
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none
+    -webkit-appearance: none
 }
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-  border: 0;
-  padding: 0
+    border: 0;
+    padding: 0
 }
 
 textarea {
-  overflow: auto;
-  vertical-align: top
+    overflow: auto;
+    vertical-align: top
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0
+    border-collapse: collapse;
+    border-spacing: 0
 }
 
 .clearfix:before,
 .clearfix:after {
-  content: '.';
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  font-size: 0;
-  line-height: 0;
-  width: 0;
-  height: 0
+    content: '.';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0
 }
 
 .clearfix:after {
-  clear: both
+    clear: both
 }
 
 .clearfix {
-  zoom: 1
+    zoom: 1
 }
 
 noscript {
-  text-align: center;
-  display: block;
-  background: red;
-  color: #fff;
-  line-height: 30px
+    text-align: center;
+    display: block;
+    background: red;
+    color: #fff;
+    line-height: 30px
 }
 
 .fl {
-  float: left;
-  display: inline
+    float: left;
+    /* display: inline */
 }
 
 .fr {
-  float: right;
-  display: inline
+    float: right;
+    /* display: inline */
 }
 
 .none {
-  display: none
+    display: none
 }
 
 .v-h {
-  visibility: hidden
+    visibility: hidden
 }
 
 .textb {
-  white-space: normal;
-  word-wrap: break-word;
-  word-break: break-all
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all
 }
 
 .textep {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
 }
 
 .unselect {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none
 }
 
 .mb {
-  font-family: Helvetica, STHeiti, Droid Sans Fallback
+    font-family: Helvetica, STHeiti, Droid Sans Fallback
 }
 
 .yh {
-  font-family: "Microsoft YaHei", "微软雅黑", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif
+    font-family: "Microsoft YaHei", "微软雅黑", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif
 }
 
 .st {
-  font-family: "\5B8B\4F53", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif
+    font-family: "\5B8B\4F53", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif
 }
 
 .ht {
-  font-family: "\9ED1\4F53", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif
+    font-family: "\9ED1\4F53", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif
 }
 
 .ar {
-  font-family: "Arial", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif
+    font-family: "Arial", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif
 }
+
 
 /*-- 全局 --*/
 
 body {
-  font-size: 14px;
-  color: #76838f;
+    font-size: 14px;
+    color: #76838f;
 }
 
 .line1 {
-  height: 10px;
+    height: 10px;
 }
 
 .v-h {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 .line2 {
-  height: 20px;
+    height: 20px;
 }
 
 .line3 {
-  height: 30px;
+    height: 30px;
 }
 
 ul,
 li {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 h1,
@@ -409,266 +410,291 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0
+    margin-top: 0
 }
 
 .waring {
-  color: #f56c6c;
+    color: #f56c6c;
 }
 
 .w1000 {
-  width: 1000px;
+    width: 1000px;
 }
 
 .ta-c {
-  text-align: center;
+    text-align: center;
 }
 
 .ta-l {
-  text-align: left;
+    text-align: left;
 }
 
 p {
-  margin: 0;
+    margin: 0;
 }
 
 .main-wrap {
-  min-width: 1000px;
-  display: flex;
-  flex: 1;
-  box-sizing: border-box;
+    /* min-width: 1000px; */
+    overflow: auto;
+    display: flex;
+    flex: 1;
+    box-sizing: border-box;
 }
 
 .page {
-  padding: 20px;
-  overflow: hidden;
-  overflow-y: auto;
+    padding: 20px;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .main-wrap>div {
-  width: 100%;
+    min-width: 1000px;
+    overflow: auto;
+    width: 100%;
 }
 
 dl {
-  margin: 0;
+    margin: 0;
 }
 
 .ov-h {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .flex-leftright {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .el-pagination.is-background .btn-next,
 .el-pagination.is-background .btn-prev,
 .el-pagination.is-background .el-pager li {
-  background: #fff;
+    background: #fff;
 }
 
-
-.user-driver-lable .el-table th.is-leaf{
-  background: transparent;
+.user-driver-lable .el-table th.is-leaf {
+    background: transparent;
 }
 
+.table-nobderheader .el-table__header th {
+    border-left: 0 solid #000;
+    border-top: 0 solid #000;
+    border-right: 0 solid #000;
+    height: 50px;
+}
 
 .el-breadcrumb {
-  height: 40px;
-  line-height: 40px;
+    height: 40px;
+    line-height: 40px;
 }
 
 .el-breadcrumb__item:last-child .el-breadcrumb__inner,
 .el-breadcrumb__item:last-child .el-breadcrumb__inner a,
 .el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover,
 .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
-  color: rgb(118, 131, 143);
+    color: rgb(118, 131, 143);
 }
 
 .el-breadcrumb__inner,
 .el-breadcrumb__inner a {
-  color: rgb(118, 131, 143);
-  font-weight: normal;
+    color: rgb(118, 131, 143);
+    font-weight: normal;
 }
+
 
 /* .el-autocomplete-suggestion li */
 
 .el-autocomplete-suggestion li {
-  padding: 0 20px;
-  margin: 0;
-  cursor: pointer;
-  color: #606266;
-  font-size: 14px;
-  list-style: none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 0;
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-.my-autocomplete li .addr {
-  font-size: 12px;
-  color: #b4b4b4;
-  display: block;
-  line-height: 1.2;
+    padding: 0 20px;
+    margin: 0;
+    cursor: pointer;
+    color: #606266;
+    font-size: 14px;
+    list-style: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
-.my-autocomplete li .name {line-height: 24px}
+.my-autocomplete li .addr {
+    font-size: 12px;
+    color: #b4b4b4;
+    display: block;
+    line-height: 1.2;
+}
+
+.my-autocomplete li .name {
+    line-height: 24px
+}
+
 
 /*-- menu --*/
 
 .el-menu {
-  background: #263238;
-  border-right: 0;
+    background: #263238;
+    border-right: 0;
 }
 
 .el-submenu__title,
 .el-menu-item {
-  color: rgba(163, 175, 183, .9);
+    color: rgba(163, 175, 183, .9);
 }
 
 .el-submenu__title:hover,
 .el-menu-item:focus,
 .el-menu-item:hover {
-  color: rgba(255, 255, 255, .8);
-  background-color: rgba(255, 255, 255, .02);
+    color: rgba(255, 255, 255, .8);
+    background-color: rgba(255, 255, 255, .02);
 }
 
 .el-submenu .el-menu-item {
-  height: 40px;
-  line-height: 40px;
+    height: 40px;
+    line-height: 40px;
 }
 
 .el-menu-item,
 .el-submenu__title {
-  height: 40px;
-  line-height: 40px;
+    height: 40px;
+    line-height: 40px;
 }
 
 .el-menu-item.is-active {
-  background: rgba(0, 0, 0, .06);
-  color: #fff;
+    background: rgba(0, 0, 0, .06);
+    color: #fff;
 }
 
 .el-submenu.is-opened .el-submenu__title {
-  color: #fff;
+    color: #fff;
 }
 
 .el-collapse-item__arrow {
-  margin-right: 8px;
-  transition: transform .3s;
-  float: right;
-  line-height: 48px;
-  font-weight: 300;
+    margin-right: 8px;
+    transition: transform .3s;
+    float: right;
+    line-height: 48px;
+    font-weight: 300;
 }
 
 .el-table::before {
-  display: none;
+    display: none;
 }
 
 a {
-  color: #409EFF;
-  text-decoration: none;
+    color: #409EFF;
+    text-decoration: none;
 }
 
 body,
 html {
-  height: 100%;
+    height: 100%;
 }
 
 #app {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 
 li {
-  list-style: none;
+    list-style: none;
 }
+
 
 /*-- 进度条 --*/
 
 .topprogress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 .topprogress .el-progress-bar__inner,
 .topprogress .el-progress-bar__outer {
-  border-radius: 0;
+    border-radius: 0;
 }
+
 
 /*-- box --*/
 
 .box {
-  background: #fff;
-  padding: 20px;
+    background: #fff;
+    padding: 20px;
 }
 
 .tab-item {
-  border: 1px solid #e4e7ed;
-  border-top: 0;
+    border: 1px solid #e4e7ed;
+    border-top: 0;
 }
 
 .box-card .ct {
-  font-size: 14px;
-  line-height: 30px;
+    font-size: 14px;
+    line-height: 30px;
 }
 
 .box-time h3 {
-  font-weight: normal;
+    font-weight: normal;
 }
 
 .box-time .ct {
-  padding: 10px;
-  background: #fdf6ec;
-  color: #e6a23c;
-  border-radius: 5px;
+    /* padding: 10px; */
+    /* background: #fdf6ec; */
+    color: #e6a23c;
+    border-radius: 5px;
 }
 
 .box-time .p1 {
-  font-size: 14px;
-  margin: 0;
-  line-height: 30px;
+    font-size: 14px;
+    margin: 0;
+    line-height: 30px;
 }
+
 
 /*-- imgbox --*/
 
 .imgbox {
-  width: 200px;
-  text-align: center;
-  position: relative;
-  cursor: pointer;
+    width: 200px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
 }
 
 .imgbox .el-icon-zoom-in {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  font-size: 24px;
-  bottom: 42px;
-  opacity: 0;
-  transition: .3s;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 24px;
+    bottom: 42px;
+    opacity: 0;
+    transition: .3s;
 }
 
 .imgbox:hover .el-icon-zoom-in {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  font-size: 24px;
-  bottom: 42px;
-  opacity: 1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 24px;
+    bottom: 42px;
+    opacity: 1;
 }
+
 
 /*-- 页码 --*/
 
 .pnation {
-  text-align: center;
-  padding-top: 20px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.el-time-spinner.has-seconds .el-time-spinner__wrapper:nth-child(2) {
+    margin-left: 0;
+}
+
+.vue-html5-editor>.toolbar>ul>li[title="info"] {
+    display: none !important;
 }

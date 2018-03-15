@@ -1,22 +1,22 @@
 <template>
   <div class="system-account-add">
     <div class="box">
-      <el-form class="form" label-position="right" label-width="80px" :model="create">
+      <el-form class="form" label-position="right" label-width="80px" :rules="createRules" ref="create" :model="create">
         <el-row :gutter="20">
           <el-col :span="24">
             <div class="box-base">
               <h3 class="title3">基本信息</h3>
 
-              <el-form-item label="用户名">
+              <el-form-item label="用户名" prop="account">
                 <el-input v-model="create.account"></el-input>
               </el-form-item>
-              <el-form-item label="密码">
+              <el-form-item label="密码" prop="password">
                 <el-input type="password" v-model="create.password"></el-input>
               </el-form-item>
-              <el-form-item label="姓名">
+              <el-form-item label="姓名" prop="nickname">
                 <el-input v-model="create.nickname"></el-input>
               </el-form-item>
-              <el-form-item label="手机号">
+              <el-form-item label="手机号" prop="mobile">
                 <el-input v-model="create.mobile"></el-input>
               </el-form-item>
 
@@ -29,7 +29,7 @@
 
             </div>
           </el-col>
-          <el-col :span="24">
+          <el-col :span="24" v-if="false">
             <div class="box-set">
               <h3 class="title3">权限设置</h3>
               <el-tabs type="border-card" value="first" @tab-click="handleClick">
@@ -96,70 +96,92 @@
 </template>
 
 <script>
-  import {
-    mapState
-  } from 'vuex'
+import { mapState } from "vuex";
 
-  export default {
-    name: '',
-    data() {
-      return {
-        rolelist: []
+export default {
+  name: "",
+  data() {
+    return {
+      rolelist: [],
+      createRules: {
+        account: [
+          { required: true, message: "用户名不能为空", trigger: "blur" },
+          { min: 2, max: 20, message: "长度在 2 到 20 个字符", trigger: "blur" }
+        ],
+        password: [
+          { required: true, message: "请输入密码", trigger: "blur" },
+          { min: 8, max: 10, message: "长度在 6 到 10 个字符", trigger: "blur" }
+        ],
+        nickname: [
+          { required: true, message: "名字不能为空", trigger: "blur" },
+          { min: 4, max: 10, message: "长度在 6 到 10 个字符", trigger: "blur" }
+        ],
+        mobile: [
+          { required: true, message: "手机不能为空", trigger: "blur" },
+          {
+            validator: this.api.validateTel,
+            message: "手机格式不对",
+            trigger: "blur"
+          }
+        ]
       }
-    },
-    computed: {
-      ...mapState('admin', ['create'])
-    },
-    created() {
-      this.$store.dispatch('adminGroup/list', {
+    };
+  },
+  computed: {
+    ...mapState("admin", ["create"])
+  },
+  created() {
+    this.$store
+      .dispatch("adminGroup/list", {
         count: 100
-      }).then(data => {
-        this.rolelist = data.list
       })
-    },
-    methods: {
-      save() {
-        console.log(this.create);
-        this.$store.dispatch('admin/create', this.create).then(data => {
-          this.$alert('添加成功', '', {
-            confirmButtonText: '确定',
-            type: 'success',
-            callback: action => {
-              this.$router.back();
-            }
+      .then(data => {
+        this.rolelist = data.list;
+      });
+  },
+  methods: {
+    save() {
+      console.log("std");
+      console.log(this.$refs["create"]);
+      this.$refs["create"].validate(valid => {
+        console.log(valid);
+        if (valid) {
+          this.$store.dispatch("admin/create", this.create).then(data => {
+            this.$alert("添加成功", "", {
+              confirmButtonText: "确定",
+              type: "success",
+              callback: action => {
+                this.$router.back();
+              }
+            });
           });
-        })
-      },
-      handleClick() {
-
-      },
-      handleCheckAllChange() {
-
-      }
+        }
+      });
     },
-    mounted: function () {}
-  }
-
+    handleClick() {},
+    handleCheckAllChange() {}
+  },
+  mounted: function() {}
+};
 </script>
 
 <style lang="less" scoped>
-  .box-base{
-    width: 300px;
-  }
-  .itemgroup {
-    padding-left: 40px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
+.box-base {
+  width: 300px;
+}
+.itemgroup {
+  padding-left: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
-  .save-btn {
-    margin-top: 20px;
-  }
+.save-btn {
+  margin-top: 20px;
+}
 
-  .rolecalss {
-    margin-left: 20px;
-    width: 140px;
-    margin-bottom: 10px;
-  }
-
+.rolecalss {
+  margin-left: 20px;
+  width: 140px;
+  margin-bottom: 10px;
+}
 </style>

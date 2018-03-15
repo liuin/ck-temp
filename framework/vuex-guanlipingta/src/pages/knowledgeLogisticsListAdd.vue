@@ -1,23 +1,23 @@
 <template>
   <div class="system-account-add">        
   <div class="box">
-    <el-form class="form"  label-position="right" label-width="120px" >
+    <el-form class="form" :model="create" ref="ruleForm" :rules="rules" label-position="right" label-width="120px" >
       <el-row>
         <el-col :span="7">
-          <el-form-item label="省份城市">
-           <Region :clearable="true" :selected="region" :limitLen="2" @change="regionCahge" />   
+          <el-form-item label="省份城市" prop="city">
+           <Region :clearable="true" :selected="region" :limitLen="2" @change="regionCahge" @blur="regionBlur" />   
           </el-form-item> 
         </el-col>
        
       </el-row>
       
-      <el-form-item label="园区名称">
+      <el-form-item label="园区名称" prop="title">
         <el-input v-model="create.title"></el-input>
       </el-form-item> 
-      <el-form-item label="具体地址">
+      <el-form-item label="具体地址" prop="address">
         <el-autocomplete
           popper-class="my-autocomplete"
-          v-model="address" class="my-autocomplete1"
+          v-model="create.address" class="my-autocomplete1"
           :fetch-suggestions="querySearch"
           placeholder="请输入内容"
           :debounce="700"
@@ -94,6 +94,18 @@ VueAMap.initAMapApiLoader({
 export default {
   name: "logaddlist",
   data() {
+    var validatePass2 = (rule, value, callback) => {
+      console.log(value);
+      callback(new Error("两次密码不一致"));
+      // if (value == "" || value == undefined) {
+      //   callback(new Error("请再次输入密码"));
+      // } else if (value !== this.changePwd.new_password) {
+      //   callback(new Error("两次输入密码不一致!"));
+      // } else {
+      //   callback();
+      // }
+    };
+
     return {
       map: "",
       aMap: {
@@ -105,7 +117,30 @@ export default {
         autoTip: []
       },
       address: "",
-      currentLabels: []
+      currentLabels: [],
+      rules: {
+        address: {
+          required: true,
+          // validator: validatePass2,
+          message: "地址不能为空",
+          trigger: "blur"
+        },
+        city: [
+          {
+            required: true,
+            message: "省份城市不能为空",
+            trigger: "blur"
+          }
+        ],
+        title: [
+          {
+            required: true,
+            // validator: validatePass2,
+            message: "园区名称不能为空",
+            trigger: "blur"
+          }
+        ]
+      }
     };
   },
   computed: {
@@ -114,6 +149,7 @@ export default {
   },
   created() {
     this.aMap.arr = this.create.locations;
+    // this.$set(this.create, address, "");
   },
   watch: {
     address: _.debounce(function(newValue, oldValue) {
@@ -142,7 +178,7 @@ export default {
     handleIconClick(ev) {
       // console.log(ev);
     },
-    querySearch: function(queryString, cb) {      
+    querySearch: function(queryString, cb) {
       if (_.trim(queryString) == "" || queryString.length < 3) {
         return cb([]);
       }
@@ -150,53 +186,60 @@ export default {
       this.aMap.autocomplete.search(queryString, (status, result) => {
         if (status == "complete") {
           result.tips.map(item => {
-            console.log(item.address);
-            if(item.address != ""){
-              this.aMap.autoTip.push({ value: item.address, address: item.name });
+            if (item.address != "") {
+              this.aMap.autoTip.push({
+                value: item.address,
+                address: item.name
+              });
             }
           });
         }
         cb(this.aMap.autoTip);
       });
     },
-    handleSelect(item) {
-      console.log(item);
-    },
+    handleSelect(item) {},
     save() {
-      var locations = this.aMap.arr.join("|");
-      var sendData = {
-        province: this.region[0],
-        city: this.region[1],
-        title: this.create.title,
-        address: this.address,
-        locations: locations,
-        introduction: this.create.introduction,
-        //          desc: "aaabbb",
-        state: this.create.state
-      };
+      this.$refs["ruleForm"].validate(valid => {
+        if (valid) {
+          console.log(this.aMap);
+          var locations =
+            this.aMap.arr.length > 0 ? this.aMap.arr.join("|") : "";
+          var sendData = {
+            province: this.region[0],
+            city: this.region[1],
+            title: this.create.title,
+            address: this.create.address,
+            locations: locations,
+            introduction: this.create.introduction,
+            //          desc: "aaabbb",
+            state: this.create.state
+          };
 
-      this.$store.dispatch("park/create", sendData).then(data => {
-        this.$alert("创建成功", "", {
-          confirmButtonText: "确定",
-          type: "success",
-          callback: action => {
-            this.$router.back();
-            this.create = {
-              province: 12,
-              city: 223,
-              title: "",
-              address: "",
-              locations: "",
-              introduction: "",
-              desc: "",
-              state: "0"
-            };
-          }
-        });
+          this.$store.dispatch("park/create", sendData).then(data => {
+            this.$alert("创建成功", "", {
+              confirmButtonText: "确定",
+              type: "success",
+              callback: action => {
+                this.$router.back();
+                this.create = {
+                  province: 12,
+                  city: 223,
+                  title: "",
+                  address: "",
+                  locations: "",
+                  introduction: "",
+                  desc: "",
+                  state: "0"
+                };
+              }
+            });
+          });
+        }
       });
     },
     regionCahge(arr, currentLabels) {
       this.currentLabels = currentLabels;
+
       this.create.province = arr[0];
       this.create.city = arr[1];
       this.aMap.geocoder.getLocation(
@@ -212,6 +255,9 @@ export default {
         }
       );
       this.aMap.autocomplete.setCity(arr[1]);
+    },
+    regionBlur(arr, currentLabels) {
+      this.$refs["ruleForm"].validateField("city");
     },
     handleClick() {},
     handleCheckAllChange() {}
@@ -298,8 +344,7 @@ export default {
           path.map(item => {
             _this.aMap.arr.push([item.lng, item.lat]);
           });
-
-          console.log(_this.aMap.arr.join('|'));          
+          console.log(_this.aMap.arr.join("|"));
         },
         false
       );
@@ -355,8 +400,6 @@ export default {
     .name {
       text-overflow: ellipsis;
       overflow: hidden;
-    }
-    .addr {
     }
 
     .highlighted .addr {

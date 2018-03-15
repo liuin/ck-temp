@@ -1,5 +1,5 @@
 <template>
-  <div class="system-account-add">
+  <div class="system-account-add" v-loading="loading">
     <div class="box">
       <el-form class="form" label-position="right" label-width="120px">
         <el-form-item label="排序">
@@ -43,129 +43,125 @@
         <el-form-item label="">
           <el-button @click="save()" type="primary">提　交</el-button>
         </el-form-item>
-
-
-
-
-
       </el-form>
     </div>
   </div>
 </template>
 
 <script>
-  import {
-    mapState
-  } from "vuex";
+import { mapState } from "vuex";
 
-  export default {
-    name: "",
-    data() {
-      return {
-        dialogImageUrl: "",
-        dialogVisible: false,
-        fileList: []
+export default {
+  name: "",
+  data() {
+    return {
+      loading: false,
+      dialogImageUrl: "",
+      dialogVisible: false,
+      fileList: []
+    };
+  },
+  computed: {
+    ...mapState("cars", ["create", "state"]),
+    ...mapState("uploadImg", ["uploadImg"])
+  },
+  created() {
+    // console.log();
+  },
+  methods: {
+    save() {
+      var sendData = {
+        title: this.create.title,
+        icon: this.create.icon,
+        state: this.create.state,
+        order: this.create.order,
+        long: this.create.long,
+        with: this.create.with,
+        high: this.create.high,
+        load: this.create.load
       };
-    },
-    computed: {
-      ...mapState("cars", ["create", "state"]),
-      ...mapState("uploadImg", ["uploadImg"])
-    },
-    created() {
-      // console.log();
-    },
-    methods: {
-      save() {
-        var sendData = {
-          title: this.create.title,
-          icon: this.create.icon,
-          state: this.create.state,
-          order: this.create.order,
-          long: this.create.long,
-          with: this.create.with,
-          high: this.create.high,
-          load: this.create.load
-        };
-
-        if (this.fileList.length > 0 && (this.fileList[0].raw != undefined)) {
-          var reader = new FileReader();
-          reader.readAsDataURL(this.fileList[0].raw);
-          reader.onload = (e) => {
-            var base64 = e.target.result;            
-            this.upImg(base64, (imgData) => {
-              // console.log(imgDat);
-              sendData.icon = imgData.path
-              this.$store.dispatch("cars/create", sendData).then(data => {
+      this.loading = true;
+      if (this.fileList.length > 0 && this.fileList[0].raw != undefined) {
+        var reader = new FileReader();
+        reader.readAsDataURL(this.fileList[0].raw);
+        reader.onload = e => {
+          var base64 = e.target.result;
+          this.upImg(base64, imgData => {
+            // console.log(imgDat);
+            sendData.icon = imgData.path;
+            this.$store
+              .dispatch("cars/create", sendData)
+              .then(data => {
                 this.$alert("添加成功", "", {
                   confirmButtonText: "确定",
                   type: "success",
                   callback: action => {
-                    this.create.title = ""
-                    this.create.state = ""
-                    this.create.icon = ""
+                    this.create.title = "";
+                    this.create.state = "";
+                    this.create.icon = "";
+                    this.loading = false;
                     this.$router.back();
                   }
                 });
+              })
+              .catch(data => {
+                this.loading = false;
               });
-            })
-          }
-        } else {
-                this.$store.dispatch("cars/create", sendData).then(data => {
-                  this.$alert("添加成功", "", {
-                    confirmButtonText: "确定",
-                    type: "success",
-                    callback: action => {
-                      this.create.title = ""
-                      this.create.state = ""
-                      this.create.icon = ""
-                      this.$router.back();
-                    }
-                  });
-                });
-        }
-
-
-
-
-
-      },
-      handleClick() {},
-      handleCheckAllChange() {},
-      upSuccess(response, file, fileList) {        
-        this.create.icon = file.url;
-        this.fileList = fileList
-      },
-      upImg(base64, callback) {
-        var sendData = {
-          folder: this.uploadImg.folder,
-          img: base64
-        }
-        this.$store.dispatch("uploadImg/uploadImg", sendData).then(data => {
-          if (callback) {
-            callback(data)
-          }
-        })
-      },
-      handleRemove(file, fileList) {},
-      handlePictureCardPreview(file) {
-        this.dialogImageUrl = file.url;
-        this.dialogVisible = true;
+          });
+        };
+      } else {
+        this.$store.dispatch("cars/create", sendData).then(data => {
+          this.$alert("添加成功", "", {
+            confirmButtonText: "确定",
+            type: "success",
+            callback: action => {
+              this.create.title = "";
+              this.create.state = "";
+              this.create.icon = "";
+              this.loading = false;
+              this.$router.back();
+            }
+          }).catch(data => {
+            this.loading = false;
+          });
+        });
       }
     },
-    mounted: function () {}
-  };
-
+    handleClick() {},
+    handleCheckAllChange() {},
+    upSuccess(response, file, fileList) {
+      this.create.icon = file.url;
+      this.fileList = fileList;
+    },
+    upImg(base64, callback) {
+      var sendData = {
+        folder: this.uploadImg.folder,
+        img: base64
+      };
+      this.$store.dispatch("uploadImg/uploadImg", sendData).then(data => {
+        if (callback) {
+          callback(data);
+        }
+      });
+    },
+    handleRemove(file, fileList) {},
+    handlePictureCardPreview(file) {
+      this.dialogImageUrl = file.url;
+      this.dialogVisible = true;
+    }
+  },
+  mounted: function() {}
+};
 </script>
 
 <style lang="less" scoped>
-  .itemgroup {
-    padding-left: 40px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
+.itemgroup {
+  padding-left: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
-  .save-btn {
-    margin-top: 20px;
-  }
-
+.save-btn {
+  margin-top: 20px;
+}
 </style>

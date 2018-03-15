@@ -1,143 +1,142 @@
 <template>
   <div class="user-driver-lable user-maker-lable">
-    <div class="box">
-      <el-row type="flex" justify="space-between">
-        <el-col :span="12">
-          <el-form :inline="true" class="demo-form-inline">
-            <el-form-item>
-              <el-input v-model="tagsMakerList.mobile" placeholder="手机号码"></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="search()" icon="el-icon-search">查　询</el-button>
-            </el-form-item>
-          </el-form>
-        </el-col>
+    <el-row type="flex" class="wrap">
+      <el-col :span="4" class="left-side" v-loading="loadingNav">
+        <ul class="list" v-if="!loadingNav">
+          <li @click="lableItem()" :class="{active: showLable.res.id==0}">全部&nbsp;({{allTotle}})</li>
+          <li v-for="item in lablePager.res" :class="{active: showLable.res.id==item.id}" :key="item.id" @click="lableItem(item)">{{item.title}}&nbsp;({{item.total}})</li>
+        </ul>
+        <pnation :currentPage="lablePager.page" v-if="lablePager.total > lablePager.count" @changePage="changeLablePage" :total="lablePager.total"
+          :size="lablePager.count"></pnation>
+      </el-col>
 
-        <el-col :span="3">
-          <el-popover ref="popover1" placement="bottom" v-model="visibleCreateLable" width="160">
-            <h4 style="margin:0">标签名称</h4>
-            <div class="line1"></div>
-            <el-input v-model="create.title"></el-input>
-            <div class="line1"></div>
-            <div style="text-align: right; margin: 0">
-              <el-button size="mini" type="text" @click="visibleCreateLable = false">取消</el-button>
-              <el-button type="primary" size="mini" @click="createLable()">确定</el-button>
-            </div>
-          </el-popover>
+      <el-col :span="20" class="right-side">
+        <div class="rside-inside">
+          <el-row type="flex" justify="space-between">
+            <el-col :span="12">
+              <el-form :inline="true" class="demo-form-inline">
+                <el-form-item>
+                  <el-input v-model="tagsMakerList.mobile" placeholder="手机号码"></el-input>
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="primary" @click="search()" icon="el-icon-search">查　询</el-button>
+                </el-form-item>
+              </el-form>
+            </el-col>
 
-          <el-button type="primary" v-popover:popover1 @click="visibleCreateLable = true" class="btn-new" icon="el-icon-edit">新建标签</el-button>
-        </el-col>
-      </el-row>
-
-      <div class="line2"></div>
-
-      <el-row type="flex" :gutter="20" justify="space-between">
-        <el-col :span="17" v-loading="loadingLable" element-loading-background="rgba(255, 255, 255, 0.5)">
-
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <i class="el-icon-info"></i>&nbsp;
-              <template v-if="showLable.res.id !== 0">
-                <span class="labeltxt">{{showLable.res.title}}</span>
-                <el-popover ref="popover2" placement="bottom" v-model="visibleRnameLable" width="160">
-                  <h4 style="margin:0">标签名称</h4>
-                  <div class="line1"></div>
-                  <el-input v-model="rNameLableVal"></el-input>
-                  <div class="line1"></div>
-                  <div style="text-align: right; margin: 0">
-                    <el-button size="mini" type="text" @click="visibleRnameLable = false">取消</el-button>
-                    <el-button type="primary" size="mini" @click="rNameLable">确定</el-button>
-                  </div>
-                </el-popover>
-
-                <el-popover ref="popover3" placement="bottom" v-model="visibleDelLable" width="160">
-                  <p>确定删除吗?</p>
-                  <div style="text-align: right; margin: 0">
-                    <el-button size="mini" type="text" @click="visibleDelLable = false">取消</el-button>
-                    <el-button type="primary" size="mini" @click="delLable">确定</el-button>
-                  </div>
-                </el-popover>
-
-                <el-button v-popover:popover2>重命名</el-button>
-                <el-button v-popover:popover3 type="danger">删除</el-button>
-              </template>
-              <template v-else>
-                <span>全部厂商用户</span>
-              </template>
-
-            </div>
-            <el-popover ref="popover1" placement="top" class="popover1" width="425" v-model="visible1">
-              <div >
-                <div class="checkbox-box">
-                  <el-checkbox-group v-model="checkListLable">
-                    <el-checkbox v-for="item in lablePager.res" :key="item.id" :label="item.id">{{item.title}}</el-checkbox>
-                  </el-checkbox-group>
-                 
-                </div>
-                <div class="line2"></div>
+            <el-col :span="3">
+              <el-popover ref="popover1" placement="bottom" v-model="visibleCreateLable" width="160">
+                <h4 style="margin:0">标签名称</h4>
+                <div class="line1"></div>
+                <el-input v-model="create.title"></el-input>
+                <div class="line1"></div>
                 <div style="text-align: right; margin: 0">
-                  <el-button size="mini" type="text" @click="visible1 = false">取消</el-button>
-                  <el-button type="primary" size="mini" @click="changeLable">确定</el-button>
+                  <el-button size="mini" type="text" @click="visibleCreateLable = false">取消</el-button>
+                  <el-button type="primary" size="mini" @click="createLable()">确定</el-button>
                 </div>
-  
-              </div>            </el-popover>
-            <div class="hd hd-left">
-              <!-- <el-checkbox>全选</el-checkbox>; -->
-              全选&nbsp;&nbsp;&nbsp;<el-button size="mini" :disabled="visibleCheckListLable" v-popover:popover1>打标签</el-button>
-            </div>
-            <div class="line1"></div>
-            <el-table :data="tagsMakerList.res" row-class-name="user-list" ref="labelListref" @selection-change="handleSelectionChange">
-              <el-table-column  type="selection"  width="55" >
-                 
-              </el-table-column>
-              <el-table-column prop="" label="" width="70">
-                <template slot-scope="scope">
-                  <img :src="scope.row.portrait" alt="" />
-                </template>
-              </el-table-column>
-              <el-table-column prop="" label="" width="">
-                <template slot-scope="scope">
-                  手机号码 : {{scope.row.mobile}}
-                  <br />
-                  <span v-for="item in scope.row.tags" class="labelitem" :key="item.id">{{item.tag_title}}</span>
-                </template>
-              </el-table-column>
-              <!-- <el-table-column prop="" label="" width="200">
-                <template slot-scope="scope">
-                  手机号码 : {{scope.row.mobile}}
-                </template>
-              </el-table-column> -->
-              <el-table-column prop="" label="">
-                <template slot-scope="scope">
-                  所属平台 : <span class="pingtai-item" v-for="item in scope.row.platform_list" :key="item.platform_id">{{item.platform_title}}</span> 
-                </template>
-              </el-table-column>
-            </el-table>
-            <pnation :total="tagsMakerList.total" v-if="tagsMakerList.total > 0" :size="tagsMakerList.count" :currentPage="tagsMakerList.page"
-              @changePage="changePage"></pnation>
-          </el-card>
+              </el-popover>
 
-        </el-col>
-        <el-col :span="7">
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <i class="el-icon-info"></i>&nbsp;
-              <span>
-                <el-button type="text" size="medium" @click="lableItem()">全部</el-button>&nbsp;({{lablePager.total}})</span>
-            </div>
-            <ul class="list">
-              <li v-for="item in lablePager.res" :class="{active: showLable.res.id==item.id}" :key="item.id" @click="lableItem(item)">                
-                {{item.title}}&nbsp;({{item.total}})</li>
-            </ul>
-            <pnation :currentPage="lablePager.page" v-if="lablePager.total > lablePager.count" @changePage="changeLablePage" :total="lablePager.total"
-              :size="lablePager.count"></pnation>
-          </el-card>
-        </el-col>
-      </el-row>
+              <el-button type="primary" v-popover:popover1 @click="visibleCreateLable = true" class="btn-new" icon="el-icon-edit">新建标签</el-button>
+            </el-col>
+          </el-row>
 
+          <div class="line2"></div>
 
+          <el-row type="flex" :gutter="20" justify="space-between">
+            <el-col :span="24" v-loading="loadingLable" element-loading-background="rgba(255, 255, 255, 0.5)">
+              <div class="hd-ctrl clearfix">
+                <i class="el-icon-info"></i>&nbsp;
+                <template v-if="showLable.res.id !== 0">
+                  <span class="labeltxt">{{showLable.res.title}}</span>
+                  <el-popover ref="popover2" placement="bottom" v-model="visibleRnameLable" width="160">
+                    <h4 style="margin:0">标签名称</h4>
+                    <div class="line1"></div>
+                    <el-input v-model="rNameLableVal"></el-input>
+                    <div class="line1"></div>
+                    <div style="text-align: right; margin: 0">
+                      <el-button size="mini" type="text" @click="visibleRnameLable = false">取消</el-button>
+                      <el-button type="primary" size="mini" @click="rNameLable">确定</el-button>
+                    </div>
+                  </el-popover>
 
-    </div>
+                  <el-popover ref="popover3" placement="bottom" v-model="visibleDelLable" width="160">
+                    <p>确定删除吗?</p>
+                    <div style="text-align: right; margin: 0">
+                      <el-button size="mini" type="text" @click="visibleDelLable = false">取消</el-button>
+                      <el-button type="primary" size="mini" @click="delLable">确定</el-button>
+                    </div>
+                  </el-popover>
+
+                  <el-button v-popover:popover2>重命名</el-button>
+                  <el-button v-popover:popover3 type="danger">删除</el-button>
+                </template>
+                <template v-else>
+                  <span>全部司机方用户</span>
+                </template>
+
+              </div>
+              <el-popover ref="popover1" placement="top" class="popover1" width="425" v-model="visible1">
+                <div>
+                  <div class="checkbox-box">
+                    <el-checkbox-group v-model="checkListLable">
+                      <el-checkbox v-for="item in lablePager.res" :key="item.id" :label="item.id">{{item.title}}</el-checkbox>
+                    </el-checkbox-group>
+
+                  </div>
+                  <div class="line2"></div>
+                  <div style="text-align: right; margin: 0">
+                    <el-button size="mini" type="text" @click="visible1 = false">取消</el-button>
+                    <el-button type="primary" size="mini" @click="changeLable">确定</el-button>
+                  </div>
+
+                </div>
+              </el-popover>
+              <div class="line1"></div>
+              <div class="hd hd-left">
+                <!-- <el-checkbox>全选</el-checkbox>; -->
+                <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox> &nbsp;&nbsp;&nbsp;
+                <el-button size="mini" :disabled="visibleCheckListLable" v-popover:popover1>打标签</el-button>
+              </div>
+
+              <el-table class="table-nobderheader" :show-header="false" border :data="tagsMakerList.res" row-class-name="user-list" ref="labelListref"
+                @selection-change="handleSelectionChange">
+                <el-table-column type="selection" width="35">
+
+                </el-table-column>
+                <el-table-column prop="" label="" width="70">
+                  <template slot-scope="scope">
+                    <img :src="scope.row.portrait" alt="" />
+                  </template>
+                </el-table-column>
+
+                <el-table-column prop="" label="" width="">
+                  <template slot-scope="scope">
+                    手机号码 : {{scope.row.mobile}}
+                    <br />
+                    <div class="labelground">
+                      <el-button v-for="item in scope.row.tags" type="success" plain class="labelitem" :key="item.id" size="mini">{{item.tag_title}}</el-button>
+                    </div>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="" label="" width="180">
+                  <template slot-scope="scope">
+                    所属平台 :
+                   
+                      <span v-for="item in scope.row.platform_list"   :key="item.id" size="mini">{{item.platform_title}}</span>
+                   
+                    <!-- <span v-for="(item,index) in scope.row.platform_list" :key="index">&nbsp;{{item.platform_title}}</span> -->
+                  </template>
+                </el-table-column>
+              </el-table>
+              <pnation :total="tagsMakerList.total" v-if="tagsMakerList.total > 0" :size="tagsMakerList.count" :currentPage="tagsMakerList.page"
+                @changePage="changePage"></pnation>
+            </el-col>
+          </el-row>
+
+        </div>
+      </el-col>
+
+    </el-row>
   </div>
 </template>
 
@@ -150,6 +149,8 @@ export default {
   name: "",
   data() {
     return {
+      isIndeterminate: false,
+      checkAll: false,
       visibleCreateLable: false,
       visibleRnameLable: false,
       rNameLableVal: "",
@@ -161,7 +162,9 @@ export default {
       visibleCheckListLable: true,
       listLabel: [],
       tableSelect: [],
-      loadingLable: false
+      loadingLable: false,
+      allTotle: 0,
+      loadingNav: false
     };
   },
   computed: {
@@ -186,14 +189,30 @@ export default {
   created() {
     this.loadLable();
     // console.log(RegionJson);
-    this.$store.dispatch("tags/tagsMakerList");
+    this.loadingNav = true;
+    this.$store.dispatch("tags/tagsMakerList").then(data => {
+      this.loadingNav = false;
+    });
     this.RegionJson = RegionJson;
     // this.loadLableShow();
-    // this.lableItem()
+    this.lableItem();
   },
   methods: {
-    search(){
+    search() {
       this.$store.dispatch("tags/tagsMakerList");
+    },
+    handleCheckAllChange(val) {
+      // this.checkedCities = val ? cityOptions : [];
+      this.isIndeterminate = false;
+      if (val) {
+        this.tagsMakerList.res.forEach(item => {
+          this.$refs.labelListref.toggleRowSelection(item, true);
+        });
+      } else {
+        this.tagsMakerList.res.forEach(item => {
+          this.$refs.labelListref.toggleRowSelection(item, false);
+        });
+      }
     },
     handleSelectionChange(item) {
       this.checkListLable = [];
@@ -208,6 +227,13 @@ export default {
         item[0].tags.map(itemsub => {
           this.checkListLable.push(itemsub.id);
         });
+      }
+      if (item.length == 0) {
+        this.isIndeterminate = false;
+      } else if (item.length == this.tagsMakerList.res.length) {
+        this.isIndeterminate = false;
+      } else {
+        this.isIndeterminate = true;
       }
 
       this.tableSelect = item;
@@ -255,6 +281,8 @@ export default {
     },
 
     lableItem(item) {
+      this.checkAll = false;
+
       if (item) {
         this.tagsMakerList.tags_id = item.id;
         this.showLable.res = item;
@@ -271,6 +299,7 @@ export default {
         if (item) {
         } else {
           this.tagsMakerListAll = this.tagsMakerList.res;
+          this.allTotle = data.list_total;
         }
       });
     },
@@ -375,6 +404,7 @@ export default {
       this.$store.dispatch("tags/labelList", sendDate).then(data => {
         this.lablePager.res = data.list;
         this.lablePager.total = data.list_total || this.lablePager.total;
+        this.checkAll = false;
       });
     }
   },
@@ -385,6 +415,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.user-driver-lable {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  .wrap {
+    width: 100%;
+  }
+}
+
 .labeltxt {
   display: inline-block;
   min-width: 100px;
@@ -398,15 +437,14 @@ export default {
   padding-bottom: 10px;
   font-size: 16px;
 }
+
 .labelitem {
-  color: #409eff;
-  border: 1px solid #409eff;
-  display: inline-block;
-  border-radius: 6px;
-  line-height: 17px;
-  padding: 0 9px;
+  margin-left: 0;
   margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: default;
 }
+
 .checkbox-box {
   overflow: hidden;
   label {
@@ -425,28 +463,62 @@ export default {
   margin-left: auto;
 }
 
-.list {
-  font-size: 14px;
-  line-height: 30px;
-  li {
-    color: #409eff;
-    cursor: pointer;
-    padding: 0 10px;
-    &:hover,
-    &.active {
-      background: #f5f7fa;
-    }
-  }
-}
-.hd-left {
-  position: relative;
-  z-index: 10;
-  margin-left: 31px;
-  margin-bottom: -43px;
-}
-.pingtai-item{
+.pingtai-item {
   margin-right: 20px;
   display: inline-box;
 }
 
+.hd-left {
+  position: relative;
+  z-index: 10;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.hd-ctrl {
+  height: 40px;
+  line-height: 40px;
+}
+
+.rside-inside {
+  background: #fff;
+  padding: 20px;
+  margin-left: 20px;
+  margin-right: -20px;
+}
+
+.left-side {
+  background: #fff;
+  margin: -20px;
+  margin-right: 0;
+  border-right: 1px solid #eee;
+  .list {
+    li {
+      padding: 13px 20px;
+      margin-bottom: 1px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      border: none;
+      border-radius: 0;
+      color: #76838f;
+      box-sizing: border-box;
+      line-height: 22px;
+    }
+    li:hover,
+    li.active {
+      color: #62a8ea;
+      background-color: #f1f4f5;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.labelground {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
 </style>

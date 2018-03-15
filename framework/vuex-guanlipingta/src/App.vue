@@ -7,7 +7,7 @@
     <!-- /空布局 -->
 
     <template v-if="$store.state.login.token == ''">
-      <el-main>
+      <el-main class="login-main">
         <transition name="el-fade-in-linear">
           <router-view/>
         </transition>
@@ -55,68 +55,71 @@
 </template>
 
 <script>
-  import leftMenu from "@/components/leftMenu";
-  //import breadcrumb from '@/components/breadcrumb.vue'
-  //import pnation from '@/components/pnation.vue'
-  export default {
-    name: "App",
-    components: {
-      leftMenu
-    },
-    methods: {
-      loginOut() {
-
-        // this.$router.push("/login");
-        this.$store.dispatch("admin/logout").then(data => {
-        
-          this.$store.commit('setState', [{
+import leftMenu from "@/components/leftMenu";
+//import breadcrumb from '@/components/breadcrumb.vue'
+//import pnation from '@/components/pnation.vue'
+export default {
+  name: "App",
+  components: {
+    leftMenu
+  },
+  methods: {
+    loginOut() {
+      // this.$router.push("/login");
+      this.$store.dispatch("admin/logout").then(data => {
+        this.$store.commit("setState", [
+          {
             aid: "",
             token: ""
-          }, this.$store.state.login])
-          sessionStorage.setItem('aid', "");
-          sessionStorage.setItem('token', "");
-          sessionStorage.setItem('nickname', "")
+          },
+          this.$store.state.login
+        ]);
+        sessionStorage.setItem("aid", "");
+        sessionStorage.setItem("token", "");
+        sessionStorage.setItem("nickname", "");
 
-          this.$router.push("/login");
-        });
-      }
+        this.$router.push("/login");
+      });
     }
-  };
-
+  }
+};
 </script>
 
 <style lang="less" scoped>
-  .header {
-    background: #4397e6;
-    color: #fff;
-    .row1 {
-      height: 100%;
-    }
+.header {
+  background: #4397e6;
+  color: #fff;
+  .row1 {
+    height: 100%;
   }
+}
 
-  .c20 {
-    text-align: right;
-  }
+.c20 {
+  text-align: right;
+}
 
-  .admin {
-    color: #fff;
-    display: inline-block;
-    margin-left: auto;
-  }
+.admin {
+  color: #fff;
+  display: inline-block;
+  margin-left: auto;
+}
 
-  h1 {
-    margin: 0;
-  }
+h1 {
+  margin: 0;
+}
 
-  .aside-left {
-    background: #263238;
-  }
+.aside-left {
+  background: #263238;
+}
 
-  .app-main {
-    background: #f1f4f5;
-    padding-top: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
+.app-main {
+  background: #f1f4f5;
+  padding-top: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.login-main {
+  height: 100%;
+}
 </style>

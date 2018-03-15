@@ -11,7 +11,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="文章内容">
-          <el-input v-model="articleUpdate.content" type="textarea" :rows="10"></el-input>
+          <editHTML :content.sync="articleUpdate.content"></editHTML>
         </el-form-item>
   
         <el-form-item label="">
@@ -25,6 +25,7 @@
 
 <script>
 import { mapState } from "vuex";
+import editHTML from "@/components/editHtml.vue";
 
 export default {
   name: "",
@@ -34,6 +35,9 @@ export default {
   computed: {
     ...mapState("articleCategory", ["articleUpdate", "list"])
   },
+  components: {
+    editHTML
+  },
   created() {
     this.getCate();
 
@@ -42,7 +46,7 @@ export default {
         .dispatch("articleCategory/articleShow", { id: this.$route.query.id })
         .then(data => {
           this.articleUpdate.title = data.article.title;
-          this.articleUpdate.id = data.article.id;          
+          this.articleUpdate.id = data.article.id;
           this.articleUpdate.category_id = data.article.id;
           this.articleUpdate.content = data.article.content;
         });

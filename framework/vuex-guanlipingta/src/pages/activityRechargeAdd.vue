@@ -4,11 +4,13 @@
     <div class="box">
       <el-form label-position="right" label-width="120px">
         <el-form-item label="活动名称">
-          <el-input></el-input>
+          <el-input v-model="activityCreate.title"></el-input>
         </el-form-item>
+
   
         <el-form-item label="活动时间">
           <el-date-picker
+            v-model="activityCreateTime"
             type="daterange"
             range-separator="至"
             start-placeholder="开始日期"
@@ -16,38 +18,30 @@
           </el-date-picker>
         </el-form-item>
   
-        <el-form-item label="活动规则">
-          <el-button>新增</el-button>
-          <div class="line1"></div>
-          <el-table border class="table-add"    :data="[{id:18821214125},{}]"  >
-            <el-table-column prop="id" label="充值金额" >
+        <el-form-item label="活动规则">          
+          <el-table border class="table-add"    :data="activityCreateRules"  >
+            <el-table-column prop="id" label="充值金额(元)" >
               <template slot-scope="scope">
-                <el-input></el-input>
+                <el-input v-model.number="scope.row.done" type="number"></el-input>
               </template>
             </el-table-column>      
-            <el-table-column prop="" label="赠送金额" >
+            <el-table-column prop="" label="赠送金额(元)" >
               <template slot-scope="scope">
-                <el-input></el-input>
+                <el-input v-model.number="scope.row.money" type="number"></el-input>
               </template>
             </el-table-column>      
             <el-table-column prop="" label="操作" ><template slot-scope="scope">
-                <el-popover ref="popover1"  placement="top"  width="160"  >
-                     <p>确定删除吗?</p>
-                     <div class="line2"></div>
-                      <div style="text-align: right; margin: 0">
-                        <el-button size="mini" type="text" @click="change(scope.$index, scope.row, scope)">取消</el-button>
-                        <el-button type="primary" size="mini" @click="change(scope.$index, scope.row, scope)">确定</el-button>
-                      </div>
-                 </el-popover><el-button size="mini" v-popover:popover1>删除</el-button>              
+                 <delBtn @del="del(scope.$index)"></delBtn>
               </template>
             </el-table-column>  
           </el-table> 
-  
+          <div class="line1"></div>
+          <el-button @click="addRow()" type="primary" class="add-btn" >新增</el-button>
         </el-form-item>
   
   
         <el-form-item label="" style="margin-bottom:0">
-          <el-button size="medium" type="primary">保存</el-button>
+          <el-button size="medium" type="primary" @click="activityCreateCall(type)">保存</el-button>
         </el-form-item>
     
       </el-form>
@@ -57,23 +51,39 @@
 </template>
 
 <script>
+import { activityCreate } from "../store/modules/activity.js";
 
-  export default {
-    name: '',
-    data() {
-      return {
-        
-      }
+export default {
+  name: "activityRechargeAdd",
+  mixins: [activityCreate],
+  data() {
+    return {
+      type: 1
+    };
+  },
+  watch: {},
+  created() {},
+  methods: {
+    addRow() {
+      this.activityCreateRules.push({
+        done: "",
+        money: ""
+      });
     },
-    created() {
-    },
-    methods: {      
-    },
-    mounted:function(){
+    del(index) {
+      this.activityCreateRules.splice(index);
     }
-  }
+  },
+  mounted: function() {}
+};
 </script>
 
 <style lang="less" scoped>
-  .table-add {width: 500px;}
+.table-add {
+  width: 500px;
+}
+.add-btn {
+  display: block;
+  margin-left: 445px;
+}
 </style>

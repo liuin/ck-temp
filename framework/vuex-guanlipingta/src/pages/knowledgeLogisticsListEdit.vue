@@ -381,10 +381,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.form {
-}
-.tab-item {
-}
+
 
 .itemgroup {
   padding-left: 40px;

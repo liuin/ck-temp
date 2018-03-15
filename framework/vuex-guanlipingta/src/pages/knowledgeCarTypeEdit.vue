@@ -1,5 +1,5 @@
 <template>
-  <div class="system-account-add">
+  <div class="system-account-add" v-loading="loading">
 
     <div class="line2"></div>
     <div class="box">
@@ -56,132 +56,143 @@
 </template>
 
 <script>
-  import {
-    mapState
-  } from "vuex";
+import { mapState } from "vuex";
 
-  export default {
-    name: "",
-    data() {
-      return {
-        dialogImageUrl: "",
-        dialogVisible: false,
-        file: "",
-        fileList: []
-      };
-    },
-    computed: {
-      ...mapState("cars", ["update", "state"]),
-      ...mapState("uploadImg", ["uploadImg"])
-    },
-    created() {
-      this.$store
-        .dispatch("cars/show", {
-          id: this.$route.query.id
-        })
-        .then(data => {
-          this.update.high = data.cars.high;
-          this.update.icon = data.cars.icon;
-          this.update.order = data.cars.order;
-          this.update.id = data.cars.id;
-          this.update.load = data.cars.load;
-          this.update.long = data.cars.long;
-          this.update.state = data.cars.state;
-          this.update.title = data.cars.title;
-          this.update.with = data.cars.with;
+export default {
+  name: "",
+  data() {
+    return {
+      dialogImageUrl: "",
+      dialogVisible: false,
+      file: "",
+      loading: false,
+      fileList: [],
+      baseIcon: ""
+    };
+  },
+  computed: {
+    ...mapState("cars", ["update", "state"]),
+    ...mapState("uploadImg", ["uploadImg"])
+  },
+  created() {
+    this.$store
+      .dispatch("cars/show", {
+        id: this.$route.query.id
+      })
+      .then(data => {
+        this.update.high = data.cars.high;
+        this.update.icon = data.cars.icon;
+        this.update.order = data.cars.order;
+        this.update.id = data.cars.id;
+        this.update.load = data.cars.load;
+        this.update.long = data.cars.long;
+        this.update.state = data.cars.state;
+        this.update.title = data.cars.title;
+        this.update.with = data.cars.with;
 
-          var icons = {
-            name: "",
-            url: data.cars.icon
-          };
-          this.fileList.push(icons);
-        });
-    },
-    methods: {
-      save() {
-        var sendData = {
-          id: this.update.id,
-          title: this.update.title,
-          icon: this.update.icon,
-          state: this.update.state,
-          order: this.update.order,
-          long: this.update.long,
-          with: this.update.with,
-          high: this.update.high,
-          load: this.update.load
+        var icons = {
+          name: "",
+          url: data.cars.icon_url + "!desc"
         };
-        if (this.fileList.length > 0 && (this.fileList[0].raw != undefined)) {
-          var reader = new FileReader();
-          reader.readAsDataURL(this.fileList[0].raw);
-          reader.onload = (e) => {
-            var base64 = e.target.result;            
-            this.upImg(base64, (imgData) => {
-              sendData.icon = imgData.path
-              this.$store.dispatch("cars/update", sendData).then(data => {
+        this.fileList.push(icons);
+      });
+  },
+  methods: {
+    save() {
+      var sendData = {
+        id: this.update.id,
+        title: this.update.title,
+        icon: this.update.icon,
+        state: this.update.state,
+        order: this.update.order,
+        long: this.update.long,
+        with: this.update.with,
+        high: this.update.high,
+        load: this.update.load
+      };
+
+      this.loading = true;
+
+      if (this.fileList.length > 0 && this.fileList[0].raw != undefined) {
+        var reader = new FileReader();
+        reader.readAsDataURL(this.fileList[0].raw);
+        reader.onload = e => {
+          var base64 = e.target.result;
+          this.upImg(base64, imgData => {
+            sendData.icon = imgData.path;
+            this.$store
+              .dispatch("cars/update", sendData)
+              .then(data => {
                 this.$alert("编辑成功", "", {
                   confirmButtonText: "确定",
                   type: "success",
-                  callback: action => {                   
+                  callback: action => {
                     this.$router.back();
+                    this.loading = false;
                   }
                 });
+              })
+              .catch(data => {
+                this.loading = false;
               });
-            })
-          }        
-        } else {
-          this.$store.dispatch("cars/update", sendData).then(data => {
+          });
+        };
+      } else {
+        this.$store
+          .dispatch("cars/update", sendData)
+          .then(data => {
             this.$alert("编辑成功", "", {
               confirmButtonText: "确定",
               type: "success",
               callback: action => {
                 this.$router.back();
+                this.loading = false;
               }
             });
+          })
+          .catch(data => {
+            this.loading = false;
           });
-        }
-
-
-      },
-      upImg(base64, callback) {
-        var sendData = {
-          folder: this.uploadImg.folder,
-          img: base64
-        }
-        this.$store.dispatch("uploadImg/uploadImg", sendData).then(data => {
-          if (callback) {
-            callback(data)
-          }
-        })
-      },      
-      handleClick() {},
-      handleCheckAllChange() {},
-      upSuccess(response, file, fileList) {
-        this.update.icon = file.url;
-        this.fileList = fileList        
-      },
-      handleRemove(file, fileList) {
-        this.fileList = fileList
-        this.update.icon = "";
-      },
-      handlePictureCardPreview(file) {
-        this.dialogImageUrl = file.url;
-        this.dialogVisible = true;
       }
     },
-    mounted: function () {}
-  };
-
+    upImg(base64, callback) {
+      var sendData = {
+        folder: this.uploadImg.folder,
+        img: base64
+      };
+      this.$store.dispatch("uploadImg/uploadImg", sendData).then(data => {
+        if (callback) {
+          callback(data);
+        }
+      });
+    },
+    handleClick() {},
+    handleCheckAllChange() {},
+    upSuccess(response, file, fileList) {
+      this.update.icon = file.url;
+      this.fileList = fileList;
+    },
+    handleRemove(file, fileList) {
+      this.fileList = fileList;
+      this.update.icon = "";
+    },
+    handlePictureCardPreview(file) {
+      this.dialogImageUrl = file.url;
+      this.dialogVisible = true;
+    }
+  },
+  mounted: function() {}
+};
 </script>
 
 <style lang="less" scoped>
-  .itemgroup {
-    padding-left: 40px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
+.itemgroup {
+  padding-left: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
-  .save-btn {
-    margin-top: 20px;
-  }
-
+.save-btn {
+  margin-top: 20px;
+}
 </style>

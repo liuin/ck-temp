@@ -24,6 +24,10 @@ api.url.leftMenu = api.path + '/sysMenu/listOnSidebar' + api.pathEnd; //左边�
 //左边目录
 api.url.uploadLeftMenu = api.path + '/zithan/importMenu' + api.pathEnd; //更新左边目录
 api.url.sysMenuListInAccess = api.path + '/sysMenu/listInAccess' + api.pathEnd; //获取权限列表
+api.url.sysMenuListInAccessByAdmin = api.path + '/sysMenu/listInAccessByAdmin' + api.pathEnd; //根据adminID权限列表
+api.url.sysMenuListInAccessByGroup = api.path + '/sysMenu/listInAccessByGroup' + api.pathEnd; //根据GroupId权限列表
+api.url.adminSaveMenuAccess = api.path + '/admin/saveMenuAccess' + api.pathEnd; //保存账户权限
+api.url.sysmenuSaveMenuAccess = api.path + '/admingroup/saveMenuAccess' + api.pathEnd; //保存角色权限
 
 
 //角色
@@ -81,6 +85,7 @@ api.url.carsTotal = api.path + '/cars/total' + api.pathEnd;
 api.url.ordersList = api.path + '/orders/list' + api.pathEnd;
 api.url.ordersShow = api.path + '/orders/show' + api.pathEnd;
 api.url.ordersDispose = api.path + '/orders/dispose' + api.pathEnd;
+api.url.ordersLogById = api.path + '/orders/logById' + api.pathEnd;
 
 //订单取消原因
 api.url.ordersCanceledReasonCreate = api.path + '/ordersCanceledReason/create' + api.pathEnd;
@@ -88,6 +93,7 @@ api.url.ordersCanceledReasonUpdate = api.path + '/ordersCanceledReason/update' +
 api.url.ordersCanceledReasonShow = api.path + '/ordersCanceledReason/show' + api.pathEnd;
 api.url.ordersCanceledReasonList = api.path + '/ordersCanceledReason/list' + api.pathEnd;
 api.url.ordersCanceledReasonTotal = api.path + '/ordersCanceledReason/total' + api.pathEnd;
+api.url.ordersCanceledReasonListByReason = api.path + '/ordersCanceledReason/listByReason' + api.pathEnd;
 
 //评论
 api.url.commentList = api.path + '/comment/list' + api.pathEnd;
@@ -128,6 +134,31 @@ api.url.warehouseListByMaker = api.path + '/warehouse/listByMaker' + api.pathEnd
 //目的地(物流公司) / 根据厂商id获取目的地
 api.url.companyListByMaker = api.path + '/company/listByMaker' + api.pathEnd;
 
+//消息模块
+api.url.messageCategoryCreate = api.path + '/messageCategory/create' + api.pathEnd;
+api.url.messageCategoryUpdate = api.path + '/messageCategory/update' + api.pathEnd;
+api.url.messageCategoryShow = api.path + '/messageCategory/show' + api.pathEnd;
+api.url.messageCategoryList = api.path + '/messageCategory/list' + api.pathEnd;
+api.url.messageTemplateCreate = api.path + '/messageTemplate/create' + api.pathEnd;
+api.url.messageTemplateUpdate = api.path + '/messageTemplate/update' + api.pathEnd;
+api.url.messageTemplateShow = api.path + '/messageTemplate/show' + api.pathEnd;
+api.url.messageTemplateList = api.path + '/messageTemplate/list' + api.pathEnd;
+api.url.messageTemplatePauseOrStart = api.path + '/messageTemplate/pauseOrStart' + api.pathEnd;
+api.url.messageTemplateDestroyDraft = api.path + '/messageTemplate/destroyDraft' + api.pathEnd;
+
+//活动管理
+api.url.activityCreate = api.path + '/activity/create';
+api.url.activityUpdate = api.path + '/activity/update';
+api.url.activityShow = api.path + '/activity/show';
+api.url.activityList = api.path + '/activity/list';
+api.url.activityPauseOrStart = api.path + '/activity/pauseOrStart';
+
+//财务模块
+api.url.driveramountDrawList = api.path + '/driveramount/drawList' + api.pathEnd;
+api.url.makeramountRechargeList = api.path + '/makeramount/rechargeList' + api.pathEnd;
+api.url.makeramountPayList = api.path + '/makeramount/payList' + api.pathEnd;
+
+
 api.ajaxHandle = function (res, options) {
   // store.commit('setState',[{ajaxLoad: false}])
 
@@ -153,9 +184,8 @@ api.ajaxHandle = function (res, options) {
           callback: action => {}
         });
 
-      } else if (400) {
-
-        if (data.msg == '非法token' || data.msg == 'token已过期请重新登录') {
+      } else if (data.status == 400 || data.status == 20101 || 400) {
+        if (data.msg.indexOf('token') > -1 || data.msg == 'token已过期请重新登录') {
           store.commit('login/changeToken', '');
           router.push('/login')
           return false
@@ -169,7 +199,7 @@ api.ajaxHandle = function (res, options) {
         options.error && options.error(data.msg);
       } else {
         //				Toast({message:data.msg,duration:1000});
-        MessageBox.alert(data.msg, '', {
+        MessageBox.alert((data.msg && data.msg != "") ? data.msg : '数据出错', '', {
           confirmButtonText: '确定',
           type: 'error',
           callback: action => {}
@@ -204,6 +234,16 @@ api.ajax = function (options) {
       }
     }).then(res => {
       api.ajaxHandle(res, options);
+    }).catch(res => {
+      MessageBox.alert('请求出错', '', {
+        confirmButtonText: '确定',
+        type: 'error',
+        callback: action => {
+          if (options.error) {
+            options.error()
+          }
+        }
+      });
     });
   } else {
     //    if (store.getters['login/getToken'] == "") {
@@ -218,6 +258,16 @@ api.ajax = function (options) {
       }
     }).then(res => {
       api.ajaxHandle(res, options);
+    }).catch(res => {
+      MessageBox.alert('请求出错', '', {
+        confirmButtonText: '确定',
+        type: 'error',
+        callback: action => {
+          if (options.error) {
+            options.error()
+          }
+        }
+      });
     });
     //    }
   }
@@ -226,6 +276,9 @@ api.ajax = function (options) {
 
 //时间戳
 api.toTime = function (timeVal) {
+  if (timeVal == 0) {
+    return 0;
+  }
   var newDate = new Date();
   newDate.setTime(timeVal * 1000);
   return newDate.toLocaleString();
@@ -239,7 +292,7 @@ api.toTime = function (timeVal) {
 api.toLocations = function (loc) {
   var ar = loc.split('|');
   var ar1 = []
-  ar.map(item=>{
+  ar.map(item => {
     item = item.split(',')
     ar1.push(item)
   })
@@ -247,8 +300,69 @@ api.toLocations = function (loc) {
   return ar1
 }
 
-api.spImg = function(str){
+api.spImg = function (str) {
   return str.split(",")
+}
+
+api.removeEmpty = function (obj) {
+  let cloneObj = {}
+  for (const key in obj) {
+    if (obj[key] != "") {
+      cloneObj[key] = obj[key];
+    }
+  }
+  return cloneObj
+}
+
+api.imgdesc = function (img, size) {
+  if (img) {
+    if (img.indexOf('!') == -1) {
+
+      if (size) {
+        if (size == 'false') {
+
+        } else if (/^\!/.test(size)) {
+          img = img + size;
+        } else {
+          img = img + '!' + size;
+        }
+      } else {
+        img = img + '!desc';
+      }
+    }
+  }
+  return img;
+}
+
+api.validateTel = function (rule, str, callback) {
+  // console.log(rule);
+  var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+
+  if (myreg.test(str)) {
+    callback()
+  } else {
+    callback(new Error(rule.message));
+    // return false;
+  }
+}
+
+api.filetrArr = function (tgArr, ftArr) {
+  var arr = []
+  var flArr = []
+
+  tgArr.forEach(element => {
+    var check = false;
+    ftArr.forEach(elementSub => {
+      if (element == elementSub) {
+        check = true
+      }
+    });
+    (check == true) ? flArr.push(element): arr.push(element);
+  });
+  return {
+    arr: arr,
+    flArr: flArr
+  };
 }
 
 

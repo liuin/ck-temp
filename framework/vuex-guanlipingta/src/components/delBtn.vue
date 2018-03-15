@@ -1,18 +1,14 @@
 <template>
   <div class="button">
-      <el-popover ref="popover1"  placement="top" v-model="visible"  width="160"  >
-             <p>确定删除?</p>
-             <div class="line2"></div>
-              <div style="text-align: right; margin: 0">
-                <el-button size="mini" type="text" @click="visible = false">取消</el-button>
-                <el-button type="primary" size="mini" @click="handleDelete()">确定</el-button>
-              </div>
-            </el-popover>
-
-          <el-button
-            size="mini"
-            type="danger"
-             v-popover:popover1>删除</el-button>
+    <el-popover ref="popover1" placement="top" v-model="visible" width="160">
+      <p>确定删除?</p>
+      <div class="line2"></div>
+      <div style="text-align: right; margin: 0">
+        <el-button size="mini" type="text" @click="visible = false">取消</el-button>
+        <el-button type="primary" size="mini" @click="handleDelete()">确定</el-button>
+      </div>
+    </el-popover>
+    <el-button size="mini" type="danger" v-popover:popover1>删除</el-button>
 
   </div>
 </template>

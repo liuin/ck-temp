@@ -44,7 +44,10 @@ const cars = {
 
   },
   actions: {
-    create({ state, commit }, sendData) {
+    create({
+      state,
+      commit
+    }, sendData) {
       return new Promise((resolve, reject) => {
         api.ajax({
           type: "post",
@@ -54,12 +57,15 @@ const cars = {
             resolve(data);
           },
           error: data => {
-
+            reject(data)
           }
         });
       })
     },
-    update({ state, commit }, sendData) {
+    update({
+      state,
+      commit
+    }, sendData) {
       return new Promise((resolve, reject) => {
         api.ajax({
           type: "post",
@@ -69,13 +75,16 @@ const cars = {
             resolve(data);
           },
           error: data => {
-
+            reject(data)
           }
         });
       })
     },
 
-    show({ state, commit }, sendData) {
+    show({
+      state,
+      commit
+    }, sendData) {
       return new Promise((resolve, reject) => {
         api.ajax({
           type: "get",
@@ -85,13 +94,17 @@ const cars = {
             resolve(data);
           },
           error: data => {
+            reject(data)
 
           }
         });
       })
     },
 
-    list({ state, commit }, sendData) {
+    list({
+      state,
+      commit
+    }, sendData) {
       return new Promise((resolve, reject) => {
         api.ajax({
           type: "post",
@@ -101,6 +114,7 @@ const cars = {
             resolve(data);
           },
           error: data => {
+            reject(data)
 
           }
         });

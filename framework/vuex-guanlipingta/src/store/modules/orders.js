@@ -1,3 +1,38 @@
+const ordersLog = {
+  data() {
+    return {
+      ordersLogId: this.$route.query.id || 0,
+      ordersLogState: {
+        1: "系统",
+        2: "司机",
+        3: "厂商"
+      },
+      ordersLogList: []
+    }
+  },
+  created() {
+    this.ordersLogLoad();
+  },
+  methods: {
+    ordersLogLoad() {
+      this.api.ajax({
+        type: "post",
+        url: this.api.url.ordersLogById,
+        data: {
+          id: this.ordersLogId
+        },
+        // dataType: "dataType",
+        success: data => {
+          this.ordersLogList = data.orders_log;
+        }
+      });
+    }
+  },
+  mounted: function () {}
+}
+
+
+
 const orders = {
   namespaced: true,
   state: {
@@ -37,7 +72,7 @@ const orders = {
     dispose: {
       id: "",
       state: "",
-      description:""
+      description: ""
     }
   },
   getters: {
@@ -45,6 +80,9 @@ const orders = {
       var arr = {};
       for (var i in state.list) {
         if (i == 'created') {
+          if (state.list[i] == null) {
+            return state.list[i] = "";
+          }
           if (state.list[i][0] != undefined && state.list[i][0] != "") {
             arr.created = state.list[i].map(item => {
               if (_.isDate(item)) {
@@ -54,7 +92,7 @@ const orders = {
               }
             })
           }
-        } else if (state.list[i] !== "" && state.list[i] != 0) {          
+        } else if (state.list[i] !== "" && state.list[i] != 0) {
 
           arr[i] = state.list[i]
         }
@@ -101,7 +139,9 @@ const orders = {
         });
       })
     },
-    dispose({state}, sendDate) {
+    dispose({
+      state
+    }, sendDate) {
       return new Promise((resolve, reject) => {
         api.ajax({
           type: "post",
@@ -112,8 +152,8 @@ const orders = {
             state.dispose = {
               id: "",
               state: "",
-              description:""
-            }        
+              description: ""
+            }
             resolve(data)
           },
           error: data => {
@@ -121,9 +161,11 @@ const orders = {
           }
         });
       })
-    }    
+    }
 
   }
 }
-
+export {
+  ordersLog
+}
 export default orders
