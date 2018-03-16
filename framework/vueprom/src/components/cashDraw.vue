@@ -1,9 +1,10 @@
 <template>
   <van-popup class="cashdraw grebg" :value="cashDrawState" @input="changeCashDrawState" position="right" :overlay="true">
+    <div class="bg1">
     <van-nav-bar title="提现" left-arrow @click-left="$emit('update:cashDrawState', false)" />
     <van-cell-group>
       <van-cell class="item">
-        可提金额: <span class="color2">¥{{totle}}</span>
+        可提金额: <span class="color2">¥{{userDes.frozen_pull_out_money}}</span>
       </van-cell>
     </van-cell-group>
 
@@ -12,7 +13,7 @@
       <van-cell-group>
         
         <van-cell v-for="(item,index) in listType" :key="index" class="item">
-          <van-radio :name="index" v-model="activeType">{{item}}{{index}}</van-radio>
+          <van-radio :name="index" v-model="activeType">{{item}}</van-radio>
         </van-cell>
       </van-cell-group>
     <!-- </van-radio-group> -->
@@ -43,10 +44,12 @@
 
     <div class="line2"></div>
     <van-button type="primary" size="large" id="tj" @click="submit()">提交</van-button>
-
+    </div>
   </van-popup>
 </template>
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "cashdraw",
   props: {
@@ -57,12 +60,18 @@ export default {
       default: 0
     }
   },
+  computed: {
+    ...mapState("login", ["userDes", "userSate"])
+  },
   watch: {
     activeType(newVal) {
       this.activeTypeClone = "none";
-      setTimeout(() => {
-        this.activeTypeClone = newVal;
-      }, 10);
+      this.activeTypeClone = newVal;
+      // setTimeout(() => {
+      //   document
+      //     .querySelectorAll(".verify-error")[0]
+      //     .classList.remove("verify-error");
+      // }, 100);
     }
   },
   data() {
@@ -98,17 +107,35 @@ export default {
   },
   methods: {
     submit() {
+      // console.log(this.$verify.check());
       if (this.$verify.check()) {
+        if (this.activeType == "0") {
+          var sendDate = {
+            pull_out_card_type: 1,
+            pull_out_card_num: this.payDate.id,
+            pull_out_card_user: this.payDate.name,
+            pull_out_card_bank: "网络"
+          };
+        }
+        if (this.activeType == "1") {
+          var sendDate = {
+            pull_out_card_type: 2,
+            pull_out_card_num: this.bankDate.id,
+            pull_out_card_user: this.bankDate.name,
+            pull_out_card_bank: this.bankDate.creatData
+          };
+        }
+
         this.$api.ajax({
           type: "post",
-          url: this.$api.url.demo,
-          data: {},
+          url: this.$api.url.moneydetailPullout,
+          data: sendDate,
           // dataType: "dataType",
           success: data => {
             //code
             this.$toast({
-              type: "success",
-              message: "提交成功",
+              // type: "success",
+              message: "提现成功，7个工作日到账",
               duration: 1000
             });
             this.$emit("update:cashDrawState", false);
@@ -126,8 +153,19 @@ export default {
   margin-bottom: 0;
   padding: 10px;
 }
-#tj {
-  position: fixed;
-  bottom: 20px;
+// #tj {
+//   position: fixed;
+//   bottom: 20px;
+// }
+
+.line2 {
+  // padding-top: 10px;
+  background: #f2f3f5;
+}
+.cashdraw {
+  position: absolute;
+}
+.bg1 {
+  background: #f2f3f5;
 }
 </style>

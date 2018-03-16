@@ -27,6 +27,8 @@ import Login from "../components/login.vue";
 import Reg from "../components/reg.vue";
 import FgPwd from "../components/fgPwd.vue";
 
+
+
 export default {
   name: "login",
   components: {
@@ -39,7 +41,14 @@ export default {
       type: "login"
     };
   },
-  created() {},
+  created() {
+    if (
+      this.$route.query.invite_user_code &&
+      this.$route.query.invite_user_code != ""
+    ) {
+      this.type = "reg";
+    }
+  },
   methods: {
     changeType(type) {
       this.type = type;
@@ -58,10 +67,13 @@ export default {
 .tag {
   margin-top: -50px;
   padding-bottom: 10px;
-  display: flex;
-  justify-content: space-around;
+  // display: flex;
+  // justify-content: space-around;
+  text-align: center;
   .link {
     color: #fff;
+    display: inline-block;
+    width: 49%;
     font-size: 16px;
   }
 }
@@ -70,7 +82,8 @@ export default {
   .arrow {
     position: absolute;
     bottom: -23px;
-    left: 65px;
+    left: 50%;
+    margin-left: -28.8%;
     border-left: 13px solid transparent;
     border-top: 10px solid transparent;
     border-right: 13px solid transparent;
@@ -79,8 +92,11 @@ export default {
     width: 0px;
     transition: 0.2s;
     &.arrow-reg {
-      left: 228px;
+      margin-left: 20.8%;
     }
   }
+}
+.login {
+  height: 100%;
 }
 </style>

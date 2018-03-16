@@ -21,6 +21,9 @@ const mutations = {
   },
   ajaxLoadChange(state, val) {
     state.ajaxLoad = val
+  },
+  shareWx(state) {
+
   }
 }
 

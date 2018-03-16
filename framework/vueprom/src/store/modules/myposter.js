@@ -3,9 +3,9 @@ const myPosterState = {
     return {
       myPosterState: {
         state: {
-          0: "已认证",
-          1: "待审核",
-          2: "锁定"
+          1: "认证中",
+          2: "已认证",
+          3: "已锁定"
         }
       }
     }

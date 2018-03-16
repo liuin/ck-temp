@@ -34,8 +34,14 @@ api.url.userGetInviteQrCode = api.path + '/user/getInviteQrCode' + api.pathEnd;
 api.url.userGetAppQrCode = api.path + '/user/getAppQrCode' + api.pathEnd;
 api.url.userGetPromotersByMe = api.path + '/user/getPromotersByMe' + api.pathEnd;
 api.url.userGetCustomersByMe = api.path + '/user/getCustomersByMe' + api.pathEnd;
-api.url.wechatGet = api.path + '/wechat/get' + api.pathEnd;
+api.url.wechatGetSign = api.path + '/wechat/getSign' + api.pathEnd;
 api.url.userGetInviteQrCode = api.path + '/user/getInviteQrCode' + api.pathEnd;
+api.url.moneydetailPullout = api.path + '/moneydetail/pullout' + api.pathEnd;
+api.url.userSetMyPromoterState = api.path + '/user/setMyPromoterState' + api.pathEnd;
+api.url.userGetAllFrozenMoneyByMe = api.path + '/user/getAllFrozenMoneyByMe' + api.pathEnd;
+api.url.userGetAllActiveMoneyByMe = api.path + '/user/getAllActiveMoneyByMe' + api.pathEnd;
+api.url.tokenDestroy = api.path + '/token/destroy' + api.pathEnd;
+api.url.userShow = api.path + '/user/show' + api.pathEnd;
 
 
 
@@ -43,11 +49,13 @@ api.url.userGetInviteQrCode = api.path + '/user/getInviteQrCode' + api.pathEnd;
 api.ajaxHandle = function (res, options) {
   if (res.status == 200) {
     if (options.noLoading != true) {
-      Toast.loading({
-        mask: true,
-        // message: '加载中...',
-        duration: 300
-      });
+      // Toast.loading({
+      //   mask: true,
+      //   // message: '加载中...',
+      //   duration: 300
+      // });
+      store.commit('ajaxLoadChange', false);
+
     }
     var data = res.data;
     if (options.result) {
@@ -70,7 +78,16 @@ api.ajaxHandle = function (res, options) {
             // }
           });
         }, 1000);
-      } else if (400) {
+      } else if (data.status == 400) {
+        Toast({
+          message: data.msg,
+          duration: 1000
+        });
+        // console.log(window.location.href.indexOf('shareWelcome'));
+
+        if (window.location.href.indexOf('shareWelcome') > -1) {
+          return false
+        }
 
         if (data.msg.indexOf('token') > -1 || data.msg == 'token已过期请重新登录') {
           store.commit('login/changeToken', '');
@@ -78,20 +95,21 @@ api.ajaxHandle = function (res, options) {
           return false
         }
 
-        Toast({
-          message: data.msg,
-          duration: 1000
-        });
         options.error && options.error(data.msg);
       } else {
         Toast({
-          message: data.msg,
+          message: "加载出错",
           duration: 1000
         });
         options.error && options.error(data.msg);
       }
     }
-
+  } else {
+    Toast({
+      message: '请求接口错误',
+      type: "error",
+      duration: 1000
+    });
   }
 
   // store.commit('ajaxLoadChange', false)  
@@ -101,16 +119,17 @@ api.ajax = function (options) {
   if (!options.data) options.data = {};
   options.data.client = 3;
   options.data.token = store.getters['login/getToken'];
-  options.data.aid = store.state.login.aid;
+  options.data.uid = store.state.login.uid;
   options.data.device = '88888888';
   options.data.version = '1.0.1';
 
   if (options.noLoading != true) {
-    Toast.loading({
-      mask: true,
-      // message: '加载中...',
-      duration: 0
-    });
+    // Toast.loading({
+    //   mask: true,
+    //   // message: '加载中...',
+    //   duration: 0
+    // });
+    store.commit('ajaxLoadChange', true);
   }
 
   // store.commit('ajaxLoadChange', true)
@@ -124,8 +143,40 @@ api.ajax = function (options) {
   } else {
     Axios.post(options.url, qs.stringify(options.data)).then(res => {
       api.ajaxHandle(res, options);
+    }).catch(res => {
+      console.log('1111');
+      Toast({
+        message: '加载出错',
+        type: "error",
+        duration: 1000
+      });
     });
   }
+}
+
+
+api.imgdesc = function (img, size) {
+  if (img) {
+    // if ((img.indexOf('.png') > -1) || (img.indexOf('.jpg') > -1)) {
+    //   return img
+    // }
+
+
+    if (img.indexOf('!') == -1) {
+      if (size) {
+        if (size == 'false') {
+
+        } else if (/^\!/.test(size)) {
+          img = img + size;
+        } else {
+          img = img + '!' + size;
+        }
+      } else {
+        img = img + '!desc';
+      }
+    }
+  }
+  return img;
 }
 
 export default api;

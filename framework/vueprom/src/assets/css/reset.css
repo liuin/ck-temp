@@ -619,3 +619,63 @@ input:-ms-input-placeholder {
     width: 100px;
     line-height: 35px;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.slide-enter-active {
+    animation: slide-in .5s;
+    overflow: hidden;
+}
+
+.slide-leave-active {
+    animation: slide-in .5s reverse;
+    overflow: hidden;
+}
+
+@keyframes slide-in {
+    0% {
+        height: 0px;
+    }
+    100% {
+        height: 100%;
+    }
+}
+
+.loading-g {
+    position: fixed;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    margin-left: -18px;
+    margin-top: -18px;
+}
+
+.van-cell {
+    position: relative;
+}
+
+.van-cell:not(:last-child):after {
+    border-bottom-width: 1px;
+    /*no*/
+    bottom: 0px;
+    /*no*/
+    right: 0;
+    box-sizing: content-box;
+    position: absolute;
+    left: 0;
+    transform: none;
+    height: auto;
+    width: auto;
+}

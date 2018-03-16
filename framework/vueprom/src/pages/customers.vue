@@ -1,5 +1,5 @@
 <template>
-  <div class="customers grebg grebgflex">
+  <div class="customers grebg grebgflex" >
     <van-nav-bar title="客户数量" left-arrow @click-left="$router.back()" />
 
     <van-cell-group class="van-cell-group1">
@@ -17,100 +17,120 @@
             <span class="name">{{item.name}}</span>
           </template>
           <template>
-            {{item.code}}
+            {{cuesterState[item.state]}}
           </template>
         </van-cell>
-
-        <div class="loadingBottom" v-if="waterfallLoading == true">
+        <div class="loadingBottom" v-if="waterfallLoading == true && endData == false">
           <van-loading type="circle" color="white" />
         </div>
       </van-pull-refresh>
     </van-cell-group>
 
+
+    <div class="enpty" v-if="list.length ==0 && endData == true">
+      暂无数据
+    </div>
+
   </div>
 </template>
 <script>
+// import wx from "weixin-js-sdk";
+import { dfImg } from "../store/modules/gloable.js";
+// import { weixinShare } from "../store/modules/weixinShare.js";
+
 export default {
   name: "customers",
   data() {
     return {
+      cuesterState: {
+        1: "通过",
+        2: "未通过",
+        0: "未审核",
+        3: "信息更新"
+      },
       waterfallLoading: false,
       refreshLoading: false,
-      totle: 235855544,
-      pages: 1,
-      list: [
-        {
-          img:
-            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-          name: "卡吹娜1",
-          code: 12345678
-        },
-        {
-          img:
-            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-          name: "卡吹娜2",
-          code: 12345678
-        }
-      ]
+      totle: "加载中...",
+      endData: false,
+      ajaxLoadState: false,
+      page: 1,
+      list: []
     };
   },
-  created() {},
+  mixins: [dfImg],
+  created() {
+    this.waterfallLoad();
+  },
   watch: {
     refreshLoading() {
-      this.$api.ajax({
-        type: "post",
-        url: this.$api.url.demo,
-        // data: data,
-        // dataType: "dataType",
-        noLoading: true,
-        success: data => {
-          // this.$store.commit("login/changeToken", "login");
-          // this.$router.push("/");
-          this.pages = 0;
-          this.refreshLoading = false;
-
-          this.list = [
-            {
-              img:
-                "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-              name: "卡吹娜ref1",
-              code: 12345678
-            },
-            {
-              img:
-                "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-              name: "卡吹娜ref2",
-              code: 12345678
-            }
-          ];
-        }
+      this.page = 1;
+      this.endData = false;
+      this.loadData("refresh", () => {
+        this.refreshLoading = false;
+        // this.page++;
       });
     }
   },
   methods: {
-    waterfallLoad() {
-      this.pages++;
-      if (this.pages >= 10 || this.waterfallLoading == true) {
+    loadData(type, cb) {
+      if (this.ajaxLoadState == true) {
+        this.waterfallLoading = false;
         return;
       }
-      this.waterfallLoading = true;
+      this.ajaxLoadState = true;
       this.$api.ajax({
         type: "post",
-        url: this.$api.url.demo,
+        url: this.$api.url.userGetCustomersByMe,
         data: {
-          page: this.pages
+          page: this.page
         },
         noLoading: true,
+        // dataType: "dataType",
         success: data => {
-          this.waterfallLoading = false;
+          this.page++;
+          this.totle = data.total;
+          this.ajaxLoadState = false;
+          if (data.list.length == 0) {
+            this.endData = true;
+            this.waterfallLoading = false;
+            return;
+          }
+          let arr = [];
+          for (let index = 0; index < data.list.length; index++) {
+            var item = {
+              img:
+                data.list[index].dealer_avatar + "!desc" || dfImg.dfImgBase64,
+              name: data.list[index].dealer_name,
+              state: data.list[index].dealer_state
+              // "code": 12345678
+            };
+            arr.push(item);
+          }
 
-          this.list.push({
-            img:
-              "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-            name: "卡吹娜ref1" + this.pages,
-            code: 12345678
-          });
+          if (type == "refresh") {
+            this.list = arr;
+          } else {
+            this.list = this.list.concat(arr);
+          }
+
+          if (cb) {
+            return cb();
+          }
         }
+      });
+    },
+    waterfallLoad() {
+      if (
+        this.endData == true ||
+        this.waterfallLoading == true ||
+        this.refreshLoading == true
+      ) {
+        return;
+      }
+
+      this.waterfallLoading = true;
+      this.loadData("waterfall", () => {
+        this.waterfallLoading = false;
       });
     }
   },
@@ -151,5 +171,21 @@ export default {
 .customers {
   display: flex;
   flex-direction: column;
+}
+
+.enpty {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  // background: #666;
+  line-height: 100px;
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  border-radius: 10px;
+  margin-left: -50px;
+  margin-top: -50px;
 }
 </style>

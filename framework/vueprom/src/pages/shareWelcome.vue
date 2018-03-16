@@ -5,7 +5,7 @@
       <div class="img">
         <img :src="code" alt="">
       </div>
-      <p class="name">邀请人: {{name}}</p>
+      <p class="name">邀请码: {{name}}</p>
     </div>
     <div class="bottom"></div>
   </div>
@@ -15,21 +15,20 @@ export default {
   name: "shareWelcome",
   data() {
     return {
-      code:
-        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      code: "http://imgdev.030.cn/common/default.jpg!desc",
       name: "name"
     };
   },
   created() {
-    var code = this.$route.query.code || 23345;
+    // this.name = this.$route.query.invite_user_code || "0000";
+    this.name = this.$route.query.invite_user_code || "0000";
     this.$api.ajax({
       type: "post",
-      url: this.$api.url.demo,
-      data: {},
+      url: this.$api.url.userGetInviteQrCode,
       // dataType: "dataType",
+      data: { invite_user_code: this.$route.query.invite_user_code },
       success: data => {
-        this.code = data.code || this.code;
-        this.name = data.name || this.name;
+        this.code = data.invite_qr_code + "!desc" || this.code;
       }
     });
   },
@@ -81,6 +80,8 @@ export default {
       width: 162px;
       height: 162px;
       background: #eee;
+      display: block;
+      margin: 0 auto;
     }
   }
 }
@@ -89,6 +90,6 @@ export default {
   font-size: 18px;
   color: #c98000;
   text-align: center;
-  padding-top: 3px;
+  padding-top: 7px;
 }
 </style>

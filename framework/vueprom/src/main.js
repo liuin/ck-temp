@@ -8,6 +8,7 @@ import 'lib-flexible'
 import Api from './assets/js/api.js'
 import store from './store/store.js'
 import moment from 'moment'
+import wx from "weixin-js-sdk";
 // import Function from './assets/js/function.js'
 
 
@@ -27,7 +28,9 @@ import {
   Waterfall,
   Popup,
   DatetimePicker,
-  Radio
+  Radio,
+  Actionsheet,
+  Dialog
 } from "vant";
 Vue.use(Checkbox).use(CheckboxGroup);
 Vue.use(Field);
@@ -41,6 +44,9 @@ Vue.use(Waterfall);
 Vue.use(Popup);
 Vue.use(DatetimePicker);
 Vue.use(Radio);
+Vue.use(Actionsheet);
+Vue.use(Dialog);
+
 
 
 
@@ -63,16 +69,19 @@ Vue.config.productionTip = false
 Vue.prototype.$api = Api
 Vue.prototype.$moment = moment
 Vue.prototype.$toast = Toast
+Vue.prototype.$wx = wx
 
 //store.dispatch('setToken','')
 router.beforeEach((to, from, next) => {
-  Toast.loading({
-    mask: true,
-    // message: '加载中...',
-    duration: 0
-  });
+  // Toast.loading({
+  //   mask: true,
+  //   // message: '加载中...',
+  //   duration: 0
+  // });
+  store.commit('ajaxLoadChange', true);
+
   if (store.getters['login/getToken'] == "") {
-    if (to.name != "login") {
+    if (to.name != "login" && to.name != "shareWelcome") {
       next({
         path: '/login'
       })
@@ -81,9 +90,11 @@ router.beforeEach((to, from, next) => {
     }
   } else {
     if (to.name == "login") {
+      // console.log(to.name);
       next({
         path: '/'
       })
+      store.commit('ajaxLoadChange', false);
     } else {
       next();
     }
@@ -92,7 +103,13 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to, from) => {
-  Toast.clear()
+  setTimeout(() => {
+    store.commit('ajaxLoadChange', false);
+  }, 700);
+  // store.commit('shareWx')
+  // store.commit('ajaxLoadChange', false);
+
+  // Toast.clear()
   // store.commit('ajaxLoadChange', false)
   // setTimeout(() => {
   //   store.commit('setState', [{

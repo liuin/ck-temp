@@ -42,13 +42,22 @@ export default {
     }
   },
   created() {
-    let usernmae = localStorage.getItem("username");
-    let password = localStorage.getItem("password");
+    let usernmae = localStorage.getItem("username") || "";
+    let password = localStorage.getItem("password") || "";
+    if (usernmae == null) {
+      this.login.username = "";
+      this.login.password = "";
+      return;
+    }
 
     if (usernmae != "" || password != "") {
       this.rchecked = true;
       this.login.username = usernmae;
       this.login.password = password;
+      if (sessionStorage.getItem("loingOut") == "true") {
+      } else {
+        this.submit();
+      }
     }
   },
   methods: {
@@ -79,7 +88,6 @@ export default {
             this.repwd(this.rchecked);
             this.$store.commit("login/changeToken", data.token);
             this.$store.commit("login/changeUserInfo", data);
-
             this.$router.push("/");
           }
         });

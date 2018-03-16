@@ -3,236 +3,253 @@
     <van-nav-bar title="我的推广员" left-arrow @click-left="$router.back()" />
     <div class="bar df-left-right">
       <div class="left">
-        <div class="title" >
+        <div class="title">
           <span class="active" @click="barListState = !barListState">
             {{activeChoose.label}}
           </span>
           <span class="arrow" :class="sort? 'down': 'up'" @click="sort = !sort"></span>
         </div>
-        <ul class="list" v-if="barListState">
-          <li @click="activeChoose = item; barListState= false ; sort = !sort" :class="(activeChoose.value == item.value )? 'active': ''" v-for="item in listitme" :key="item.label">{{item.label}}</li>
-        </ul>
+        <transition name="fade">
+          <ul class="list" v-if="barListState">
+            <li @click="activeChoose = item; barListState= false ; sort = !sort" :class="(activeChoose.value == item.value )? 'active': ''"
+              v-for="item in listitme" :key="item.label">{{item.label}}</li>
+          </ul>
+        </transition>
       </div>
       <div class="right">
         <div class="time" @click="timeState = !timeState">
-          时间筛选 <span class="time-icon"></span>          
+          时间筛选
+          <span class="time-icon"></span>
         </div>
       </div>
     </div>
+    <div class="df-left-right" v-if="time.length>0">
+      <span class="data-cs color2">筛选日期：({{$moment(time[0]*1000).format('YYYY-MM-DD')}} - {{$moment(time[1]*1000).format('YYYY-MM-DD')}})</span>
+    </div>
 
-
-    <van-cell-group class="van-cell-group1">      
+    <van-cell-group class="van-cell-group1">
       <van-pull-refresh v-model="refreshLoading" class="van-pull-refresh1" v-waterfall-lower="waterfallLoad" waterfall-disabled="waterfallLoading"
         waterfall-offset="0">
 
-        <van-cell class="listitme-poster listitme" v-for="item in list" :key="item.name">
+        <van-cell class="listitme-poster listitme"  v-for="(item,index) in list" :key="item.name">
           <template slot="title">
-            <img :src="item.img" alt="">
-            <span class="name">{{item.name}}
+            <img @click="$router.push({path:'/personOther', query:{id:item.id}})" :src="(item.avatar!='')? $api.imgdesc(item.avatar): dfImg.dfImgBase64" alt="">
+            <span class="name">{{item.nickname || item.username}}
               <span v-if="activeChoose.value == 0" :class="'state'+ item.state">({{myPosterState.state[item.state]}})</span>
-            </span>            
+            </span>
           </template>
-          
-            <template v-if="activeChoose.value == 0">
-              <van-button size="small" v-if="item.state==0"  >锁定</van-button>
-              <van-button size="small" v-if="item.state==1"  type="primary" >审核</van-button>
-              <van-button size="small" v-if="item.state==2"  type="danger" >解锁</van-button>
-            </template>
 
-            <template v-if="activeChoose.value == 1">
-              {{item.activeDep}}
-            </template>
+          <template v-if="activeChoose.value == 0">
 
-            <template v-if="activeChoose.value == 2">
-              {{$moment(item.regDate * 1000).format("YYYY-MM-DD")}}
-            </template>
+            <van-button size="small" type="danger" @click="actionsheetState=true;actionsheetItem = {item:item,index:index}">修改状态</van-button>
+            <!-- <van-button size="small" @click="changeState(item)" v-if="item.state==1"  type="primary" >审核</van-button>
+              <van-button size="small" v-if="item.state==2" @click="changeState(item)"  type="danger" >解锁</van-button> -->
+          </template>
 
-            <template v-if="activeChoose.value == 3">
+          <template v-if="activeChoose.value == 1">
+            {{item.active_count}}
+          </template>
+
+          <template v-if="activeChoose.value == 2">
+            {{$moment(item.create_time * 1000).format("YYYY-MM-DD")}}
+          </template>
+
+          <!-- <template v-if="activeChoose.value == 3">
               {{item.code}}
             </template>
 
             <template v-if="activeChoose.value == 4">
               {{item.counter}}
-            </template>
-         
-        </van-cell>
+            </template> -->
 
+        </van-cell>
         <div class="loadingBottom" v-if="waterfallLoading == true">
           <van-loading type="circle" color="white" />
         </div>
       </van-pull-refresh>
     </van-cell-group>
- 
-    <TimeChoose   @updateTime="updateTime" :timeState.sync="timeState" />
+    <div class="enpty" v-if="(list.length ==0) &&(pages == 'end')">
+      暂无找到数据
+    </div>
+    <van-actionsheet v-model="actionsheetState" :actions="actions" cancel-text="取消" />
+    <TimeChoose @updateTime="updateTime" :timeState.sync="timeState" />
   </div>
 </template>
 <script>
 import TimeChoose from "../components/timeChoose.vue";
 import { myPosterState } from "../store/modules/myposter.js";
+import { dfImg } from "../store/modules/gloable.js";
+
+// import wx from "weixin-js-sdk";
+// import { weixinShare } from "../store/modules/weixinShare.js";
+
 export default {
   name: "myPoster",
   components: {
     TimeChoose
   },
-  mixins: [myPosterState],
+  mixins: [myPosterState, dfImg],
+
   data() {
     return {
+      actionsheetItem: {},
+      actionsheetState: false,
+      actions: [
+        {
+          name: "认证中",
+          callback: this.changeState,
+          type: 1
+        },
+        {
+          name: "已认证",
+          callback: this.changeState,
+          type: 2
+        },
+        {
+          name: "已锁定",
+          callback: this.changeState,
+          type: 3
+        }
+      ],
       time: [],
       timeState: false,
       sort: true,
       barListState: false,
       activeChoose: {
-        label: "活跃度",
-        value: 1
+        label: "我的推广员",
+        value: 0,
+        key: "nickname"
       },
       listitme: [
         {
           label: "我的推广员",
-          value: 0
+          value: 0,
+          key: "nickname"
         },
         {
           label: "活跃度",
-          value: 1
+          value: 1,
+          key: "active_count"
         },
         {
           label: "注册日期",
-          value: 2
-        },
-        {
-          label: "邀请码",
-          value: 3
-        },
-        {
-          label: "认证数量",
-          value: 4
+          value: 2,
+          key: "verified_count"
         }
+        // {
+        //   label: "邀请码",
+        //   value: 3
+        // },
+        // {
+        //   label: "认证数量",
+        //   value: 4
+        // }
       ],
       pages: 1,
-      list: [
-        {
-          img:
-            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-          name: "卡吹1",
-          code: 12345678,
-          state: 1,
-          activeDep: 100,
-          regDate: 18020030,
-          counter: 1000
-        },
-        {
-          img:
-            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-          name: "卡吹2f2",
-          code: 12345678,
-          state: 2,
-          activeDep: 100,
-          regDate: 18020030,
-          counter: 2000
-        },
-        {
-          img:
-            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-          name: "卡吹法第三方ef2",
-          code: 12345678,
-          state: 0,
-          activeDep: 100,
-          regDate: 18020030,
-          counter: 1000
-        }
-      ],
+      list: [],
       waterfallLoading: false,
       refreshLoading: false
     };
   },
   watch: {
     sort(newVal) {
-      this.resetLoad();
-      console.log("排列");
+      // this.resetLoad();
+      this.list = [];
+      this.pages = 1;
     },
     refreshLoading() {
-      this.resetLoad(() => {
-        this.pages = 0;
+      // sett
+      this.list = [];
+
+      setTimeout(() => {
+        this.pages = 1;
         this.refreshLoading = false;
-      });
+      }, 300);
+
+      // });
     }
   },
-  created() {},
+  created() {
+    this.waterfallLoad();
+  },
   methods: {
-    updateTime(val) {
-      console.log(val);
-      this.resetLoad();
-    },
-    resetLoad(cb, type) {
+    changeState(item) {
+      if (item.type == this.list[this.actionsheetItem.index].state) {
+        this.actionsheetState = false;
+        return;
+      }
+
+      const sendDate = {
+        state: item.type,
+        my_promoter_id: this.actionsheetItem.item.id
+      };
       this.$api.ajax({
         type: "post",
-        url: this.$api.url.demo,
-        // data: data,
+        url: this.$api.url.userSetMyPromoterState,
+        data: sendDate,
+        // dataType: "dataType",
+        success: data => {
+          this.$toast({
+            type: "success",
+            message: "修改成功",
+            duration: 1000
+          });
+          this.list[this.actionsheetItem.index].state = item.type;
+          this.actionsheetState = false;
+          // this.actionsheetItem.state = item.type;
+        }
+      });
+    },
+    updateTime(val) {
+      this.list = [];
+      this.pages = 1;
+      this.time = val;
+      // this.resetLoad();
+    },
+    resetLoad(cb, type) {
+      let conditions = {
+        register_time: this.time
+      };
+
+      var sendDate = {
+        conditions: this.time.length > 1 ? JSON.stringify(conditions) : "",
+        order_field: this.activeChoose.key,
+        order_by: this.sort ? 1 : 2,
+        page: this.pages
+      };
+
+      this.$api.ajax({
+        type: "post",
+        url: this.$api.url.userGetPromotersByMe,
+        data: sendDate,
         // dataType: "dataType",
         noLoading: true,
         success: data => {
           // this.$store.commit("login/changeToken", "login");
           // this.$router.push("/");
+          console.log(this.pages);
+
+          if (data.list.length == 0) {
+            this.pages = "end";
+          } else {
+            this.pages++;
+          }
+          this.list = this.list.concat(data.list);
 
           if (cb) {
             cb();
           }
-
-          if (type == "waterfallLoading") {
-            return;
-          } else {
-            this.pages = 1;
-            this.waterfallLoading = false;
-          }
-          this.list = [
-            {
-              img:
-                "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-              name: "卡吹1",
-              code: 12345678,
-              state: 1,
-              activeDep: 100,
-              regDate: 18020030,
-              counter: 1000
-            },
-            {
-              img:
-                "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-              name: "卡吹2f2",
-              code: 12345678,
-              state: 2,
-              activeDep: 100,
-              regDate: 18020030,
-              counter: 2000
-            },
-            {
-              img:
-                "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-              name: "卡吹法第三方ef2",
-              code: 12345678,
-              state: 0,
-              activeDep: 100,
-              regDate: 18020030,
-              counter: 1000
-            }
-          ];
         }
       });
     },
     waterfallLoad() {
-      this.pages++;
-      if (this.pages >= 10 || this.waterfallLoading == true) {
+      if (this.pages == "end" || this.waterfallLoading == true) {
         return;
       }
       this.waterfallLoading = true;
 
       this.resetLoad(() => {
         this.waterfallLoading = false;
-        this.list.push({
-          img:
-            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-          name: "卡吹娜ref1" + this.pages,
-          code: 12345678
-        });
       }, "waterfallLoading");
     }
   },
@@ -340,10 +357,33 @@ export default {
   width: 20px;
   padding-bottom: 10px;
 }
-.state2 {
+
+.state1 {
   color: #f44;
 }
-.state1 {
+
+.state2 {
   color: #1e96fa;
+}
+
+.enpty {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px; // background: #666;
+  line-height: 200px;
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  border-radius: 10px;
+  margin-left: -100px;
+  margin-top: -100px;
+}
+
+.data-cs {
+  line-height: 40px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 </style>

@@ -10,6 +10,7 @@ const money = r => require.ensure([], () => r(require('../pages/money.vue')));
 const myPoster = r => require.ensure([], () => r(require('../pages/myPoster.vue')));
 const person = r => require.ensure([], () => r(require('../pages/person.vue')));
 const shareWelcome = r => require.ensure([], () => r(require('../pages/shareWelcome.vue')));
+const personOther = r => require.ensure([], () => r(require('../pages/personOther.vue')));
 
 Vue.use(Router)
 
@@ -59,6 +60,11 @@ export default new Router({
       path: '/shareWelcome',
       name: 'shareWelcome',
       component: shareWelcome
+    },
+    {
+      path: '/personOther',
+      name: 'personOther',
+      component: personOther
     }
   ]
 })

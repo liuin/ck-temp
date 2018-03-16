@@ -1,7 +1,7 @@
 <template>
   <div class="loginbox regbox">
-    <van-field v-model="login.invCode" @blur="$verify.check('invCode')" v-verify.invCode="login.invCode" placeholder="请输入邀请码"
-      icon="clear" @click-icon="login.invCode = ''" />
+    <van-field  v-model="login.invCode" @blur="$verify.check('invCode')" v-verify.invCode="login.invCode" placeholder="请输入邀请码"
+       disabled />
 
 
     <label class="van-field__error-message" v-remind="login.invCode"></label>
@@ -20,15 +20,15 @@
     <label class="van-field__error-message" v-remind="rpPassword"></label>    
 
     <div class="vd-box df-left-right">
-      <div>
+      <div class="code-left">
         <van-field v-model="login.imgCode" placeholder="请输入图形验证" @blur="$verify.check('imgCode')" v-verify.imgCode="login.imgCode" icon="clear"
           v-verify="login.imgCode" @click-icon="login.imgCode = ''" />
         <label class="van-field__error-message" v-remind="login.imgCode"></label>
       </div>
-      <div class="sp1 img" @click="getImg"><img v-if="imgCodeData.captcha_image_content != ''" :src="imgCodeData.captcha_image_content"  alt=""></div>
+      <div class="sp1 sp1-code img"  @click="getImg"><img v-if="imgCodeData.captcha_image_content != ''" :src="imgCodeData.captcha_image_content"  alt=""></div>
     </div>
     <div class="vd-box df-left-right">
-      <div>
+      <div class="code-left">
         <van-field v-model="login.code" placeholder="请输入验证码" @blur="$verify.check('code')" v-verify.code="login.code" icon="clear"
           v-verify="login.code" @click-icon="login.code = ''" />
         <label class="van-field__error-message" v-remind="login.code"></label>
@@ -104,7 +104,8 @@ export default {
     }
   },
   created() {
-    this.login.invCode = this.$route.query.invite_user_code;
+    // console.log(this.$route.query.invite_user_code);
+    this.login.invCode = this.$route.query.invite_user_code || "";
     this.getImg();
   },
   methods: {
@@ -175,7 +176,7 @@ export default {
           success: data => {
             this.$toast({
               // mask: true,
-              message: "注册成功,请登录",
+              message: "注册成功",
               duration: 1000
             });
             setTimeout(() => {
@@ -216,8 +217,16 @@ export default {
     display: block;
     line-height: 44px;
     font-size: 14px;
-    flex: 1;
+    width: 150px;
     text-align: center;
+    white-space: nowrap;
+  }
+  .sp1-code {
+    width: 150px;
+    text-align: right;
+    img {
+      display: block;
+    }
   }
   .img {
     img {
@@ -225,8 +234,11 @@ export default {
       display: block;
       height: 44px;
       width: 100px;
-      margin-left: 10px;
+      margin-left: auto;
     }
   }
+}
+.code-left {
+  width: 168px;
 }
 </style>

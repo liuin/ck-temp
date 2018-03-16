@@ -16,6 +16,7 @@
       <van-nav-bar :title="'更改' + popup.title" left-arrow @click-left="popup.state = false" right-text="保存" @click-right="save()"
       />
       <van-cell-group>
+
       <van-field v-model="popup.value" class="change-field" :placeholder="'请填写'+ popup.title" @blur="$verify.check()" icon="clear"
         @click-icon="popup.value = ''" v-verify="popup.value" />
         
@@ -28,58 +29,107 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
+
+// import wx from "weixin-js-sdk";
+// import { weixinShare } from "../store/modules/weixinShare.js";
+
 export default {
   name: "money",
+  computed: {
+    ...mapState("login", ["userDes", "userSate"])
+  },
+  // mixins: [weixinShare],
   data() {
     return {
       popup: {
         state: false,
         value: "",
-        title: ""
+        title: "",
+        key: ""
       },
       person: {
         id: {
-          value: "1801808888",
-          lable: "登录账号"
+          value: "",
+          lable: "登录账号",
+          key: "username"
         },
         name: {
-          value: "张山峰",
-          lable: "联系人"
+          value: "",
+          lable: "联系人",
+          key: "nickname"
         },
         compName: {
-          value: "中山市灯饰有限公司",
-          lable: "公司名称"
+          value: "",
+          lable: "公司名称",
+          key: "company"
         },
         tel: {
-          value: "070-8888888",
-          lable: "联系电话"
+          value: "",
+          lable: "联系电话",
+          key: "phone"
         },
         email: {
-          value: "719677777qq.com",
-          lable: "电子邮箱"
+          value: "",
+          lable: "电子邮箱",
+          key: "email"
         },
         qq: {
-          value: "719677777",
-          lable: "QQ"
+          value: "",
+          lable: "QQ",
+          key: "qq_num"
         }
       }
     };
   },
   verify: {
     popup: {
-      value: ["required"]
+      value: [
+        "required",
+        {
+          test: function(val) {
+            if (this.popup.key == "phone" || this.popup.key == "username") {
+              var re = /^1\d{10}$/;
+              if (re.test(val)) {
+                return true;
+              } else {
+                return false;
+              }
+            } else if (this.popup.key == "email") {
+              var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+              if (re.test(val)) {
+                return true;
+              } else {
+                return false;
+              }
+            } else {
+              return true;
+            }
+          },
+          message: "请输入格式不对"
+        }
+      ]
     }
   },
   created() {
-    this.$api.ajax({
-      type: "post",
-      url: this.$api.url.demo,
-      data: {},
-      // dataType: "dataType",
-      success: data => {
-        this.person = data.data || this.person;
-      }
+    this.$store.dispatch("login/getUserDes").then(data => {
+      console.log(data);
+      this.person.id.value = data.username;
+      this.person.name.value = data.nickname;
+      this.person.compName.value = data.company;
+      this.person.tel.value = data.phone;
+      this.person.email.value = data.email;
+      this.person.qq.value = data.qq_num;
     });
+    // this.$api.ajax({
+    //   type: "post",
+    //   url: this.$api.url.demo,
+    //   data: {},
+    //   // dataType: "dataType",
+    //   success: data => {
+    //     this.person = data.data || this.person;
+    //   }
+    // });
   },
   methods: {
     save() {
@@ -87,10 +137,16 @@ export default {
         if (this.popup.value === this.popup.valueIn) {
           return (this.popup.state = false);
         }
+
+        var key = this.popup.key;
+        var sendDate = {};
+        sendDate[key] = this.popup.value;
+        console.log(sendDate);
+
         this.$api.ajax({
           type: "post",
-          url: this.$api.url.demo,
-          data: {},
+          url: this.$api.url.userUpdateByMe,
+          data: sendDate,
           // dataType: "dataType",
           success: data => {
             setTimeout(() => {
@@ -99,6 +155,13 @@ export default {
                 message: "保存成功",
                 duration: 1000
               });
+
+              for (var i in this.person) {
+                if (this.person[i]["key"] == key) {
+                  this.person[i].value = sendDate[key];
+                }
+              }
+
               setTimeout(() => {
                 this.popup.state = false;
               }, 300);
@@ -109,10 +172,14 @@ export default {
     },
 
     popupOpen(item, key) {
+      if (item.key == "username") {
+        return false;
+      }
       this.popup.title = item.lable;
       this.popup.valueIn = item.value;
       this.popup.value = item.value;
       this.popup.state = true;
+      this.popup.key = item.key;
       this.$verify.check();
 
       setTimeout(() => {

@@ -170,7 +170,7 @@ export default {
         };
         this.$api.ajax({
           type: "post",
-          url: this.$api.url.tokenGet,
+          url: this.$api.url.userResetPwdBySms,
           data: sendDate,
           // dataType: "dataType",
           success: data => {

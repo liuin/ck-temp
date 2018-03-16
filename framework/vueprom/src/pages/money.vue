@@ -9,10 +9,12 @@
           </span>
           <span class="arrow" :class="sort? 'down': 'up'" @click="sort = !sort"></span>
         </div>
-        <ul class="list" v-if="barListState">
-          <li @click="activeChoose = item; barListState= false ; sort = !sort" :class="(activeChoose.value == item.value )? 'active': ''"
-            v-for="item in listitme" :key="item.label">{{item.label}}</li>
-        </ul>
+        <transition name="fade">
+          <ul class="list" v-if="barListState">
+            <li @click="activeChoose = item; barListState= false ; sort = !sort" :class="(activeChoose.value == item.value )? 'active': ''"
+              v-for="item in listitme" :key="item.label">{{item.label}}</li>
+          </ul>
+        </transition>
       </div>
       <div class="right">
         <div class="time" @click="timeState = !timeState">
@@ -22,20 +24,21 @@
       </div>
     </div>
 
+    <h3 class="title3">个人资金信息:</h3>
     <div class="totle df-left-right">
       <div class="left">
         <p>
-          总冻结提现金额
-          <span class="state2">¥{{totle.freeze}}</span>
+          个人冻结提现金额
+          <span class="state2">¥{{userDes.active_pull_out_money}}</span>
         </p>
 
         <p>
-          可提现金额
-          <span class="state2">¥{{totle.usable}}</span>
+          个人可提现金额
+          <span class="state2">¥{{userDes.frozen_pull_out_money}}</span>
         </p>
         <p>
-          已提现金额
-          <span class="state2">¥{{totle.hasGet}}</span>
+          个人已提现金额
+          <span class="state2">¥{{userDes.history_pull_out_total || "0.00"}}</span>
         </p>
       </div>
       <div class="right">
@@ -43,23 +46,40 @@
       </div>
     </div>
 
+    <div class="df-left-right">
+      <h3 class="title3">推广员资金信息:</h3>
+      <span class="data-cs color2" v-if="time.length>0">筛选日期：({{$moment(time[0]*1000).format('YYYY-MM-DD')}} - {{$moment(time[1]*1000).format('YYYY-MM-DD')}})</span>
+    </div>
 
+    <div class="totle df-left-right">
+      <div class="left">
+        <p v-if="activeChoose.value == 0">
+          总冻结提现金额
+          <span class="state2">¥{{total.freeze}}</span>
+        </p>
+
+        <p v-if="activeChoose.value == 1">
+          总可提现金额
+          <span class="state2">¥{{total.usable}}</span>
+        </p>
+      </div>
+    </div>
     <van-cell-group class="van-cell-group1">
       <van-pull-refresh v-model="refreshLoading" class="van-pull-refresh1" v-waterfall-lower="waterfallLoad" waterfall-disabled="waterfallLoading"
         waterfall-offset="0">
 
-        <van-cell class="listitme-poster listitme" v-for="item in list" :key="item.name">
+        <van-cell class="listitme-poster listitme" v-for="item in list" :key="item.id">
           <template slot="title">
-            <img :src="item.img" alt="">
-            <span class="name">{{item.name}}</span>
+            <img @click="$router.push({path:'/personOther', query:{id:item.id}})" :src="(item.avatar!='')? $api.imgdesc(item.avatar): dfImg.dfImgBase64" alt="">
+            <span class="name">{{item.nickname || item.username}}</span>
           </template>
 
           <template v-if="activeChoose.value == 0">
-            ¥{{item.moneyUser}}
+            ¥{{item.frozen_pull_out_money}}
           </template>
 
           <template v-if="activeChoose.value == 1">
-            ¥{{item.moneyFreeze}}
+            ¥{{item.active_pull_out_money}}
           </template>
 
         </van-cell>
@@ -67,10 +87,14 @@
         <div class="loadingBottom" v-if="waterfallLoading == true">
           <van-loading type="circle" color="white" />
         </div>
+        <div class="enpty" v-if="(list.length == 0) &&(pages == 'end')">
+          暂无找到数据
+        </div>
       </van-pull-refresh>
     </van-cell-group>
 
     <TimeChoose @updateTime="updateTime" :timeState.sync="timeState" />
+
 
     <CashDraw :cashDrawState.sync="cashDrawState" />
 
@@ -80,18 +104,27 @@
 import TimeChoose from "../components/timeChoose.vue";
 import CashDraw from "../components/cashDraw.vue";
 import { myPosterState } from "../store/modules/myposter.js";
+import { dfImg } from "../store/modules/gloable.js";
+
+// import { weixinShare } from "../store/modules/weixinShare.js";
+
+import { mapState } from "vuex";
+
 export default {
   name: "myPoster",
   components: {
     TimeChoose,
     CashDraw
   },
-  mixins: [myPosterState],
+  computed: {
+    ...mapState("login", ["userDes", "userSate"])
+  },
+  mixins: [myPosterState, dfImg],
   data() {
     return {
       cashDrawState: false,
       time: [],
-      totle: {
+      total: {
         freeze: 0,
         usable: 0,
         hasGet: 0
@@ -101,162 +134,125 @@ export default {
       barListState: false,
       activeChoose: {
         label: "冻结提成金额",
-        value: 0
+        value: 0,
+        key: "frozen_push_money"
       },
       listitme: [
         {
           label: "冻结提成金额",
-          value: 0
+          value: 0,
+          key: "frozen_push_money"
         },
         {
           label: "可提现金额",
-          value: 1
+          value: 1,
+          key: "active_push_money"
         }
       ],
       pages: 1,
-      list: [
-        {
-          img:
-            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-          name: "卡吹1",
-          code: 12345678,
-          state: 1,
-          activeDep: 100,
-          regDate: 18020030,
-          counter: 1000,
-          moneyUser: 100,
-          moneyFreeze: 100
-        },
-        {
-          img:
-            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-          name: "卡吹2f2",
-          code: 12345678,
-          state: 2,
-          activeDep: 100,
-          regDate: 18020030,
-          counter: 2000,
-          moneyUser: 100,
-          moneyFreeze: 100
-        },
-        {
-          img:
-            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-          name: "卡吹法第三方ef2",
-          code: 12345678,
-          state: 0,
-          activeDep: 100,
-          regDate: 18020030,
-          counter: 1000,
-          moneyUser: 100,
-          moneyFreeze: 100
-        }
-      ],
+      list: [],
       waterfallLoading: false,
       refreshLoading: false
     };
   },
   watch: {
     sort(newVal) {
-      this.resetLoad();
-      console.log("排列");
+      this.pages = 1;
+
+      this.list = [];
     },
     refreshLoading() {
-      this.resetLoad(() => {
-        this.pages = 0;
+      this.pages = 1;
+      this.list = [];
+
+      setTimeout(() => {
         this.refreshLoading = false;
-      });
+      }, 300);
     }
   },
-  created() {},
+  created() {
+    this.$store.dispatch("login/getUserDes").then(data => {
+      console.log(data);
+    });
+
+    this.$api.ajax({
+      type: "post",
+      url: this.$api.url.userGetAllFrozenMoneyByMe,
+      // data: {},
+      // dataType: "dataType",
+      success: data => {
+        this.total.freeze = data.my_promoters_frozen_money;
+      }
+    });
+
+    this.$api.ajax({
+      type: "post",
+      url: this.$api.url.userGetAllActiveMoneyByMe,
+      // data: {},
+      // dataType: "dataType",
+      success: data => {
+        this.total.usable = data.my_promoters_active_money;
+      }
+    });
+  },
   methods: {
     updateTime(val) {
-      console.log(val);
-      this.resetLoad();
+      // console.log(val);
+      this.time = val;
+      this.pages = 1;
+      this.list = [];
+      // console.log(this.$moment(this.time[0] * 1000).format("YYYY-MM-DD"));
     },
     resetLoad(cb, type) {
+      let conditions = {
+        register_time: this.time
+      };
+
+      var sendDate = {
+        conditions: this.time.length > 1 ? JSON.stringify(conditions) : "",
+        order_field: this.activeChoose.key,
+        order_by: this.sort ? 1 : 2,
+        page: this.pages
+      };
+
       this.$api.ajax({
         type: "post",
-        url: this.$api.url.demo,
-        // data: data,
+        url: this.$api.url.userGetPromotersByMe,
+        data: sendDate,
         // dataType: "dataType",
         noLoading: true,
         success: data => {
           // this.$store.commit("login/changeToken", "login");
           // this.$router.push("/");
-
+          if (data.list.length == 0) {
+            this.pages = "end";
+          } else {
+            this.pages++;
+          }
           if (cb) {
             cb();
           }
 
-          if (type == "waterfallLoading") {
-            return;
-          } else {
-            this.pages = 1;
-            this.waterfallLoading = false;
-          }
-          this.list = [
-            {
-              img:
-                "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-              name: "卡吹1",
-              code: 12345678,
-              state: 1,
-              activeDep: 100,
-              regDate: 18020030,
-              counter: 1000,
-              moneyUser: 100,
-              moneyFreeze: 100
-            },
-            {
-              img:
-                "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-              name: "卡吹2f2",
-              code: 12345678,
-              state: 2,
-              activeDep: 100,
-              regDate: 18020030,
-              counter: 2000,
-              moneyUser: 100,
-              moneyFreeze: 100
-            },
-            {
-              img:
-                "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-              name: "卡吹法第三方ef2",
-              code: 12345678,
-              state: 0,
-              activeDep: 100,
-              regDate: 18020030,
-              counter: 1000,
-              moneyUser: 100,
-              moneyFreeze: 100
-            }
-          ];
+          console.log(data);
+          // if (type == "waterfallLoading") {
+          //   return;
+          // } else {
+          //   this.pages = 1;
+          //   this.waterfallLoading = false;
+          // }
+
+          this.list = this.list.concat(data.list);
         }
       });
     },
     waterfallLoad() {
-      this.pages++;
-      if (this.pages >= 10 || this.waterfallLoading == true) {
+      if (this.pages == "end" || this.waterfallLoading == true) {
         return;
       }
       this.waterfallLoading = true;
 
       this.resetLoad(() => {
         this.waterfallLoading = false;
-        this.list.push({
-          img:
-            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
-          name: "卡吹娜ref1" + this.pages,
-          code: 12345678,
-          state: 0,
-          activeDep: 100,
-          regDate: 18020030,
-          counter: 1000,
-          moneyUser: 100,
-          moneyFreeze: 100
-        });
       }, "waterfallLoading");
     }
   },
@@ -394,5 +390,22 @@ export default {
     padding-left: 15px;
     border-left: 1px solid #eee;
   }
+}
+
+.enpty {
+  padding-top: 10px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+.title3 {
+  padding: 0 10px;
+  line-height: 40px;
+  margin-bottom: 0;
+}
+.data-cs {
+  line-height: 40px;
+  padding-right: 10px;
 }
 </style>

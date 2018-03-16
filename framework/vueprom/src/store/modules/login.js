@@ -1,13 +1,21 @@
+import api from './../../assets/js/api.js'
 //登录状态管理
 const loginModule = {
   namespaced: true,
   state: {
     token: null,
     userInfo: null,
-    aid: sessionStorage.getItem('aid') || '',
+    invite_code: sessionStorage.getItem('invite_code') || '',
+    userDes: '',
+    uid: sessionStorage.getItem('uid') || '',
     nickname: sessionStorage.getItem('nickname') || '用户',
     rname: localStorage.getItem('username') || '',
-    rpwd: localStorage.getItem('password') || ''
+    rpwd: localStorage.getItem('password') || '',
+    userSate: {
+      1: '认证中',
+      2: '已认证',
+      3: '已锁定'
+    }
   },
   mutations: { //唯一修改状态的state方法 ，只能同步，不能异步
     changeToken(state, tk) {
@@ -16,6 +24,13 @@ const loginModule = {
     },
     changeUserInfo(state, info) {
       state.userInfo = info;
+      sessionStorage.setItem('uid', info.uid);
+      state.uid = info.uid;
+    },
+    changeUserDes(state, info) {
+      state.invite_code = info.invite_code;
+      sessionStorage.setItem('invite_code', info.invite_code);
+      state.userDes = info;
     }
   },
   getters: { //类似计算属性方法
@@ -38,6 +53,21 @@ const loginModule = {
     //      sessionStorage.setItem('token',tk);
     //      commit('changeToken',tk);
     //    },
+    getUserDes({
+      state,
+      commit
+    }, info) {
+      return new Promise((resolve, reject) => {
+        api.ajax({
+          type: "post",
+          url: api.url.userShowByMe,
+          success: data => {
+            commit("changeUserDes", data);
+            resolve(data);
+          }
+        });
+      })
+    },
     setUserInfo({
       commit
     }, info) {
